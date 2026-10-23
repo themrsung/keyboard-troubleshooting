@@ -50,6 +50,11 @@ Each issue, suggestion or proposal has its own folder inside its category.
 - [macbook-us-to-jis](layouts/macbook-us-to-jis/README.md): a MacBook's built-in US keyboard with
   JIS's keys through Karabiner-Elements.
 
+## testers/
+
+People who can test on their own hardware, with what they have:
+[themrsung](testers/themrsung.md).
+
 ## Background: keyboard types on macOS
 
 macOS stores a type for each keyboard it has seen, in `/Library/Preferences/com.apple.keyboardtype`
