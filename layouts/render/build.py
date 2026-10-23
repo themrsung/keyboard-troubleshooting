@@ -290,7 +290,7 @@ def layouts():
                 "TopRight": lang("▶︎❚❚", "Fn1"), "NumLock": fn("⌫", "Backspace", True),
             }),
             ("Layer 1 (Fn1)", fn_layer(keys, {
-                "TopLeft": fn("Vol−"), "TopSecond": fn("Vol+"), "TopThird": lang("Fn2"), "TopRight": lang("Fn1"),
+                "TopLeft": fn("Vol−"), "TopSecond": fn("Vol+"), "TopThird": lang("Tab", "Fn2"), "TopRight": lang("Fn1"),
                 "NumLock": fn("Del", "forward", True), "NumpadDivide": fn("↑"), "Numpad7": fn("←"), "Numpad8": fn("↓"), "Numpad9": fn("→"),
                 "Numpad4": fn("⌥", "right"), "Numpad5": fn("⌘", "right"), "Numpad6": fn("⇧", "right"), "NumpadAdd": fn("Control", "right"), "NumpadMultiply": mod("RFU"), "NumpadSubtract": mod("RFU"), "NumpadEnter": fn("6KRO", "/ NKRO", True),
                 "Numpad1": fn("BT 1"), "Numpad2": fn("BT 2"), "Numpad3": fn("BT 3"),

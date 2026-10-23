@@ -39,7 +39,7 @@ SPM's factory Fn layer, trimmed:
 
 | Fn1 + | Factory | Here |
 |---|---|---|
-| Tab (top row, 3rd) | nothing | **Fn2** (`MO(2)`) |
+| Tab (top row, 3rd) | nothing | **Fn2 held, Tab tapped** (`LT(2, KC_TAB)`, 0x422B) |
 | Backspace (the Num Lock key) | Lighting on/off | **Delete (forward)**, as on the other layouts |
 | / · 8 · 9 | Lighting hue −, effect speed −, effect speed + | **↑ · ↓ · →** |
 | 5 · 6 | Lighting saturation −, + | **Right ⌘ · right Shift** |
@@ -59,7 +59,7 @@ as a number.
 
 ## Layer 2 (Fn2: hold Fn1, then Tab)
 
-Momentary layers stack: holding Fn1 turns on layer 1, where Tab is `MO(2)`, and holding it too
+Momentary layers stack: holding Fn1 turns on layer 1, where the Tab key is Fn2 (`LT(2, KC_TAB)`), and holding it too
 turns on layer 2 (checked on the board, 2026-10-24).
 
 | Fn2 + | Sends |
@@ -128,7 +128,8 @@ The reset takes Fn1 + Tab + 0 held together.
 - **The hardware reset moves to Fn2 + 0.** On a numpad, Fn + 0 is an easy chord to hit, and it
   wipes the keymap; three keys held for three seconds aren't hit by accident.
 - **Fn2 on Fn1 + Tab:** the top row has no free key left for a second Fn, and Tab is next to Fn1,
-  so both are held with one hand.
+  so both are held with one hand. Tapped, the key is still Tab, so Tab works while Fn1 is held
+  (principle 2).
 - **Calculator is dropped:** it opens an app rather than typing a number.
 - **No Control, Option or ⌘:** a numpad isn't a keyboard, so principle 4's modifier rule doesn't
   apply ([PRINCIPLES.md](../PRINCIPLES.md)).
