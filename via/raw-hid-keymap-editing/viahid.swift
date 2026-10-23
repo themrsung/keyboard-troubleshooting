@@ -11,6 +11,8 @@
 // read L   Layer L as "row,col keycode" lines (DYNAMIC_KEYMAP_GET_BUFFER, 0x12). Read-only.
 // set ...  Groups of "layer row col hexcode" (DYNAMIC_KEYMAP_SET_KEYCODE, 0x05). Writes to the
 //          keyboard's keymap; back the layers up with `read` first.
+// reset    Every layer back to the firmware's default keymap (DYNAMIC_KEYMAP_RESET, 0x06). Back
+//          the layers up with `read` first. A firmware without the command answers 0xFF.
 //
 // Talks to the interface VIA uses: usage page 0xFF60, usage 0x61, 32-byte reports, report ID 0.
 // macOS asks for no permission for that vendor-defined interface.
@@ -28,7 +30,7 @@ let vid = option("--vid", -1), pid = option("--pid", -1)
 let rows = option("--rows", 0), cols = option("--cols", 0)
 let vendorVersion = option("--vendor-version", -1)
 guard vid >= 0, pid >= 0, let command = args.first else {
-    print("usage: viahid --vid 0xVVVV --pid 0xPPPP [--rows R --cols C] version|read L|set L R C CODE...")
+    print("usage: viahid --vid 0xVVVV --pid 0xPPPP [--rows R --cols C] version|read L|set L R C CODE...|reset")
     exit(64)
 }
 
@@ -102,6 +104,9 @@ case "set":
         let ok = r.count >= 6 && r[0] == 0x05 && Int(r[4]) << 8 | Int(r[5]) == Int(code)
         print("L\(values[g]) \(values[g + 1]),\(values[g + 2]) = \(values[g + 3].uppercased()):", ok ? "ok" : "no echo (\(hex(r.prefix(6))))")
     }
+case "reset":
+    let r = send([0x06])
+    print("keymap reset:", r.first == 0x06 ? "ok" : "no echo (\(hex(r.prefix(6))))")
 default:
     print("unknown command:", command)
     exit(64)
