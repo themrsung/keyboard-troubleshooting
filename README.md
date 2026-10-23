@@ -74,7 +74,8 @@ with Bazel on Windows, and learning that changes test results. [Index](mozc/READ
 
 ## hardware/ — hardware met while debugging input methods
 
-A keyboard resting on a laptop's keys (hypothesis), and a USB mouse behind a USB-C dock.
+A keyboard resting on a laptop's keys (hypothesis), a USB mouse behind a USB-C dock, and a
+hall-effect keyboard that stopped working behind a USB hub.
 [Index](hardware/README.md).
 
 ## testers/
