@@ -281,13 +281,13 @@ def layouts():
     numpad = {k["id"]: fn(k["us"]) for k in keys if k["id"].startswith("Numpad")}
     out["numpad-numbers"] = {
         "title": "Numpad for numbers",
-        "lede": "An SPM AL21W as a number input device: the numpad section, with Backspace in place of Num Lock and Esc, =, Tab and Fn1 on the top row; arrows, modifiers, volume and connection modes on Fn1; the lighting toggle and hardware reset on Fn2.",
+        "lede": "An SPM AL21W as a number input device: the numpad section, with Backspace in place of Num Lock and Esc, =, Tab and Fn1 (play/pause on a tap) on the top row; arrows, modifiers, volume and connection modes on Fn1; the lighting toggle and hardware reset on Fn2.",
         "plain": True,
         "keys": keys,
         "layers": [
             ("Layer 0", {
                 **numpad, "TopLeft": fn("Esc"), "TopSecond": fn("=", "keypad", True), "TopThird": fn("Tab", "", True),
-                "TopRight": lang("Fn1"), "NumLock": fn("⌫", "Backspace", True),
+                "TopRight": lang("▶︎❚❚", "Fn1"), "NumLock": fn("⌫", "Backspace", True),
             }),
             ("Layer 1 (Fn1)", fn_layer(keys, {
                 "TopLeft": fn("Vol−"), "TopSecond": fn("Vol+"), "TopThird": lang("Fn2"), "TopRight": lang("Fn1"),

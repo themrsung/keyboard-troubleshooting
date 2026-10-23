@@ -26,7 +26,7 @@ grep -v '^#' layouts/numpad-numbers/al21w-numpad-numbers.txt | xargs ./viahid --
 | Top row, 1st | Esc | Esc |
 | Top row, 2nd | Calculator | **=** (keypad =, `KC_PEQL`, 0x67) |
 | Top row, 3rd | Backspace | **Tab** |
-| Top row, 4th | Fn (`MO(1)`) | Fn1 (`MO(1)`) |
+| Top row, 4th | Fn (`MO(1)`) | **Fn1 held, play/pause tapped** (`LT(1, KC_MPLY)`, 0x41AE) |
 | Num Lock | Num Lock | **Backspace** |
 | The numpad section | / * − + Enter, 0–9, . | unchanged |
 
@@ -104,6 +104,10 @@ The reset takes Fn1 + Tab + 0 held together.
   arrows: with Fn1 held, Option or Shift + arrows move by word or select from the numpad alone.
   They're the right-hand codes, so apps and remappers can tell them from the left ones the main
   keyboard sends. These are additions; principle 4 doesn't ask for them on a numpad.
+- **Play/pause on a tap of Fn1**, as a layer-tap: holding still gives Fn1. A toggle, which
+  principle 1 allows because whether something is playing is a binary state the user perceives
+  (exception 3). Play/pause (0xAE) is a basic keycode, so it fits a layer-tap's 8-bit tap, unlike
+  the lighting toggle. Written to the board; the tap itself hasn't been checked yet.
 - **Volume down and up on Fn1 + Esc and =, and no mute.** Mute adds a second state to volume
   (is it muted, and at what level?), which goes against principle 1. Play/pause, a tap of Fn1,
   does mute's job better: the content stops, not just its sound, so nothing is missed. The one
