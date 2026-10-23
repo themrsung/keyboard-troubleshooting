@@ -1,0 +1,8 @@
+[package]
+name = "implied-ieung"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+jis-korean-engine = { path = "../../../../jis-korean/engine", default-features = false }
