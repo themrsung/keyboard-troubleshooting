@@ -5,7 +5,8 @@ measured and what works. Most come from setting up keyboards for
 [JIS Korean](https://github.com/team-mirae/jis-korean), a Korean input method built around JIS
 keyboards, on macOS: getting カタカナ, 英数, かな, ¥ and ろ onto keyboards that don't have them.
 
-Each issue, suggestion or proposal has its own folder inside its category.
+Each issue, suggestion or proposal has its own folder inside its category. Before contributing,
+read [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## hhkb/ — HHKB
 
@@ -49,6 +50,32 @@ Each issue, suggestion or proposal has its own folder inside its category.
   with JIS's keys through Karabiner-Elements.
 - [macbook-us-to-jis](layouts/macbook-us-to-jis/README.md): a MacBook's built-in US keyboard with
   JIS's keys through Karabiner-Elements.
+
+## macos-input-method/ — macOS input methods (InputMethodKit)
+
+From [JIS Korean](https://github.com/team-mirae/jis-korean)'s macOS shell: an input method that
+stops launching after a reinstall, fields committing bare jamo in Chrome, the カタカナ key macOS
+discards, 英数 going to ABC, switch keys in iTerm and after login, signing and permissions, TIS
+calls on macOS 27, Keyboard Viewer and the menu-bar badge, and diagnostic gotchas.
+[Index](macos-input-method/README.md).
+
+## windows-tsf/ — Windows TSF text input processors
+
+From [FKeyIME](https://github.com/themrsung/fkeyime) and JIS Korean's Windows shell: apps that
+keep an old TIP, sign-in starting on the Microsoft IME, Settings not listing the TIP, the IMM
+compatibility layer and Korean compositions, keys lost between `OnTestKeyDown` and `OnKeyDown`,
+modifier taps a TIP never sees, LANG1/LANG2 per layout, an AutoHotkey hook taking the F-keys,
+password fields, Parsec, and development pitfalls. [Index](windows-tsf/README.md).
+
+## mozc/ — Mozc as a conversion server
+
+From FKeyIME: the server's watch dog aborting it, running it outside Mozc's sandbox, building Mozc
+with Bazel on Windows, and learning that changes test results. [Index](mozc/README.md).
+
+## hardware/ — hardware met while debugging input methods
+
+A keyboard resting on a laptop's keys (hypothesis), and a USB mouse behind a USB-C dock.
+[Index](hardware/README.md).
 
 ## testers/
 
