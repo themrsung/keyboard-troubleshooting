@@ -137,6 +137,19 @@ def hhkb_studio_jis():
     return keys
 
 
+def numpad_al21w():
+    """The SPM AL21W: a numpad with a row of four keys above it (SPM's VIA definition, split Backspace)."""
+    keys = place([[("TopLeft", "Esc"), ("TopSecond", "Calc"), ("TopThird", "BS"), ("TopRight", "Fn")]])
+    keys += place([
+        [("NumLock", "Num"), ("NumpadDivide", "/"), ("NumpadMultiply", "*"), ("NumpadSubtract", "-")],
+        [("Numpad7", "7"), ("Numpad8", "8"), ("Numpad9", "9"), ("NumpadAdd", "+", 1, 2)],
+        [("Numpad4", "4"), ("Numpad5", "5"), ("Numpad6", "6")],
+        [("Numpad1", "1"), ("Numpad2", "2"), ("Numpad3", "3"), ("NumpadEnter", "Enter", 1, 2)],
+        [("Numpad0", "0", 2), ("NumpadDecimal", ".")],
+    ], y0=1.25)
+    return keys
+
+
 def macbook():
     keys = place([[("Escape", "esc", 1.5)] + [(f"F{i}", f"F{i}") for i in range(1, 13)] + [("TouchID", "")]])
     keys += place([
@@ -175,8 +188,8 @@ def tap(code, hold):
     return {"kind": "tap", "code": code, "hold": hold}
 
 
-def fn(label, small=""):
-    return {"kind": "fn", "label": label, "small": small}
+def fn(label, small="", moved=False):
+    return {"kind": "fn", "label": label, "small": small, "moved": moved}
 
 
 def mod(label, moved=False):
@@ -205,6 +218,11 @@ def base_layer(keys, overrides):
 def fn_layer(keys, overrides):
     """Only the overridden keys do anything; the rest are blank."""
     return {k["id"]: overrides.get(k["id"], {"kind": "blank"}) for k in keys}
+
+
+def open_layer(keys, overrides):
+    """Like fn_layer, but the rest are deliberately undefined: passthrough here, free for any implementation."""
+    return {k["id"]: overrides.get(k["id"], {"kind": "undef"}) for k in keys}
 
 
 HHKB_FN = {  # The HHKB US Fn layer, Mac extras version, by key.
@@ -255,6 +273,32 @@ def layouts():
                 **{f"Key{c}": fn(p, "pad on") for c, p in zip("ASDF", ["Left", "Front L", "Front R", "Right"])},
                 **{f"Key{c}": fn(p, "pad off") for c, p in zip("ZXCV", ["Left", "Front L", "Front R", "Right"])},
                 "Space": fn("Middle click"), **STUDIO_LANG, "Fn2": lang("Fn2"),
+            })),
+        ],
+    }
+
+    keys = numpad_al21w()
+    numpad = {k["id"]: fn(k["us"]) for k in keys if k["id"].startswith("Numpad")}
+    out["numpad-numbers"] = {
+        "title": "Numpad for numbers",
+        "lede": "An SPM AL21W as a number input device: the numpad section, with Backspace in place of Num Lock and Esc, =, Tab and Fn1 on the top row; arrows, modifiers, volume and connection modes on Fn1; the lighting toggle and hardware reset on Fn2.",
+        "plain": True,
+        "keys": keys,
+        "layers": [
+            ("Layer 0", {
+                **numpad, "TopLeft": fn("Esc"), "TopSecond": fn("=", "keypad", True), "TopThird": fn("Tab", "", True),
+                "TopRight": lang("Fn1"), "NumLock": fn("⌫", "Backspace", True),
+            }),
+            ("Layer 1 (Fn1)", fn_layer(keys, {
+                "TopLeft": fn("Vol−"), "TopSecond": fn("Vol+"), "TopThird": lang("Fn2"), "TopRight": lang("Fn1"),
+                "NumLock": fn("Del", "forward", True), "NumpadDivide": fn("↑"), "Numpad7": fn("←"), "Numpad8": fn("↓"), "Numpad9": fn("→"),
+                "Numpad4": fn("⌥", "right"), "Numpad5": fn("⌘", "right"), "Numpad6": fn("⇧", "right"), "NumpadAdd": fn("Control", "right"), "NumpadMultiply": mod("RFU"), "NumpadSubtract": mod("RFU"), "NumpadEnter": fn("6KRO", "/ NKRO", True),
+                "Numpad1": fn("BT 1"), "Numpad2": fn("BT 2"), "Numpad3": fn("BT 3"),
+                "Numpad0": fn("USB", "mode", True), "NumpadDecimal": fn("2.4G", "mode", True),
+            })),
+            ("Layer 2 (Fn2: hold Fn1, then Tab)", open_layer(keys, {
+                "TopLeft": fn("Light", "on/off", True), "TopSecond": lang("英数"), "TopThird": lang("Fn2"), "TopRight": lang("Fn1"),
+                "Numpad0": fn("Reset", "hold 3 s", True), "NumpadMultiply": mod("RFU"), "NumpadSubtract": mod("RFU"),
             })),
         ],
     }
@@ -343,6 +387,7 @@ def main():
     for name, layout in layouts().items():
         data = {"title": layout["title"], "lede": layout["lede"], "keys": layout["keys"],
                 "capLegend": layout.get("cap_legend", "the US QWERTY key cap"),
+                "plain": layout.get("plain", False),
                 "layers": [{"name": n, "keys": l} for n, l in layout["layers"]],
                 "modeA": MODE_A, "kana": KANA}
         html = template.replace("{{TITLE}}", layout["title"]).replace("{{DATA}}", json.dumps(data, ensure_ascii=False))
