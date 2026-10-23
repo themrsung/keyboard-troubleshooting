@@ -23,6 +23,10 @@ typed.
   necessary.
 - **Exception 2:** existing convention. For example, 한/영 as an English–Korean toggle is
   acceptable: existing typists always keep it in mind while typing, so it adds no cognitive load.
+- **Exception 3:** a binary state the user can perceive without further input or keeping their
+  focus on it. Is music playing or not? Is the keyboard's backlight on or off? For a state like that, a
+  toggle is acceptable, and may be the better design: one key instead of two, and the user already
+  knows which way it will go.
 
 ### The golden layout
 
@@ -88,6 +92,9 @@ basics should still work, usually defined as:
   realistically reachable in every layer.
 - **Exception:** a modifier's own layer. For example, a held Fn key doesn't have to expose another
   Fn key, as it would serve no purpose.
+- **Scope:** keyboards. A numpad isn't a keyboard, so the modifier rule doesn't apply to it. Even
+  if it did, apps don't treat numpad keys like the main ones: ⌘ + keypad 1 is often handled
+  differently from ⌘1, and Shift + keypad 1 doesn't type !.
 
 ### The golden layout
 

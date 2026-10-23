@@ -40,12 +40,22 @@ read [CONTRIBUTING.md](CONTRIBUTING.md).
 - [via-definition-magnetox-xf](hansung/via-definition-magnetox-xf/README.md): a VIA definition for
   the TFG Magnetox XF, converted from Hansung's own, and the converter.
 
+## spm-works/ — SPM Works (MONGDOL, SPM)
+
+- [slow-file-downloads-from-spm-works-website](spm-works/slow-file-downloads-from-spm-works-website/README.md):
+  downloads come from a Synology QuickConnect share, probably a NAS without a CDN. Expect them to
+  be slow; agents shouldn't retry in a loop, and should hand the link to a human if `curl` fails.
+- [al21w-factory-reset](spm-works/al21w-factory-reset/README.md): resetting the AL21W numpad's
+  keymap over VIA, and the hardware reset: hold Fn + 0 for about 3 seconds.
+
 ## layouts/ — layout proposals
 
 - [us-ansi-104-key-to-jis](layouts/us-ansi-104-key-to-jis/README.md): a full-size US board (TFG
   Magnetox XF) with JIS's keys in firmware alone, no mod-tap.
 - [us-ansi-87-key-to-jis](layouts/us-ansi-87-key-to-jis/README.md): a tenkeyless US board (MONGDOL
   87) with JIS's keys in firmware, tap vs hold on two layers.
+- [numpad-numbers](layouts/numpad-numbers/README.md): a numpad (SPM AL21W) as a number input
+  device: Backspace for Num Lock, and Esc, =, Tab and Fn on the top row.
 - [hhkb-pro-bt-us-to-jis](layouts/hhkb-pro-bt-us-to-jis/README.md): an HHKB Professional BT (US)
   with JIS's keys through Karabiner-Elements.
 - [macbook-us-to-jis](layouts/macbook-us-to-jis/README.md): a MacBook's built-in US keyboard with
