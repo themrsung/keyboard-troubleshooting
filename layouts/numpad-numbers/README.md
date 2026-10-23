@@ -26,7 +26,7 @@ grep -v '^#' layouts/numpad-numbers/al21w-numpad-numbers.txt | xargs ./viahid --
 | Top row, 1st | Esc | Esc |
 | Top row, 2nd | Calculator | **=** (keypad =, `KC_PEQL`, 0x67) |
 | Top row, 3rd | Backspace | **Tab** |
-| Top row, 4th | Fn (`MO(1)`) | Fn1 (`MO(1)`) |
+| Top row, 4th | Fn (`MO(1)`) | **Fn1 held, play/pause tapped** (`LT(1, KC_MPLY)`, 0x41AE) |
 | Num Lock | Num Lock | **Backspace** |
 | The numpad section | / * − + Enter, 0–9, . | unchanged |
 
@@ -39,7 +39,7 @@ SPM's factory Fn layer, trimmed:
 
 | Fn1 + | Factory | Here |
 |---|---|---|
-| Tab (top row, 3rd) | nothing | **Fn2** (`MO(2)`) |
+| Tab (top row, 3rd) | nothing | **Fn2 held, Tab tapped** (`LT(2, KC_TAB)`, 0x422B) |
 | Backspace (the Num Lock key) | Lighting on/off | **Delete (forward)**, as on the other layouts |
 | / · 8 · 9 | Lighting hue −, effect speed −, effect speed + | **↑ · ↓ · →** |
 | 5 · 6 | Lighting saturation −, + | **Right ⌘ · right Shift** |
@@ -59,7 +59,7 @@ as a number.
 
 ## Layer 2 (Fn2: hold Fn1, then Tab)
 
-Momentary layers stack: holding Fn1 turns on layer 1, where Tab is `MO(2)`, and holding it too
+Momentary layers stack: holding Fn1 turns on layer 1, where the Tab key is Fn2 (`LT(2, KC_TAB)`), and holding it too
 turns on layer 2 (checked on the board, 2026-10-24).
 
 | Fn2 + | Sends |
@@ -104,6 +104,10 @@ The reset takes Fn1 + Tab + 0 held together.
   arrows: with Fn1 held, Option or Shift + arrows move by word or select from the numpad alone.
   They're the right-hand codes, so apps and remappers can tell them from the left ones the main
   keyboard sends. These are additions; principle 4 doesn't ask for them on a numpad.
+- **Play/pause on a tap of Fn1**, as a layer-tap: holding still gives Fn1. A toggle, which
+  principle 1 allows because whether something is playing is a binary state the user perceives
+  (exception 3). Play/pause (0xAE) is a basic keycode, so it fits a layer-tap's 8-bit tap, unlike
+  the lighting toggle. Written to the board; the tap itself hasn't been checked yet.
 - **Volume down and up on Fn1 + Esc and =, and no mute.** Mute adds a second state to volume
   (is it muted, and at what level?), which goes against principle 1. Play/pause, a tap of Fn1,
   does mute's job better: the content stops, not just its sound, so nothing is missed. The one
@@ -124,7 +128,8 @@ The reset takes Fn1 + Tab + 0 held together.
 - **The hardware reset moves to Fn2 + 0.** On a numpad, Fn + 0 is an easy chord to hit, and it
   wipes the keymap; three keys held for three seconds aren't hit by accident.
 - **Fn2 on Fn1 + Tab:** the top row has no free key left for a second Fn, and Tab is next to Fn1,
-  so both are held with one hand.
+  so both are held with one hand. Tapped, the key is still Tab, so Tab works while Fn1 is held
+  (principle 2).
 - **Calculator is dropped:** it opens an app rather than typing a number.
 - **No Control, Option or ⌘:** a numpad isn't a keyboard, so principle 4's modifier rule doesn't
   apply ([PRINCIPLES.md](../PRINCIPLES.md)).

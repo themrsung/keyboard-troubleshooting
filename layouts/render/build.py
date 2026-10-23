@@ -281,16 +281,16 @@ def layouts():
     numpad = {k["id"]: fn(k["us"]) for k in keys if k["id"].startswith("Numpad")}
     out["numpad-numbers"] = {
         "title": "Numpad for numbers",
-        "lede": "An SPM AL21W as a number input device: the numpad section, with Backspace in place of Num Lock and Esc, =, Tab and Fn1 on the top row; arrows, modifiers, volume and connection modes on Fn1; the lighting toggle and hardware reset on Fn2.",
+        "lede": "An SPM AL21W as a number input device: the numpad section, with Backspace in place of Num Lock and Esc, =, Tab and Fn1 (play/pause on a tap) on the top row; arrows, modifiers, volume and connection modes on Fn1; the lighting toggle and hardware reset on Fn2.",
         "plain": True,
         "keys": keys,
         "layers": [
             ("Layer 0", {
                 **numpad, "TopLeft": fn("Esc"), "TopSecond": fn("=", "keypad", True), "TopThird": fn("Tab", "", True),
-                "TopRight": lang("Fn1"), "NumLock": fn("⌫", "Backspace", True),
+                "TopRight": lang("▶︎❚❚", "Fn1"), "NumLock": fn("⌫", "Backspace", True),
             }),
             ("Layer 1 (Fn1)", fn_layer(keys, {
-                "TopLeft": fn("Vol−"), "TopSecond": fn("Vol+"), "TopThird": lang("Fn2"), "TopRight": lang("Fn1"),
+                "TopLeft": fn("Vol−"), "TopSecond": fn("Vol+"), "TopThird": lang("Tab", "Fn2"), "TopRight": lang("Fn1"),
                 "NumLock": fn("Del", "forward", True), "NumpadDivide": fn("↑"), "Numpad7": fn("←"), "Numpad8": fn("↓"), "Numpad9": fn("→"),
                 "Numpad4": fn("⌥", "right"), "Numpad5": fn("⌘", "right"), "Numpad6": fn("⇧", "right"), "NumpadAdd": fn("Control", "right"), "NumpadMultiply": mod("RFU"), "NumpadSubtract": mod("RFU"), "NumpadEnter": fn("6KRO", "/ NKRO", True),
                 "Numpad1": fn("BT 1"), "Numpad2": fn("BT 2"), "Numpad3": fn("BT 3"),
