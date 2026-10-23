@@ -5,7 +5,8 @@ measured and what works. Most come from setting up keyboards for
 [JIS Korean](https://github.com/team-mirae/jis-korean), a Korean input method built around JIS
 keyboards, on macOS: getting カタカナ, 英数, かな, ¥ and ろ onto keyboards that don't have them.
 
-Each issue, suggestion or proposal has its own folder inside its category.
+Each issue, suggestion or proposal has its own folder inside its category. Before contributing,
+read [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## hhkb/ — HHKB
 
