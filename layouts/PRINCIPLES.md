@@ -147,6 +147,17 @@ For your own sake, and easier development, try to avoid:
 
 And try to:
 
+- **Look it up before assuming something will work.** Support can be recent, even on the golden
+  layout's own hardware: the HHKB Studio Keymap Tool only added F20–F24 in version 1.1.2. From its
+  update history:
+
+  > May 28, 2026, 1.1.2
+  > - Expanded the range of assignable keys (added F20–F24 keys).
+  > - Added a feature to check for updates at application startup.
+  > - Changed the specification so that Fn keys can only be assigned on the default layer.
+  > - Changed the specification so that Fn keys assigned on the default layer cannot be modified
+  >   on other layers.
+
 - **Test your idea first: will it actually work, reliably, and the way you expect?** A keycode the
   firmware accepts isn't one it handles correctly: Hansung's mod-tap adds right Shift when held and
   sends its modifier when tapped, while its layer-tap works

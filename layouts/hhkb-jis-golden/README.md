@@ -29,8 +29,10 @@ with two changes:
 | The key in the 半/全 position, on all four layers | F18 (code 109, 0x6D) | **カタカナ** (code 136, 0x88: the Windows JIS カタカナ/ひらがな key) |
 | Gesture pads (left side, front left, front right, right side) | off, off, on, on | **all off** |
 
-Nothing else in the file differs from the source. The file was made by editing the source export
-with those changes, and hasn't been loaded back into the tool from this repository yet.
+Nothing else in the file differs from the source. Checked on 2026-10-24: the file loads in the
+HHKB Studio Keymap Tool (1.1.2), and its keymap, pointing-stick and gesture-pad settings are the same
+as an export from the owner's board. The only difference is DIP switch 6, which is physical and on
+on the owner's board (power saving off).
 
 ## Standard
 
@@ -75,5 +77,6 @@ Unused: the same as Standard, except that the カタカナ key is set on it too.
 
 ## Settings outside the keymap
 
-DIP switches all off; pointing-stick buttons on (LB / Fn2 / RB); gesture pads all off. See the
+DIP switches all off (the file records them, but they're physical switches: set them by hand);
+pointing-stick buttons on (LB / Fn2 / RB); gesture pads all off. See the
 source for what the DIP switches do on the Studio and for Bluetooth pairing.
