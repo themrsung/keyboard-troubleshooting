@@ -17,7 +17,7 @@
 | HHKB Studio | JIS | stock | USB-C (USB 2.0), Bluetooth 5.0 LE | Pointing stick and gesture pads. macOS once stored it as ANSI ([hhkb/studio-jis-stored-as-ansi](../hhkb/studio-jis-stored-as-ansi/README.md)) |
 | HHKB Hybrid Type-S | JIS | stock | USB-C, Bluetooth (up to 4 devices) | - |
 | HHKB Professional BT | HHKB US | stock | Bluetooth 3.0 | - |
-| MONGDOL 87 | US ANSI, 87-key TKL | stock | Bluetooth LE, USB (seen on macOS; no spec sheet found) | - |
+| MONGDOL 87 | US ANSI, 87-key TKL | stock | USB, Bluetooth LE | - |
 | Deck Hassium | US ANSI, 108-key | stock | USB | Old, unreliable |
 | SPL AL21W | Numpad | stock | unknown (no spec sheet found) | Numpad only |
 | Hansung TFG Magnetox XF | US ANSI, 104-key | stock | USB, wired | Mod-tap unreliable ([hansung/mod-tap-rshift-bug](../hansung/mod-tap-rshift-bug/README.md)) |
