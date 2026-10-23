@@ -2,10 +2,11 @@
 
 JIS's extra keys on keyboards that don't have them, for macOS: カタカナ, 英数 and かな (one key per
 language), ¥ and ろ, mostly for [JIS Korean](https://github.com/team-mirae/jis-korean) and
-Japanese Kana input.
+Japanese Kana input. New layouts should follow the [principles](PRINCIPLES.md).
 
 | Layout | Keyboard | How |
 |---|---|---|
+| [hhkb-jis-golden](hhkb-jis-golden/README.md) | HHKB Studio JIS: **the golden layout**, the reference for the others | PFU's keymap tool |
 | [us-ansi-104-key-to-jis](us-ansi-104-key-to-jis/README.md) | Full-size US (Hansung TFG Magnetox XF) | Firmware only, plain keys and `MO()`: the board's mod-tap is broken |
 | [us-ansi-87-key-to-jis](us-ansi-87-key-to-jis/README.md) | Tenkeyless US (MONGDOL 87) | Firmware, tap vs hold, two layers |
 | [hhkb-pro-bt-us-to-jis](hhkb-pro-bt-us-to-jis/README.md) | HHKB Professional BT (US) | Karabiner-Elements |

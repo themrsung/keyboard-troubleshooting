@@ -53,6 +53,7 @@ h2 { margin: 0 0 12px; font-size: 1.15rem; }
 .key.fkey .small { color: var(--ko-shift); font-family: var(--font); }
 .key.lang, .key.tap { background: var(--lang); }
 .key.lang .label { color: var(--lang-text); font-weight: 700; }
+.key.lang.narrow .label { font-size: calc(var(--u) * 0.18); }
 .key.tap .us, .key.tap .ko, .key.tap .ko-s, .key.tap .kana, .key.tap .kana-s { color: var(--lang-text); }
 .key.moved { outline: 2px solid var(--moved); outline-offset: -2px; }
 .key.blank { background: transparent; box-shadow: none; outline: 1px dashed var(--border); outline-offset: -1px; }
@@ -60,6 +61,7 @@ h2 { margin: 0 0 12px; font-size: 1.15rem; }
 .key.half .us, .key.half .small { top: calc(var(--u) * 0.04); font-size: calc(var(--u) * 0.12); }
 .key.half .kana { font-size: calc(var(--u) * 0.15); bottom: calc(var(--u) * 0.05); }
 .key.half .ko-s, .key.half .kana-s { display: none; }
+.key.ell .label, .key.ell .small { left: calc(var(--u) * (var(--ell) + 0.1)); }
 .legend { display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: center; color: var(--muted); font-size: 0.85rem; }
 .legend .sample { position: relative; width: 64px; height: 64px; --u: 64px; }
 .legend .sample .key { left: 0; top: 0; width: 60px; height: 60px; }
@@ -90,6 +92,12 @@ function drawKey(k, action) {
     width: `calc(var(--u) * ${k.w - gap})`, height: `calc(var(--u) * ${k.h - gap})`,
   });
   if (k.h < 1) key.classList.add("half");
+  if (k.ell) {  // An L-shaped key (JIS Enter): the bottom half starts `ell` units further right.
+    const cut = `${(k.ell / (k.w - gap)) * 100}%`;
+    key.style.clipPath = `polygon(0 0, 100% 0, 100% 100%, ${cut} 100%, ${cut} 50%, 0 50%)`;
+    key.style.setProperty("--ell", k.ell);
+    key.classList.add("ell");
+  }
   const a = action || { kind: "blank" };
   key.classList.add(a.kind);
   const legends = (code) => {
@@ -112,6 +120,7 @@ function drawKey(k, action) {
     case "lang":
       if (a.hold) key.append(el("span", "hold", "hold " + a.hold));
       key.append(el("span", "label", a.tap));
+      if (a.tap.length > 3 && k.w <= 1) key.classList.add("narrow");
       break;
     case "fn":
       if (a.small) key.append(el("span", "small", a.small));
@@ -142,7 +151,7 @@ const sample = el("div", "sample");
 sample.append(drawKey({ id: "KeyQ", us: "Q", x: -0.2, y: -0.2, w: 1.07, h: 1.07 }, { kind: "send", code: "KeyQ" }));
 const dl = el("dl");
 for (const [term, text] of [
-  ["Top left", "the US QWERTY key cap"],
+  ["Top left", DATA.capLegend],
   ["Bottom left", "JIS Korean, Mode A (Shift above)"],
   ["Bottom right", "Japanese Kana (Shift above)"],
 ]) { dl.append(el("dt", null, term), el("dd", null, text)); }

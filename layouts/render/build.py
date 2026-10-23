@@ -121,6 +121,22 @@ def hhkb():
     ])
 
 
+def hhkb_studio_jis():
+    """The HHKB Studio JIS: caps are JIS (the id is still the key's code), the pointing-stick buttons below Space."""
+    keys = place([
+        [("Escape", "Esc")] + [(f"Digit{i}", str(i)) for i in "1234567890"] + [("Minus", "-"), ("Equal", "^"), ("IntlYen", "¥"), ("Backspace", "BS")],
+        [("Tab", "Tab", 1.5)] + [(f"Key{c}", c) for c in "QWERTYUIOP"] + [("BracketLeft", "@"), ("BracketRight", "[")],
+        [("ControlLeft", "Control", 1.75)] + [(f"Key{c}", c) for c in "ASDFGHJKL"] + [("Semicolon", ";"), ("Quote", ":"), ("Backslash", "]")],
+        [("ShiftLeft", "Shift", 2)] + [(f"Key{c}", c) for c in "ZXCVBNM"] + [("Comma", ","), ("Period", "."), ("Slash", "/"), ("IntlRo", "\\"), ("ArrowUp", "↑"), ("ShiftRight", "Shift")],
+        [("Fn1", "Fn1"), 0.25, ("HankakuZenkaku", "半/全"), ("AltLeft", "Opt"), ("MetaLeft", "⌘"), ("Lang2", "英数"), ("Space", "", 2.5),
+         ("Lang1", "かな"), ("MetaRight", "⌘"), ("AltRight", "Opt"), ("Fn1Right", "Fn1"), 0.25, ("ArrowLeft", "←"), ("ArrowDown", "↓"), ("ArrowRight", "→")],
+        [4.75, ("LB", "LB", 1.5), ("Fn2", "Fn2"), ("RB", "RB", 1.5)],
+    ])
+    # JIS's Enter: 1.5 wide on the Tab row, 1.25 on the Control row.
+    keys.append({"id": "Enter", "us": "Enter", "x": 13.5, "y": 1, "w": 1.5, "h": 2, "ell": 0.25})
+    return keys
+
+
 def macbook():
     keys = place([[("Escape", "esc", 1.5)] + [(f"F{i}", f"F{i}") for i in range(1, 13)] + [("TouchID", "")]])
     keys += place([
@@ -202,8 +218,46 @@ HHKB_FN = {  # The HHKB US Fn layer, Mac extras version, by key.
 }
 
 
+STUDIO_LANG = {  # Set on every layer of the golden layout, so they work while Fn1 or Fn2 is held.
+    "HankakuZenkaku": lang("カタカナ"), "Lang2": lang("英数"), "Lang1": lang("かな"),
+}
+
+
 def layouts():
     out = {}
+
+    keys = hhkb_studio_jis()
+    out["hhkb-jis-golden"] = {
+        "title": "HHKB Studio JIS, the golden layout",
+        "lede": "The reference every other layout here follows: an HHKB Studio JIS in PFU's keymap tool, one key per language on the bottom row, and the HHKB Fn layer.",
+        "cap_legend": "the JIS key cap",
+        "keys": keys,
+        "layers": [
+            ("Standard", base_layer(keys, {
+                **STUDIO_LANG, "Fn1": lang("Fn1"), "Fn1Right": lang("Fn1"), "Fn2": lang("Fn2"),
+                "LB": mod("Left click"), "RB": mod("Right click"), "Space": mod(""),
+            })),
+            ("Fn1 (hold either Fn1)", fn_layer(keys, {
+                "Escape": fn("Power"), **{f"Digit{d}": fkey(i + 1) for i, d in enumerate("1234567890")},
+                "Minus": fkey(11), "Equal": fkey(12), "IntlYen": fn("Ins"), "Backspace": fn("Del"), "Tab": fn("Caps"),
+                "KeyI": fn("PrtSc", "→ ⌘⇧4"), "KeyO": fn("ScrLk"), "KeyP": fn("Pause", "→ ▶︎❚❚"),
+                "BracketLeft": fn("↑"), "Semicolon": fn("←"), "Quote": fn("→"), "Slash": fn("↓"),
+                "KeyK": fn("Home"), "KeyL": fn("PgUp"), "Comma": fn("End"), "Period": fn("PgDn"),
+                "KeyH": fn("*"), "KeyJ": fn("/"), "KeyN": fn("+"), "KeyM": fn("−"), "Enter": fn("Enter", "keypad"),
+                "KeyA": fn("Vol−"), "KeyS": fn("Vol+"), "KeyD": fn("Mute"), "KeyF": fn("⏏"),
+                "ArrowUp": fn("Shift", "right"), "ArrowLeft": fn("Del"), "ArrowDown": fn("⌘", "right"), "ArrowRight": fn("Control", "right"),
+                **STUDIO_LANG, "Fn1": lang("Fn1"), "Fn1Right": lang("Fn1"),
+            })),
+            ("Fn2 (hold Fn2, below Space)", fn_layer(keys, {
+                **{f"Digit{i}": fn(str(i), "stick speed") for i in range(1, 5)},
+                "KeyG": fn("+", "stick speed"), "KeyB": fn("−", "stick speed"),
+                **{f"Digit{d}": fn(s, "pad speed") for d, s in zip("6789", ["Low", "Mid", "Hi", "Max"])},
+                **{f"Key{c}": fn(p, "pad on") for c, p in zip("ASDF", ["Left", "Front L", "Front R", "Right"])},
+                **{f"Key{c}": fn(p, "pad off") for c, p in zip("ZXCV", ["Left", "Front L", "Front R", "Right"])},
+                "Space": fn("Middle click"), **STUDIO_LANG, "Fn2": lang("Fn2"),
+            })),
+        ],
+    }
 
     keys = full_size()
     out["us-ansi-104-key-to-jis"] = {
@@ -288,6 +342,7 @@ def main():
     template = open(os.path.join(HERE, "template.html"), encoding="utf-8").read()
     for name, layout in layouts().items():
         data = {"title": layout["title"], "lede": layout["lede"], "keys": layout["keys"],
+                "capLegend": layout.get("cap_legend", "the US QWERTY key cap"),
                 "layers": [{"name": n, "keys": l} for n, l in layout["layers"]],
                 "modeA": MODE_A, "kana": KANA}
         html = template.replace("{{TITLE}}", layout["title"]).replace("{{DATA}}", json.dumps(data, ensure_ascii=False))
