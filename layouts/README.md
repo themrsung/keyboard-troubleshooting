@@ -12,6 +12,7 @@ Japanese Kana input. New layouts should follow the [principles](PRINCIPLES.md).
 | [us-ansi-87-key-to-jis](us-ansi-87-key-to-jis/README.md) | Tenkeyless US (MONGDOL 87) | Firmware, tap vs hold, two layers |
 | [hhkb-pro-bt-us-to-jis](hhkb-pro-bt-us-to-jis/README.md) | HHKB Professional BT (US) | Karabiner-Elements |
 | [macbook-us-to-jis](macbook-us-to-jis/README.md) | MacBook built-in (US) | Karabiner-Elements, keyboard type stays US |
+| [macbook-jis-to-hhkb](macbook-jis-to-hhkb/README.md) | MacBook built-in (JIS), with the HHKB Fn layer | Karabiner-Elements: カタカナ / Fn on Caps Lock, Fn on 🌐 too |
 
 Every layout stores the keyboard (or Karabiner's virtual keyboard) as JIS on macOS: see the
 background in the [README](../README.md).
