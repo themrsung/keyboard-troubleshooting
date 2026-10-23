@@ -60,6 +60,8 @@ read [CONTRIBUTING.md](CONTRIBUTING.md).
   with JIS's keys through Karabiner-Elements.
 - [macbook-us-to-jis](layouts/macbook-us-to-jis/README.md): a MacBook's built-in US keyboard with
   JIS's keys through Karabiner-Elements.
+- [macbook-jis-to-hhkb](layouts/macbook-jis-to-hhkb/README.md): a MacBook's built-in JIS keyboard
+  with the HHKB Fn layer on Caps Lock (カタカナ on a tap) and on 🌐, through Karabiner-Elements.
 
 ## macos-input-method/ — macOS input methods (InputMethodKit)
 

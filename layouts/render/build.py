@@ -169,6 +169,29 @@ def macbook():
     return keys
 
 
+def macbook_jis():
+    """A MacBook's built-in JIS keyboard: caps are JIS, Caps Lock bottom left, fn bottom right, ISO Enter."""
+    fw = 12.75 / 13  # F1–F12 and Touch ID share what's left of the row after a Shift-wide esc.
+    keys = place([[("Escape", "esc", 1.75)] + [(f"F{i}", f"F{i}", fw) for i in range(1, 13)] + [("TouchID", "", fw)]])
+    keys += place([
+        [("Digit1", "1", 1.25)] + [(f"Digit{i}", str(i)) for i in "234567890"] + [("Minus", "-"), ("Equal", "^"), ("IntlYen", "¥"), ("Backspace", "delete", 1.25)],
+        [("Tab", "tab")] + [(f"Key{c}", c) for c in "QWERTYUIOP"] + [("BracketLeft", "@"), ("BracketRight", "[")],
+        [("ControlLeft", "control", 1.25)] + [(f"Key{c}", c) for c in "ASDFGHJKL"] + [("Semicolon", ";"), ("Quote", ":"), ("Backslash", "]")],
+        [("ShiftLeft", "shift", 1.75)] + [(f"Key{c}", c) for c in "ZXCVBNM"] + [("Comma", ","), ("Period", "."), ("Slash", "/"), ("IntlRo", "\\"), ("ShiftRight", "shift", 1.75)],
+        [("CapsLock", "caps"), ("AltLeft", "option"), ("MetaLeft", "command", 1.25), ("Lang2", "英数", 1.25), ("Space", "", 3.5),
+         ("Lang1", "かな", 1.25), ("MetaRight", "command", 1.25), ("Fn", "🌐")],
+    ], y0=1)
+    # ISO Enter: 1.5 wide on the tab row, 1.25 on the control row.
+    keys.append({"id": "Enter", "us": "return", "x": 13, "y": 2, "w": 1.5, "h": 2, "ell": 0.25})
+    keys += [
+        {"id": "ArrowLeft", "us": "←", "x": 11.5, "y": 5.5, "w": 1, "h": 0.5},
+        {"id": "ArrowUp", "us": "↑", "x": 12.5, "y": 5, "w": 1, "h": 0.5},
+        {"id": "ArrowDown", "us": "↓", "x": 12.5, "y": 5.5, "w": 1, "h": 0.5},
+        {"id": "ArrowRight", "us": "→", "x": 13.5, "y": 5.5, "w": 1, "h": 0.5},
+    ]
+    return keys
+
+
 # --- What a key does on a layer. ---
 # send(code): types the JIS key `code` (legends from MODE_A / KANA), marked moved if not its own.
 # lang(tap, hold): a language key (tap), with what holding does.
@@ -376,6 +399,26 @@ def layouts():
                 **{f"F{i}": fkey(i) for i in range(1, 13)}, "Backspace": fn("Del"),
                 "ArrowLeft": fn("Home"), "ArrowRight": fn("End"), "ArrowUp": fn("PgUp"), "ArrowDown": fn("PgDn"),
                 "Fn": lang("Fn"), "AltRight": lang("Fn"),
+            })),
+        ],
+    }
+
+    keys = macbook_jis()
+    jis_lang = {"Lang2": lang("英数"), "Lang1": lang("かな")}
+    out["macbook-jis-to-hhkb"] = {
+        "title": "MacBook JIS as HHKB",
+        "lede": "A MacBook's built-in JIS keyboard through Karabiner-Elements: Caps Lock is カタカナ on a tap and the HHKB Fn layer on a hold, and 🌐 reaches the same layer; every other key stays as it is, and Caps Lock with the top row acts as 🌐 with it.",
+        "cap_legend": "the JIS key cap",
+        "keys": keys,
+        "layers": [
+            ("Base", base_layer(keys, {
+                "CapsLock": lang("カタカナ", "Fn"), **jis_lang, "Fn": lang("🌐", "Fn"), "Space": mod(""), "TouchID": {"kind": "blank"},
+            })),
+            ("Fn (hold Caps Lock, or 🌐)", fn_layer(keys, {
+                **HHKB_FN, "Backquote": {"kind": "blank"}, "Backslash": {"kind": "blank"}, "IntlYen": fn("Ins"),
+                **{f"F{i}": fn(f"F{i}", "as 🌐+") for i in range(1, 13)}, "Backspace": fn("Del"),
+                "ArrowLeft": fn("Home"), "ArrowRight": fn("End"), "ArrowUp": fn("PgUp"), "ArrowDown": fn("PgDn"),
+                "CapsLock": lang("Fn"), "Fn": lang("Fn"), **jis_lang,
             })),
         ],
     }
