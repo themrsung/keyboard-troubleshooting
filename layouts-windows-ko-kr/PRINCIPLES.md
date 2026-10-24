@@ -54,6 +54,8 @@ same way or in some modified way.
 - **Caps Lock is still there,** on Fn+Tab (as on an HHKB), and Control moves left of A.
 - **Left Control is still there,** as Right Control; the left end is now Fn.
 - **Right Fn is still Fn when held,** and adds 한자 on a tap.
+- **Left Alt is still Alt when held,** and adds 無変換 on a tap. A lone tap of Alt no longer
+  opens a window's menu bar; F10 still does.
 - **The backlight toggle that Fn+Tab replaced** is still on Fn+Pause, and its brightness on
   Fn+F5 / F6, and its effects moved from their own key to Fn+Print Screen / Scroll Lock, all
   [reserved for hardware control](#reserved-for-hardware-control-rhc). Cortana is dropped: it's gone
@@ -75,6 +77,9 @@ layouts in [`layouts/`](../layouts/PRINCIPLES.md):
 
 - **Control left of A.**
 - **Fn at both ends of the bottom row**, as Fn1 is on the HHKB Studio JIS.
+- **JIS's 無変換 and 変換 either side of Space:** 無変換 on a tap of the left Alt and on Fn + the
+  left Alt, 変換 on Fn+Space, and カタカナ/ひらがな on Fn + the left Win. With the left Alt and Win
+  taken on the Fn layer, Fn+X is Alt and Fn+Z is Win there.
 - **JIS's extra keys right of Space, on the Fn layer:** Fn+Right Alt is ¥, Fn+Right Win is む
   (JIS's ] key) and Fn+Right Control is ろ. As on the macOS
   [us-ansi-104-key-to-jis](../layouts/us-ansi-104-key-to-jis/README.md), the keys right of Space
@@ -102,8 +107,8 @@ basics should still work, usually defined as:
 
   | Layer | Control | Alt | System (Windows) | Fn |
   |---|---|---|---|---|
-  | Standard | left of A, and right Control | Alt, both sides (right: 한/영 on Type 1) | Win, both sides | Fn, both ends of the bottom row |
-  | Fn | left of A (right: ろ) | left Alt (right: ¥) | left Win (right: む) | Fn (its own layer is the exception) |
+  | Standard | left of A, and right Control | Alt, both sides (left: 無変換 on a tap; right: 한/영 on Type 1) | Win, both sides | Fn, both ends of the bottom row |
+  | Fn | left of A (right: ろ) | Fn+X (left Alt: 無変換; right: ¥) | Fn+Z (left Win: カタカナ; right: む) | Fn (its own layer is the exception) |
 
 - **Standard keycodes only,** so far: everything the keyboard sends is an ordinary USB key.
 
@@ -118,6 +123,7 @@ or key combination than to rely on one.
   - Control: left of A and right Control (on the standard layer).
   - Fn: both ends of the bottom row.
   - 한자: a tap of the right Fn, and Right Control on a Type 1 keyboard.
+  - 無変換: a tap of the left Alt, or Fn + the left Alt.
   - Play/Pause and volume: Fn+P and Fn+A–D, or Fn + the F-row.
   - The arrows, Home / End / Page keys, Delete and Insert: their own keys or the Fn layer.
   - F1–F12: their own keys or Fn + the number row.

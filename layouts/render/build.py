@@ -491,7 +491,7 @@ def layouts():
             ("Standard (layer 2)", base_layer(keys, {
                 **{f"F{i}": plain_fkey(i) for i in range(1, 13)},
                 "CapsLock": mod("Ctrl", True), "ControlLeft": lang("Fn"), "Space": mod(""),
-                "AltRight": lang("한/영"), "FnRight": mod("Ctrl", True), "ControlRight": lang("한자", "Fn"),
+                "AltLeft": lang("無変換", "Alt"), "AltRight": lang("한/영"), "FnRight": mod("Ctrl", True), "ControlRight": lang("한자", "Fn"),
                 "ScrollLock": fn("ScrLk", "", True), "Pause": fn("Pause", "", True),
             })),
             ("Fn (layer 3: hold either Fn)", fn_layer(keys, {
@@ -504,7 +504,8 @@ def layouts():
                 "Minus": plain_fkey(11, rhc), "Equal": plain_fkey(12, rhc),
                 "Backquote": {"kind": "blank"}, "Backspace": fn("Del"), "Backslash": fn("Ins"),
                 "KeyI": fn("PrtSc"), "KeyP": fn("▶︎❚❚"), "KeyB": fn("NKRO", rhc + " on/off"),
-                "ControlLeft": lang("Fn"), "ControlRight": lang("Fn"), "Space": mod(""),
+                "ControlLeft": lang("Fn"), "ControlRight": lang("Fn"), "Space": lang("変換"),
+                "AltLeft": lang("無変換"), "KeyX": fn("Alt", "left"), "MetaLeft": lang("カタカナ"), "KeyZ": fn("Win", "left"),
                 "AltRight": send("IntlYen"), "MetaRight": send("Backslash"), "FnRight": send("IntlRo"),
             })),
         ],
