@@ -126,10 +126,10 @@ switched with the keys this layout already has.
 would receive it, and simulates the Microsoft IME Korean, so the layout can be tried without a
 Windows machine. It's a simulation: confirm on Windows before calling something done.
 
-## Autnor's notes
+## Author's notes
 
 This finally got me typing on a text editor manually instead of prompting Claude. Why is
 Japanese かな input so bad on Windows??? I will complete [fkeyime](https://github.com/themrsung/fkeyime) soon.
 
 First of all, it needs three lang keys to work properly, its predictions are terrible,
-and henkaku/zenkaku is **「transient」**！！！
+and hankaku/zenkaku is **「transient」**！！！
