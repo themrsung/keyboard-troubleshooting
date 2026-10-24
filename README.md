@@ -74,6 +74,12 @@ read [CONTRIBUTING.md](CONTRIBUTING.md).
   layout for Windows with the Microsoft IME Korean, in progress, on a full-size board (Keychron C2
   Pro), from the Windows defaults up. [Principles](layouts-windows-ko-kr/PRINCIPLES.md).
 
+## layouts-hhkb-us-mac-rev2/ — an HHKB US on a Mac, rev2
+
+- [hhkb-us-mac-golden-rev2](layouts-hhkb-us-mac-rev2/hhkb-us-mac-golden-rev2/README.md): the
+  measured HHKB Professional BT (US) with one Karabiner-Elements rule: カタカナ, 英数 and かな on a
+  tap of left ◇, left ◆ and right ◆, ろ on right Shift and ¥ on `` ` ``.
+
 ## layouts-mobile-korean-flick/ — a Korean flick keyboard for phones
 
 - [korean-flick-golden](layouts-mobile-korean-flick/korean-flick-golden/README.md): the golden
