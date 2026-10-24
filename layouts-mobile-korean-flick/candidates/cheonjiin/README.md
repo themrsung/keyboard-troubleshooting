@@ -1,5 +1,9 @@
 # 천지인 (reference)
 
+> **Dropped.** Kept for reference only. This documentation is imperfect: it may not match the
+> page, and some composition notes predate implied ㅇ and 확정. The
+> [golden layout](../../korean-flick-golden/README.md) is the reference.
+
 **A reference, not a proposal.** 천지인 (Cheonjiin), the 12-key layout most Korean phone typists
 know, in [the frame](../../README.md#the-frame), so the candidates can be compared with it. It's
 the artifact's Board 4.

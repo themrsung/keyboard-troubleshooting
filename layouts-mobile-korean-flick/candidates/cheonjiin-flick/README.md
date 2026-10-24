@@ -1,5 +1,9 @@
 # 천지인 flick
 
+> **Dropped.** Kept for reference only. This documentation is imperfect: it may not match the
+> page, and some composition notes predate implied ㅇ and 확정. The
+> [golden layout](../../korean-flick-golden/README.md) is the reference.
+
 **New.** 천지인's grid and consonant groups, so a 천지인 typist finds every key where it was, with
 **no multi-tap**: a flick types what a repeat tap would have. The three vowel strokes become the
 dot-direction vowel keys of the artifact's drafts.

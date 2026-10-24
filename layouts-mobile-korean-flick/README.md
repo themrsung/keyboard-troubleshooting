@@ -43,15 +43,18 @@ a spare key, it's **확정**, JIS Korean's F6: commit, dropping an implied ㅇ (
 
 ## Candidates
 
-| Candidate | Kind | Idea | 확정 |
-|---|---|---|---|
-| [double-opposite](candidates/double-opposite/README.md) | From the artifact (6A) | Doubled consonant opposite its single: ㄱ ← / ㄲ → | yes |
-| [double-clockwise](candidates/double-clockwise/README.md) | From the artifact (6B), **promoted to golden** | Doubled consonant 90° clockwise: ㄱ ← / ㄲ ↑ | yes |
-| [double-up-aspirated-left](candidates/double-up-aspirated-left/README.md) | From the artifact (6C) | Single ↓, doubled ↑, aspirated ← | yes |
-| [cheonjiin-flick](candidates/cheonjiin-flick/README.md) | New | 천지인's grid with every multi-tap turned into a flick | no spare key |
-| [kana-mirror](candidates/kana-mirror/README.md) | New | The kana grid key for key, a flick types a whole syllable | no spare key |
-| [cheonjiin](candidates/cheonjiin/README.md) | Reference | 천지인, multi-tap | yes, on its second space key |
-| [naratgeul](candidates/naratgeul/README.md) | Reference | 나랏글, multi-tap with 획추가 / 쌍자음 | no spare key |
+**All dropped**, kept for reference only. Their documentation is imperfect: some of it may
+not match the pages, and some composition notes predate implied ㅇ and 확정.
+
+| Candidate | Kind | Idea | 확정 | Status |
+|---|---|---|---|---|
+| [double-opposite](candidates/double-opposite/README.md) | From the artifact (6A) | Doubled consonant opposite its single: ㄱ ← / ㄲ → | yes | dropped |
+| [double-clockwise](candidates/double-clockwise/README.md) | From the artifact (6B) | Doubled consonant 90° clockwise: ㄱ ← / ㄲ ↑ | yes | promoted to golden, then dropped |
+| [double-up-aspirated-left](candidates/double-up-aspirated-left/README.md) | From the artifact (6C) | Single ↓, doubled ↑, aspirated ← | yes | dropped |
+| [cheonjiin-flick](candidates/cheonjiin-flick/README.md) | New | 천지인's grid with every multi-tap turned into a flick | no spare key | dropped |
+| [kana-mirror](candidates/kana-mirror/README.md) | New | The kana grid key for key, a flick types a whole syllable | no spare key | dropped |
+| [cheonjiin](candidates/cheonjiin/README.md) | Reference | 천지인, multi-tap | yes, on its second space key | dropped |
+| [naratgeul](candidates/naratgeul/README.md) | Reference | 나랏글, multi-tap with 획추가 / 쌍자음 | no spare key | dropped |
 
 <table>
 <tr>
