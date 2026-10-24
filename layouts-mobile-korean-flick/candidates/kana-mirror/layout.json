@@ -1,0 +1,132 @@
+{
+ "title": "Kana mirror",
+ "digits": false,
+ "lede": "Gboard's kana grid key for key, 가나다 on the kana rows (あ ㅇ, か ㄱ, さ ㅅ, た ㄷ, な ㄴ, は ㅎ, ま ㅁ, や ㅈ, ら ㄹ, わ ㅂ). Tap a consonant, flick for a whole syllable; 획·쌍 sits where ゛゜小 does.",
+ "keys": [
+  {
+   "kind": "flick",
+   "legends": [
+    "ㅇ",
+    "ㅣ",
+    "ㅡ",
+    "ㅐ",
+    "ㅔ"
+   ],
+   "sub": "",
+   "style": "vowel"
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "ㄱ",
+    "거",
+    "고",
+    "가",
+    "구"
+   ]
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "ㅅ",
+    "서",
+    "소",
+    "사",
+    "수"
+   ]
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "ㄷ",
+    "더",
+    "도",
+    "다",
+    "두"
+   ]
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "ㄴ",
+    "너",
+    "노",
+    "나",
+    "누"
+   ]
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "ㅎ",
+    "허",
+    "호",
+    "하",
+    "후"
+   ]
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "ㅁ",
+    "머",
+    "모",
+    "마",
+    "무"
+   ]
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "ㅈ",
+    "저",
+    "조",
+    "자",
+    "주"
+   ]
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "ㄹ",
+    "러",
+    "로",
+    "라",
+    "루"
+   ]
+  },
+  {
+   "kind": "cycle",
+   "table": "획·쌍",
+   "label": "획·쌍",
+   "legends": [
+    "",
+    "ㅓ",
+    "ㅗ",
+    "ㅏ",
+    "ㅜ"
+   ],
+   "style": "mod"
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "ㅂ",
+    "버",
+    "보",
+    "바",
+    "부"
+   ]
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    ".",
+    ",",
+    "?",
+    "!",
+    "~"
+   ]
+  }
+ ]
+}

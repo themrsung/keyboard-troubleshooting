@@ -1,0 +1,137 @@
+{
+ "title": "Double up, aspirated left",
+ "digits": true,
+ "lede": "From the artifact's Board 6C, in Gboard's 12-key frame. Vowels by where the dot points (ㆍ / ᆢ). Single ↓, doubled ↑, aspirated ←: ㄱ ↓ / ㄲ ↑ / ㅋ ←.",
+ "keys": [
+  {
+   "kind": "flick",
+   "legends": [
+    "ㅇ",
+    "ㅋ",
+    "ㄲ",
+    "ㅎ",
+    "ㄱ"
+   ]
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "",
+    "ㅕ",
+    "ㅛ",
+    "ㅑ",
+    "ㅠ"
+   ],
+   "label": "ᆢ",
+   "style": "vowel"
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "",
+    "ㅓ",
+    "ㅗ",
+    "ㅏ",
+    "ㅜ"
+   ],
+   "label": "ㆍ",
+   "style": "vowel"
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "ㄴ",
+    "ㅌ",
+    "ㄸ",
+    "",
+    "ㄷ"
+   ]
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "ㄹ",
+    "ㅅ",
+    "ㅉ",
+    "ㅆ",
+    "ㅈ"
+   ]
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "",
+    "ㅖ",
+    "",
+    "ㅒ",
+    ""
+   ],
+   "label": "ㆎ",
+   "style": "vowel"
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "ㅁ",
+    "ㅍ",
+    "ㅃ",
+    "ㅊ",
+    "ㅂ"
+   ]
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "ㅣ",
+    "ㅔ",
+    "ㅢ",
+    "ㅐ",
+    "ㅡ"
+   ],
+   "style": "vowel"
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "ㅘ",
+    "ㅝ",
+    "ㅚ",
+    "ㅙ",
+    "ㅟ"
+   ],
+   "style": "vowel"
+  },
+  {
+   "kind": "commit",
+   "label": "확정",
+   "legends": [
+    "",
+    "",
+    "",
+    "",
+    ""
+   ],
+   "style": "mod"
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    ".",
+    ",",
+    "?",
+    "!",
+    ""
+   ]
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "~",
+    "'",
+    "\"",
+    "·",
+    "-"
+   ]
+  }
+ ]
+}
