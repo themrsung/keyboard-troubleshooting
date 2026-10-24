@@ -12,8 +12,8 @@ Reference board: **Keychron C2 Pro** (ANSI, RGB, USB `3434:0520`), stock firmwar
 edited with [viahid](../../via/raw-hid-keymap-editing/README.md). The board has four layers and a
 Mac / Windows switch: layers 0 and 1 are the Mac side, layers 2 and 3 the Windows side. **This
 layout is layers 2 and 3, so set the switch to Windows.** The Mac side isn't part of it: it holds
-the macOS [us-ansi-104-key-to-jis](../../layouts/us-ansi-104-key-to-jis/README.md) layout, layers 0
-and 1, copied key by key from the Magnetox XF.
+the macOS [us-ansi-104-key-to-jis-with-lt](../../layouts/us-ansi-104-key-to-jis-with-lt/README.md)
+layout.
 
 The complete keymap, all four layers, is [keychron-c2-pro.layout.json](keychron-c2-pro.layout.json),
 in VIA's saved-layout format, keys in matrix order (6 × 20). Keychron's own keycodes are written as
@@ -81,12 +81,28 @@ RHC: [reserved for hardware control](../PRINCIPLES.md#reserved-for-hardware-cont
 ## On Windows
 
 The Microsoft IME Korean's **Type 1** keyboard (`kbd101a.dll`) turns Right Alt into 한/영 and
-Right Control into 한자, so this board has both without dedicated keys. Check which type the
-machine uses first: see [the principles](../PRINCIPLES.md#general-tips).
+Right Control into 한자. On the other types, Right Control stays Control, so the drawing labels it
+Control, and 한자 is the tap of the right Fn. Check which type the machine uses first: see
+[the principles](../PRINCIPLES.md#general-tips).
 
 A tap of the right Fn sends USB LANG2, which Windows reads as 한자 (`VK_HANJA`) on every keyboard
 type, so 한자 doesn't depend on Type 1. The tap vs hold timing is QMK's default, and hasn't been
 tried in real use on this board yet.
+
+## Why this works with Japanese Kana
+
+A guaranteed one-tap switch to Japanese Kana while using a Korean IME takes extensive macros, or a
+custom all-in-one IME such as [FKeyIME](https://github.com/themrsung/fkeyime) (in early
+development as of 2026-10-24). Without one, you switch between the two pairs, English + Korean
+(the Microsoft IME Korean) and English + Japanese (the Microsoft IME Japanese), often, with
+Win+Space or a mouse click on the language bar.
+
+This layout respects the first pair, with 한/영 and 한자 where the Korean IME expects them, and lets
+the second work properly by giving every JIS kana key a key of its own: the three a US board lacks
+are on Fn + the keys right of Space, ー on ¥, む and ろ.
+
+**Not tested yet:** whether the Microsoft IME Japanese's modes (kana and romaji input) can be
+switched with the keys this layout already has.
 
 ## Testing on a Mac
 

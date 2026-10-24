@@ -381,6 +381,28 @@ def layouts():
         ],
     }
 
+    keys = keychron_c2_pro()
+    out["us-ansi-104-key-to-jis-with-lt"] = {
+        "title": "Full-size US as JIS, with tap vs hold",
+        "lede": "The full-size layout on a Keychron C2 Pro's Mac side, with one-tap language keys: カタカナ on a tap of the left Fn, 英数 on a tap of the left ⌘. The Fn layer keeps ⌥ and ⌘ as they are.",
+        "keys": keys,
+        "layers": [
+            ("Layer 0", base_layer(keys, {
+                "CapsLock": mod("Control", True), "PrintScreen": fn("⌘⇧4"), "ScrollLock": fn("Caps", "", True), "Pause": fn("▶︎❚❚", "", True),
+                "ControlLeft": lang("カタカナ", "Fn"), "MetaLeft": mod("⌥", True), "AltLeft": lang("英数", "⌘"), "Space": mod(""),
+                "AltRight": lang("かな"), "MetaRight": mod("⌘", True), "FnRight": mod("⌥", True), "ControlRight": lang("Fn"),
+            })),
+            ("Layer 1 (Fn)", fn_layer(keys, {
+                **{f"F{i}": fkey(i + 12) for i in range(1, 13)}, "F6": {**fkey(18), "jk": "Korean Key"},
+                **HHKB_FN, "Backquote": {"kind": "blank"}, "Backspace": fn("Del"), "Backslash": fn("Ins"),
+                "Space": mod(""),
+                "AltRight": send("IntlYen"), "MetaRight": send("Slash"), "FnRight": send("IntlRo"),
+                "ControlLeft": lang("Fn"), "ControlRight": lang("Fn"),
+                "PrintScreen": fn("PrtSc"), "ScrollLock": fn("ScrLk"), "Pause": fn("Pause"),
+            })),
+        ],
+    }
+
     keys = tkl()
     out["us-ansi-87-key-to-jis"] = {
         "title": "Tenkeyless US as JIS",
@@ -459,7 +481,7 @@ def layouts():
     out["windows-104-key-golden"] = {
         "dir": "layouts-windows-ko-kr",
         "title": "Windows 104-key, the golden layout",
-        "lede": "The reference for the Windows (ko-KR) layouts: a Keychron C2 Pro's Windows side, from the Windows defaults up, for the Microsoft IME Korean. Right Alt and Right Control are 한/영 and 한자 on the IME's Type 1 keyboard; a tap of the right Fn is 한자 on any type. Kana is shown for reference only.",
+        "lede": "The reference for the Windows (ko-KR) layouts: a Keychron C2 Pro's Windows side, from the Windows defaults up, for the Microsoft IME Korean. Right Alt is 한/영 on the IME's Type 1 keyboard, which also makes Right Control 한자; a tap of the right Fn is 한자 on any type. Kana is shown for reference only.",
         "korean": DUBEOLSIK,
         "ko_legend": "Korean, dubeolsik: the Microsoft IME's default (Shift above)",
         "kana_legend": "Japanese Kana, for reference only (Shift above)",
@@ -469,7 +491,7 @@ def layouts():
             ("Standard (layer 2)", base_layer(keys, {
                 **{f"F{i}": plain_fkey(i) for i in range(1, 13)},
                 "CapsLock": mod("Ctrl", True), "ControlLeft": lang("Fn"), "Space": mod(""),
-                "AltRight": lang("한/영"), "FnRight": lang("한자"), "ControlRight": lang("한자", "Fn"),
+                "AltRight": lang("한/영"), "FnRight": mod("Ctrl", True), "ControlRight": lang("한자", "Fn"),
                 "ScrollLock": fn("ScrLk", "", True), "Pause": fn("Pause", "", True),
             })),
             ("Fn (layer 3: hold either Fn)", fn_layer(keys, {

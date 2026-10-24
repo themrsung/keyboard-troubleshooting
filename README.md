@@ -52,6 +52,8 @@ read [CONTRIBUTING.md](CONTRIBUTING.md).
 
 - [us-ansi-104-key-to-jis](layouts/us-ansi-104-key-to-jis/README.md): a full-size US board (TFG
   Magnetox XF) with JIS's keys in firmware alone, no mod-tap.
+- [us-ansi-104-key-to-jis-with-lt](layouts/us-ansi-104-key-to-jis-with-lt/README.md): the same on a
+  Keychron C2 Pro, with カタカナ and 英数 on a tap of the left Fn and the left ⌘.
 - [us-ansi-87-key-to-jis](layouts/us-ansi-87-key-to-jis/README.md): a tenkeyless US board (MONGDOL
   87) with JIS's keys in firmware, tap vs hold on two layers.
 - [numpad-numbers](layouts/numpad-numbers/README.md): a numpad (SPM AL21W) as a number input
@@ -68,6 +70,12 @@ read [CONTRIBUTING.md](CONTRIBUTING.md).
 - [windows-104-key-golden](layouts-windows-ko-kr/windows-104-key-golden/README.md): the golden
   layout for Windows with the Microsoft IME Korean, in progress, on a full-size board (Keychron C2
   Pro), from the Windows defaults up. [Principles](layouts-windows-ko-kr/PRINCIPLES.md).
+
+## configfiles/ — configuration files for specific keyboards
+
+- [keychron-c2-pro-us-ansi-to-jis](configfiles/keychron-c2-pro-us-ansi-to-jis/README.md): a
+  Keychron C2 Pro's VIA keymap, the macOS layout on the Mac side of its switch and the Windows
+  golden layout on the Windows side. [Index](configfiles/README.md).
 
 ## utils/ — tools
 

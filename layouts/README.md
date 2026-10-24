@@ -9,6 +9,7 @@ Japanese Kana input. New layouts should follow the [principles](PRINCIPLES.md).
 | [hhkb-jis-golden](hhkb-jis-golden/README.md) | HHKB Studio JIS: **the golden layout**, the reference for the others | PFU's keymap tool |
 | [numpad-numbers](numpad-numbers/README.md) | Numpad (SPM AL21W), as a number input device | Firmware (VIA protocol), from the factory keymap |
 | [us-ansi-104-key-to-jis](us-ansi-104-key-to-jis/README.md) | Full-size US (Hansung TFG Magnetox XF) | Firmware only, plain keys and `MO()`: the board's mod-tap is broken |
+| [us-ansi-104-key-to-jis-with-lt](us-ansi-104-key-to-jis-with-lt/README.md) | Full-size US (Keychron C2 Pro, Mac side) | The same in firmware, plus カタカナ / 英数 on a tap of Fn / ⌘ |
 | [us-ansi-87-key-to-jis](us-ansi-87-key-to-jis/README.md) | Tenkeyless US (MONGDOL 87) | Firmware, tap vs hold, two layers |
 | [hhkb-pro-bt-us-to-jis](hhkb-pro-bt-us-to-jis/README.md) | HHKB Professional BT (US) | Karabiner-Elements |
 | [macbook-us-to-jis](macbook-us-to-jis/README.md) | MacBook built-in (US) | Karabiner-Elements, keyboard type stays US |
