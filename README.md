@@ -36,8 +36,8 @@ read [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## hansung/ — Hansung (한성컴퓨터) keyboards
 
-- [mod-tap-rshift-bug](hansung/mod-tap-rshift-bug/README.md): mod-tap keys add right Shift when
-  held and send their modifier when tapped. Layer-tap is fine.
+- [mod-tap-rshift-bug](hansung/mod-tap-rshift-bug/README.md): mod-tap keys add right Shift and
+  send the modifier and the tap key together on every press. Layer-tap is fine.
 - [web-driver-internals](hansung/web-driver-internals/README.md): what Hansung's web driver
   (app.superstore.co.kr) is built on: VIA's raw-HID protocol with vendor commands.
 - [via-definition-magnetox-xf](hansung/via-definition-magnetox-xf/README.md): a VIA definition for
