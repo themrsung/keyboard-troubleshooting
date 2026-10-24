@@ -1,10 +1,12 @@
-"""Draws the layouts in layouts/: one layout.html per layout, with every key showing three legends.
+"""Draws the layouts in layouts/ and layouts-windows-ko-kr/: one layout.html per layout, with every
+key showing three legends.
 
-    python3 -I layouts/render/build.py            # writes layouts/<name>/layout.html
+    python3 -I layouts/render/build.py            # writes <directory>/<name>/layout.html
     sh layouts/render/render.sh                   # and layout-light.png / layout-dark.png (Chrome)
 
-Each key shows its US QWERTY cap (top left), what it types in JIS Korean's Mode A (bottom left,
-Shift above) and in Japanese Kana (bottom right, Shift above). Both come from the JIS key the key
+Each key shows its US QWERTY cap (top left), what it types in Korean (bottom left, Shift above) and
+in Japanese Kana (bottom right, Shift above). The Korean is JIS Korean's Mode A for the macOS
+layouts and the Microsoft IME's dubeolsik for the Windows ones. Both come from the key code the key
 sends, so a remapped key shows what it types, not what's printed on it.
 """
 import json
@@ -44,6 +46,19 @@ KANA = {
     "KeyZ": ("つ", "っ"), "KeyX": ("さ", None), "KeyC": ("そ", None), "KeyV": ("ひ", None),
     "KeyB": ("こ", None), "KeyN": ("み", None), "KeyM": ("も", None), "Comma": ("ね", "、"),
     "Period": ("る", "。"), "Slash": ("め", "・"), "IntlRo": ("ろ", None),
+}
+# The Microsoft IME Korean's default, dubeolsik (두벌식 표준), on the Korean layout: jamo on the
+# letters, and the US layout's characters elsewhere. Backquote is drawn on its own, as with Mode A.
+DUBEOLSIK = {
+    **{f"Key{c}": (j, None) for c, j in zip("QWERTYUIOPASDFGHJKLZXCVBNM", "ㅂㅈㄷㄱㅅㅛㅕㅑㅐㅔㅁㄴㅇㄹㅎㅗㅓㅏㅣㅋㅌㅊㅍㅠㅜㅡ")},
+    "KeyQ": ("ㅂ", "ㅃ"), "KeyW": ("ㅈ", "ㅉ"), "KeyE": ("ㄷ", "ㄸ"), "KeyR": ("ㄱ", "ㄲ"), "KeyT": ("ㅅ", "ㅆ"),
+    "KeyO": ("ㅐ", "ㅒ"), "KeyP": ("ㅔ", "ㅖ"),
+    **{f"Digit{d}": (d, s) for d, s in zip("1234567890", "!@#$%^&*()")},
+    "Minus": ("-", "_"), "Equal": ("=", "+"), "BracketLeft": ("[", "{"), "BracketRight": ("]", "}"),
+    "Backslash": ("\\", "|"), "Semicolon": (";", ":"), "Quote": ("'", '"'), "Comma": (",", "<"),
+    "Period": (".", ">"), "Slash": ("/", "?"),
+    # JIS's extra keys, by name: what the Korean layout types with them is unverified.
+    "IntlYen": ("¥", None), "IntlRo": ("ろ", None),
 }
 # JIS Korean's F6–F10 (spec §6).
 F_KEYS = {6: "한글", 7: "한자", 8: "두벌식", 9: "전각", 10: "반각"}
@@ -108,6 +123,18 @@ def full_size():
         [("Numpad1", "1"), ("Numpad2", "2"), ("Numpad3", "3"), ("NumpadEnter", "Enter", 1, 2)],
         [("Numpad0", "0", 2), ("NumpadDecimal", ".")],
     ], y0=1.25, x0=18.5)
+    return keys
+
+
+def keychron_c2_pro():
+    """A full-size board with the Keychron C2 Pro's caps: Cortana and a light key right of Print
+    Screen, and Fn where the Menu key would be."""
+    keys = full_size()
+    caps = {"ScrollLock": "Cortana", "Pause": "Light", "ContextMenu": "Fn"}
+    for k in keys:
+        k["us"] = caps.get(k["id"], k["us"])
+        if k["id"] == "ContextMenu":
+            k["id"] = "FnRight"
     return keys
 
 
@@ -262,6 +289,11 @@ HHKB_FN = {  # The HHKB US Fn layer, Mac extras version, by key.
 STUDIO_LANG = {  # Set on every layer of the golden layout, so they work while Fn1 or Fn2 is held.
     "HankakuZenkaku": lang("カタカナ"), "Lang2": lang("英数"), "Lang1": lang("かな"),
 }
+
+
+def plain_fkey(n, small=""):
+    """An F-key without JIS Korean's meaning for it, for the Windows layouts."""
+    return {"kind": "fkey", "label": f"F{n}", "jk": small}
 
 
 def layouts():
@@ -422,6 +454,39 @@ def layouts():
             })),
         ],
     }
+    keys = keychron_c2_pro()
+    rhc = "RHC"
+    out["windows-104-key-golden"] = {
+        "dir": "layouts-windows-ko-kr",
+        "title": "Windows 104-key, the golden layout",
+        "lede": "The reference for the Windows (ko-KR) layouts: a Keychron C2 Pro's Windows side, from the Windows defaults up, for the Microsoft IME Korean. Right Alt and Right Control are 한/영 and 한자 on the IME's Type 1 keyboard; a tap of the right Fn is 한자 on any type. Kana is shown for reference only.",
+        "korean": DUBEOLSIK,
+        "ko_legend": "Korean, dubeolsik: the Microsoft IME's default (Shift above)",
+        "kana_legend": "Japanese Kana, for reference only (Shift above)",
+        "footer": "Dubeolsik legends are the Microsoft IME Korean's default layout; ¥ and ろ are JIS's keys, named: what the Korean layout types with them is unverified. Kana legends are the JIS kana layout, for reference. RHC: reserved for hardware control. ",
+        "keys": keys,
+        "layers": [
+            ("Standard (layer 2)", base_layer(keys, {
+                **{f"F{i}": plain_fkey(i) for i in range(1, 13)},
+                "CapsLock": mod("Ctrl", True), "ControlLeft": lang("Fn"), "Space": mod(""),
+                "AltRight": lang("한/영"), "FnRight": lang("한자"), "ControlRight": lang("한자", "Fn"),
+                "ScrollLock": fn("ScrLk", "", True), "Pause": fn("Pause", "", True),
+            })),
+            ("Fn (layer 3: hold either Fn)", fn_layer(keys, {
+                "F1": fn("Bright−", "screen"), "F2": fn("Bright+", "screen"), "F3": fn("Tasks", "Task View"), "F4": fn("Files", "Explorer"),
+                "F5": fn("Light−", rhc), "F6": fn("Light+", rhc), "F7": fn("⏮"), "F8": fn("▶︎❚❚"), "F9": fn("⏭"),
+                "F10": fn("Mute"), "F11": fn("Vol−"), "F12": fn("Vol+"),
+                "PrintScreen": fn("Effect−", rhc), "ScrollLock": fn("Effect+", rhc), "Pause": fn("Light", rhc + " on/off"),
+                **HHKB_FN,
+                **{f"Digit{d}": plain_fkey(i + 1, rhc if d in "123450" else "") for i, d in enumerate("1234567890")},
+                "Minus": plain_fkey(11, rhc), "Equal": plain_fkey(12, rhc),
+                "Backquote": {"kind": "blank"}, "Backspace": fn("Del"), "Backslash": fn("Ins"),
+                "KeyI": fn("PrtSc"), "KeyP": fn("▶︎❚❚"), "KeyB": fn("NKRO", rhc + " on/off"),
+                "ControlLeft": lang("Fn"), "ControlRight": lang("Fn"), "Space": mod(""),
+                "AltRight": send("IntlYen"), "MetaRight": send("Backslash"), "FnRight": send("IntlRo"),
+            })),
+        ],
+    }
     return out
 
 
@@ -432,11 +497,15 @@ def main():
                 "capLegend": layout.get("cap_legend", "the US QWERTY key cap"),
                 "plain": layout.get("plain", False),
                 "layers": [{"name": n, "keys": l} for n, l in layout["layers"]],
-                "modeA": MODE_A, "kana": KANA}
+                "modeA": layout.get("korean", MODE_A), "kana": KANA,
+                "koLegend": layout.get("ko_legend", "JIS Korean, Mode A (Shift above)"),
+                "kanaLegend": layout.get("kana_legend", "Japanese Kana (Shift above)"),
+                "footer": layout.get("footer", "Mode A legends from JIS Korean's spec §3 (github.com/team-mirae/jis-korean); Kana legends are the JIS kana layout. ")}
         html = template.replace("{{TITLE}}", layout["title"]).replace("{{DATA}}", json.dumps(data, ensure_ascii=False))
-        with open(os.path.join(LAYOUTS, name, "layout.html"), "w", encoding="utf-8") as f:
+        directory = layout.get("dir", "layouts")
+        with open(os.path.join(os.path.dirname(LAYOUTS), directory, name, "layout.html"), "w", encoding="utf-8") as f:
             f.write(html)
-        print(f"{name}/layout.html")
+        print(f"{directory}/{name}/layout.html")
 
 
 if __name__ == "__main__":

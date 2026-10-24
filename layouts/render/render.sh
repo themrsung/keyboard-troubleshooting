@@ -1,5 +1,6 @@
 #!/bin/sh
-# Renders each layouts/<name>/layout.html to layout-light.png and layout-dark.png at 3x, with
+# Renders each layouts/<name>/layout.html and layouts-windows-ko-kr/<name>/layout.html to
+# layout-light.png and layout-dark.png at 3x, with
 # headless Google Chrome. Run build.py first.
 set -eu
 here=$(cd "$(dirname "$0")" && pwd)
@@ -7,7 +8,7 @@ chrome="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 work=$(mktemp -d)
 trap 'rm -rf "$work"' EXIT
 width=1240
-for dir in "$here"/../*/; do
+for dir in "$here"/../*/ "$here"/../../layouts-windows-ko-kr/*/; do
   page="$dir/layout.html"
   [ -f "$page" ] || continue
   [ "$(basename "$dir")" = render ] && continue
