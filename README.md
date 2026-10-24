@@ -14,6 +14,9 @@ read [CONTRIBUTING.md](CONTRIBUTING.md).
   the computer, so a remapper can't move it; it can only build a second Fn layer of its own.
 - [studio-jis-stored-as-ansi](hhkb/studio-jis-stored-as-ansi/README.md): a JIS HHKB stored by
   macOS as ANSI, so the keys that need a JIS keyboard type are lost.
+- key-legends: every key's plain, Shift and Fn output on macOS in Mac Mode, for the
+  [JIS](hhkb/key-legends/hhkb-jis.md) Hybrid Type S and the [US](hhkb/key-legends/hhkb-us.md)
+  Professional BT.
 
 ## via/ — VIA
 
