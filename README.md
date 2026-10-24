@@ -71,6 +71,14 @@ read [CONTRIBUTING.md](CONTRIBUTING.md).
   layout for Windows with the Microsoft IME Korean, in progress, on a full-size board (Keychron C2
   Pro), from the Windows defaults up. [Principles](layouts-windows-ko-kr/PRINCIPLES.md).
 
+## layouts-mobile-korean-flick/ — a Korean flick keyboard for phones
+
+- [korean-flick-golden](layouts-mobile-korean-flick/korean-flick-golden/README.md): the golden
+  layout, a Korean 12-key flick keyboard in Gboard's 12-key frame, with A (QWERTY) and 1 (JIS
+  symbols) layers, typeable in the browser.
+  [Candidates](layouts-mobile-korean-flick/README.md#candidates) it was picked from, including 천지인
+  and 나랏글 for reference. [Principles](layouts-mobile-korean-flick/PRINCIPLES.md).
+
 ## configfiles/ — configuration files for specific keyboards
 
 - [keychron-c2-pro-us-ansi-to-jis](configfiles/keychron-c2-pro-us-ansi-to-jis/README.md): a

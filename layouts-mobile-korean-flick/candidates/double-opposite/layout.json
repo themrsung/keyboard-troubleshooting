@@ -1,0 +1,137 @@
+{
+ "title": "Double opposite",
+ "digits": true,
+ "lede": "From the artifact's Board 6A, in Gboard's 12-key frame. Vowels by where the dot points (ㆍ / ᆢ). A doubled consonant sits opposite its single: ㄱ ← / ㄲ →, ㅈ ↑ / ㅉ ↓.",
+ "keys": [
+  {
+   "kind": "flick",
+   "legends": [
+    "ㅇ",
+    "ㄱ",
+    "ㅋ",
+    "ㄲ",
+    "ㅎ"
+   ]
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "",
+    "ㅕ",
+    "ㅛ",
+    "ㅑ",
+    "ㅠ"
+   ],
+   "label": "ᆢ",
+   "style": "vowel"
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "",
+    "ㅓ",
+    "ㅗ",
+    "ㅏ",
+    "ㅜ"
+   ],
+   "label": "ㆍ",
+   "style": "vowel"
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "ㄴ",
+    "ㄷ",
+    "ㅌ",
+    "ㄸ",
+    ""
+   ]
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "ㄹ",
+    "ㅅ",
+    "ㅈ",
+    "ㅆ",
+    "ㅉ"
+   ]
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "",
+    "ㅖ",
+    "",
+    "ㅒ",
+    ""
+   ],
+   "label": "ㆎ",
+   "style": "vowel"
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "ㅁ",
+    "ㅂ",
+    "ㅍ",
+    "ㅃ",
+    "ㅊ"
+   ]
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "ㅣ",
+    "ㅔ",
+    "ㅢ",
+    "ㅐ",
+    "ㅡ"
+   ],
+   "style": "vowel"
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "ㅘ",
+    "ㅝ",
+    "ㅚ",
+    "ㅙ",
+    "ㅟ"
+   ],
+   "style": "vowel"
+  },
+  {
+   "kind": "commit",
+   "label": "확정",
+   "legends": [
+    "",
+    "",
+    "",
+    "",
+    ""
+   ],
+   "style": "mod"
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    ".",
+    ",",
+    "?",
+    "!",
+    ""
+   ]
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "~",
+    "'",
+    "\"",
+    "·",
+    "-"
+   ]
+  }
+ ]
+}

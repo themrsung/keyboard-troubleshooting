@@ -1,0 +1,136 @@
+{
+ "title": "천지인 flick",
+ "digits": true,
+ "lede": "천지인's grid and consonant groups with no multi-tap: → types the group's second consonant (ㄱ → ㅋ, ㄴ → ㄹ), ↑ the doubled one. The three vowel strokes become dot-direction keys.",
+ "join": {
+  "ㅑㅣ": "ㅒ",
+  "ㅕㅣ": "ㅖ"
+ },
+ "keys": [
+  {
+   "kind": "flick",
+   "legends": [
+    "ㅣ",
+    "ㅔ",
+    "ㅢ",
+    "ㅐ",
+    "ㅡ"
+   ],
+   "style": "vowel"
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "",
+    "ㅓ",
+    "ㅗ",
+    "ㅏ",
+    "ㅜ"
+   ],
+   "label": "ㆍ",
+   "style": "vowel"
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "",
+    "ㅕ",
+    "ㅛ",
+    "ㅑ",
+    "ㅠ"
+   ],
+   "label": "ᆢ",
+   "style": "vowel"
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "ㄱ",
+    "",
+    "ㄲ",
+    "ㅋ",
+    ""
+   ]
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "ㄴ",
+    "",
+    "",
+    "ㄹ",
+    ""
+   ]
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "ㄷ",
+    "",
+    "ㄸ",
+    "ㅌ",
+    ""
+   ]
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "ㅂ",
+    "",
+    "ㅃ",
+    "ㅍ",
+    ""
+   ]
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "ㅅ",
+    "",
+    "ㅆ",
+    "ㅎ",
+    ""
+   ]
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "ㅈ",
+    "",
+    "ㅉ",
+    "ㅊ",
+    ""
+   ]
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    ".",
+    ",",
+    "?",
+    "!",
+    ""
+   ]
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "ㅇ",
+    "",
+    "",
+    "ㅁ",
+    ""
+   ]
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "~",
+    "'",
+    "\"",
+    "·",
+    "-"
+   ]
+  }
+ ]
+}

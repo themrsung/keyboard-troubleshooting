@@ -1,0 +1,105 @@
+{
+ "title": "천지인 (reference)",
+ "digits": false,
+ "lede": "Reference: the standard Korean 12-key, multi-tap, in Gboard's frame. Vowels from the strokes ㅣ ㆍ ㅡ; repeat a consonant key to step ㄱ → ㅋ → ㄲ.",
+ "keys": [
+  {
+   "kind": "stroke",
+   "stroke": "ㅣ",
+   "style": "vowel"
+  },
+  {
+   "kind": "stroke",
+   "stroke": "ㆍ",
+   "style": "vowel"
+  },
+  {
+   "kind": "stroke",
+   "stroke": "ㅡ",
+   "style": "vowel"
+  },
+  {
+   "kind": "multitap",
+   "cycle": [
+    "ㄱ",
+    "ㅋ",
+    "ㄲ"
+   ],
+   "label": "ㄱㅋ"
+  },
+  {
+   "kind": "multitap",
+   "cycle": [
+    "ㄴ",
+    "ㄹ"
+   ],
+   "label": "ㄴㄹ"
+  },
+  {
+   "kind": "multitap",
+   "cycle": [
+    "ㄷ",
+    "ㅌ",
+    "ㄸ"
+   ],
+   "label": "ㄷㅌ"
+  },
+  {
+   "kind": "multitap",
+   "cycle": [
+    "ㅂ",
+    "ㅍ",
+    "ㅃ"
+   ],
+   "label": "ㅂㅍ"
+  },
+  {
+   "kind": "multitap",
+   "cycle": [
+    "ㅅ",
+    "ㅎ",
+    "ㅆ"
+   ],
+   "label": "ㅅㅎ"
+  },
+  {
+   "kind": "multitap",
+   "cycle": [
+    "ㅈ",
+    "ㅊ",
+    "ㅉ"
+   ],
+   "label": "ㅈㅊ"
+  },
+  {
+   "kind": "multitap",
+   "cycle": [
+    ".",
+    ",",
+    "?",
+    "!"
+   ],
+   "label": ".,?!"
+  },
+  {
+   "kind": "multitap",
+   "cycle": [
+    "ㅇ",
+    "ㅁ"
+   ],
+   "label": "ㅇㅁ"
+  },
+  {
+   "kind": "commit",
+   "label": "확정",
+   "legends": [
+    "",
+    "",
+    "",
+    "",
+    ""
+   ],
+   "style": "mod"
+  }
+ ]
+}

@@ -1,0 +1,249 @@
+{
+ "title": "Korean flick golden",
+ "digits": true,
+ "lede": "The reference board, promoted from the double-clockwise candidate. Vowels by where the dot points; a doubled consonant sits 90° clockwise of its single: ㄱ ← / ㄲ ↑, ㅈ → / ㅉ ↓.",
+ "keys": [
+  {
+   "kind": "flick",
+   "legends": [
+    "ㅇ",
+    "ㄱ",
+    "ㄲ",
+    "ㅋ",
+    "ㅎ"
+   ]
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "#",
+    "ㅕ",
+    "ㅛ",
+    "ㅑ",
+    "ㅠ"
+   ],
+   "style": "vowel"
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "·",
+    "ㅓ",
+    "ㅗ",
+    "ㅏ",
+    "ㅜ"
+   ],
+   "label": "ㆍ",
+   "style": "vowel"
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "ㄴ",
+    "ㄷ",
+    "ㄸ",
+    "ㅌ",
+    ""
+   ]
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "ㄹ",
+    "ㅅ",
+    "ㅆ",
+    "ㅈ",
+    "ㅉ"
+   ]
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "=",
+    "ㅖ",
+    "+",
+    "ㅒ",
+    "-"
+   ],
+   "style": "vowel"
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "ㅁ",
+    "ㅂ",
+    "ㅃ",
+    "ㅍ",
+    "ㅊ"
+   ]
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "ㅣ",
+    "ㅔ",
+    "ㅢ",
+    "ㅐ",
+    "ㅡ"
+   ],
+   "style": "vowel"
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "ㅘ",
+    "ㅝ",
+    "ㅚ",
+    "ㅙ",
+    "ㅟ"
+   ],
+   "style": "vowel"
+  },
+  {
+   "kind": "commit",
+   "label": "확정",
+   "legends": [
+    "",
+    "",
+    "",
+    "",
+    ""
+   ],
+   "style": "mod"
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    ".",
+    ",",
+    "?",
+    "!",
+    ""
+   ]
+  },
+  {
+   "kind": "flick",
+   "legends": [
+    "~",
+    "'",
+    "\"",
+    "·",
+    "—"
+   ]
+  }
+ ],
+ "symbols": [
+  "<",
+  "[",
+  "{",
+  "(",
+  "「",
+  "」",
+  ")",
+  "}",
+  "]",
+  ">"
+ ],
+ "layers": {
+  "en": [
+   [
+    "q",
+    "w",
+    "e",
+    "r",
+    "t",
+    "y",
+    "u",
+    "i",
+    "o",
+    "p"
+   ],
+   [
+    "a",
+    "s",
+    "d",
+    "f",
+    "g",
+    "h",
+    "j",
+    "k",
+    "l",
+    {
+     "key": "bs"
+    }
+   ],
+   [
+    {
+     "key": "shift"
+    },
+    "z",
+    "x",
+    "c",
+    "v",
+    "b",
+    "n",
+    "m"
+   ],
+   [
+    ",",
+    {
+     "key": "space",
+     "span": 5
+    },
+    ".",
+    {
+     "key": "enter"
+    }
+   ]
+  ],
+  "sym": [
+   [
+    "!",
+    "\"",
+    "#",
+    "$",
+    "%",
+    "&",
+    "'",
+    "=",
+    "~",
+    "|"
+   ],
+   [
+    "-",
+    "^",
+    "¥",
+    "@",
+    "`",
+    ";",
+    "+",
+    ":",
+    "*",
+    {
+     "key": "bs"
+    }
+   ],
+   [
+    "/",
+    "?",
+    "\\",
+    "_",
+    "·",
+    "…",
+    "—",
+    "₩"
+   ],
+   [
+    ",",
+    {
+     "key": "space",
+     "span": 5
+    },
+    ".",
+    {
+     "key": "enter"
+    }
+   ]
+  ]
+ }
+}
