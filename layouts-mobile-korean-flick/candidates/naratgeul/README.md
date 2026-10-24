@@ -1,5 +1,9 @@
 # 나랏글 (reference)
 
+> **Dropped.** Kept for reference only. This documentation is imperfect: it may not match the
+> page, and some composition notes predate implied ㅇ and 확정. The
+> [golden layout](../../korean-flick-golden/README.md) is the reference.
+
 **A reference, not a proposal.** 나랏글 (Naratgeul), the other widely used Korean 12-key layout, in
 [the frame](../../README.md#the-frame), drawn as it's commonly described. Its 획추가 key is the
 model for the candidates' 획·쌍.

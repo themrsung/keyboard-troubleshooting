@@ -1,5 +1,9 @@
 # Kana mirror
 
+> **Dropped.** Kept for reference only. This documentation is imperfect: it may not match the
+> page, and some composition notes predate implied ㅇ and 확정. The
+> [golden layout](../../korean-flick-golden/README.md) is the reference.
+
 **New.** The reference, Gboard's Japanese 12-key, key for key: the ten consonant keys take the
 places of the ten kana rows, the cycle key takes ゛゜小's place, punctuation stays where 、。?! is.
 As in kana flick, **one flick types a whole syllable**: ㄱ → is 가.

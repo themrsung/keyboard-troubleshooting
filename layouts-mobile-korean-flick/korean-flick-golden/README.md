@@ -125,11 +125,13 @@ eight right of 한A1 and 🌐 (from column 3, under 3–0).
 
 ## Composition
 
-JIS Korean's deterministic engine, as on every candidate
-([principle 3](../PRINCIPLES.md#3-composition-jis-koreans-deterministic-engine)): a vowel with no
-initial gets an implied ㅇ, so ㆍ→ alone is 아; a vowel after a final takes it (화면 ㅣ → 화며니);
-the same vowel flick again right away puts the final back (화며니 ㅣ → 화면이); ㅘ from its key never
-combines further (고 then ㅘ → 고와).
+**The full rules and 70 test cases are in [COMPOSITION.md](COMPOSITION.md).** In short, JIS
+Korean's deterministic engine
+([principle 3](../PRINCIPLES.md#3-composition-jis-koreans-deterministic-engine)), with no
+prediction: a vowel with no initial gets an implied ㅇ, so ㆍ→ alone is 아; a vowel after a final
+takes it (화면 ㅣ → 화며니); the same vowel flick again right away puts the final back (화며니 ㅣ →
+화면이); ㅘ from its key never combines further (고 then ㅘ → 고와). Text stays unconfirmed until
+확정, space, ↵, 한A1 or a cursor move commits it.
 
 ## Typing
 

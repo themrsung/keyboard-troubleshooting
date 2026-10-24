@@ -1,5 +1,9 @@
 # Double up, aspirated left
 
+> **Dropped.** Kept for reference only. This documentation is imperfect: it may not match the
+> page, and some composition notes predate implied ㅇ and 확정. The
+> [golden layout](../../korean-flick-golden/README.md) is the reference.
+
 **From the artifact's Board 6C**, the *Dubeolsik Letter Block* draft, moved into
 [the frame](../../README.md#the-frame). **Single ↓, doubled ↑, aspirated ←**: ㄱ ↓ / ㄲ ↑ / ㅋ ←, the same for ㄷ, ㅂ and ㅈ; ㅅ ← / ㅆ →.
 

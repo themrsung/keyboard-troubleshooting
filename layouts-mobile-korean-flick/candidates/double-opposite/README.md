@@ -1,5 +1,9 @@
 # Double opposite
 
+> **Dropped.** Kept for reference only. This documentation is imperfect: it may not match the
+> page, and some composition notes predate implied ㅇ and 확정. The
+> [golden layout](../../korean-flick-golden/README.md) is the reference.
+
 **From the artifact's Board 6A**, the *Dubeolsik Letter Block* draft, moved into
 [the frame](../../README.md#the-frame). **A doubled consonant sits opposite its single**: ㄱ ← / ㄲ →, ㄷ ← / ㄸ →, ㅂ ← / ㅃ →, ㅅ ← / ㅆ →, and ㅈ ↑ / ㅉ ↓.
 

@@ -1,5 +1,9 @@
 # Double clockwise
 
+> **Dropped as a candidate:** promoted to the
+> [golden layout](../../korean-flick-golden/README.md), which is the reference. This snapshot is kept
+> as it was promoted, and its documentation is imperfect.
+
 **Promoted to [the golden layout](../../korean-flick-golden/README.md)**; this copy stays as it was
 when promoted. **From the artifact's Board 6B**, the *Dubeolsik Letter Block* draft, moved into
 [the frame](../../README.md#the-frame). **A doubled consonant sits 90° clockwise of its single**: ㄱ ← / ㄲ ↑, ㄷ ← / ㄸ ↑, ㅂ ← / ㅃ ↑, ㅅ ← / ㅆ ↑, and ㅈ → / ㅉ ↓.
