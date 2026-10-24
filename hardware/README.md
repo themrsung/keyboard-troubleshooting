@@ -9,3 +9,5 @@ Problems that first looked like input-method or keyboard faults. The first two a
   after a reboot, behind a USB-C dock's hub.
 - [hall-effect-keyboard-behind-usb-hub](hall-effect-keyboard-behind-usb-hub/README.md): a
   Magnetox XF stopped working behind a powered USB hub; another cable and port fixed it.
+- [dac-without-volume-stays-muted](dac-without-volume-stays-muted/README.md): volume up or down
+  doesn't unmute a USB DAC that has no volume control (QUAD USB). **Open.**
