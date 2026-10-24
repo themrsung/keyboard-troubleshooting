@@ -114,8 +114,10 @@ are on Fn + the keys right of Space, ー on ¥, む and ろ. JIS's 無変換 and
 Space on a JIS board, are a tap of the left Alt and Fn+Space, and カタカナ/ひらがな is Fn + the
 left Win.
 
-On the Korean side, 無変換, 変換 and カタカナ/ひらがな (`VK_NONCONVERT`, `VK_CONVERT`, and the
-JIS key's VK) are expected to do nothing; not checked yet.
+On the Korean side *(tested on Windows with the Microsoft IME Korean)*, 無変換 and 変換 do
+nothing, and カタカナ/ひらがな commits the syllable in composition, with no other side effects.
+The Korean layout (`kbd101a.dll`) gives 変換 and カタカナ/ひらがな no VK, and 無変換 VK 0xEB
+(`MapVirtualKeyEx`).
 
 **Not tested yet:** whether the Microsoft IME Japanese's modes (kana and romaji input) can be
 switched with the keys this layout already has.
