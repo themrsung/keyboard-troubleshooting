@@ -10,8 +10,8 @@ on Fn2.
   <img alt="An HHKB Studio JIS: each key with its JIS cap, JIS Korean (Mode A) and Japanese Kana legends, on the Standard, Fn1 and Fn2 layers" src="layout-light.png">
 </picture>
 
-The owner's board, for reference. The keycaps are an aftermarket set, so their legends (Control,
-Alt, Code, …) don't match what the keys do; the drawing above is authoritative.
+The owner's board, for reference, with an aftermarket keycap set: **Alt** is ⌥ Option and
+**Code** is ⌘ Command.
 
 ![The owner's HHKB Studio JIS with aftermarket keycaps: red Esc and Enter, blue Control, Alt and Code, and the red pointing stick between G, H and B](photo.jpg)
 
