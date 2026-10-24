@@ -63,6 +63,17 @@ read [CONTRIBUTING.md](CONTRIBUTING.md).
 - [macbook-jis-to-hhkb](layouts/macbook-jis-to-hhkb/README.md): a MacBook's built-in JIS keyboard
   with the HHKB Fn layer on Caps Lock (カタカナ on a tap) and on 🌐, through Karabiner-Elements.
 
+## layouts-windows-ko-kr/ — layout proposals for Windows (ko-KR)
+
+- [windows-104-key-golden](layouts-windows-ko-kr/windows-104-key-golden/README.md): the golden
+  layout for Windows with the Microsoft IME Korean, in progress, on a full-size board (Keychron C2
+  Pro), from the Windows defaults up. [Principles](layouts-windows-ko-kr/PRINCIPLES.md).
+
+## utils/ — tools
+
+- [windows-tester](utils/windows-tester/README.md): a Mac app that shows keys as Windows receives
+  them and simulates the Microsoft IME Korean, for trying Windows layouts without Windows.
+
 ## macos-input-method/ — macOS input methods (InputMethodKit)
 
 From [JIS Korean](https://github.com/team-mirae/jis-korean)'s macOS shell: an input method that
