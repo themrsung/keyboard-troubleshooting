@@ -1,4 +1,4 @@
-"""Draws the layouts in layouts/ and layouts-windows-ko-kr/: one layout.html per layout, with every
+"""Draws the layouts in layouts/, layouts-windows-ko-kr/ and layouts-hhkb-us-mac-rev2/: one layout.html per layout, with every
 key showing three legends.
 
     python3 -I layouts/render/build.py            # writes <directory>/<name>/layout.html
@@ -164,6 +164,20 @@ def hhkb_studio_jis():
     return keys
 
 
+def hhkb_jis():
+    """An HHKB JIS (Hybrid Type-S), with US QWERTY caps: the JIS-only keys, ¥ and ろ, have none."""
+    keys = place([
+        [("Escape", "Esc")] + [(f"Digit{i}", str(i)) for i in "1234567890"] + [("Minus", "-"), ("Equal", "="), ("IntlYen", ""), ("Backspace", "BS")],
+        [("Tab", "Tab", 1.5)] + [(f"Key{c}", c) for c in "QWERTYUIOP"] + [("BracketLeft", "["), ("BracketRight", "]")],
+        [("ControlLeft", "Control", 1.75)] + [(f"Key{c}", c) for c in "ASDFGHJKL"] + [("Semicolon", ";"), ("Quote", "'"), ("Backslash", "\\")],
+        [("ShiftLeft", "Shift", 2)] + [(f"Key{c}", c) for c in "ZXCVBNM"] + [("Comma", ","), ("Period", "."), ("Slash", "/"), ("IntlRo", ""), ("ArrowUp", "↑"), ("ShiftRight", "Shift")],
+        [("FnLeft", "Fn"), 0.25, ("LangKo", "カタカナ"), ("AltLeft", "Opt"), ("MetaLeft", "⌘"), ("Lang2", "英数"), ("Space", "", 2.5),
+         ("Lang1", "かな"), ("MetaRight", "⌘"), ("AltRight", "Opt"), ("FnRight", "Fn"), 0.25, ("ArrowLeft", "←"), ("ArrowDown", "↓"), ("ArrowRight", "→")],
+    ])
+    keys.append({"id": "Enter", "us": "Enter", "x": 13.5, "y": 1, "w": 1.5, "h": 2, "ell": 0.25})
+    return keys
+
+
 def numpad_al21w():
     """The SPM AL21W: a numpad with a row of four keys above it (SPM's VIA definition, split Backspace)."""
     keys = place([[("TopLeft", "Esc"), ("TopSecond", "Calc"), ("TopThird", "BS"), ("TopRight", "Fn")]])
@@ -279,6 +293,16 @@ HHKB_FN = {  # The HHKB US Fn layer, Mac extras version, by key.
     **{f"Digit{d}": fkey(i + 1) for i, d in enumerate("1234567890")}, "Minus": fkey(11), "Equal": fkey(12),
     "Backslash": fn("Ins"), "Backquote": fn("Del"), "Tab": fn("Caps"),
     "KeyI": fn("⌘⇧4", "PrtSc"), "KeyO": fn("ScrLk"), "KeyP": fn("▶︎❚❚", "Pause"),
+    "BracketLeft": fn("↑"), "Semicolon": fn("←"), "Quote": fn("→"), "Slash": fn("↓"),
+    "KeyK": fn("Home"), "KeyL": fn("PgUp"), "Comma": fn("End"), "Period": fn("PgDn"),
+    "KeyH": fn("*"), "KeyJ": fn("/"), "KeyN": fn("+"), "KeyM": fn("−"), "Enter": fn("Enter", "keypad"),
+    "KeyA": fn("Vol−"), "KeyS": fn("Vol+"), "KeyD": fn("Mute"), "KeyF": fn("⏏"),
+}
+
+
+HHKB_FN_MEASURED = {  # The stock HHKB Fn layer as measured in hhkb/key-legends, without Karabiner. Keys the two boards share.
+    "Escape": fn("Power"), **{f"Digit{d}": fkey(i + 1) for i, d in enumerate("1234567890")}, "Minus": fkey(11), "Equal": fkey(12),
+    "Tab": fn("Caps"), "KeyQ": fn("BT", "connect"), "KeyI": fn("PrtSc"), "KeyO": fn("ScrLk"), "KeyP": fn("Pause"),
     "BracketLeft": fn("↑"), "Semicolon": fn("←"), "Quote": fn("→"), "Slash": fn("↓"),
     "KeyK": fn("Home"), "KeyL": fn("PgUp"), "Comma": fn("End"), "Period": fn("PgDn"),
     "KeyH": fn("*"), "KeyJ": fn("/"), "KeyN": fn("+"), "KeyM": fn("−"), "Enter": fn("Enter", "keypad"),
@@ -437,6 +461,59 @@ def layouts():
         ],
     }
 
+    keys = hhkb_jis()
+    jis_lang = {"LangKo": lang("カタカナ"), "Lang2": lang("英数"), "Lang1": lang("かな")}
+    out["hhkb-jis"] = {
+        "dir": "hhkb", "path": "key-legends/hhkb-jis",
+        "title": "HHKB Hybrid Type-S JIS, as measured",
+        "lede": "What each key sends on macOS in Mac Mode (DIP switches 1 and 5 on), with the owner's bottom row: one key per language, Opt and ⌘ on both sides. From hhkb/key-legends/hhkb-jis.md.",
+        "cap_legend": "the US QWERTY key with the same code (none on ¥ and ろ)",
+        "keys": keys,
+        "layers": [
+            ("Standard", base_layer(keys, {**jis_lang, "FnLeft": lang("Fn"), "FnRight": lang("Fn"), "Space": mod("")})),
+            ("Fn (hold either Fn)", fn_layer(keys, {
+                **HHKB_FN_MEASURED, "IntlYen": fn("Ins"), "Backspace": fn("Del"),
+                "ArrowUp": fn("Shift", "right"), "ArrowLeft": fn("Del"), "ArrowDown": fn("⌘", "right"), "ArrowRight": fn("Control", "right"),
+                "FnLeft": lang("Fn"), "FnRight": lang("Fn"),
+            })),
+        ],
+    }
+
+    keys = hhkb()
+    out["hhkb-us"] = {
+        "dir": "hhkb", "path": "key-legends/hhkb-us",
+        "title": "HHKB Professional BT US, as measured",
+        "lede": "What each key sends on macOS in Mac Mode (DIP switches 2 and 6 on), stock: ◇ is Opt and ◆ is ⌘. From hhkb/key-legends/hhkb-us.md.",
+        "keys": keys,
+        "layers": [
+            ("Standard", base_layer(keys, {"Fn": lang("Fn"), "AltLeft": mod("Opt"), "MetaLeft": mod("⌘"), "MetaRight": mod("⌘"),
+                                           "AltRight": mod("Opt"), "Space": mod("")})),
+            ("Fn (hold Fn)", fn_layer(keys, {
+                **HHKB_FN_MEASURED, "Backslash": fn("Ins"), "Backquote": fn("Del"), "Backspace": fn("NumLk"), "Fn": lang("Fn"),
+            })),
+        ],
+    }
+
+    keys = hhkb()
+    bt_lang = {"AltLeft": lang("カタカナ", "⌥"), "MetaLeft": lang("英数", "⌘"), "MetaRight": lang("かな", "⌘")}
+    out["hhkb-us-mac-golden-rev2"] = {
+        "dir": "layouts-hhkb-us-mac-rev2",
+        "title": "HHKB US on a Mac, golden rev2",
+        "lede": "The measured HHKB Professional BT (US) through Karabiner-Elements, Bluetooth only: one key per language on a tap of left ◇, left ◆ and right ◆, ろ on a tap of right Shift and ¥ on `. Right ◇ and the firmware Fn layer are as measured.",
+        "keys": keys,
+        "layers": [
+            ("Standard", base_layer(keys, {
+                **bt_lang, "AltRight": mod("⌥"), "Fn": lang("Fn"), "Space": mod(""),
+                "ShiftRight": tap("IntlRo", "Shift"), "Backquote": send("IntlYen"),
+            })),
+            ("Fn (hold Fn)", fn_layer(keys, {
+                **HHKB_FN_MEASURED, "KeyI": fn("⌘⇧4", "PrtSc"),
+                "Backslash": fn("Ins"), "Backquote": fn("Del"), "Backspace": fn("NumLk"), "Fn": lang("Fn"),
+                **bt_lang, "ShiftRight": tap("IntlRo", "Shift"),
+            })),
+        ],
+    }
+
     keys = macbook()
     out["macbook-us-to-jis"] = {
         "title": "MacBook US as JIS",
@@ -526,9 +603,10 @@ def main():
                 "footer": layout.get("footer", "Mode A legends from JIS Korean's spec §3 (github.com/team-mirae/jis-korean); Kana legends are the JIS kana layout. ")}
         html = template.replace("{{TITLE}}", layout["title"]).replace("{{DATA}}", json.dumps(data, ensure_ascii=False))
         directory = layout.get("dir", "layouts")
-        with open(os.path.join(os.path.dirname(LAYOUTS), directory, name, "layout.html"), "w", encoding="utf-8") as f:
+        page = layout["path"] + ".html" if "path" in layout else f"{name}/layout.html"
+        with open(os.path.join(os.path.dirname(LAYOUTS), directory, page), "w", encoding="utf-8") as f:
             f.write(html)
-        print(f"{directory}/{name}/layout.html")
+        print(f"{directory}/{page}")
 
 
 if __name__ == "__main__":

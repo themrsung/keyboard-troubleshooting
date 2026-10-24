@@ -1,0 +1,211 @@
+{
+  "title": "HHKB Professional BT (US), golden rev2: one key per language, ろ and ¥, for JIS Korean",
+  "rules": [
+    {
+      "description": "HHKB-BT: mod-taps (LAlt=カタカナ, LCmd=英数, RCmd=かな, RShift=ろ w/ \\ rule) + ` → ¥ (ー in kana)",
+      "manipulators": [
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "vendor_id": 1278,
+                  "product_id": 514
+                }
+              ]
+            }
+          ],
+          "from": {
+            "key_code": "left_option",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "left_option"
+            }
+          ],
+          "to_if_alone": [
+            {
+              "key_code": "japanese_pc_katakana"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "vendor_id": 1278,
+                  "product_id": 514
+                }
+              ]
+            }
+          ],
+          "from": {
+            "key_code": "left_command",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "left_command"
+            }
+          ],
+          "to_if_alone": [
+            {
+              "key_code": "japanese_eisuu"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "vendor_id": 1278,
+                  "product_id": 514
+                }
+              ]
+            }
+          ],
+          "from": {
+            "key_code": "right_command",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "right_command"
+            }
+          ],
+          "to_if_alone": [
+            {
+              "key_code": "japanese_kana"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "vendor_id": 1278,
+                  "product_id": 514
+                }
+              ]
+            },
+            {
+              "type": "input_source_unless",
+              "input_sources": [
+                {
+                  "language": "^ja$"
+                },
+                {
+                  "input_source_id": "^me\\.sjun\\.inputmethod\\.JISKorean(\\..*)?$"
+                }
+              ]
+            }
+          ],
+          "from": {
+            "key_code": "right_shift",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "right_shift"
+            }
+          ],
+          "to_if_alone": [
+            {
+              "key_code": "international3",
+              "modifiers": [
+                "left_option"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "vendor_id": 1278,
+                  "product_id": 514
+                }
+              ]
+            }
+          ],
+          "from": {
+            "key_code": "right_shift",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "right_shift"
+            }
+          ],
+          "to_if_alone": [
+            {
+              "key_code": "international1"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "vendor_id": 1278,
+                  "product_id": 514
+                }
+              ]
+            }
+          ],
+          "from": {
+            "key_code": "grave_accent_and_tilde",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "international3"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
