@@ -34,6 +34,7 @@ backlight and NKRO controls on the letters.
 |---|---|---|---|
 | 2 | Bottom left (5,0) | Left Control | Fn (`MO(3)`) |
 | 2 | Caps Lock (3,0) | Caps Lock | Left Control |
+| 2 | Left Alt (5,2) | Left Alt | **無変換** on a tap, Alt on a hold (`LALT_T(KC_INT5)`, 0x248B) |
 | 2 | Right of Print Screen (0,15) | Cortana (Keychron's 0x7F0A) | Scroll Lock |
 | 2 | The light key, top right (0,16) | Backlight effect (`RGB_MOD`) | Pause |
 | 2 | Right of right Win (5,12) | Fn (`MO(3)`) | Right Control |
@@ -43,10 +44,13 @@ backlight and NKRO controls on the letters.
 | 3 | A S D F (3,1–3,4) | Backlight controls | Volume down, volume up, mute, eject |
 | 3 | N (4,7) | NKRO on/off (`NK_TOGG`) | keypad + (NKRO moves to B) |
 | 3 | B (4,6) | Transparent | NKRO on/off |
+| 3 | Space (5,6) | Transparent | **変換** (`KC_INT4`) |
+| 3 | Left Alt (5,2) | Transparent | **無変換** (`KC_INT5`), as on a tap without Fn |
+| 3 | X (4,3) | Transparent | Left Alt |
 | 3 | The rest of the HHKB Fn layer | Transparent | See below |
 
-The bottom row is now Fn · Win · Alt · Space · Alt · Win · Control · Fn/한자, with Fn at both
-ends. The Fn layer's own number on this board is 3, as 0 and 1 belong to the Mac side. The top
+The bottom row is now Fn · Win · Alt/無変換 · Space · Alt · Win · Control · Fn/한자, with Fn at
+both ends, and Fn+Space is 変換. The Fn layer's own number on this board is 3, as 0 and 1 belong to the Mac side. The top
 right is now Print Screen · Scroll Lock · Pause, as on a stock 104-key board. The backlight is
 still turned on and off with Fn+Pause, dimmed and brightened with Fn+F5 / F6, and its effects
 are on Fn+Print Screen / Scroll Lock.
@@ -61,6 +65,9 @@ The HHKB US Fn layer, laid out as on the macOS
 | 1 … 5 (RHC), 6 … 9, 0 - = (RHC) | F1 … F12 |
 | Backspace / `\` | Delete / Insert |
 | Tab | Caps Lock |
+| Space | **変換** (`KC_INT4`) |
+| Left Alt | **無変換** (`KC_INT5`) |
+| X | Left Alt, since the left Alt key is 無変換 here |
 | I / O / P | Print Screen / Scroll Lock / Play-Pause |
 | [ ; ' / | ↑ ← → ↓ |
 | K L , . | Home, Page Up, End, Page Down |
@@ -99,7 +106,11 @@ Win+Space or a mouse click on the language bar.
 
 This layout respects the first pair, with 한/영 and 한자 where the Korean IME expects them, and lets
 the second work properly by giving every JIS kana key a key of its own: the three a US board lacks
-are on Fn + the keys right of Space, ー on ¥, む and ろ.
+are on Fn + the keys right of Space, ー on ¥, む and ろ. JIS's 無変換 and 変換, either side of
+Space on a JIS board, are a tap of the left Alt and Fn+Space.
+
+On the Korean side, 無変換 and 変換 (`VK_NONCONVERT`, `VK_CONVERT`) are expected to do nothing; not
+checked yet.
 
 **Not tested yet:** whether the Microsoft IME Japanese's modes (kana and romaji input) can be
 switched with the keys this layout already has.
