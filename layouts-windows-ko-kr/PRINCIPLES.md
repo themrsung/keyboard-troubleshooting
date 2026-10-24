@@ -78,7 +78,8 @@ layouts in [`layouts/`](../layouts/PRINCIPLES.md):
 - **Control left of A.**
 - **Fn at both ends of the bottom row**, as Fn1 is on the HHKB Studio JIS.
 - **JIS's 無変換 and 変換 either side of Space:** 無変換 on a tap of the left Alt and on Fn + the
-  left Alt, 変換 on Fn+Space. With the left Alt taken on the Fn layer, Fn+X is Alt there.
+  left Alt, 変換 on Fn+Space, and カタカナ/ひらがな on Fn + the left Win. With the left Alt and Win
+  taken on the Fn layer, Fn+X is Alt and Fn+Z is Win there.
 - **JIS's extra keys right of Space, on the Fn layer:** Fn+Right Alt is ¥, Fn+Right Win is む
   (JIS's ] key) and Fn+Right Control is ろ. As on the macOS
   [us-ansi-104-key-to-jis](../layouts/us-ansi-104-key-to-jis/README.md), the keys right of Space
@@ -107,7 +108,7 @@ basics should still work, usually defined as:
   | Layer | Control | Alt | System (Windows) | Fn |
   |---|---|---|---|---|
   | Standard | left of A, and right Control | Alt, both sides (left: 無変換 on a tap; right: 한/영 on Type 1) | Win, both sides | Fn, both ends of the bottom row |
-  | Fn | left of A (right: ろ) | Fn+X (left Alt: 無変換; right: ¥) | left Win (right: む) | Fn (its own layer is the exception) |
+  | Fn | left of A (right: ろ) | Fn+X (left Alt: 無変換; right: ¥) | Fn+Z (left Win: カタカナ; right: む) | Fn (its own layer is the exception) |
 
 - **Standard keycodes only,** so far: everything the keyboard sends is an ordinary USB key.
 

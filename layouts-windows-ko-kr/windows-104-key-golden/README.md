@@ -47,6 +47,8 @@ backlight and NKRO controls on the letters.
 | 3 | Space (5,6) | Transparent | **変換** (`KC_INT4`) |
 | 3 | Left Alt (5,2) | Transparent | **無変換** (`KC_INT5`), as on a tap without Fn |
 | 3 | X (4,3) | Transparent | Left Alt |
+| 3 | Left Win (5,1) | Transparent | **カタカナ/ひらがな** (`KC_INT2`) |
+| 3 | Z (4,2) | Transparent | Left Win |
 | 3 | The rest of the HHKB Fn layer | Transparent | See below |
 
 The bottom row is now Fn · Win · Alt/無変換 · Space · Alt · Win · Control · Fn/한자, with Fn at
@@ -68,6 +70,8 @@ The HHKB US Fn layer, laid out as on the macOS
 | Space | **変換** (`KC_INT4`) |
 | Left Alt | **無変換** (`KC_INT5`) |
 | X | Left Alt, since the left Alt key is 無変換 here |
+| Left Win | **カタカナ/ひらがな** (`KC_INT2`) |
+| Z | Left Win, since the left Win key is カタカナ here |
 | I / O / P | Print Screen / Scroll Lock / Play-Pause |
 | [ ; ' / | ↑ ← → ↓ |
 | K L , . | Home, Page Up, End, Page Down |
@@ -107,10 +111,11 @@ Win+Space or a mouse click on the language bar.
 This layout respects the first pair, with 한/영 and 한자 where the Korean IME expects them, and lets
 the second work properly by giving every JIS kana key a key of its own: the three a US board lacks
 are on Fn + the keys right of Space, ー on ¥, む and ろ. JIS's 無変換 and 変換, either side of
-Space on a JIS board, are a tap of the left Alt and Fn+Space.
+Space on a JIS board, are a tap of the left Alt and Fn+Space, and カタカナ/ひらがな is Fn + the
+left Win.
 
-On the Korean side, 無変換 and 変換 (`VK_NONCONVERT`, `VK_CONVERT`) are expected to do nothing; not
-checked yet.
+On the Korean side, 無変換, 変換 and カタカナ/ひらがな (`VK_NONCONVERT`, `VK_CONVERT`, and the
+JIS key's VK) are expected to do nothing; not checked yet.
 
 **Not tested yet:** whether the Microsoft IME Japanese's modes (kana and romaji input) can be
 switched with the keys this layout already has.
@@ -120,3 +125,11 @@ switched with the keys this layout already has.
 [windows-tester](../../utils/windows-tester/README.md) shows each key and combination as Windows
 would receive it, and simulates the Microsoft IME Korean, so the layout can be tried without a
 Windows machine. It's a simulation: confirm on Windows before calling something done.
+
+## Autnor's notes
+
+This finally got me typing on a text editor manually instead of prompting Claude. Why is
+Japanese かな input so bad on Windows??? I will complete [fkeyime](https://github.com/themrsung/fkeyime) soon.
+
+First of all, it needs three lang keys to work properly, its predictions are terrible,
+and henkaku/zenkaku is **「transient」**！！！

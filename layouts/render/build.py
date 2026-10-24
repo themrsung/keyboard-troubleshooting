@@ -505,7 +505,7 @@ def layouts():
                 "Backquote": {"kind": "blank"}, "Backspace": fn("Del"), "Backslash": fn("Ins"),
                 "KeyI": fn("PrtSc"), "KeyP": fn("▶︎❚❚"), "KeyB": fn("NKRO", rhc + " on/off"),
                 "ControlLeft": lang("Fn"), "ControlRight": lang("Fn"), "Space": lang("変換"),
-                "AltLeft": lang("無変換"), "KeyX": fn("Alt", "left"),
+                "AltLeft": lang("無変換"), "KeyX": fn("Alt", "left"), "MetaLeft": lang("カタカナ"), "KeyZ": fn("Win", "left"),
                 "AltRight": send("IntlYen"), "MetaRight": send("Backslash"), "FnRight": send("IntlRo"),
             })),
         ],
