@@ -32,6 +32,18 @@ With right Shift removed (below):
 
 `LGUI_T(KC_LNG2)` failed the same way on two different keys, so it isn't one switch.
 
+Mod-tap with no modifier, on the right Shift key (matrix 4,13), watched in Karabiner-EventViewer:
+
+| Keycode | Action | Expected | Got |
+|---|---|---|---|
+| `MT(0, KC_INT1)` `0x2087` | tap (104 ms) | ろ (`\`) | right Shift down, ろ down 5 ms later, both up on release: `_` |
+| `MT(0, KC_INT1)` `0x2087` | hold (481 ms) | right Shift, no ろ | the same: right Shift, then ろ 5 ms later, held until release |
+
+Only right Shift was reported as a modifier, with no Ctrl or left Shift. That fits fault 1 below: an
+upper byte of 0x20 means right Shift and nothing else. ろ came 5 ms after key-down even on the
+481 ms press, well past the 200 ms tapping term, so the firmware sends both keys at once and never
+decides between tap and hold.
+
 Working on the same keyboard: plain keys, modifier combos such as `LSG(KC_4)` (⌘⇧4),
 `LT(1,KC_KANA)` (tap and hold both right), `MO(1)`, `KC_INT1`–`KC_INT3`, `KC_LNG1`, `KC_LNG2`.
 
@@ -44,12 +56,14 @@ Two separate faults.
    **right Shift**, and 0x20 is set in every mod-tap keycode, because it's the bit that marks the
    mod-tap range. So the firmware seems to apply the upper byte as a HID modifier byte instead of
    QMK's 5-bit modifier field (`& 0x1F`).
-2. **The modifier on tap.** QMK sends only the tap key on a tap. This firmware seems to press the
-   modifier when the key goes down and keep it held while it sends the tap key, so a tap of
-   `LCTL_T(KC_Z)` is ⌃Z.
+2. **No tap or hold.** QMK waits to see whether the key is tapped or held, then sends the tap key
+   or the modifier, never both. This firmware sends the modifier and the tap key together as soon
+   as the key goes down, and releases both when it comes up, much like a modifier combo such as
+   `LSFT(kc)`. So a tap of `LCTL_T(KC_Z)` is ⌃Z, and a hold sends the tap key as well. The
+   `MT(0, KC_INT1)` timing above shows this on one keycode, and the other results fit it.
 
-The second fault is the one that can't be worked around: even with right Shift removed, a tap still
-carries the modifier.
+The second fault is the one that can't be worked around: even with right Shift removed, or with
+right Shift as the only modifier, every press sends the modifier and the tap key together.
 
 ## What was tried
 
@@ -68,6 +82,11 @@ carries the modifier.
 
   The keyboard's right Shift still typed capitals (through `KC_LSFT`), but taps still went out with
   the modifier (the second table above).
+- **Making use of the bug for a right Shift mod-tap:** `MT(0, kc)` (`0x2000 | kc`, no modifier
+  bits) gives a clean right Shift, because the firmware reads 0x20 as right Shift. (`RSFT_T(kc)`
+  would be `0x32xx`, which would read as right Shift + right Ctrl + left Shift.) Tried as
+  `MT(0, KC_INT1)` on the right Shift key, to get ろ on tap and Shift on hold. Hold worked, but
+  every press, short or long, also sent ろ, so a tap typed `_` (the third table above).
 
 ## Workarounds
 
