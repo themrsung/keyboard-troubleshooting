@@ -10,6 +10,11 @@ on Fn2.
   <img alt="An HHKB Studio JIS: each key with its JIS cap, JIS Korean (Mode A) and Japanese Kana legends, on the Standard, Fn1 and Fn2 layers" src="layout-light.png">
 </picture>
 
+The owner's board, for reference, with an aftermarket keycap set: **Alt** is ⌥ Option and
+**Code** is ⌘ Command.
+
+![The owner's HHKB Studio JIS with aftermarket keycaps: red Esc and Enter, blue Control, Alt and Code, and the red pointing stick between G, H and B](photo.jpg)
+
 The keymap is [hhkb-studio-golden.hks](hhkb-studio-golden.hks), an export from the HHKB Studio
 Keymap Tool, in **Profile1**; the drawing is [layout.html](layout.html). Load the file in the tool
 and write it to the keyboard. **Importing replaces all four profiles**, so export your own first if
