@@ -17,6 +17,7 @@ iTerm2 and Discord ignored the take-back, so the held letter stayed in front of 
 
 ## What replaced it
 
-⌥ + a letter shows the variants as marked text in a row with nothing typed first (1–9 and 0 pick,
-Enter commits, Esc and Backspace cancel). `jk_take_back` was removed. Holding a key repeats it. In
+⌥ (`KeyUniversalAuxiliary`) + a letter shows the variants as marked text in a row with nothing
+typed first (1–9 and 0 pick, Enter (`KeyISOEnter`) commits, Esc (`KeyEscape`) and Backspace
+(`KeyDeleteLeft`) cancel). `jk_take_back` was removed. Holding a key repeats it. In
 terminals ⌥ goes to the app untouched (readline).

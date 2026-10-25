@@ -33,9 +33,9 @@ The driver has its own QMK keycode tables, chosen by the protocol version:
 | `default`, `v10` | 0x6000 | 0x4000 | 0x5100 |
 | `v11`, `v12` | 0x2000 | 0x4000 | 0x5220 |
 
-So for protocol 12 it's QMK's current numbering, which the XF's stored keymap confirms (`MO(1)` is
-0x5221). Modifier bits are QMK's (`MOD_LCTL` 1, `MOD_LSFT` 2, `MOD_LALT` 4, `MOD_LGUI` 8,
-right-hand +16). The firmware doesn't act on mod-tap the way QMK does: see
+So for protocol 12 it's QMK's current numbering, which the XF's stored keymap confirms (`MO(1)`,
+`KeyMomentaryLayerOne`, is 0x5221). Modifier bits are QMK's (`MOD_LCTL` 1, `MOD_LSFT` 2,
+`MOD_LALT` 4, `MOD_LGUI` 8, right-hand +16). The firmware doesn't act on mod-tap the way QMK does: see
 [mod-tap-rshift-bug](../mod-tap-rshift-bug/README.md).
 
 ## What the driver's own UI offers
@@ -45,9 +45,10 @@ right-hand +16). The firmware doesn't act on mod-tap the way QMK does: see
 - **ModTap/TGL** advanced keys on magnetic boards: up to 5 keys, 10–1000 ms. Hold and tap are each
   one HID usage from a fixed 104-key ANSI list (modifiers, F1–F12; no layers, 한영/한자 or
   International keys).
-- The key picker has 한영 (`KC_LNG1`), 한자 (`KC_LNG2`) and F13–F24, but not `KC_INT1`–`KC_INT3`
-  (ろ, カタカナ, ¥), 変換 or 無変換. The firmware sends those fine when written another way (VIA, or
-  [raw HID](../../via/raw-hid-keymap-editing/README.md)).
+- The key picker has 한영 (`KC_LNG1`, `KeyKTSHangulToggle`), 한자 (`KC_LNG2`, `KeyKTSHanja`) and
+  F13–F24, but not `KC_INT1`–`KC_INT3` (ろ, カタカナ, ¥: `KeyRo`, `KeyJISKLangKorean`,
+  `KeyLongKatakana`), 変換 or 無変換 (`KeyJISHenkan`, `KeyJISMuhenkan`). The firmware sends those
+  fine when written another way (VIA, or [raw HID](../../via/raw-hid-keymap-editing/README.md)).
 - Feature tiers by firmware version, e.g. SmartTap allows 2 keys, 4 from 3.7.1, and 5 from 5.9.2.
 
 ## Definitions

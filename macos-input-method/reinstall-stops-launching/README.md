@@ -14,8 +14,9 @@ commits [`3feec68`](https://github.com/team-mirae/jis-korean/commit/3feec68),
 - With JIS Korean selected, typing gave Latin letters (the previous layout, ABC).
 - No `JISKorean` process, no crash report, nothing in the input method's own log.
 - The input menu's JIS Korean section was greyed out with a dotted placeholder.
-- `make install`, `make uninstall && make && make install`, switching with F18 (Hammerspoon) or
-  Ctrl+Space: none helped.
+- `make install`, `make uninstall && make && make install`, switching with F18
+  (`KeyFunctionEighteen`, through Hammerspoon) or Ctrl+Space (`KeyUniversalControl` +
+  `KeySpacebar`): none helped.
 
 ## How a launch looks when it works (from the unified log)
 

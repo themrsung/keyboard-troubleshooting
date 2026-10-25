@@ -1,7 +1,7 @@
 """Draws the layouts in layouts/, layouts-windows-ko-kr/ and layouts-hhkb-us-mac-rev2/: one layout.html per layout, with every
 key showing three legends.
 
-    python3 -I layouts/render/build.py            # writes <directory>/<name>/layout.html
+    python3 -B layouts/render/build.py            # writes <directory>/<name>/layout.html
     sh layouts/render/render.sh                   # and layout-light.png / layout-dark.png (Chrome)
 
 Each key shows its US QWERTY cap (top left), what it types in Korean (bottom left, Shift above) and
@@ -71,6 +71,12 @@ US.update({"Backquote": "`", "Minus": "-", "Equal": "=", "BracketLeft": "[", "Br
 
 
 # --- Geometry: rows of (key id, US cap, width); a number alone is a gap. ---
+# A key's id is its browser KeyboardEvent.code where it has one (the MODE_A / KANA / DUBEOLSIK / US
+# dicts are keyed by these codes). Keys without one of their own use the repository's canonical name
+# (conventions/keynames/REV1-20261025/KEYNAMES.md): KeyHHKBLeftFunction, KeyHHKBRightFunction,
+# KeyHHKBUSFunction, KeyHHKBFunctionTwo, KeyJISKLangKorean, KeyMACGlobe, KeyMACTouchID,
+# KeyLeftMouseButton, KeyRightMouseButton, KeyNumpadTopOne to KeyNumpadTopFour, and
+# KeyWINMenu (the Keychron's Fn, in the Menu key's place).
 
 def place(rows, y0=0.0, x0=0.0, row_height=1.0):
     keys = []
@@ -134,7 +140,7 @@ def keychron_c2_pro():
     for k in keys:
         k["us"] = caps.get(k["id"], k["us"])
         if k["id"] == "ContextMenu":
-            k["id"] = "FnRight"
+            k["id"] = "KeyWINMenu"
     return keys
 
 
@@ -143,21 +149,21 @@ def hhkb():
         [("Escape", "Esc")] + [(f"Digit{i}", str(i)) for i in "1234567890"] + [("Minus", "-"), ("Equal", "="), ("Backslash", "\\"), ("Backquote", "`")],
         [("Tab", "Tab", 1.5)] + [(f"Key{c}", c) for c in "QWERTYUIOP"] + [("BracketLeft", "["), ("BracketRight", "]"), ("Backspace", "Delete", 1.5)],
         [("ControlLeft", "Control", 1.75)] + [(f"Key{c}", c) for c in "ASDFGHJKL"] + [("Semicolon", ";"), ("Quote", "'"), ("Enter", "Return", 2.25)],
-        [("ShiftLeft", "Shift", 2.25)] + [(f"Key{c}", c) for c in "ZXCVBNM"] + [("Comma", ","), ("Period", "."), ("Slash", "/"), ("ShiftRight", "Shift", 1.75), ("Fn", "Fn")],
+        [("ShiftLeft", "Shift", 2.25)] + [(f"Key{c}", c) for c in "ZXCVBNM"] + [("Comma", ","), ("Period", "."), ("Slash", "/"), ("ShiftRight", "Shift", 1.75), ("KeyHHKBUSFunction", "Fn")],
         [1.5, ("AltLeft", "◇"), ("MetaLeft", "◆", 1.5), ("Space", "", 6), ("MetaRight", "◆", 1.5), ("AltRight", "◇")],
     ])
 
 
 def hhkb_studio_jis():
-    """The HHKB Studio JIS: caps are JIS (the id is still the key's code), the pointing-stick buttons below Space."""
+    """The HHKB Studio JIS: caps are JIS (the id is still the key's code, or its canonical name), the pointing-stick buttons below Space."""
     keys = place([
         [("Escape", "Esc")] + [(f"Digit{i}", str(i)) for i in "1234567890"] + [("Minus", "-"), ("Equal", "^"), ("IntlYen", "¥"), ("Backspace", "BS")],
         [("Tab", "Tab", 1.5)] + [(f"Key{c}", c) for c in "QWERTYUIOP"] + [("BracketLeft", "@"), ("BracketRight", "[")],
         [("ControlLeft", "Control", 1.75)] + [(f"Key{c}", c) for c in "ASDFGHJKL"] + [("Semicolon", ";"), ("Quote", ":"), ("Backslash", "]")],
         [("ShiftLeft", "Shift", 2)] + [(f"Key{c}", c) for c in "ZXCVBNM"] + [("Comma", ","), ("Period", "."), ("Slash", "/"), ("IntlRo", "\\"), ("ArrowUp", "↑"), ("ShiftRight", "Shift")],
-        [("Fn1", "Fn1"), 0.25, ("HankakuZenkaku", "半/全"), ("AltLeft", "Opt"), ("MetaLeft", "⌘"), ("Lang2", "英数"), ("Space", "", 2.5),
-         ("Lang1", "かな"), ("MetaRight", "⌘"), ("AltRight", "Opt"), ("Fn1Right", "Fn1"), 0.25, ("ArrowLeft", "←"), ("ArrowDown", "↓"), ("ArrowRight", "→")],
-        [4.75, ("LB", "LB", 1.5), ("Fn2", "Fn2"), ("RB", "RB", 1.5)],
+        [("KeyHHKBLeftFunction", "Fn1"), 0.25, ("KeyJISKLangKorean", "半/全"), ("AltLeft", "Opt"), ("MetaLeft", "⌘"), ("Lang2", "英数"), ("Space", "", 2.5),
+         ("Lang1", "かな"), ("MetaRight", "⌘"), ("AltRight", "Opt"), ("KeyHHKBRightFunction", "Fn1"), 0.25, ("ArrowLeft", "←"), ("ArrowDown", "↓"), ("ArrowRight", "→")],
+        [4.75, ("KeyLeftMouseButton", "LB", 1.5), ("KeyHHKBFunctionTwo", "Fn2"), ("KeyRightMouseButton", "RB", 1.5)],
     ])
     # JIS's Enter: 1.5 wide on the Tab row, 1.25 on the Control row.
     keys.append({"id": "Enter", "us": "Enter", "x": 13.5, "y": 1, "w": 1.5, "h": 2, "ell": 0.25})
@@ -171,8 +177,8 @@ def hhkb_jis():
         [("Tab", "Tab", 1.5)] + [(f"Key{c}", c) for c in "QWERTYUIOP"] + [("BracketLeft", "["), ("BracketRight", "]")],
         [("ControlLeft", "Control", 1.75)] + [(f"Key{c}", c) for c in "ASDFGHJKL"] + [("Semicolon", ";"), ("Quote", "'"), ("Backslash", "\\")],
         [("ShiftLeft", "Shift", 2)] + [(f"Key{c}", c) for c in "ZXCVBNM"] + [("Comma", ","), ("Period", "."), ("Slash", "/"), ("IntlRo", ""), ("ArrowUp", "↑"), ("ShiftRight", "Shift")],
-        [("FnLeft", "Fn"), 0.25, ("LangKo", "カタカナ"), ("AltLeft", "Opt"), ("MetaLeft", "⌘"), ("Lang2", "英数"), ("Space", "", 2.5),
-         ("Lang1", "かな"), ("MetaRight", "⌘"), ("AltRight", "Opt"), ("FnRight", "Fn"), 0.25, ("ArrowLeft", "←"), ("ArrowDown", "↓"), ("ArrowRight", "→")],
+        [("KeyHHKBLeftFunction", "Fn"), 0.25, ("KeyJISKLangKorean", "カタカナ"), ("AltLeft", "Opt"), ("MetaLeft", "⌘"), ("Lang2", "英数"), ("Space", "", 2.5),
+         ("Lang1", "かな"), ("MetaRight", "⌘"), ("AltRight", "Opt"), ("KeyHHKBRightFunction", "Fn"), 0.25, ("ArrowLeft", "←"), ("ArrowDown", "↓"), ("ArrowRight", "→")],
     ])
     keys.append({"id": "Enter", "us": "Enter", "x": 13.5, "y": 1, "w": 1.5, "h": 2, "ell": 0.25})
     return keys
@@ -180,7 +186,7 @@ def hhkb_jis():
 
 def numpad_al21w():
     """The SPM AL21W: a numpad with a row of four keys above it (SPM's VIA definition, split Backspace)."""
-    keys = place([[("TopLeft", "Esc"), ("TopSecond", "Calc"), ("TopThird", "BS"), ("TopRight", "Fn")]])
+    keys = place([[("KeyNumpadTopOne", "Esc"), ("KeyNumpadTopTwo", "Calc"), ("KeyNumpadTopThree", "BS"), ("KeyNumpadTopFour", "Fn")]])
     keys += place([
         [("NumLock", "Num"), ("NumpadDivide", "/"), ("NumpadMultiply", "*"), ("NumpadSubtract", "-")],
         [("Numpad7", "7"), ("Numpad8", "8"), ("Numpad9", "9"), ("NumpadAdd", "+", 1, 2)],
@@ -192,13 +198,13 @@ def numpad_al21w():
 
 
 def macbook():
-    keys = place([[("Escape", "esc", 1.5)] + [(f"F{i}", f"F{i}") for i in range(1, 13)] + [("TouchID", "")]])
+    keys = place([[("Escape", "esc", 1.5)] + [(f"F{i}", f"F{i}") for i in range(1, 13)] + [("KeyMACTouchID", "")]])
     keys += place([
         [("Backquote", "`")] + [(f"Digit{i}", str(i)) for i in "1234567890"] + [("Minus", "-"), ("Equal", "="), ("Backspace", "delete", 1.5)],
         [("Tab", "tab", 1.5)] + [(f"Key{c}", c) for c in "QWERTYUIOP"] + [("BracketLeft", "["), ("BracketRight", "]"), ("Backslash", "\\")],
         [("CapsLock", "caps lock", 1.75)] + [(f"Key{c}", c) for c in "ASDFGHJKL"] + [("Semicolon", ";"), ("Quote", "'"), ("Enter", "return", 1.75)],
         [("ShiftLeft", "shift", 2.25)] + [(f"Key{c}", c) for c in "ZXCVBNM"] + [("Comma", ","), ("Period", "."), ("Slash", "/"), ("ShiftRight", "shift", 2.25)],
-        [("Fn", "🌐"), ("ControlLeft", "control"), ("AltLeft", "option"), ("MetaLeft", "command", 1.25), ("Space", "", 5),
+        [("KeyMACGlobe", "🌐"), ("ControlLeft", "control"), ("AltLeft", "option"), ("MetaLeft", "command", 1.25), ("Space", "", 5),
          ("MetaRight", "command", 1.25), ("AltRight", "option")],
     ], y0=1)
     keys += [
@@ -213,14 +219,14 @@ def macbook():
 def macbook_jis():
     """A MacBook's built-in JIS keyboard: caps are JIS, Caps Lock bottom left, fn bottom right, ISO Enter."""
     fw = 12.75 / 13  # F1–F12 and Touch ID share what's left of the row after a Shift-wide esc.
-    keys = place([[("Escape", "esc", 1.75)] + [(f"F{i}", f"F{i}", fw) for i in range(1, 13)] + [("TouchID", "", fw)]])
+    keys = place([[("Escape", "esc", 1.75)] + [(f"F{i}", f"F{i}", fw) for i in range(1, 13)] + [("KeyMACTouchID", "", fw)]])
     keys += place([
         [("Digit1", "1", 1.25)] + [(f"Digit{i}", str(i)) for i in "234567890"] + [("Minus", "-"), ("Equal", "^"), ("IntlYen", "¥"), ("Backspace", "delete", 1.25)],
         [("Tab", "tab")] + [(f"Key{c}", c) for c in "QWERTYUIOP"] + [("BracketLeft", "@"), ("BracketRight", "[")],
         [("ControlLeft", "control", 1.25)] + [(f"Key{c}", c) for c in "ASDFGHJKL"] + [("Semicolon", ";"), ("Quote", ":"), ("Backslash", "]")],
         [("ShiftLeft", "shift", 1.75)] + [(f"Key{c}", c) for c in "ZXCVBNM"] + [("Comma", ","), ("Period", "."), ("Slash", "/"), ("IntlRo", "\\"), ("ShiftRight", "shift", 1.75)],
         [("CapsLock", "caps"), ("AltLeft", "option"), ("MetaLeft", "command", 1.25), ("Lang2", "英数", 1.25), ("Space", "", 3.5),
-         ("Lang1", "かな", 1.25), ("MetaRight", "command", 1.25), ("Fn", "🌐")],
+         ("Lang1", "かな", 1.25), ("MetaRight", "command", 1.25), ("KeyMACGlobe", "🌐")],
     ], y0=1)
     # ISO Enter: 1.5 wide on the tab row, 1.25 on the control row.
     keys.append({"id": "Enter", "us": "return", "x": 13, "y": 2, "w": 1.5, "h": 2, "ell": 0.25})
@@ -311,7 +317,7 @@ HHKB_FN_MEASURED = {  # The stock HHKB Fn layer as measured in hhkb/key-legends,
 
 
 STUDIO_LANG = {  # Set on every layer of the golden layout, so they work while Fn1 or Fn2 is held.
-    "HankakuZenkaku": lang("カタカナ"), "Lang2": lang("英数"), "Lang1": lang("かな"),
+    "KeyJISKLangKorean": lang("カタカナ"), "Lang2": lang("英数"), "Lang1": lang("かな"),
 }
 
 
@@ -331,8 +337,8 @@ def layouts():
         "keys": keys,
         "layers": [
             ("Standard", base_layer(keys, {
-                **STUDIO_LANG, "Fn1": lang("Fn1"), "Fn1Right": lang("Fn1"), "Fn2": lang("Fn2"),
-                "LB": mod("Left click"), "RB": mod("Right click"), "Space": mod(""),
+                **STUDIO_LANG, "KeyHHKBLeftFunction": lang("Fn1"), "KeyHHKBRightFunction": lang("Fn1"), "KeyHHKBFunctionTwo": lang("Fn2"),
+                "KeyLeftMouseButton": mod("Left click"), "KeyRightMouseButton": mod("Right click"), "Space": mod(""),
             })),
             ("Fn1 (hold either Fn1)", fn_layer(keys, {
                 "Escape": fn("Power"), **{f"Digit{d}": fkey(i + 1) for i, d in enumerate("1234567890")},
@@ -343,7 +349,7 @@ def layouts():
                 "KeyH": fn("*"), "KeyJ": fn("/"), "KeyN": fn("+"), "KeyM": fn("−"), "Enter": fn("Enter", "keypad"),
                 "KeyA": fn("Vol−"), "KeyS": fn("Vol+"), "KeyD": fn("Mute"), "KeyF": fn("⏏"),
                 "ArrowUp": fn("Shift", "right"), "ArrowLeft": fn("Del"), "ArrowDown": fn("⌘", "right"), "ArrowRight": fn("Control", "right"),
-                **STUDIO_LANG, "Fn1": lang("Fn1"), "Fn1Right": lang("Fn1"),
+                **STUDIO_LANG, "KeyHHKBLeftFunction": lang("Fn1"), "KeyHHKBRightFunction": lang("Fn1"),
             })),
             ("Fn2 (hold Fn2, below Space)", fn_layer(keys, {
                 **{f"Digit{i}": fn(str(i), "stick speed") for i in range(1, 5)},
@@ -351,7 +357,7 @@ def layouts():
                 **{f"Digit{d}": fn(s, "pad speed") for d, s in zip("6789", ["Low", "Mid", "Hi", "Max"])},
                 **{f"Key{c}": fn(p, "pad on") for c, p in zip("ASDF", ["Left", "Front L", "Front R", "Right"])},
                 **{f"Key{c}": fn(p, "pad off") for c, p in zip("ZXCV", ["Left", "Front L", "Front R", "Right"])},
-                "Space": fn("Middle click"), **STUDIO_LANG, "Fn2": lang("Fn2"),
+                "Space": fn("Middle click"), **STUDIO_LANG, "KeyHHKBFunctionTwo": lang("Fn2"),
             })),
         ],
     }
@@ -365,18 +371,18 @@ def layouts():
         "keys": keys,
         "layers": [
             ("Layer 0", {
-                **numpad, "TopLeft": fn("Esc"), "TopSecond": fn("=", "keypad", True), "TopThird": fn("Tab", "", True),
-                "TopRight": lang("▶︎❚❚", "Fn1"), "NumLock": fn("⌫", "Backspace", True),
+                **numpad, "KeyNumpadTopOne": fn("Esc"), "KeyNumpadTopTwo": fn("=", "keypad", True), "KeyNumpadTopThree": fn("Tab", "", True),
+                "KeyNumpadTopFour": lang("▶︎❚❚", "Fn1"), "NumLock": fn("⌫", "Backspace", True),
             }),
             ("Layer 1 (Fn1)", fn_layer(keys, {
-                "TopLeft": fn("Vol−"), "TopSecond": fn("Vol+"), "TopThird": lang("Tab", "Fn2"), "TopRight": lang("Fn1"),
+                "KeyNumpadTopOne": fn("Vol−"), "KeyNumpadTopTwo": fn("Vol+"), "KeyNumpadTopThree": lang("Tab", "Fn2"), "KeyNumpadTopFour": lang("Fn1"),
                 "NumLock": fn("Del", "forward", True), "NumpadDivide": fn("↑"), "Numpad7": fn("←"), "Numpad8": fn("↓"), "Numpad9": fn("→"),
                 "Numpad4": fn("⌥", "right"), "Numpad5": fn("⌘", "right"), "Numpad6": fn("⇧", "right"), "NumpadAdd": fn("Control", "right"), "NumpadMultiply": mod("RFU"), "NumpadSubtract": mod("RFU"), "NumpadEnter": fn("6KRO", "/ NKRO", True),
                 "Numpad1": fn("BT 1"), "Numpad2": fn("BT 2"), "Numpad3": fn("BT 3"),
                 "Numpad0": fn("USB", "mode", True), "NumpadDecimal": fn("2.4G", "mode", True),
             })),
             ("Layer 2 (Fn2: hold Fn1, then Tab)", open_layer(keys, {
-                "TopLeft": fn("Light", "on/off", True), "TopSecond": lang("英数"), "TopThird": lang("Fn2"), "TopRight": lang("Fn1"),
+                "KeyNumpadTopOne": fn("Light", "on/off", True), "KeyNumpadTopTwo": lang("英数"), "KeyNumpadTopThree": lang("Fn2"), "KeyNumpadTopFour": lang("Fn1"),
                 "Numpad0": fn("Reset", "hold 3 s", True), "NumpadMultiply": mod("RFU"), "NumpadSubtract": mod("RFU"),
             })),
         ],
@@ -414,13 +420,13 @@ def layouts():
             ("Layer 0", base_layer(keys, {
                 "CapsLock": mod("Control", True), "PrintScreen": fn("⌘⇧4"), "ScrollLock": fn("Caps", "", True), "Pause": fn("▶︎❚❚", "", True),
                 "ControlLeft": lang("カタカナ", "Fn"), "MetaLeft": mod("⌥", True), "AltLeft": lang("英数", "⌘"), "Space": mod(""),
-                "AltRight": lang("かな"), "MetaRight": mod("⌘", True), "FnRight": mod("⌥", True), "ControlRight": lang("Fn"),
+                "AltRight": lang("かな"), "MetaRight": mod("⌘", True), "KeyWINMenu": mod("⌥", True), "ControlRight": lang("Fn"),
             })),
             ("Layer 1 (Fn)", fn_layer(keys, {
                 **{f"F{i}": fkey(i + 12) for i in range(1, 13)}, "F6": {**fkey(18), "jk": "Korean Key"},
                 **HHKB_FN, "Backquote": {"kind": "blank"}, "Backspace": fn("Del"), "Backslash": fn("Ins"),
                 "Space": mod(""),
-                "AltRight": send("IntlYen"), "MetaRight": send("Slash"), "FnRight": send("IntlRo"),
+                "AltRight": send("IntlYen"), "MetaRight": send("Slash"), "KeyWINMenu": send("IntlRo"),
                 "ControlLeft": lang("Fn"), "ControlRight": lang("Fn"),
                 "PrintScreen": fn("PrtSc"), "ScrollLock": fn("ScrLk"), "Pause": fn("Pause"),
             })),
@@ -454,15 +460,15 @@ def layouts():
         "layers": [
             ("Base", base_layer(keys, {
                 "AltLeft": lang("カタカナ", "⌥"), "MetaLeft": lang("英数", "⌘"), "MetaRight": lang("かな", "⌘"),
-                "AltRight": lang("Fn"), "Fn": lang("Fn"), "ShiftRight": tap("IntlRo", "Shift"), "Space": mod(""),
+                "AltRight": lang("Fn"), "KeyHHKBUSFunction": lang("Fn"), "ShiftRight": tap("IntlRo", "Shift"), "Space": mod(""),
                 "Backslash": send("IntlYen"), "Backspace": send("Backslash"), "Backquote": mod("⌫", True),
             })),
-            ("Fn (the HHKB's Fn, or right ◇)", fn_layer(keys, {**HHKB_FN, "Fn": lang("Fn"), "AltRight": lang("Fn")})),
+            ("Fn (the HHKB's Fn, or right ◇)", fn_layer(keys, {**HHKB_FN, "KeyHHKBUSFunction": lang("Fn"), "AltRight": lang("Fn")})),
         ],
     }
 
     keys = hhkb_jis()
-    jis_lang = {"LangKo": lang("カタカナ"), "Lang2": lang("英数"), "Lang1": lang("かな")}
+    jis_lang = {"KeyJISKLangKorean": lang("カタカナ"), "Lang2": lang("英数"), "Lang1": lang("かな")}
     out["hhkb-jis"] = {
         "dir": "hhkb", "path": "key-legends/hhkb-jis",
         "title": "HHKB Hybrid Type-S JIS, as measured",
@@ -470,11 +476,11 @@ def layouts():
         "cap_legend": "the US QWERTY key with the same code (none on ¥ and ろ)",
         "keys": keys,
         "layers": [
-            ("Standard", base_layer(keys, {**jis_lang, "FnLeft": lang("Fn"), "FnRight": lang("Fn"), "Space": mod("")})),
+            ("Standard", base_layer(keys, {**jis_lang, "KeyHHKBLeftFunction": lang("Fn"), "KeyHHKBRightFunction": lang("Fn"), "Space": mod("")})),
             ("Fn (hold either Fn)", fn_layer(keys, {
                 **HHKB_FN_MEASURED, "IntlYen": fn("Ins"), "Backspace": fn("Del"),
                 "ArrowUp": fn("Shift", "right"), "ArrowLeft": fn("Del"), "ArrowDown": fn("⌘", "right"), "ArrowRight": fn("Control", "right"),
-                "FnLeft": lang("Fn"), "FnRight": lang("Fn"),
+                "KeyHHKBLeftFunction": lang("Fn"), "KeyHHKBRightFunction": lang("Fn"),
             })),
         ],
     }
@@ -486,10 +492,10 @@ def layouts():
         "lede": "What each key sends on macOS in Mac Mode (DIP switches 2 and 6 on), stock: ◇ is Opt and ◆ is ⌘. From hhkb/key-legends/hhkb-us.md.",
         "keys": keys,
         "layers": [
-            ("Standard", base_layer(keys, {"Fn": lang("Fn"), "AltLeft": mod("Opt"), "MetaLeft": mod("⌘"), "MetaRight": mod("⌘"),
+            ("Standard", base_layer(keys, {"KeyHHKBUSFunction": lang("Fn"), "AltLeft": mod("Opt"), "MetaLeft": mod("⌘"), "MetaRight": mod("⌘"),
                                            "AltRight": mod("Opt"), "Space": mod("")})),
             ("Fn (hold Fn)", fn_layer(keys, {
-                **HHKB_FN_MEASURED, "Backslash": fn("Ins"), "Backquote": fn("Del"), "Backspace": fn("NumLk"), "Fn": lang("Fn"),
+                **HHKB_FN_MEASURED, "Backslash": fn("Ins"), "Backquote": fn("Del"), "Backspace": fn("NumLk"), "KeyHHKBUSFunction": lang("Fn"),
             })),
         ],
     }
@@ -503,12 +509,12 @@ def layouts():
         "keys": keys,
         "layers": [
             ("Standard", base_layer(keys, {
-                **bt_lang, "AltRight": mod("⌥"), "Fn": lang("Fn"), "Space": mod(""),
+                **bt_lang, "AltRight": mod("⌥"), "KeyHHKBUSFunction": lang("Fn"), "Space": mod(""),
                 "ShiftRight": tap("IntlRo", "Shift"), "Backquote": send("IntlYen"),
             })),
             ("Fn (hold Fn)", fn_layer(keys, {
                 **HHKB_FN_MEASURED, "KeyI": fn("⌘⇧4", "PrtSc"),
-                "Backslash": fn("Ins"), "Backquote": fn("Del"), "Backspace": fn("NumLk"), "Fn": lang("Fn"),
+                "Backslash": fn("Ins"), "Backquote": fn("Del"), "Backspace": fn("NumLk"), "KeyHHKBUSFunction": lang("Fn"),
                 **bt_lang, "ShiftRight": tap("IntlRo", "Shift"),
             })),
         ],
@@ -522,14 +528,14 @@ def layouts():
         "layers": [
             ("Base", base_layer(keys, {
                 "ControlLeft": lang("カタカナ", "control"), "MetaLeft": lang("英数", "⌘"), "MetaRight": lang("かな", "⌘"),
-                "ShiftRight": tap("IntlRo", "shift"), "CapsLock": mod("control", True), "Fn": lang("🌐", "Fn"),
-                "AltRight": lang("Fn"), "AltLeft": mod("⌥"), "Space": mod(""), "TouchID": {"kind": "blank"},
+                "ShiftRight": tap("IntlRo", "shift"), "CapsLock": mod("control", True), "KeyMACGlobe": lang("🌐", "Fn"),
+                "AltRight": lang("Fn"), "AltLeft": mod("⌥"), "Space": mod(""), "KeyMACTouchID": {"kind": "blank"},
             })),
             ("Fn (🌐, or right ⌥)", fn_layer(keys, {
                 **HHKB_FN, "Backquote": {"kind": "blank"}, "Minus": send("IntlYen"), "Equal": {"kind": "blank"},
                 **{f"F{i}": fkey(i) for i in range(1, 13)}, "Backspace": fn("Del"),
                 "ArrowLeft": fn("Home"), "ArrowRight": fn("End"), "ArrowUp": fn("PgUp"), "ArrowDown": fn("PgDn"),
-                "Fn": lang("Fn"), "AltRight": lang("Fn"),
+                "KeyMACGlobe": lang("Fn"), "AltRight": lang("Fn"),
             })),
         ],
     }
@@ -543,13 +549,13 @@ def layouts():
         "keys": keys,
         "layers": [
             ("Base", base_layer(keys, {
-                "CapsLock": lang("カタカナ", "Fn"), **jis_lang, "Fn": lang("🌐", "Fn"), "Space": mod(""), "TouchID": {"kind": "blank"},
+                "CapsLock": lang("カタカナ", "Fn"), **jis_lang, "KeyMACGlobe": lang("🌐", "Fn"), "Space": mod(""), "KeyMACTouchID": {"kind": "blank"},
             })),
             ("Fn (hold Caps Lock, or 🌐)", fn_layer(keys, {
                 **HHKB_FN, "Backquote": {"kind": "blank"}, "Backslash": {"kind": "blank"}, "IntlYen": fn("Ins"),
                 **{f"F{i}": fn(f"F{i}", "as 🌐+") for i in range(1, 13)}, "Backspace": fn("Del"),
                 "ArrowLeft": fn("Home"), "ArrowRight": fn("End"), "ArrowUp": fn("PgUp"), "ArrowDown": fn("PgDn"),
-                "CapsLock": lang("Fn"), "Fn": lang("Fn"), **jis_lang,
+                "CapsLock": lang("Fn"), "KeyMACGlobe": lang("Fn"), **jis_lang,
             })),
         ],
     }
@@ -568,7 +574,7 @@ def layouts():
             ("Standard (layer 2)", base_layer(keys, {
                 **{f"F{i}": plain_fkey(i) for i in range(1, 13)},
                 "CapsLock": mod("Ctrl", True), "ControlLeft": lang("Fn"), "Space": mod(""),
-                "AltLeft": lang("無変換", "Alt"), "AltRight": lang("한/영"), "FnRight": mod("Ctrl", True), "ControlRight": lang("한자", "Fn"),
+                "AltLeft": lang("無変換", "Alt"), "AltRight": lang("한/영"), "KeyWINMenu": mod("Ctrl", True), "ControlRight": lang("한자", "Fn"),
                 "ScrollLock": fn("ScrLk", "", True), "Pause": fn("Pause", "", True),
             })),
             ("Fn (layer 3: hold either Fn)", fn_layer(keys, {
@@ -583,7 +589,7 @@ def layouts():
                 "KeyI": fn("PrtSc"), "KeyP": fn("▶︎❚❚"), "KeyB": fn("NKRO", rhc + " on/off"),
                 "ControlLeft": lang("Fn"), "ControlRight": lang("Fn"), "Space": lang("変換"),
                 "AltLeft": lang("無変換"), "KeyX": fn("Alt", "left"), "MetaLeft": lang("カタカナ"), "KeyZ": fn("Win", "left"),
-                "AltRight": send("IntlYen"), "MetaRight": send("Backslash"), "FnRight": send("IntlRo"),
+                "AltRight": send("IntlYen"), "MetaRight": send("Backslash"), "KeyWINMenu": send("IntlRo"),
             })),
         ],
     }

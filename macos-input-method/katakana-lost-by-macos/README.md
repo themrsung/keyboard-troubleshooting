@@ -18,14 +18,15 @@ Karabiner-Elements 16.3.0.
 
 ## The goal
 
-The カタカナ/ひらがな key of Windows JIS keyboards (right of Space, where Korean keyboards have
-한/영) as a key that always goes to Korean, from any app and any input source.
+The カタカナ/ひらがな key (`KeyJISKLangKorean`) of Windows JIS keyboards (right of Space, where
+Korean keyboards have 한/영, `KeyKTSHangulToggle`) as a key that always goes to Korean, from any app
+and any input source.
 
 ## Steps and what each one ran into
 
 | Commit | Change | What it ran into |
 | --- | --- | --- |
-| `9a50937` | Read the keyboard at the HID level (`IOHIDManager`, Input Monitoring) to know whether usage 0x88 (カタカナ) is held, and swallow a かな event (key code 104) in a system-wide key tap (Accessibility) while it is. Plan based on macOS turning カタカナ into かな. | — |
+| `9a50937` | Read the keyboard at the HID level (`IOHIDManager`, Input Monitoring) to know whether usage 0x88 (カタカナ) is held, and swallow a かな (`KeyJISMacKana`) event (key code 104) in a system-wide key tap (Accessibility) while it is. Plan based on macOS turning カタカナ into かな. | — |
 | `a37d5ff` | The listener gave up when Input Monitoring wasn't granted yet. Now it retries every 3 s without a restart. | — |
 | `ac9a0b7` | Logs both permission states while waiting; asks for the permissions only the first time (a menu item asks again). | Grants lost on every build: see [permissions-lost-on-rebuild](../permissions-lost-on-rebuild/README.md) |
 | `f01b227` | Opening failed as a whole when another program held some keyboards (Karabiner-Elements seizes the ones it remaps), though the others had opened. Now only "not permitted" means waiting. | — |
@@ -33,11 +34,13 @@ The カタカナ/ひらがな key of Windows JIS keyboards (right of Space, wher
 | `1e79c7c` | The log showed **no event at all** reaching the tap for the HHKB's カタカナ: macOS discarded the key rather than turning it into かな. The HID listener now switches to Korean on the press itself; the tap only swallows a かな made of it where one arrives. The Japanese usages 0x87–0x94 are logged. | — |
 | `bdfb463` | While カタカナ was held, a real かな press was swallowed too. The listener also tracks the real かな key (usage 0x90, LANG1); with both down, かな is the real one. | — |
 
-The other Windows-only keys are lost the same way: 変換 and 無変換 arrive as 英数 (spec §8.2.1).
+The other Windows-only keys are lost the same way: 変換 (`KeyJISHenkan`) and 無変換
+(`KeyJISMuhenkan`) arrive as 英数 (`KeyJISMacEnglish`) (spec §8.2.1).
 
 ## The keyboard stored as ANSI (`0a466c2`)
 
-Symptom: カタカナ selected Japanese or did nothing, F18 worked; the log had only the tap's line
+Symptom: カタカナ selected Japanese or did nothing, F18 (`KeyFunctionEighteen`) worked; the log had
+only the tap's line
 (`tap: key code 104 down, カタカナ held false`) and, at launch, `hardware keys: no keyboard is
 configured as JIS`.
 

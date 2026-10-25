@@ -9,8 +9,9 @@ Source: FKeyIME, spec §8 ("Mac 英数 / かな keys"), commit
 
 ## What Profile 1 sends *(measured with a low-level hook and Raw Input)*
 
-The language key sends F18 (scan 0x69); 英数 is HID LANG2; かな is LANG1; right Command is a plain
-Right Win (`E0 5C`), which a TIP can't use ([modifier-taps-unreachable](../modifier-taps-unreachable/README.md)).
+The language key sends F18 (`KeyFunctionEighteen`, scan 0x69; which physical key isn't recorded);
+英数 is HID LANG2 (`KeyJISMacEnglish`); かな is LANG1 (`KeyJISMacKana`); right Command
+(`KeyRightPrimary`) is a plain Right Win (`E0 5C`), which a TIP can't use ([modifier-taps-unreachable](../modifier-taps-unreachable/README.md)).
 
 ## Windows delivers LANG1 / LANG2 per layout *(measured)*
 
@@ -30,10 +31,10 @@ The US layout's key-up form needs the real keyboard.
 
 ## Why it's opt-in
 
-A Korean keyboard's 한자 and 한/영 keys send the same HID usages, so with the option on they would
-act as English and Japanese.
+A Korean keyboard's 한자 (`KeyKTSHanja`) and 한/영 (`KeyKTSHangulToggle`) keys send the same HID
+usages, so with the option on they would act as English and Japanese.
 
 An earlier, reverted attempt (commits [`91b7605`](https://github.com/themrsung/fkeyime/commit/91b7605),
-[`876010c`](https://github.com/themrsung/fkeyime/commit/876010c)) recognised 한/영 as `VK_HANGUL` or
-the LANG1 scan code (0x72 / 0xF2), never as right Alt (`E0 38`), which is the HHKB's real right Alt
-under the Japanese layout (measured with `MapVirtualKeyEx`). Reverted by the owner's decision.
+[`876010c`](https://github.com/themrsung/fkeyime/commit/876010c)) recognised 한/영 (`KeyKTSHangulToggle`) as
+`VK_HANGUL` or the LANG1 scan code (0x72 / 0xF2), never as right Alt (`KeyRightAuxiliary`,
+`E0 38`), which is the HHKB's real right Alt under the Japanese layout (measured with `MapVirtualKeyEx`). Reverted by the owner's decision.

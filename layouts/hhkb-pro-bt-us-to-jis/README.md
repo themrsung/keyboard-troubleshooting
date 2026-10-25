@@ -14,16 +14,18 @@ only); the drawing is [layout.html](layout.html). Full guide:
 [docs/legacy-hhkb-us-as-jis](https://github.com/team-mirae/jis-korean/tree/main/docs/legacy-hhkb-us-as-jis)
 in JIS Korean.
 
-| HHKB key | Tap | Hold |
-|---|---|---|
-| Left ◇ (⌥) | カタカナ | ⌥ |
-| Left ◆ (⌘) | 英数 | ⌘ |
-| Right ◆ (⌘) | かな | ⌘ |
-| Right ◇ (⌥) | | Fn, a second one |
-| Right Shift | ろ | Shift |
-| `\` | ¥ | |
-| Delete | JIS ] (む in Kana) | |
-| `` ` `` | Backspace (Fn+`` ` `` stays forward Delete) | |
+| HHKB key | Canonical name | Tap | Hold |
+|---|---|---|---|
+| Left ◇ (⌥) | `KeyLeftAuxiliary` | カタカナ | ⌥ |
+| Left ◆ (⌘) | `KeyLeftPrimary` | 英数 | ⌘ |
+| Right ◆ (⌘) | `KeyRightPrimary` | かな | ⌘ |
+| Right ◇ (⌥) | `KeyRightAuxiliary` | | Fn, a second one (`KeyVirtualFunction`) |
+| Right Shift | `KeyRightShift` | ろ | Shift |
+| `\` | `KeyUSBackslash` | ¥ | |
+| Delete | `KeyDeleteLeft` | JIS ] (む in Kana) | |
+| `` ` `` | `KeyUSGrave` | Backspace (Fn+`` ` `` stays forward Delete) | |
+
+Other names: [Key names](../README.md#key-names). The HHKB's own Fn is `KeyHHKBUSFunction`.
 
 - **DIP switches:** SW1 off, SW2 on (Mac mode), SW6 on (wake up), the rest off.
 - **Karabiner's virtual keyboard stored as JIS** (`593-1452-0` = 42), and Modify events on for the

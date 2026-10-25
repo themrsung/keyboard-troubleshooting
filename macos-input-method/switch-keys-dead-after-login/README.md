@@ -6,8 +6,8 @@ Source: JIS Korean, commit [`a311669`](https://github.com/team-mirae/jis-korean/
 
 ## Symptom
 
-After logging in, カタカナ and the Korean Key (F18) did nothing until JIS Korean was picked from
-the input menu once.
+After logging in, カタカナ (`KeyJISKLangKorean`) and the Korean Key (F18, `KeyFunctionEighteen`) did
+nothing until JIS Korean was picked from the input menu once.
 
 ## Cause
 

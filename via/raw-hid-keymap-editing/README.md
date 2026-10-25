@@ -22,16 +22,16 @@ swiftc -O -o viahid viahid.swift
 - Keycodes are 16-bit QMK keycodes in the numbering of the keyboard's protocol version (protocol
   11+: mod-tap 0x2000, layer-tap 0x4000, `MO()` 0x5220). Some useful ones:
 
-| Keycode | Value |
-|---|---|
-| `KC_INT1` ろ / `KC_INT2` カタカナ / `KC_INT3` ¥ | 0x0087 / 0x0088 / 0x0089 |
-| `KC_LNG1` (かな on a Mac) / `KC_LNG2` (英数 on a Mac) | 0x0090 / 0x0091 |
-| `KC_F13` … `KC_F24` | 0x0068 … 0x0073 |
-| `KC_TRNS` / `KC_NO` | 0x0001 / 0x0000 |
-| `LSG(KC_4)` (⌘⇧4 on a Mac) | 0x0A21 |
-| `LT(layer, kc)` | 0x4000 + layer << 8 + kc |
-| `MO(layer)` | 0x5220 + layer |
-| `MT(mods, kc)` | 0x2000 + mods << 8 + kc |
+| Keycode | Value | Canonical name |
+|---|---|---|
+| `KC_INT1` ろ / `KC_INT2` カタカナ / `KC_INT3` ¥ | 0x0087 / 0x0088 / 0x0089 | `KeyRo` / `KeyJISKLangKorean` / `KeyLongKatakana` |
+| `KC_LNG1` (かな on a Mac) / `KC_LNG2` (英数 on a Mac) | 0x0090 / 0x0091 | `KeyJISMacKana` / `KeyJISMacEnglish` (on Korean boards `KeyKTSHangulToggle` / `KeyKTSHanja`) |
+| `KC_F13` … `KC_F24` | 0x0068 … 0x0073 | `KeyFunctionThirteen` … `KeyFunctionTwentyFour` |
+| `KC_TRNS` / `KC_NO` | 0x0001 / 0x0000 | `KeyPassthrough` / no key (sent by `KeyNoOp` and `KeyReservedForFutureUse`) |
+| `LSG(KC_4)` (⌘⇧4 on a Mac) | 0x0A21 | shortcut: `KeyLeftShift` + `KeyLeftPrimary` + `KeyFour` |
+| `LT(layer, kc)` | 0x4000 + layer << 8 + kc | `HoldTap(KeyMomentaryLayerN, key)` |
+| `MO(layer)` | 0x5220 + layer | `KeyMomentaryLayerN` |
+| `MT(mods, kc)` | 0x2000 + mods << 8 + kc | `HoldTap(modifier, key)` |
 
 The rows and columns are the keyboard's matrix, from its VIA definition (`"matrix"`), and a key's
 `row,col` is its label in the definition's keymap. Tested on a Hansung TFG Magnetox XF, and `reset` on an SPM AL21W

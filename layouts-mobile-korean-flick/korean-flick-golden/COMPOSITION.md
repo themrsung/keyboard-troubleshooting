@@ -112,7 +112,7 @@ Symbols don't commit: they stay in the segment, though they end the syllable (R1
 
 ### R7. 확정
 
-JIS Korean's F6:
+JIS Korean's F6 (`KeyFunctionSix`):
 
 1. If the segment ends in a syllable on an **implied** ㅇ with **no final**, that ㅇ is dropped and the
    bare medial stays: ㅏ → ㅏ, 가어 → 가ㅓ, 와 → ㅘ. Only that last syllable: 아이 → 아ㅣ.

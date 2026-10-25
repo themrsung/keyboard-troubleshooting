@@ -21,6 +21,8 @@ hex, because their numbers in this firmware (from 0x7F00) don't match VIA's `CUS
 0x7F08 are Task View / File Explorer, 0x7F09 Screenshot, 0x7F0A Cortana, and 0x7F00–0x7F05 the Mac
 side's Mission Control, Launchpad, ⌥ and ⌘.
 
+Key names below map to canonical names through the [key-name legend](../README.md#key-names).
+
 ## Starting point
 
 Keychron's Windows keymap, read from the board and identical to `WIN_BASE` / `WIN_FN` in QMK's
@@ -30,26 +32,26 @@ backlight and NKRO controls on the letters.
 
 ## Changes from the starting point
 
-| Layer | Key (row,col) | Was | Now |
-|---|---|---|---|
-| 2 | Bottom left (5,0) | Left Control | Fn (`MO(3)`) |
-| 2 | Caps Lock (3,0) | Caps Lock | Left Control |
-| 2 | Left Alt (5,2) | Left Alt | **無変換** on a tap, Alt on a hold (`LALT_T(KC_INT5)`, 0x248B) |
-| 2 | Right of Print Screen (0,15) | Cortana (Keychron's 0x7F0A) | Scroll Lock |
-| 2 | The light key, top right (0,16) | Backlight effect (`RGB_MOD`) | Pause |
-| 2 | Right of right Win (5,12) | Fn (`MO(3)`) | Right Control |
-| 2 | Right end (5,13) | Right Control | **한자** on a tap, Fn on a hold (`LT(3,KC_LNG2)`, 0x4391) |
-| 3 | Tab (2,0) | Backlight on/off (`RGB_TOG`) | Caps Lock |
-| 3 | Q W E R T (2,1–2,5), G (3,5) | Backlight controls | Transparent |
-| 3 | A S D F (3,1–3,4) | Backlight controls | Volume down, volume up, mute, eject |
-| 3 | N (4,7) | NKRO on/off (`NK_TOGG`) | keypad + (NKRO moves to B) |
-| 3 | B (4,6) | Transparent | NKRO on/off |
-| 3 | Space (5,6) | Transparent | **変換** (`KC_INT4`) |
-| 3 | Left Alt (5,2) | Transparent | **無変換** (`KC_INT5`), as on a tap without Fn |
-| 3 | X (4,3) | Transparent | Left Alt |
-| 3 | Left Win (5,1) | Transparent | **カタカナ/ひらがな** (`KC_INT2`) |
-| 3 | Z (4,2) | Transparent | Left Win |
-| 3 | The rest of the HHKB Fn layer | Transparent | See below |
+| Layer | Key (row,col) | Was | Now | Canonical (was → now) |
+|---|---|---|---|---|
+| 2 | Bottom left (5,0) | Left Control | Fn (`MO(3)`) | `KeyUSLeftControl` → `KeyMomentaryLayerThree` |
+| 2 | Caps Lock (3,0) | Caps Lock | Left Control | `KeyCapsLock` → `KeyLeftControl` |
+| 2 | Left Alt (5,2) | Left Alt | **無変換** on a tap, Alt on a hold (`LALT_T(KC_INT5)`, 0x248B) | `KeyLeftAuxiliary` → `HoldTap(KeyLeftAuxiliary, KeyJISMuhenkan)` |
+| 2 | Right of Print Screen (0,15) | Cortana (Keychron's 0x7F0A) | Scroll Lock | `KeyWINCortana` → `KeyScrollLock` |
+| 2 | The light key, top right (0,16) | Backlight effect (`RGB_MOD`) | Pause | `KeyKeyboardHardwareControl` → `KeyPause` |
+| 2 | Right of right Win (5,12) | Fn (`MO(3)`) | Right Control | `KeyMomentaryLayerThree` → `KeyRightControl`, in the `KeyWINMenu` position |
+| 2 | Right end (5,13) | Right Control | **한자** on a tap, Fn on a hold (`LT(3,KC_LNG2)`, 0x4391) | `KeyRightControl` → `HoldTap(KeyMomentaryLayerThree, KeyKTSHanja)` |
+| 3 | Tab (2,0) | Backlight on/off (`RGB_TOG`) | Caps Lock | `KeyKeyboardHardwareControl` → `KeyCapsLock` |
+| 3 | Q W E R T (2,1–2,5), G (3,5) | Backlight controls | Transparent | `KeyKeyboardHardwareControl` → `KeyPassthrough` |
+| 3 | A S D F (3,1–3,4) | Backlight controls | Volume down, volume up, mute, eject | `KeyKeyboardHardwareControl` → `KeyVolumeDown`, `KeyVolumeUp`, `KeyMute`, `KeyEject` |
+| 3 | N (4,7) | NKRO on/off (`NK_TOGG`) | keypad + (NKRO moves to B) | `KeyKeyboardHardwareControl` → `KeyNumpadPlus` |
+| 3 | B (4,6) | Transparent | NKRO on/off | `KeyPassthrough` → `KeyKeyboardHardwareControl` |
+| 3 | Space (5,6) | Transparent | **変換** (`KC_INT4`) | `KeyPassthrough` → `KeyJISHenkan` |
+| 3 | Left Alt (5,2) | Transparent | **無変換** (`KC_INT5`), as on a tap without Fn | `KeyPassthrough` → `KeyJISMuhenkan` |
+| 3 | X (4,3) | Transparent | Left Alt | `KeyPassthrough` → `KeyLeftAuxiliary` |
+| 3 | Left Win (5,1) | Transparent | **カタカナ/ひらがな** (`KC_INT2`) | `KeyPassthrough` → `KeyJISKLangKorean` |
+| 3 | Z (4,2) | Transparent | Left Win | `KeyPassthrough` → `KeyLeftPrimary` |
+| 3 | The rest of the HHKB Fn layer | Transparent | See below | `KeyPassthrough` → see below |
 
 The bottom row is now Fn · Win · Alt/無変換 · Space · Alt · Win · Control · Fn/한자, with Fn at
 both ends, and Fn+Space is 変換. The Fn layer's own number on this board is 3, as 0 and 1 belong to the Mac side. The top
@@ -62,30 +64,30 @@ are on Fn+Print Screen / Scroll Lock.
 The HHKB US Fn layer, laid out as on the macOS
 [us-ansi-104-key-to-jis](../../layouts/us-ansi-104-key-to-jis/README.md), with Play/Pause on P:
 
-| Fn + | Sends |
-|---|---|
-| 1 … 5 (RHC), 6 … 9, 0 - = (RHC) | F1 … F12 |
-| Backspace / `\` | Delete / Insert |
-| Tab | Caps Lock |
-| Space | **変換** (`KC_INT4`) |
-| Left Alt | **無変換** (`KC_INT5`) |
-| X | Left Alt, since the left Alt key is 無変換 here |
-| Left Win | **カタカナ/ひらがな** (`KC_INT2`) |
-| Z | Left Win, since the left Win key is カタカナ here |
-| I / O / P | Print Screen / Scroll Lock / Play-Pause |
-| [ ; ' / | ↑ ← → ↓ |
-| K L , . | Home, Page Up, End, Page Down |
-| H J M | keypad * / − |
-| Enter | keypad Enter |
-| A S D F | volume down, volume up, mute, eject |
-| N | keypad + |
-| **B** (RHC) | NKRO on/off (Keychron's, moved off N) |
-| Right Alt / Right Win / Right Control | **¥** (`KC_INT3`) / **む** (`KC_NUHS`, JIS's ] key) / **ろ** (`KC_INT1`) |
-| F1 … F4, F7 … F12 | Keychron's: screen brightness, Task View, File Explorer, media, volume |
-| **F5 / F6** (RHC) | backlight brightness down / up |
-| **Q** (RHC) | transparent |
-| **Print Screen / Scroll Lock** (RHC) | backlight effect back / forward (`RGB_RMOD` / `RGB_MOD`) |
-| **Pause** (RHC) | backlight on/off |
+| Fn + | Sends | Canonical |
+|---|---|---|
+| 1 … 5 (RHC), 6 … 9, 0 - = (RHC) | F1 … F12 | `KeyFunctionOne` … `KeyFunctionTwelve` |
+| Backspace / `\` | Delete / Insert | `KeyDeleteRight` / `KeyInsert` |
+| Tab | Caps Lock | `KeyCapsLock` |
+| Space | **変換** (`KC_INT4`) | `KeyJISHenkan` |
+| Left Alt | **無変換** (`KC_INT5`) | `KeyJISMuhenkan` |
+| X | Left Alt, since the left Alt key is 無変換 here | `KeyLeftAuxiliary` |
+| Left Win | **カタカナ/ひらがな** (`KC_INT2`) | `KeyJISKLangKorean` |
+| Z | Left Win, since the left Win key is カタカナ here | `KeyLeftPrimary` |
+| I / O / P | Print Screen / Scroll Lock / Play-Pause | `KeyPrintScreen` / `KeyScrollLock` / `KeyMediaPlayPause` |
+| [ ; ' / | ↑ ← → ↓ | `KeyUpArrow` `KeyLeftArrow` `KeyRightArrow` `KeyDownArrow` |
+| K L , . | Home, Page Up, End, Page Down | `KeyHome`, `KeyPageUp`, `KeyEnd`, `KeyPageDown` |
+| H J M | keypad * / − | `KeyNumpadMultiply` `KeyNumpadDivide` `KeyNumpadMinus` |
+| Enter | keypad Enter | `KeyNumpadEnter` |
+| A S D F | volume down, volume up, mute, eject | `KeyVolumeDown`, `KeyVolumeUp`, `KeyMute`, `KeyEject` |
+| N | keypad + | `KeyNumpadPlus` |
+| **B** (RHC) | NKRO on/off (Keychron's, moved off N) | `KeyKeyboardHardwareControl` |
+| Right Alt / Right Win / Right Control | **¥** (`KC_INT3`) / **む** (`KC_NUHS`, JIS's ] key) / **ろ** (`KC_INT1`) | `KeyLongKatakana` / `KeyMu` / `KeyRo` |
+| F1 … F4, F7 … F12 | Keychron's: screen brightness, Task View, File Explorer, media, volume | `KeyBrightnessDown`, `KeyBrightnessUp`, `KeyWINTaskView`, `KeyWINFileExplorer`; `KeyMediaPreviousTrack`, `KeyMediaPlayPause`, `KeyMediaNextTrack`, `KeyMute`, `KeyVolumeDown`, `KeyVolumeUp` |
+| **F5 / F6** (RHC) | backlight brightness down / up | `KeyKeyboardHardwareControl` |
+| **Q** (RHC) | transparent | `KeyPassthrough` |
+| **Print Screen / Scroll Lock** (RHC) | backlight effect back / forward (`RGB_RMOD` / `RGB_MOD`) | `KeyKeyboardHardwareControl` |
+| **Pause** (RHC) | backlight on/off | `KeyKeyboardHardwareControl` |
 
 RHC: [reserved for hardware control](../PRINCIPLES.md#reserved-for-hardware-control-rhc).
 

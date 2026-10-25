@@ -21,91 +21,99 @@ Measured on macOS Golden Gate 27, with Mac Mode.
 
 | Symbol | Meaning |
 |---|---|
-| ▽ | Passthrough |
+| ▽ | Passthrough (`KeyPassthrough`) |
 | ■ | Signal does not reach the computer |
 | ∈ | Key is the accessor of that layer (e.g. Shift for the Shift layer) |
 
+**Name** and **Fn name** are the [canonical key
+names](../../conventions/keynames/REV1-20261025/KEYNAMES.md) of the key and of what it sends with
+Fn; an empty Fn name is ▽. Shift shows the character typed, not a key. The US-prefixed names are
+aliases: `KeyUSMinus` = `KeyHo`, `KeyUSEquals` = `KeyHe`, `KeyUSBackslash` = `KeyMu`, `KeyUSGrave` =
+`KeyHankakuZenkaku`, `KeyUSLeftBracket` = `KeyDakuten`, `KeyUSRightBracket` = `KeyHandakuten`,
+`KeyUSSemicolon` = `KeyRe`, `KeyUSApostrophe` = `KeyKe`, `KeyUSEnter` = `KeyISOEnter`, `KeyUSComma`
+= `KeyNe`, `KeyUSPeriod` = `KeyRu`, `KeyUSSlash` = `KeyMe`.
+
 ## Number Row
 
-| Key | Shift | Fn |
-|---|---|---|
-| Esc | ▽ | Power |
-| One(1) | ExclamationMark(!) | F1 |
-| Two(2) | At(@) | F2 |
-| Three(3) | Sharp(#) | F3 |
-| Four(4) | Dollar($) | F4 |
-| Five(5) | Percent(%) | F5 |
-| Six(6) | Caret(^) | F6 |
-| Seven(7) | Ampersand(&) | F7 |
-| Eight(8) | Asterisk(*) | F8 |
-| Nine(9) | OpeningParenthesis(() | F9 |
-| Zero(0) | ClosingParenthesis()) | F10 |
-| Hyphen(-) | Underscore(_) | F11 |
-| Equals(=) | Plus(+) | F12 |
-| Backslash(\\) | VerticalBar(\|) | Insert |
-| Backtick(\`) | Tilde(~) | DeleteForward |
+| Key | Name | Shift | Fn | Fn name |
+|---|---|---|---|---|
+| Esc | `KeyEscape` | ▽ | Power | `KeySystemPower` |
+| One(1) | `KeyOne` | ExclamationMark(!) | F1 | `KeyFunctionOne` |
+| Two(2) | `KeyTwo` | At(@) | F2 | `KeyFunctionTwo` |
+| Three(3) | `KeyThree` | Sharp(#) | F3 | `KeyFunctionThree` |
+| Four(4) | `KeyFour` | Dollar($) | F4 | `KeyFunctionFour` |
+| Five(5) | `KeyFive` | Percent(%) | F5 | `KeyFunctionFive` |
+| Six(6) | `KeySix` | Caret(^) | F6 | `KeyFunctionSix` |
+| Seven(7) | `KeySeven` | Ampersand(&) | F7 | `KeyFunctionSeven` |
+| Eight(8) | `KeyEight` | Asterisk(*) | F8 | `KeyFunctionEight` |
+| Nine(9) | `KeyNine` | OpeningParenthesis(() | F9 | `KeyFunctionNine` |
+| Zero(0) | `KeyZero` | ClosingParenthesis()) | F10 | `KeyFunctionTen` |
+| Hyphen(-) | `KeyUSMinus` | Underscore(_) | F11 | `KeyFunctionEleven` |
+| Equals(=) | `KeyUSEquals` | Plus(+) | F12 | `KeyFunctionTwelve` |
+| Backslash(\\) | `KeyUSBackslash` | VerticalBar(\|) | Insert | `KeyInsert` |
+| Backtick(\`) | `KeyUSGrave` | Tilde(~) | DeleteForward | `KeyDeleteRight` |
 
 ## Q Row
 
-| Key | Shift | Fn |
-|---|---|---|
-| Tab | ▽ | CapsLock |
-| Q | ▽ | BluetoothConnect |
-| W | ▽ | ▽ |
-| E | ▽ | ▽ |
-| R | ▽ | ▽ |
-| T | ▽ | ▽ |
-| Y | ▽ | ▽ |
-| U | ▽ | ▽ |
-| I | ▽ | PrintScreen |
-| O | ▽ | ScrollLock |
-| P | ▽ | PauseBreak |
-| OpeningSquareBracket([) | OpeningCurlyBracket({) | UpArrow |
-| ClosingSquareBracket(]) | ClosingCurlyBracket(}) | ▽ |
-| DeleteLeft(Backspace) | ▽ | NumLock |
+| Key | Name | Shift | Fn | Fn name |
+|---|---|---|---|---|
+| Tab | `KeyTab` | ▽ | CapsLock | `KeyCapsLock` |
+| Q | `KeyQ` | ▽ | BluetoothConnect | `KeyKeyboardHardwareControl` |
+| W | `KeyW` | ▽ | ▽ |  |
+| E | `KeyE` | ▽ | ▽ |  |
+| R | `KeyR` | ▽ | ▽ |  |
+| T | `KeyT` | ▽ | ▽ |  |
+| Y | `KeyY` | ▽ | ▽ |  |
+| U | `KeyU` | ▽ | ▽ |  |
+| I | `KeyI` | ▽ | PrintScreen | `KeyPrintScreen` |
+| O | `KeyO` | ▽ | ScrollLock | `KeyScrollLock` |
+| P | `KeyP` | ▽ | PauseBreak | `KeyPause` |
+| OpeningSquareBracket([) | `KeyUSLeftBracket` | OpeningCurlyBracket({) | UpArrow | `KeyUpArrow` |
+| ClosingSquareBracket(]) | `KeyUSRightBracket` | ClosingCurlyBracket(}) | ▽ |  |
+| DeleteLeft(Backspace) | `KeyDeleteLeft` | ▽ | NumLock | `KeyWINNumlock` |
 
 ## A Row
 
-| Key | Shift | Fn |
-|---|---|---|
-| LControl | ▽ | ▽ |
-| A | ▽ | VolumeDown |
-| S | ▽ | VolumeUp |
-| D | ▽ | Mute |
-| F | ▽ | Eject |
-| G | ▽ | ▽ |
-| H | ▽ | NumpadAsterisk |
-| J | ▽ | NumpadSlash |
-| K | ▽ | Home |
-| L | ▽ | PageUp |
-| Semicolon(;) | Colon(:) | LeftArrow |
-| Apostrophe(') | Quotation(") | RightArrow |
-| Return(Enter) | ▽ | NumpadEnter |
+| Key | Name | Shift | Fn | Fn name |
+|---|---|---|---|---|
+| LControl | `KeyLeftControl` | ▽ | ▽ |  |
+| A | `KeyA` | ▽ | VolumeDown | `KeyVolumeDown` |
+| S | `KeyS` | ▽ | VolumeUp | `KeyVolumeUp` |
+| D | `KeyD` | ▽ | Mute | `KeyMute` |
+| F | `KeyF` | ▽ | Eject | `KeyEject` |
+| G | `KeyG` | ▽ | ▽ |  |
+| H | `KeyH` | ▽ | NumpadAsterisk | `KeyNumpadMultiply` |
+| J | `KeyJ` | ▽ | NumpadSlash | `KeyNumpadDivide` |
+| K | `KeyK` | ▽ | Home | `KeyHome` |
+| L | `KeyL` | ▽ | PageUp | `KeyPageUp` |
+| Semicolon(;) | `KeyUSSemicolon` | Colon(:) | LeftArrow | `KeyLeftArrow` |
+| Apostrophe(') | `KeyUSApostrophe` | Quotation(") | RightArrow | `KeyRightArrow` |
+| Return(Enter) | `KeyUSEnter` | ▽ | NumpadEnter | `KeyNumpadEnter` |
 
 ## Z Row
 
-| Key | Shift | Fn |
-|---|---|---|
-| LShift | ∈ | ▽ |
-| Z | ▽ | ▽ |
-| X | ▽ | ▽ |
-| C | ▽ | ▽ |
-| V | ▽ | ▽ |
-| B | ▽ | ▽ |
-| N | ▽ | NumpadPlus |
-| M | ▽ | NumpadMinus |
-| Comma(,) | OpeningPointyBracket(<) | End |
-| Period(.) | ClosingPointyBracket(>) | PageDown |
-| Slash(/) | QuestionMark(?) | DownArrow |
-| RShift | ∈ | ▽ |
-| Fn(■) | Fn(■) | Fn(∈■) |
+| Key | Name | Shift | Fn | Fn name |
+|---|---|---|---|---|
+| LShift | `KeyLeftShift` | ∈ | ▽ |  |
+| Z | `KeyZ` | ▽ | ▽ |  |
+| X | `KeyX` | ▽ | ▽ |  |
+| C | `KeyC` | ▽ | ▽ |  |
+| V | `KeyV` | ▽ | ▽ |  |
+| B | `KeyB` | ▽ | ▽ |  |
+| N | `KeyN` | ▽ | NumpadPlus | `KeyNumpadPlus` |
+| M | `KeyM` | ▽ | NumpadMinus | `KeyNumpadMinus` |
+| Comma(,) | `KeyUSComma` | OpeningPointyBracket(<) | End | `KeyEnd` |
+| Period(.) | `KeyUSPeriod` | ClosingPointyBracket(>) | PageDown | `KeyPageDown` |
+| Slash(/) | `KeyUSSlash` | QuestionMark(?) | DownArrow | `KeyDownArrow` |
+| RShift | `KeyRightShift` | ∈ | ▽ |  |
+| Fn(■) | `KeyHHKBUSFunction` | Fn(■) | Fn(∈■) | `KeyHHKBUSFunction` |
 
 ## Modifier Row
 
-| Key | Shift | Fn |
-|---|---|---|
-| LOpt | ▽ | ▽ |
-| LCmd | ▽ | ▽ |
-| Space | ▽ | ▽ |
-| RCmd | ▽ | ▽ |
-| ROpt | ▽ | ▽ |
+| Key | Name | Shift | Fn | Fn name |
+|---|---|---|---|---|
+| LOpt | `KeyLeftAuxiliary` | ▽ | ▽ |  |
+| LCmd | `KeyLeftPrimary` | ▽ | ▽ |  |
+| Space | `KeySpacebar` | ▽ | ▽ |  |
+| RCmd | `KeyRightPrimary` | ▽ | ▽ |  |
+| ROpt | `KeyRightAuxiliary` | ▽ | ▽ |  |

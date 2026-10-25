@@ -14,15 +14,17 @@ drawing is [layout.html](layout.html). Full guide:
 [docs/macbook-us-as-jis](https://github.com/team-mirae/jis-korean/tree/main/docs/macbook-us-as-jis)
 in JIS Korean.
 
-| Key | Tap | Hold |
-|---|---|---|
-| Left Control | カタカナ | Control |
-| Left ⌘ | 英数 | ⌘ |
-| Right ⌘ | かな | ⌘ |
-| Right Shift | ろ | Shift |
-| Caps Lock | Control | Control |
-| fn (🌐) | 🌐 as usual | Fn layer |
-| Right ⌥ | | Fn layer |
+| Key | Canonical name | Tap | Hold |
+|---|---|---|---|
+| Left Control | `KeyUSLeftControl` | カタカナ | Control |
+| Left ⌘ | `KeyLeftPrimary` | 英数 | ⌘ |
+| Right ⌘ | `KeyRightPrimary` | かな | ⌘ |
+| Right Shift | `KeyRightShift` | ろ | Shift |
+| Caps Lock | `KeyCapsLock` | Control | Control |
+| fn (🌐) | `KeyMACGlobe` | 🌐 as usual | Fn layer (`KeyVirtualFunction`) |
+| Right ⌥ | `KeyRightAuxiliary` | | Fn layer (`KeyVirtualFunction`) |
+
+Other names: [Key names](../README.md#key-names).
 
 The Fn layer is the HHKB US one with the Mac extras, plus what fn does on any Mac (forward Delete,
 Home/End/Page keys on the arrows, F1–F12 on the top row), with **¥ on fn+`-`** in place of F11 and

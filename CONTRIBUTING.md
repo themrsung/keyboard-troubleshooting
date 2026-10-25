@@ -19,6 +19,23 @@ For the purposes of these guidelines, untruthful software is any software which:
 
 If such resources are found, they may be removed from the repository without further notice.
 
+## Conventions
+
+Follow the conventions in [`conventions/`](conventions/README.md), using their current revision.
+Revisions are folders named `REV#-YYYYMMDD`, where `#` grows by one with each revision and
+`YYYYMMDD` is its date.
+
+- **Key names.** Name keys as in
+  [KEYNAMES.md](conventions/keynames/REV1-20261025/KEYNAMES.md). Keep the legends readers see on the
+  keycaps and add the canonical name beside them, e.g. "カタカナ (`KeyJISKLangKorean`)", or give key
+  tables a canonical-name column. Where many names repeat, a short "Key names" legend at the top of
+  the file, or in the folder's README, can map the names used there to canonical ones instead.
+- **Don't rename what other tools read.** QMK keycodes, VIA and Karabiner files, browser
+  `KeyboardEvent.code` values, Windows VK and scan codes, and quoted logs or UI text stay as they
+  are; add the canonical name next to them.
+- **A key with no name yet** gets one in KEYNAMES.md first, following its naming rules, in the same
+  pull request.
+
 ## Your tester profile
 
 Before submitting a pull request, make sure your profile is in the [`testers/`](testers/) directory

@@ -10,7 +10,8 @@ spec §8.2.1. macOS 27.0.1.
 ## Symptom
 
 JIS Korean declares its English mode (`me.sjun.inputmethod.JISKorean.A_QWERTY`) with the Roman
-script, so 英数 should select it, as it selects a Japanese input method's own Romaji mode. With
+script, so 英数 (`KeyJISMacEnglish`) should select it, as it selects a Japanese input method's own
+Romaji mode. With
 Apple's **ABC** enabled, 英数 selected ABC instead, although JIS Korean's key tap saw the key
 (`tap: key code 102 down`). This settled the spec's open question: with ABC present, macOS picks ABC.
 

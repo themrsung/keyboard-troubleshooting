@@ -21,14 +21,16 @@ grep -v '^#' layouts/numpad-numbers/al21w-numpad-numbers.txt | xargs ./viahid --
 
 ## Layer 0
 
-| Key | Factory | Here |
-|---|---|---|
-| Top row, 1st | Esc | Esc |
-| Top row, 2nd | Calculator | **=** (keypad =, `KC_PEQL`, 0x67) |
-| Top row, 3rd | Backspace | **Tab** |
-| Top row, 4th | Fn (`MO(1)`) | **Fn1 held, play/pause tapped** (`LT(1, KC_MPLY)`, 0x41AE) |
-| Num Lock | Num Lock | **Backspace** |
-| The numpad section | / * − + Enter, 0–9, . | unchanged |
+| Key | Canonical name | Factory | Here |
+|---|---|---|---|
+| Top row, 1st | `KeyNumpadTopOne` | Esc | Esc |
+| Top row, 2nd | `KeyNumpadTopTwo` | Calculator | **=** (keypad =, `KC_PEQL`, 0x67) |
+| Top row, 3rd | `KeyNumpadTopThree` | Backspace | **Tab** |
+| Top row, 4th | `KeyNumpadTopFour` | Fn (`MO(1)`) | **Fn1 held, play/pause tapped** (`LT(1, KC_MPLY)`, 0x41AE) |
+| Num Lock | `KeyWINNumlock` | Num Lock | **Backspace** |
+| The numpad section | `KeyNumpadDivide` `KeyNumpadMultiply` `KeyNumpadMinus` `KeyNumpadPlus` `KeyNumpadEnter`, `KeyNumpadZero` … `KeyNumpadNine`, `KeyNumpadDecimal` | / * − + Enter, 0–9, . | unchanged |
+
+Other names: [Key names](../README.md#key-names).
 
 Layer 3 gets the same keys, without Fn1, as it has in the factory keymap. Nothing switches to it
 that we know of.
@@ -37,24 +39,24 @@ that we know of.
 
 SPM's factory Fn layer, trimmed:
 
-| Fn1 + | Factory | Here |
-|---|---|---|
-| Tab (top row, 3rd) | nothing | **Fn2 held, Tab tapped** (`LT(2, KC_TAB)`, 0x422B) |
-| Backspace (the Num Lock key) | Lighting on/off | **Delete (forward)**, as on the other layouts |
-| / · 8 · 9 | Lighting hue −, effect speed −, effect speed + | **↑ · ↓ · →** |
-| 5 · 6 | Lighting saturation −, + | **Right ⌘ · right Shift** |
-| + | Lighting brightness + | **Right Control** |
-| * − | Lighting hue +, brightness − | **Nothing** (`KC_NO`): reserved for future use (RFU) |
-| Enter | Next lighting effect | **6-key / full rollover** (`CUSTOM(7)`), moved from 7 |
-| Esc | Sleep | **Volume down** |
-| = | Tab | **Volume up** (Tab has its own key) |
-| 7 | 6-key / full rollover | **←** (rollover moved to Fn1 + Enter) |
-| 1 2 3 | Bluetooth 1–3 | unchanged |
-| 4 | 2.4 GHz mode | **Right Option** (2.4 GHz moved to Fn1 + .) |
-| 0 | Hardware reset (hold about 3 seconds) | **USB mode** (SPM's `USB`, `CUSTOM(4)`); the reset moved to Fn2 + 0 |
-| . | . | **2.4 GHz mode** (`CUSTOM(0)`) |
+| Fn1 + | Canonical name | Factory | Here |
+|---|---|---|---|
+| Tab (top row, 3rd) | `KeyNumpadTopThree` | nothing | **Fn2 held, Tab tapped** (`LT(2, KC_TAB)`, 0x422B) |
+| Backspace (the Num Lock key) | `KeyWINNumlock` | Lighting on/off | **Delete (forward)**, as on the other layouts |
+| / · 8 · 9 | `KeyNumpadDivide` · `KeyNumpadEight` · `KeyNumpadNine` | Lighting hue −, effect speed −, effect speed + | **↑ · ↓ · →** |
+| 5 · 6 | `KeyNumpadFive` · `KeyNumpadSix` | Lighting saturation −, + | **Right ⌘ · right Shift** |
+| + | `KeyNumpadPlus` | Lighting brightness + | **Right Control** |
+| * − | `KeyNumpadMultiply` `KeyNumpadMinus` | Lighting hue +, brightness − | **Nothing** (`KC_NO`): reserved for future use (RFU) |
+| Enter | `KeyNumpadEnter` | Next lighting effect | **6-key / full rollover** (`CUSTOM(7)`), moved from 7 |
+| Esc | `KeyNumpadTopOne` | Sleep | **Volume down** |
+| = | `KeyNumpadTopTwo` | Tab | **Volume up** (Tab has its own key) |
+| 7 | `KeyNumpadSeven` | 6-key / full rollover | **←** (rollover moved to Fn1 + Enter) |
+| 1 2 3 | `KeyNumpadOne` `KeyNumpadTwo` `KeyNumpadThree` | Bluetooth 1–3 | unchanged |
+| 4 | `KeyNumpadFour` | 2.4 GHz mode | **Right Option** (2.4 GHz moved to Fn1 + .) |
+| 0 | `KeyNumpadZero` | Hardware reset (hold about 3 seconds) | **USB mode** (SPM's `USB`, `CUSTOM(4)`); the reset moved to Fn2 + 0 |
+| . | `KeyNumpadDecimal` | . | **2.4 GHz mode** (`CUSTOM(0)`) |
 
-Dropped keys are transparent (`KC_TRNS`), not dead: a number typed with Fn1 still held comes out
+Dropped keys are transparent (`KC_TRNS`, `KeyPassthrough`), not dead: a number typed with Fn1 still held comes out
 as a number.
 
 ## Layer 2 (Fn2: hold Fn1, then Tab)
@@ -62,16 +64,16 @@ as a number.
 Momentary layers stack: holding Fn1 turns on layer 1, where the Tab key is Fn2 (`LT(2, KC_TAB)`), and holding it too
 turns on layer 2 (checked on the board, 2026-10-24).
 
-| Fn2 + | Sends |
-|---|---|
-| Esc | **Lighting on/off** (SPM's `RTOG`, `CUSTOM(11)`), moved from Fn + Num Lock |
-| = | **英数** (`KC_LNG2`): back to English input |
-| 0 | **Hardware reset** (hold about 3 seconds), moved from Fn + 0 |
-| * − | **Nothing** (`KC_NO`): reserved for future use (RFU), as on Fn1 |
+| Fn2 + | Canonical name | Sends |
+|---|---|---|
+| Esc | `KeyNumpadTopOne` | **Lighting on/off** (SPM's `RTOG`, `CUSTOM(11)`), moved from Fn + Num Lock |
+| = | `KeyNumpadTopTwo` | **英数** (`KC_LNG2`): back to English input |
+| 0 | `KeyNumpadZero` | **Hardware reset** (hold about 3 seconds), moved from Fn + 0 |
+| * − | `KeyNumpadMultiply` `KeyNumpadMinus` | **Nothing** (`KC_NO`): reserved for future use (RFU), as on Fn1 |
 
 The reset takes Fn1 + Tab + 0 held together.
 
-**The rest of layer 2 is deliberately undefined** (hatched in the drawing). Here it passes through
+**The rest of layer 2 is deliberately undefined** (`KeyAbstract`, hatched in the drawing). Here it passes through
 (`KC_TRNS`), and any implementation of this layout may put whatever it likes there.
 
 ## Choices
