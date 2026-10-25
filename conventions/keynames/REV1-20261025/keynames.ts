@@ -4,6 +4,7 @@
 // key shows (unshifted) on each layout, null where the layout has no such key. keycode is the QMK
 // keycode; hidUsage is "page:usage" in hex; code is the browser's KeyboardEvent.code. A section
 // key of "numerical" inside a section's keys means "every key of the Numerical section".
+// Names are not keycode-unique: several keys can share a keycode, HID usage or code.
 
 export const VERSION = "REV1-20261025";
 
@@ -108,6 +109,19 @@ export type Keyname =
   | "KeyUSLeftControl"
   | "KeyRightControl"
   | "KeyWINMenu"
+  | "KeyKTSHangulToggle"
+  | "KeyKTSHanja"
+  | "KeyMACGlobe"
+  | "KeyMACTouchID"
+  | "KeyMACMissionControl"
+  | "KeyMACLaunchpad"
+  | "KeyWINTaskView"
+  | "KeyWINFileExplorer"
+  | "KeyWINScreenshot"
+  | "KeyWINCortana"
+  | "KeyHHKBUSFunction"
+  | "KeyHHKBFunctionTwo"
+  | "KeyHHKBFunctionThree"
   | "KeyMomentaryLayerZero"
   | "KeyMomentaryLayerOne"
   | "KeyMomentaryLayerTwo"
@@ -124,7 +138,22 @@ export type Keyname =
   | "KeyNoOp"
   | "KeyPassthrough"
   | "KeyReservedForFutureUse"
+  | "KeyAbstract"
   | "KeyKeyboardHardwareControl"
+  | "KeyUniversalShift"
+  | "KeyUniversalControl"
+  | "KeyUniversalAuxiliary"
+  | "KeyUniversalPrimary"
+  | "KeyHHKBUniversalFunction"
+  | "KeyVirtualFunction"
+  | "KeyLangThree"
+  | "KeyLangFour"
+  | "KeyLangFive"
+  | "KeyCalculator"
+  | "KeySystemSleep"
+  | "KeyClear"
+  | "KeyMediaFastForward"
+  | "KeyMediaRewind"
   | "KeyCapsLock"
   | "KeyPrintScreen"
   | "KeyScrollLock"
@@ -139,6 +168,22 @@ export type Keyname =
   | "KeyBrightnessUp"
   | "KeyBrightnessDown"
   | "KeySystemPower"
+  | "KeyLeftMouseButton"
+  | "KeyRightMouseButton"
+  | "KeyMiddleMouseButton"
+  | "KeyMouseButtonFour"
+  | "KeyMouseButtonFive"
+  | "KeyMouseButtonSix"
+  | "KeyMouseButtonSeven"
+  | "KeyMouseButtonEight"
+  | "KeyMouseMoveUp"
+  | "KeyMouseMoveDown"
+  | "KeyMouseMoveLeft"
+  | "KeyMouseMoveRight"
+  | "KeyMouseWheelUp"
+  | "KeyMouseWheelDown"
+  | "KeyMouseWheelLeft"
+  | "KeyMouseWheelRight"
   | "KeyInsert"
   | "KeyHome"
   | "KeyPageUp"
@@ -163,7 +208,11 @@ export type Keyname =
   | "KeyNumpadZero"
   | "KeyNumpadDecimal"
   | "KeyNumpadEquals"
-  | "KeyNumpadComma";
+  | "KeyNumpadComma"
+  | "KeyNumpadTopOne"
+  | "KeyNumpadTopTwo"
+  | "KeyNumpadTopThree"
+  | "KeyNumpadTopFour";
 
 export type KeynameAlias =
   | "KeyUSMinus"
@@ -189,7 +238,7 @@ export type KeynameAlias =
   | "KeyUSSlash"
   | "KeyJISBackslash";
 
-export type SectionId = "alphabetical" | "numerical" | "jis" | "functionRow" | "numberRow" | "qRow" | "aRow" | "zRow" | "modifierRow" | "generic" | "navigation" | "numpad";
+export type SectionId = "alphabetical" | "numerical" | "jis" | "functionRow" | "numberRow" | "qRow" | "aRow" | "zRow" | "modifierRow" | "layoutSpecific" | "generic" | "mouse" | "navigation" | "numpad";
 
 export interface Legends {
   readonly qwerty: string | null;
@@ -371,15 +420,15 @@ export const KEYS: readonly Key[] = Object.freeze([
   { name: "KeyRo", sections: ["jis", "zRow"],
     legends: { qwerty: null, korean2Set: null, jisKorean: "\\", kana: "ろ" },
     keycode: "KC_INT1", alternativeKeycodes: [], hidUsage: "0x07:0x87", code: "IntlRo",
-    alsoCalled: ["JapaneseRo", "Ro", "JIS Backslash", "Underscore (on Mac)", "International1"] },
+    alsoCalled: ["JapaneseRo", "Ro", "JIS Backslash", "Underscore (on Mac)", "International1", "KC_RO"] },
   { name: "KeyJISMacEnglish", sections: ["jis", "modifierRow"],
     legends: { qwerty: "英数", korean2Set: "英数", jisKorean: "英数", kana: "英数" },
     keycode: "KC_LNG2", alternativeKeycodes: [], hidUsage: "0x07:0x91", code: "Lang2",
-    alsoCalled: ["Eisuu", "MacRomaji", "LangEn", "Lang2", "KC_HANJ (named for Korean 한자)"] },
+    alsoCalled: ["Eisuu", "MacRomaji", "LangEn", "Lang2", "KC_HANJ"] },
   { name: "KeyJISMacKana", sections: ["jis", "modifierRow"],
     legends: { qwerty: "かな", korean2Set: "かな", jisKorean: "かな", kana: "かな" },
     keycode: "KC_LNG1", alternativeKeycodes: [], hidUsage: "0x07:0x90", code: "Lang1",
-    alsoCalled: ["Kana", "LangJa", "Lang1", "KC_HAEN (named for Korean 한/영)"] },
+    alsoCalled: ["Kana", "LangJa", "Lang1", "KC_HAEN"] },
   { name: "KeyJISMuhenkan", sections: ["jis"],
     legends: { qwerty: "無変換", korean2Set: "無変換", jisKorean: "無変換", kana: "無変換" },
     keycode: "KC_INT5", alternativeKeycodes: [], hidUsage: "0x07:0x8B", code: "NonConvert",
@@ -463,7 +512,7 @@ export const KEYS: readonly Key[] = Object.freeze([
   { name: "KeyFunctionEighteen", sections: ["functionRow"],
     legends: { qwerty: "F18", korean2Set: "F18", jisKorean: "F18", kana: "F18" },
     keycode: "KC_F18", alternativeKeycodes: [], hidUsage: "0x07:0x6D", code: "F18",
-    alsoCalled: ["F18"] },
+    alsoCalled: ["F18", "Korean Key"] },
   { name: "KeyFunctionNineteen", sections: ["functionRow"],
     legends: { qwerty: "F19", korean2Set: "F19", jisKorean: "F19", kana: "F19" },
     keycode: "KC_F19", alternativeKeycodes: [], hidUsage: "0x07:0x6E", code: "F19",
@@ -491,7 +540,7 @@ export const KEYS: readonly Key[] = Object.freeze([
   { name: "KeyHankakuZenkaku", sections: ["numberRow"],
     legends: { qwerty: "`", korean2Set: "`", jisKorean: "`", kana: "半角/全角" },
     keycode: "KC_GRV", alternativeKeycodes: [], hidUsage: "0x07:0x35", code: "Backquote",
-    alsoCalled: ["Grave", "Accent", "Tilde", "Backtick", "Zenkaku", "Hankaku"] },
+    alsoCalled: ["Grave", "Accent", "Tilde", "Backtick", "Zenkaku", "Hankaku", "VK_OEM_AUTO", "VK_OEM_ENLW"] },
   { name: "KeyHo", sections: ["numberRow"],
     legends: { qwerty: "-", korean2Set: "-", jisKorean: "!", kana: "ほ" },
     keycode: "KC_MINS", alternativeKeycodes: [], hidUsage: "0x07:0x2D", code: "Minus",
@@ -536,7 +585,7 @@ export const KEYS: readonly Key[] = Object.freeze([
     legends: { qwerty: "Shift", korean2Set: "Shift", jisKorean: "Shift", kana: "Shift" },
     keycode: "KC_LSFT", alternativeKeycodes: [], hidUsage: "0x07:0xE1", code: "ShiftLeft",
     alsoCalled: ["LShift", "Left Shift", "LShft"] },
-  { name: "KeyISOBackslash", sections: ["zRow"],
+  { name: "KeyISOBackslash", sections: ["layoutSpecific"],
     legends: { qwerty: null, korean2Set: null, jisKorean: null, kana: null },
     keycode: "KC_NUBS", alternativeKeycodes: [], hidUsage: "0x07:0x64", code: "IntlBackslash",
     alsoCalled: ["Non-US Backslash", "ISO Backslash", "UK Backslash", "102nd key", "the key left of Z on ISO"] },
@@ -563,7 +612,7 @@ export const KEYS: readonly Key[] = Object.freeze([
   { name: "KeyHHKBLeftFunction", sections: ["modifierRow"],
     legends: { qwerty: "Fn", korean2Set: "Fn", jisKorean: "Fn", kana: "Fn" },
     keycode: null, alternativeKeycodes: [], hidUsage: null, code: null,
-    alsoCalled: ["Left Function", "LeftFn", "Fn1"] },
+    alsoCalled: ["Left Function", "LeftFn"] },
   { name: "KeyJISKLangKorean", sections: ["jis", "modifierRow"],
     legends: { qwerty: null, korean2Set: null, jisKorean: "カタカナ", kana: "半角/全角" },
     keycode: "KC_INT2", alternativeKeycodes: [], hidUsage: "0x07:0x88", code: "KanaMode",
@@ -571,11 +620,11 @@ export const KEYS: readonly Key[] = Object.freeze([
   { name: "KeyLeftAuxiliary", sections: ["modifierRow"],
     legends: { qwerty: "⌥", korean2Set: "⌥", jisKorean: "⌥", kana: "⌥" },
     keycode: "KC_LALT", alternativeKeycodes: [], hidUsage: "0x07:0xE2", code: "AltLeft",
-    alsoCalled: ["LeftOpt", "LeftAlt", "LOpt", "LAlt", "LAux"] },
+    alsoCalled: ["LeftOpt", "LeftAlt", "LOpt", "LAlt", "LAux", "Left ◇"] },
   { name: "KeyLeftPrimary", sections: ["modifierRow"],
     legends: { qwerty: "⌘", korean2Set: "⌘", jisKorean: "⌘", kana: "⌘" },
     keycode: "KC_LGUI", alternativeKeycodes: [], hidUsage: "0x07:0xE3", code: "MetaLeft",
-    alsoCalled: ["LeftCommand", "LCmd", "LeftWin", "LWin", "LGUI"] },
+    alsoCalled: ["LeftCommand", "LCmd", "LeftWin", "LWin", "LGUI", "Left ◆"] },
   { name: "KeySpacebar", sections: ["modifierRow"],
     legends: { qwerty: "Space", korean2Set: "Space", jisKorean: "Space", kana: "Space" },
     keycode: "KC_SPC", alternativeKeycodes: [], hidUsage: "0x07:0x2C", code: "Space",
@@ -583,15 +632,15 @@ export const KEYS: readonly Key[] = Object.freeze([
   { name: "KeyRightPrimary", sections: ["modifierRow"],
     legends: { qwerty: "⌘", korean2Set: "⌘", jisKorean: "⌘", kana: "⌘" },
     keycode: "KC_RGUI", alternativeKeycodes: [], hidUsage: "0x07:0xE7", code: "MetaRight",
-    alsoCalled: ["RightCommand", "RCmd", "RightWin", "RWin", "RGUI"] },
+    alsoCalled: ["RightCommand", "RCmd", "RightWin", "RWin", "RGUI", "Right ◆"] },
   { name: "KeyRightAuxiliary", sections: ["modifierRow"],
     legends: { qwerty: "⌥", korean2Set: "⌥", jisKorean: "⌥", kana: "⌥" },
     keycode: "KC_RALT", alternativeKeycodes: [], hidUsage: "0x07:0xE6", code: "AltRight",
-    alsoCalled: ["RightOpt", "RightAlt", "ROpt", "RAlt", "RAux", "AltGr"] },
+    alsoCalled: ["RightOpt", "RightAlt", "ROpt", "RAlt", "RAux", "AltGr", "Right ◇"] },
   { name: "KeyHHKBRightFunction", sections: ["modifierRow"],
     legends: { qwerty: "Fn", korean2Set: "Fn", jisKorean: "Fn", kana: "Fn" },
     keycode: null, alternativeKeycodes: [], hidUsage: null, code: null,
-    alsoCalled: ["Right Function", "RightFn", "Fn1"] },
+    alsoCalled: ["Right Function", "RightFn"] },
   { name: "KeyLeftArrow", sections: ["modifierRow"],
     legends: { qwerty: "←", korean2Set: "←", jisKorean: "←", kana: "←" },
     keycode: "KC_LEFT", alternativeKeycodes: [], hidUsage: "0x07:0x50", code: "ArrowLeft",
@@ -604,18 +653,70 @@ export const KEYS: readonly Key[] = Object.freeze([
     legends: { qwerty: "→", korean2Set: "→", jisKorean: "→", kana: "→" },
     keycode: "KC_RGHT", alternativeKeycodes: [], hidUsage: "0x07:0x4F", code: "ArrowRight",
     alsoCalled: ["Right", "Right Arrow"] },
-  { name: "KeyUSLeftControl", sections: ["modifierRow"],
+  { name: "KeyUSLeftControl", sections: ["layoutSpecific"],
     legends: { qwerty: "Control", korean2Set: "Control", jisKorean: "Control", kana: "Control" },
     keycode: "KC_LCTL", alternativeKeycodes: [], hidUsage: "0x07:0xE0", code: "ControlLeft",
     alsoCalled: ["LCtrl", "Left Control", "LCtl"] },
-  { name: "KeyRightControl", sections: ["modifierRow"],
+  { name: "KeyRightControl", sections: ["generic"],
     legends: { qwerty: "Control", korean2Set: "Control", jisKorean: "Control", kana: "Control" },
     keycode: "KC_RCTL", alternativeKeycodes: [], hidUsage: "0x07:0xE4", code: "ControlRight",
     alsoCalled: ["RCtrl", "Right Control", "RCtl"] },
-  { name: "KeyWINMenu", sections: ["modifierRow"],
+  { name: "KeyWINMenu", sections: ["layoutSpecific"],
     legends: { qwerty: "Menu", korean2Set: "Menu", jisKorean: "Menu", kana: "Menu" },
     keycode: "KC_APP", alternativeKeycodes: [], hidUsage: "0x07:0x65", code: "ContextMenu",
     alsoCalled: ["Application", "App", "Context Menu"] },
+  { name: "KeyKTSHangulToggle", sections: ["layoutSpecific"],
+    legends: { qwerty: null, korean2Set: "한/영", jisKorean: null, kana: null },
+    keycode: "KC_LNG1", alternativeKeycodes: [], hidUsage: "0x07:0x90", code: "Lang1",
+    alsoCalled: ["한/영", "HanYeong", "Hangul", "VK_HANGUL", "KC_HAEN", "Lang1"] },
+  { name: "KeyKTSHanja", sections: ["layoutSpecific"],
+    legends: { qwerty: null, korean2Set: "한자", jisKorean: null, kana: null },
+    keycode: "KC_LNG2", alternativeKeycodes: [], hidUsage: "0x07:0x91", code: "Lang2",
+    alsoCalled: ["한자", "Hanja", "VK_HANJA", "KC_HANJ", "Lang2"] },
+  { name: "KeyMACGlobe", sections: ["layoutSpecific"],
+    legends: { qwerty: "fn 🌐", korean2Set: null, jisKorean: null, kana: null },
+    keycode: null, alternativeKeycodes: [], hidUsage: "0xFF:0x03", code: "Fn",
+    alsoCalled: ["Globe", "🌐", "fn", "Apple fn", "kVK_Function", "Karabiner fn"] },
+  { name: "KeyMACTouchID", sections: ["layoutSpecific"],
+    legends: { qwerty: null, korean2Set: null, jisKorean: null, kana: null },
+    keycode: null, alternativeKeycodes: [], hidUsage: null, code: null,
+    alsoCalled: ["Touch ID", "Lock key"] },
+  { name: "KeyMACMissionControl", sections: ["layoutSpecific"],
+    legends: { qwerty: null, korean2Set: null, jisKorean: null, kana: null },
+    keycode: "KC_MCTL", alternativeKeycodes: [], hidUsage: null, code: null,
+    alsoCalled: ["Mission Control", "KC_MISSION_CONTROL"] },
+  { name: "KeyMACLaunchpad", sections: ["layoutSpecific"],
+    legends: { qwerty: null, korean2Set: null, jisKorean: null, kana: null },
+    keycode: "KC_LPAD", alternativeKeycodes: [], hidUsage: null, code: null,
+    alsoCalled: ["Launchpad", "KC_LAUNCHPAD"] },
+  { name: "KeyWINTaskView", sections: ["layoutSpecific"],
+    legends: { qwerty: null, korean2Set: null, jisKorean: null, kana: null },
+    keycode: null, alternativeKeycodes: [], hidUsage: null, code: null,
+    alsoCalled: ["Task View", "Win+Tab", "Keychron 0x7F07"] },
+  { name: "KeyWINFileExplorer", sections: ["layoutSpecific"],
+    legends: { qwerty: null, korean2Set: null, jisKorean: null, kana: null },
+    keycode: null, alternativeKeycodes: [], hidUsage: null, code: null,
+    alsoCalled: ["File Explorer", "Win+E", "Keychron 0x7F08"] },
+  { name: "KeyWINScreenshot", sections: ["layoutSpecific"],
+    legends: { qwerty: null, korean2Set: null, jisKorean: null, kana: null },
+    keycode: null, alternativeKeycodes: [], hidUsage: null, code: null,
+    alsoCalled: ["Screenshot", "Keychron 0x7F09"] },
+  { name: "KeyWINCortana", sections: ["layoutSpecific"],
+    legends: { qwerty: null, korean2Set: null, jisKorean: null, kana: null },
+    keycode: null, alternativeKeycodes: [], hidUsage: null, code: null,
+    alsoCalled: ["Cortana", "Keychron 0x7F0A"] },
+  { name: "KeyHHKBUSFunction", sections: ["layoutSpecific"],
+    legends: { qwerty: "Fn", korean2Set: null, jisKorean: null, kana: null },
+    keycode: null, alternativeKeycodes: [], hidUsage: null, code: null,
+    alsoCalled: ["HHKB US Fn", "the Fn right of right Shift"] },
+  { name: "KeyHHKBFunctionTwo", sections: ["layoutSpecific"],
+    legends: { qwerty: "Fn2", korean2Set: "Fn2", jisKorean: "Fn2", kana: "Fn2" },
+    keycode: null, alternativeKeycodes: [], hidUsage: null, code: null,
+    alsoCalled: ["Fn2", "HHKB Studio Fn2"] },
+  { name: "KeyHHKBFunctionThree", sections: ["layoutSpecific"],
+    legends: { qwerty: "Fn3", korean2Set: "Fn3", jisKorean: "Fn3", kana: "Fn3" },
+    keycode: null, alternativeKeycodes: [], hidUsage: null, code: null,
+    alsoCalled: ["Fn3", "HHKB Studio Fn3"] },
   { name: "KeyMomentaryLayerZero", sections: ["generic"],
     legends: { qwerty: null, korean2Set: null, jisKorean: null, kana: null },
     keycode: "MO(0)", alternativeKeycodes: [], hidUsage: null, code: null,
@@ -680,10 +781,70 @@ export const KEYS: readonly Key[] = Object.freeze([
     legends: { qwerty: null, korean2Set: null, jisKorean: null, kana: null },
     keycode: "KC_NO", alternativeKeycodes: [], hidUsage: null, code: null,
     alsoCalled: ["Reserved", "RFU", "Reserved for future use"] },
+  { name: "KeyAbstract", sections: ["generic"],
+    legends: { qwerty: null, korean2Set: null, jisKorean: null, kana: null },
+    keycode: null, alternativeKeycodes: [], hidUsage: null, code: null,
+    alsoCalled: ["Undefined", "Implementation-defined", "Abstract key"] },
   { name: "KeyKeyboardHardwareControl", sections: ["generic"],
     legends: { qwerty: null, korean2Set: null, jisKorean: null, kana: null },
     keycode: null, alternativeKeycodes: [], hidUsage: null, code: null,
-    alsoCalled: ["Hardware control", "Keyboard control", "Bluetooth pairing", "Backlight", "RGB", "Profile switch", "Pointing-stick speed", "QK_BOOT", "Bootloader"] },
+    alsoCalled: ["Hardware control", "Keyboard control", "Bluetooth pairing", "Backlight", "RGB", "Profile switch", "Pointing-stick speed", "QK_BOOT", "Bootloader", "Bluetooth slots", "RGB_*", "NK_TOGG", "NKRO toggle", "QK_CLEAR_EEPROM", "Factory reset", "Win lock"] },
+  { name: "KeyUniversalShift", sections: ["generic"],
+    legends: { qwerty: "Shift", korean2Set: "Shift", jisKorean: "Shift", kana: "Shift" },
+    keycode: "KC_LSFT", alternativeKeycodes: [], hidUsage: "0x07:0xE1", code: "ShiftLeft",
+    alsoCalled: ["Shift", "Either Shift"] },
+  { name: "KeyUniversalControl", sections: ["generic"],
+    legends: { qwerty: "Control", korean2Set: "Control", jisKorean: "Control", kana: "Control" },
+    keycode: "KC_LCTL", alternativeKeycodes: [], hidUsage: "0x07:0xE0", code: "ControlLeft",
+    alsoCalled: ["Control", "Ctrl", "Either Control"] },
+  { name: "KeyUniversalAuxiliary", sections: ["generic"],
+    legends: { qwerty: "⌥", korean2Set: "⌥", jisKorean: "⌥", kana: "⌥" },
+    keycode: "KC_LALT", alternativeKeycodes: [], hidUsage: "0x07:0xE2", code: "AltLeft",
+    alsoCalled: ["Option", "Alt", "Either Option"] },
+  { name: "KeyUniversalPrimary", sections: ["generic"],
+    legends: { qwerty: "⌘", korean2Set: "⌘", jisKorean: "⌘", kana: "⌘" },
+    keycode: "KC_LGUI", alternativeKeycodes: [], hidUsage: "0x07:0xE3", code: "MetaLeft",
+    alsoCalled: ["Command", "Win", "GUI", "Either Command"] },
+  { name: "KeyHHKBUniversalFunction", sections: ["generic"],
+    legends: { qwerty: "Fn", korean2Set: "Fn", jisKorean: "Fn", kana: "Fn" },
+    keycode: null, alternativeKeycodes: [], hidUsage: null, code: null,
+    alsoCalled: ["Fn", "Either HHKB Fn"] },
+  { name: "KeyVirtualFunction", sections: ["generic"],
+    legends: { qwerty: null, korean2Set: null, jisKorean: null, kana: null },
+    keycode: null, alternativeKeycodes: [], hidUsage: null, code: null,
+    alsoCalled: ["Virtual Fn", "Karabiner Fn", "Remapper Fn"] },
+  { name: "KeyLangThree", sections: ["generic"],
+    legends: { qwerty: null, korean2Set: null, jisKorean: null, kana: null },
+    keycode: "KC_LNG3", alternativeKeycodes: [], hidUsage: "0x07:0x92", code: "Lang3",
+    alsoCalled: ["LANG3", "Katakana (HID name)"] },
+  { name: "KeyLangFour", sections: ["generic"],
+    legends: { qwerty: null, korean2Set: null, jisKorean: null, kana: null },
+    keycode: "KC_LNG4", alternativeKeycodes: [], hidUsage: "0x07:0x93", code: "Lang4",
+    alsoCalled: ["LANG4", "Hiragana (HID name)"] },
+  { name: "KeyLangFive", sections: ["generic"],
+    legends: { qwerty: null, korean2Set: null, jisKorean: null, kana: null },
+    keycode: "KC_LNG5", alternativeKeycodes: [], hidUsage: "0x07:0x94", code: "Lang5",
+    alsoCalled: ["LANG5", "Zenkaku/Hankaku (HID name)"] },
+  { name: "KeyCalculator", sections: ["generic"],
+    legends: { qwerty: "Calc", korean2Set: "Calc", jisKorean: "Calc", kana: "Calc" },
+    keycode: "KC_CALC", alternativeKeycodes: [], hidUsage: "0x0C:0x192", code: "LaunchApp2",
+    alsoCalled: ["Calculator", "Calc"] },
+  { name: "KeySystemSleep", sections: ["generic"],
+    legends: { qwerty: "Sleep", korean2Set: "Sleep", jisKorean: "Sleep", kana: "Sleep" },
+    keycode: "KC_SLEP", alternativeKeycodes: [], hidUsage: "0x01:0x82", code: "Sleep",
+    alsoCalled: ["Sleep"] },
+  { name: "KeyClear", sections: ["generic"],
+    legends: { qwerty: "Clear", korean2Set: "Clear", jisKorean: "Clear", kana: "Clear" },
+    keycode: "KC_CLR", alternativeKeycodes: [], hidUsage: "0x07:0x9C", code: null,
+    alsoCalled: ["Clear", "KC_CLEAR"] },
+  { name: "KeyMediaFastForward", sections: ["generic"],
+    legends: { qwerty: null, korean2Set: null, jisKorean: null, kana: null },
+    keycode: "KC_MFFD", alternativeKeycodes: [], hidUsage: "0x0C:0xB3", code: null,
+    alsoCalled: ["Fast Forward"] },
+  { name: "KeyMediaRewind", sections: ["generic"],
+    legends: { qwerty: null, korean2Set: null, jisKorean: null, kana: null },
+    keycode: "KC_MRWD", alternativeKeycodes: [], hidUsage: "0x0C:0xB4", code: null,
+    alsoCalled: ["Rewind"] },
   { name: "KeyCapsLock", sections: ["generic"],
     legends: { qwerty: "Caps Lock", korean2Set: "Caps Lock", jisKorean: "Caps Lock", kana: "Caps Lock" },
     keycode: "KC_CAPS", alternativeKeycodes: [], hidUsage: "0x07:0x39", code: "CapsLock",
@@ -740,6 +901,70 @@ export const KEYS: readonly Key[] = Object.freeze([
     legends: { qwerty: "Power", korean2Set: "Power", jisKorean: "Power", kana: "Power" },
     keycode: "KC_PWR", alternativeKeycodes: [], hidUsage: "0x01:0x81", code: "Power",
     alsoCalled: ["Power"] },
+  { name: "KeyLeftMouseButton", sections: ["mouse"],
+    legends: { qwerty: null, korean2Set: null, jisKorean: null, kana: null },
+    keycode: "MS_BTN1", alternativeKeycodes: ["KC_BTN1"], hidUsage: "0x09:0x01", code: null,
+    alsoCalled: ["Left click", "Mouse button 1"] },
+  { name: "KeyRightMouseButton", sections: ["mouse"],
+    legends: { qwerty: null, korean2Set: null, jisKorean: null, kana: null },
+    keycode: "MS_BTN2", alternativeKeycodes: ["KC_BTN2"], hidUsage: "0x09:0x02", code: null,
+    alsoCalled: ["Right click", "Mouse button 2"] },
+  { name: "KeyMiddleMouseButton", sections: ["mouse"],
+    legends: { qwerty: null, korean2Set: null, jisKorean: null, kana: null },
+    keycode: "MS_BTN3", alternativeKeycodes: ["KC_BTN3"], hidUsage: "0x09:0x03", code: null,
+    alsoCalled: ["Middle click", "Mouse button 3"] },
+  { name: "KeyMouseButtonFour", sections: ["mouse"],
+    legends: { qwerty: null, korean2Set: null, jisKorean: null, kana: null },
+    keycode: "MS_BTN4", alternativeKeycodes: ["KC_BTN4"], hidUsage: "0x09:0x04", code: null,
+    alsoCalled: ["Mouse button 4", "Back"] },
+  { name: "KeyMouseButtonFive", sections: ["mouse"],
+    legends: { qwerty: null, korean2Set: null, jisKorean: null, kana: null },
+    keycode: "MS_BTN5", alternativeKeycodes: ["KC_BTN5"], hidUsage: "0x09:0x05", code: null,
+    alsoCalled: ["Mouse button 5", "Forward"] },
+  { name: "KeyMouseButtonSix", sections: ["mouse"],
+    legends: { qwerty: null, korean2Set: null, jisKorean: null, kana: null },
+    keycode: "MS_BTN6", alternativeKeycodes: ["KC_BTN6"], hidUsage: "0x09:0x06", code: null,
+    alsoCalled: ["Mouse button 6"] },
+  { name: "KeyMouseButtonSeven", sections: ["mouse"],
+    legends: { qwerty: null, korean2Set: null, jisKorean: null, kana: null },
+    keycode: "MS_BTN7", alternativeKeycodes: ["KC_BTN7"], hidUsage: "0x09:0x07", code: null,
+    alsoCalled: ["Mouse button 7"] },
+  { name: "KeyMouseButtonEight", sections: ["mouse"],
+    legends: { qwerty: null, korean2Set: null, jisKorean: null, kana: null },
+    keycode: "MS_BTN8", alternativeKeycodes: ["KC_BTN8"], hidUsage: "0x09:0x08", code: null,
+    alsoCalled: ["Mouse button 8"] },
+  { name: "KeyMouseMoveUp", sections: ["mouse"],
+    legends: { qwerty: null, korean2Set: null, jisKorean: null, kana: null },
+    keycode: "MS_UP", alternativeKeycodes: ["KC_MS_U"], hidUsage: "0x01:0x31", code: null,
+    alsoCalled: ["KC_MS_U"] },
+  { name: "KeyMouseMoveDown", sections: ["mouse"],
+    legends: { qwerty: null, korean2Set: null, jisKorean: null, kana: null },
+    keycode: "MS_DOWN", alternativeKeycodes: ["KC_MS_D"], hidUsage: "0x01:0x31", code: null,
+    alsoCalled: ["KC_MS_D"] },
+  { name: "KeyMouseMoveLeft", sections: ["mouse"],
+    legends: { qwerty: null, korean2Set: null, jisKorean: null, kana: null },
+    keycode: "MS_LEFT", alternativeKeycodes: ["KC_MS_L"], hidUsage: "0x01:0x30", code: null,
+    alsoCalled: ["KC_MS_L"] },
+  { name: "KeyMouseMoveRight", sections: ["mouse"],
+    legends: { qwerty: null, korean2Set: null, jisKorean: null, kana: null },
+    keycode: "MS_RGHT", alternativeKeycodes: ["KC_MS_R"], hidUsage: "0x01:0x30", code: null,
+    alsoCalled: ["KC_MS_R"] },
+  { name: "KeyMouseWheelUp", sections: ["mouse"],
+    legends: { qwerty: null, korean2Set: null, jisKorean: null, kana: null },
+    keycode: "MS_WHLU", alternativeKeycodes: ["KC_WH_U"], hidUsage: "0x01:0x38", code: null,
+    alsoCalled: ["KC_WH_U"] },
+  { name: "KeyMouseWheelDown", sections: ["mouse"],
+    legends: { qwerty: null, korean2Set: null, jisKorean: null, kana: null },
+    keycode: "MS_WHLD", alternativeKeycodes: ["KC_WH_D"], hidUsage: "0x01:0x38", code: null,
+    alsoCalled: ["KC_WH_D"] },
+  { name: "KeyMouseWheelLeft", sections: ["mouse"],
+    legends: { qwerty: null, korean2Set: null, jisKorean: null, kana: null },
+    keycode: "MS_WHLL", alternativeKeycodes: ["KC_WH_L"], hidUsage: "0x0C:0x238", code: null,
+    alsoCalled: ["KC_WH_L"] },
+  { name: "KeyMouseWheelRight", sections: ["mouse"],
+    legends: { qwerty: null, korean2Set: null, jisKorean: null, kana: null },
+    keycode: "MS_WHLR", alternativeKeycodes: ["KC_WH_R"], hidUsage: "0x0C:0x238", code: null,
+    alsoCalled: ["KC_WH_R"] },
   { name: "KeyInsert", sections: ["navigation"],
     legends: { qwerty: "Insert", korean2Set: "Insert", jisKorean: "Insert", kana: "Insert" },
     keycode: "KC_INS", alternativeKeycodes: [], hidUsage: "0x07:0x49", code: "Insert",
@@ -840,6 +1065,22 @@ export const KEYS: readonly Key[] = Object.freeze([
     legends: { qwerty: ",", korean2Set: ",", jisKorean: ",", kana: "," },
     keycode: "KC_PCMM", alternativeKeycodes: [], hidUsage: "0x07:0x85", code: "NumpadComma",
     alsoCalled: ["JIS Numpad Comma", "KP ,"] },
+  { name: "KeyNumpadTopOne", sections: ["numpad"],
+    legends: { qwerty: null, korean2Set: null, jisKorean: null, kana: null },
+    keycode: null, alternativeKeycodes: [], hidUsage: null, code: null,
+    alsoCalled: ["Numpad top row, key 1 (AL21W)"] },
+  { name: "KeyNumpadTopTwo", sections: ["numpad"],
+    legends: { qwerty: null, korean2Set: null, jisKorean: null, kana: null },
+    keycode: null, alternativeKeycodes: [], hidUsage: null, code: null,
+    alsoCalled: ["Numpad top row, key 2 (AL21W)"] },
+  { name: "KeyNumpadTopThree", sections: ["numpad"],
+    legends: { qwerty: null, korean2Set: null, jisKorean: null, kana: null },
+    keycode: null, alternativeKeycodes: [], hidUsage: null, code: null,
+    alsoCalled: ["Numpad top row, key 3 (AL21W)"] },
+  { name: "KeyNumpadTopFour", sections: ["numpad"],
+    legends: { qwerty: null, korean2Set: null, jisKorean: null, kana: null },
+    keycode: null, alternativeKeycodes: [], hidUsage: null, code: null,
+    alsoCalled: ["Numpad top row, key 4 (AL21W)"] },
 ]);
 
 export const SECTIONS: readonly Section[] = Object.freeze([
@@ -850,11 +1091,13 @@ export const SECTIONS: readonly Section[] = Object.freeze([
   { id: "numberRow", title: "Number Row", keys: ["KeyHankakuZenkaku", "numerical", "KeyHo", "KeyHe", "KeyLongKatakana", "KeyDeleteLeft"] },
   { id: "qRow", title: "Q-Row", keys: ["KeyTab", "KeyQ", "KeyW", "KeyE", "KeyR", "KeyT", "KeyY", "KeyU", "KeyI", "KeyO", "KeyP", "KeyDakuten", "KeyHandakuten", "KeyISOEnter"] },
   { id: "aRow", title: "A-Row", keys: ["KeyLeftControl", "KeyA", "KeyS", "KeyD", "KeyF", "KeyG", "KeyH", "KeyJ", "KeyK", "KeyL", "KeyRe", "KeyKe", "KeyMu", "KeyISOEnter"] },
-  { id: "zRow", title: "Z-Row", keys: ["KeyLeftShift", "KeyISOBackslash", "KeyZ", "KeyX", "KeyC", "KeyV", "KeyB", "KeyN", "KeyM", "KeyNe", "KeyRu", "KeyMe", "KeyRo", "KeyUpArrow", "KeyRightShift"] },
-  { id: "modifierRow", title: "Modifier row", keys: ["KeyHHKBLeftFunction", "KeyJISKLangKorean", "KeyLeftAuxiliary", "KeyLeftPrimary", "KeyJISMacEnglish", "KeySpacebar", "KeyJISMacKana", "KeyRightPrimary", "KeyRightAuxiliary", "KeyHHKBRightFunction", "KeyLeftArrow", "KeyDownArrow", "KeyRightArrow", "KeyUSLeftControl", "KeyWINMenu", "KeyRightControl"] },
-  { id: "generic", title: "Generic keys", keys: ["KeyMomentaryLayerZero", "KeyMomentaryLayerOne", "KeyMomentaryLayerTwo", "KeyMomentaryLayerThree", "KeyMoveToLayerZero", "KeyMoveToLayerOne", "KeyMoveToLayerTwo", "KeyMoveToLayerThree", "KeyToggleLayerZero", "KeyToggleLayerOne", "KeyToggleLayerTwo", "KeyToggleLayerThree", "KeyMomentaryNextLayer", "KeyNoOp", "KeyPassthrough", "KeyReservedForFutureUse", "KeyKeyboardHardwareControl", "KeyCapsLock", "KeyPrintScreen", "KeyScrollLock", "KeyPause", "KeyVolumeUp", "KeyVolumeDown", "KeyMute", "KeyMediaPlayPause", "KeyMediaNextTrack", "KeyMediaPreviousTrack", "KeyEject", "KeyBrightnessUp", "KeyBrightnessDown", "KeySystemPower"] },
+  { id: "zRow", title: "Z-Row", keys: ["KeyLeftShift", "KeyZ", "KeyX", "KeyC", "KeyV", "KeyB", "KeyN", "KeyM", "KeyNe", "KeyRu", "KeyMe", "KeyRo", "KeyUpArrow", "KeyRightShift"] },
+  { id: "modifierRow", title: "Modifier row", keys: ["KeyHHKBLeftFunction", "KeyJISKLangKorean", "KeyLeftAuxiliary", "KeyLeftPrimary", "KeyJISMacEnglish", "KeySpacebar", "KeyJISMacKana", "KeyRightPrimary", "KeyRightAuxiliary", "KeyHHKBRightFunction", "KeyLeftArrow", "KeyDownArrow", "KeyRightArrow"] },
+  { id: "layoutSpecific", title: "Layout-specific keys", keys: ["KeyUSLeftControl", "KeyWINMenu", "KeyISOBackslash", "KeyKTSHangulToggle", "KeyKTSHanja", "KeyMACGlobe", "KeyMACTouchID", "KeyMACMissionControl", "KeyMACLaunchpad", "KeyWINTaskView", "KeyWINFileExplorer", "KeyWINScreenshot", "KeyWINCortana", "KeyHHKBUSFunction", "KeyHHKBFunctionTwo", "KeyHHKBFunctionThree"] },
+  { id: "generic", title: "Generic keys", keys: ["KeyMomentaryLayerZero", "KeyMomentaryLayerOne", "KeyMomentaryLayerTwo", "KeyMomentaryLayerThree", "KeyMoveToLayerZero", "KeyMoveToLayerOne", "KeyMoveToLayerTwo", "KeyMoveToLayerThree", "KeyToggleLayerZero", "KeyToggleLayerOne", "KeyToggleLayerTwo", "KeyToggleLayerThree", "KeyMomentaryNextLayer", "KeyNoOp", "KeyPassthrough", "KeyAbstract", "KeyReservedForFutureUse", "KeyKeyboardHardwareControl", "KeyUniversalShift", "KeyUniversalControl", "KeyUniversalAuxiliary", "KeyUniversalPrimary", "KeyHHKBUniversalFunction", "KeyVirtualFunction", "KeyRightControl", "KeyCapsLock", "KeyPrintScreen", "KeyScrollLock", "KeyPause", "KeyLangThree", "KeyLangFour", "KeyLangFive", "KeyVolumeUp", "KeyVolumeDown", "KeyMute", "KeyMediaPlayPause", "KeyMediaNextTrack", "KeyMediaPreviousTrack", "KeyMediaFastForward", "KeyMediaRewind", "KeyEject", "KeyBrightnessUp", "KeyBrightnessDown", "KeySystemPower", "KeySystemSleep", "KeyCalculator", "KeyClear"] },
+  { id: "mouse", title: "Mouse keys", keys: ["KeyLeftMouseButton", "KeyRightMouseButton", "KeyMiddleMouseButton", "KeyMouseButtonFour", "KeyMouseButtonFive", "KeyMouseButtonSix", "KeyMouseButtonSeven", "KeyMouseButtonEight", "KeyMouseMoveUp", "KeyMouseMoveDown", "KeyMouseMoveLeft", "KeyMouseMoveRight", "KeyMouseWheelUp", "KeyMouseWheelDown", "KeyMouseWheelLeft", "KeyMouseWheelRight"] },
   { id: "navigation", title: "Navigation keys", keys: ["KeyInsert", "KeyHome", "KeyPageUp", "KeyDeleteRight", "KeyEnd", "KeyPageDown"] },
-  { id: "numpad", title: "Numpad keys", keys: ["KeyWINNumlock", "KeyNumpadDivide", "KeyNumpadMultiply", "KeyNumpadMinus", "KeyNumpadPlus", "KeyNumpadEnter", "KeyNumpadSeven", "KeyNumpadEight", "KeyNumpadNine", "KeyNumpadFour", "KeyNumpadFive", "KeyNumpadSix", "KeyNumpadOne", "KeyNumpadTwo", "KeyNumpadThree", "KeyNumpadZero", "KeyNumpadDecimal", "KeyNumpadEquals", "KeyNumpadComma"] },
+  { id: "numpad", title: "Numpad keys", keys: ["KeyWINNumlock", "KeyNumpadDivide", "KeyNumpadMultiply", "KeyNumpadMinus", "KeyNumpadPlus", "KeyNumpadEnter", "KeyNumpadSeven", "KeyNumpadEight", "KeyNumpadNine", "KeyNumpadFour", "KeyNumpadFive", "KeyNumpadSix", "KeyNumpadOne", "KeyNumpadTwo", "KeyNumpadThree", "KeyNumpadZero", "KeyNumpadDecimal", "KeyNumpadEquals", "KeyNumpadComma", "KeyNumpadTopOne", "KeyNumpadTopTwo", "KeyNumpadTopThree", "KeyNumpadTopFour"] },
 ]);
 
 // Accepted alternative name -> canonical name.
