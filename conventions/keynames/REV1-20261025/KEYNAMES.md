@@ -136,7 +136,7 @@ positions are the Windows JIS ones (either side of Space); macOS drops both
 | `KeyLongKatakana` | N/A | N/A | — | ー | `KC_INT3` | Yen, ¥, JapaneseBackslash, JIS Yen, International3, KC\_JYEN |
 | `KeyMu` | \\ | ₩ | \] | む | `KC_NUHS` (or `KC_BSLS`) | JapaneseMu, Mu, JIS ClosingSquareBracket, US Backslash, Won, UK Hash, Non-US Hash |
 | `KeyRo` | N/A | N/A | \\ | ろ | `KC_INT1` | JapaneseRo, Ro, JIS Backslash, Underscore (on Mac), International1, KC\_RO |
-| `KeyJISKLangKorean` | N/A | N/A | カタカナ | 半角/全角 | `KC_INT2` | PC Katakana, LangKorean, LangKo, Windows JIS カタカナ/ひらがな, HHKB JIS 半/全 position, International2, KC\_KANA |
+| `KeyJISKLangKorean` | N/A | N/A | カタカナ | カタカナ | `KC_INT2` | PC Katakana, LangKorean, LangKo, Windows JIS カタカナ/ひらがな, HHKB JIS 半/全 position, International2, KC\_KANA |
 | `KeyJISMacEnglish` | 英数 | 英数 | 英数 | 英数 | `KC_LNG2` | Eisuu, MacRomaji, LangEn, Lang2, KC\_HANJ |
 | `KeyJISMacKana` | かな | かな | かな | かな | `KC_LNG1` | Kana, LangJa, Lang1, KC\_HAEN |
 | `KeyJISMuhenkan` | 無変換 | 無変換 | 無変換 | 無変換 | `KC_INT5` | Muhenkan, NonConvert, International5 |
@@ -190,8 +190,9 @@ Also called:
 
 Superset of `Numerical`.
 
-`KeyHankakuZenkaku` is the full-size JIS (and US) key left of `KeyOne`. The HHKB JIS has no key
-there; its 半/全 key is in the Modifier row, as `KeyJISKLangKorean`.
+`KeyHankakuZenkaku` is the full-size JIS (and US) key left of `KeyOne`, and the one that carries
+半角/全角 (`KC_GRV`). The HHKB JIS has no key there. Its bottom-row key with the 半/全 cap is
+`KeyJISKLangKorean`, which sends カタカナ (`KC_INT2`), not 半角/全角.
 
 ### Key table
 
@@ -291,7 +292,7 @@ Also called:
 | Repository canonical name | Legend on QWERTY | Legend on Korean 2-set | Legend on JIS Korean | Legend on Japanese Kana | Keycode | Also called |
 |---|---|---|---|---|---|---|
 | `KeyHHKBLeftFunction` | Fn | Fn | Fn | Fn | N/A | Left Function, LeftFn |
-| `KeyJISKLangKorean` | N/A | N/A | カタカナ | 半角/全角 | `KC_INT2` | PC Katakana, LangKorean, LangKo, Windows JIS カタカナ/ひらがな, HHKB JIS 半/全 position, International2, KC\_KANA |
+| `KeyJISKLangKorean` | N/A | N/A | カタカナ | カタカナ | `KC_INT2` | PC Katakana, LangKorean, LangKo, Windows JIS カタカナ/ひらがな, HHKB JIS 半/全 position, International2, KC\_KANA |
 | `KeyLeftAuxiliary` | ⌥ | ⌥ | ⌥ | ⌥ | `KC_LALT` | LeftOpt, LeftAlt, LOpt, LAlt, LAux, Left ◇ |
 | `KeyLeftPrimary` | ⌘ | ⌘ | ⌘ | ⌘ | `KC_LGUI` | LeftCommand, LCmd, LeftWin, LWin, LGUI, Left ◆ |
 | `KeyJISMacEnglish` | 英数 | 英数 | 英数 | 英数 | `KC_LNG2` | Eisuu, MacRomaji, LangEn, Lang2, KC\_HANJ |

@@ -360,7 +360,7 @@ public enum Keynames {
         null, new String[] {}, null, null,
         new String[] {"Left Function", "LeftFn"}),
     KeyJISKLangKorean(new String[] {"jis", "modifierRow"},
-        null, null, "カタカナ", "半角/全角",
+        null, null, "カタカナ", "カタカナ",
         "KC_INT2", new String[] {}, "0x07:0x88", "KanaMode",
         new String[] {"PC Katakana", "LangKorean", "LangKo", "Windows JIS カタカナ/ひらがな", "HHKB JIS 半/全 position", "International2", "KC_KANA"}),
     KeyLeftAuxiliary(new String[] {"modifierRow"},

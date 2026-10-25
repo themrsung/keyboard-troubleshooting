@@ -614,7 +614,7 @@ export const KEYS: readonly Key[] = Object.freeze([
     keycode: null, alternativeKeycodes: [], hidUsage: null, code: null,
     alsoCalled: ["Left Function", "LeftFn"] },
   { name: "KeyJISKLangKorean", sections: ["jis", "modifierRow"],
-    legends: { qwerty: null, korean2Set: null, jisKorean: "カタカナ", kana: "半角/全角" },
+    legends: { qwerty: null, korean2Set: null, jisKorean: "カタカナ", kana: "カタカナ" },
     keycode: "KC_INT2", alternativeKeycodes: [], hidUsage: "0x07:0x88", code: "KanaMode",
     alsoCalled: ["PC Katakana", "LangKorean", "LangKo", "Windows JIS カタカナ/ひらがな", "HHKB JIS 半/全 position", "International2", "KC_KANA"] },
   { name: "KeyLeftAuxiliary", sections: ["modifierRow"],
