@@ -301,6 +301,9 @@ Also called:
 Keys by what they do rather than where they are. Layer keys only exist in firmware (QMK, VIA), so
 they have no legend or HID usage.
 
+- `KeyMomentaryNextLayer` turns on the layer above the base layer while held: a plain function
+  layer, for when which layer is the base isn't fixed. `MO(NEXT)` isn't a real QMK keycode; write it
+  as `MO(n + 1)`, where `n` is the base layer.
 - `KeyNoOp` does nothing, on purpose, and stays that way.
 - `KeyPassthrough` does whatever the key does on the layer below (QMK's transparent, ▽ in the
   key-legend drawings).
@@ -327,6 +330,7 @@ they have no legend or HID usage.
 | `KeyToggleLayerOne` | N/A | N/A | N/A | N/A | `TG(1)` | TG(1), Toggle layer 1 |
 | `KeyToggleLayerTwo` | N/A | N/A | N/A | N/A | `TG(2)` | TG(2), Toggle layer 2 |
 | `KeyToggleLayerThree` | N/A | N/A | N/A | N/A | `TG(3)` | TG(3), Toggle layer 3 |
+| `KeyMomentaryNextLayer` | N/A | N/A | N/A | N/A | `MO(NEXT)` | MO(NEXT), Function layer, Fn layer, Momentary next layer |
 | `KeyNoOp` | N/A | N/A | N/A | N/A | `KC_NO` | KC\_NO, XXXXXXX, No-op, No operation, Disabled |
 | `KeyPassthrough` | N/A | N/A | N/A | N/A | `KC_TRNS` | KC\_TRNS, \_\_\_\_\_\_\_, Transparent, Passthrough, ▽ |
 | `KeyReservedForFutureUse` | N/A | N/A | N/A | N/A | `KC_NO` | Reserved, RFU, Reserved for future use |

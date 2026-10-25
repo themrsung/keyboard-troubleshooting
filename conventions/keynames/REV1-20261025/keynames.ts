@@ -120,6 +120,7 @@ export type Keyname =
   | "KeyToggleLayerOne"
   | "KeyToggleLayerTwo"
   | "KeyToggleLayerThree"
+  | "KeyMomentaryNextLayer"
   | "KeyNoOp"
   | "KeyPassthrough"
   | "KeyReservedForFutureUse"
@@ -663,6 +664,10 @@ export const KEYS: readonly Key[] = Object.freeze([
     legends: { qwerty: null, korean2Set: null, jisKorean: null, kana: null },
     keycode: "TG(3)", alternativeKeycodes: [], hidUsage: null, code: null,
     alsoCalled: ["TG(3)", "Toggle layer 3"] },
+  { name: "KeyMomentaryNextLayer", sections: ["generic"],
+    legends: { qwerty: null, korean2Set: null, jisKorean: null, kana: null },
+    keycode: "MO(NEXT)", alternativeKeycodes: [], hidUsage: null, code: null,
+    alsoCalled: ["MO(NEXT)", "Function layer", "Fn layer", "Momentary next layer"] },
   { name: "KeyNoOp", sections: ["generic"],
     legends: { qwerty: null, korean2Set: null, jisKorean: null, kana: null },
     keycode: "KC_NO", alternativeKeycodes: [], hidUsage: null, code: null,
@@ -847,7 +852,7 @@ export const SECTIONS: readonly Section[] = Object.freeze([
   { id: "aRow", title: "A-Row", keys: ["KeyLeftControl", "KeyA", "KeyS", "KeyD", "KeyF", "KeyG", "KeyH", "KeyJ", "KeyK", "KeyL", "KeyRe", "KeyKe", "KeyMu", "KeyISOEnter"] },
   { id: "zRow", title: "Z-Row", keys: ["KeyLeftShift", "KeyISOBackslash", "KeyZ", "KeyX", "KeyC", "KeyV", "KeyB", "KeyN", "KeyM", "KeyNe", "KeyRu", "KeyMe", "KeyRo", "KeyUpArrow", "KeyRightShift"] },
   { id: "modifierRow", title: "Modifier row", keys: ["KeyHHKBLeftFunction", "KeyJISKLangKorean", "KeyLeftAuxiliary", "KeyLeftPrimary", "KeyJISMacEnglish", "KeySpacebar", "KeyJISMacKana", "KeyRightPrimary", "KeyRightAuxiliary", "KeyHHKBRightFunction", "KeyLeftArrow", "KeyDownArrow", "KeyRightArrow", "KeyUSLeftControl", "KeyWINMenu", "KeyRightControl"] },
-  { id: "generic", title: "Generic keys", keys: ["KeyMomentaryLayerZero", "KeyMomentaryLayerOne", "KeyMomentaryLayerTwo", "KeyMomentaryLayerThree", "KeyMoveToLayerZero", "KeyMoveToLayerOne", "KeyMoveToLayerTwo", "KeyMoveToLayerThree", "KeyToggleLayerZero", "KeyToggleLayerOne", "KeyToggleLayerTwo", "KeyToggleLayerThree", "KeyNoOp", "KeyPassthrough", "KeyReservedForFutureUse", "KeyKeyboardHardwareControl", "KeyCapsLock", "KeyPrintScreen", "KeyScrollLock", "KeyPause", "KeyVolumeUp", "KeyVolumeDown", "KeyMute", "KeyMediaPlayPause", "KeyMediaNextTrack", "KeyMediaPreviousTrack", "KeyEject", "KeyBrightnessUp", "KeyBrightnessDown", "KeySystemPower"] },
+  { id: "generic", title: "Generic keys", keys: ["KeyMomentaryLayerZero", "KeyMomentaryLayerOne", "KeyMomentaryLayerTwo", "KeyMomentaryLayerThree", "KeyMoveToLayerZero", "KeyMoveToLayerOne", "KeyMoveToLayerTwo", "KeyMoveToLayerThree", "KeyToggleLayerZero", "KeyToggleLayerOne", "KeyToggleLayerTwo", "KeyToggleLayerThree", "KeyMomentaryNextLayer", "KeyNoOp", "KeyPassthrough", "KeyReservedForFutureUse", "KeyKeyboardHardwareControl", "KeyCapsLock", "KeyPrintScreen", "KeyScrollLock", "KeyPause", "KeyVolumeUp", "KeyVolumeDown", "KeyMute", "KeyMediaPlayPause", "KeyMediaNextTrack", "KeyMediaPreviousTrack", "KeyEject", "KeyBrightnessUp", "KeyBrightnessDown", "KeySystemPower"] },
   { id: "navigation", title: "Navigation keys", keys: ["KeyInsert", "KeyHome", "KeyPageUp", "KeyDeleteRight", "KeyEnd", "KeyPageDown"] },
   { id: "numpad", title: "Numpad keys", keys: ["KeyWINNumlock", "KeyNumpadDivide", "KeyNumpadMultiply", "KeyNumpadMinus", "KeyNumpadPlus", "KeyNumpadEnter", "KeyNumpadSeven", "KeyNumpadEight", "KeyNumpadNine", "KeyNumpadFour", "KeyNumpadFive", "KeyNumpadSix", "KeyNumpadOne", "KeyNumpadTwo", "KeyNumpadThree", "KeyNumpadZero", "KeyNumpadDecimal", "KeyNumpadEquals", "KeyNumpadComma"] },
 ]);
