@@ -21,7 +21,8 @@ Observed along the way: right after `TISRegisterInputSource` the bundled layout 
 
 Later, the override is in use and turned out to be per client process, not per field: that was
 one cause of [bare-jamo-in-chrome](../bare-jamo-in-chrome/README.md). The generated layouts keep
-the Cmd, Ctrl and Option layers identical to ABC so shortcuts don't change (`0d51744`).
+the Cmd, Ctrl and Option (`KeyUniversalPrimary`, `KeyUniversalControl`,
+`KeyUniversalAuxiliary`) layers identical to ABC so shortcuts don't change (`0d51744`).
 
 ## Menu-bar and System Settings badge
 

@@ -2,6 +2,9 @@
 
 These are guidelines, not a set of strict rules, but please try to design around them.
 
+Keys are named here by their Windows / US legends; [the directory's key-name legend](README.md#key-names)
+maps them to canonical names.
+
 ## Limitations
 
 - **This design assumes Windows with the Microsoft IME Korean**, which switches languages with

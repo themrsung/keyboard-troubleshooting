@@ -3,8 +3,8 @@
 **Status:** fixed by setting the type by hand.
 
 An HHKB Studio (JIS), used over Bluetooth through Karabiner-Elements, typed fine, but the keys that
-depend on macOS's keyboard type didn't work: a program reading Windows-JIS カタカナ at the HID level
-(only opening keyboards stored as JIS) found nothing to open.
+depend on macOS's keyboard type didn't work: a program reading Windows-JIS カタカナ
+(`KeyJISKLangKorean`) at the HID level (only opening keyboards stored as JIS) found nothing to open.
 
 `/Library/Preferences/com.apple.keyboardtype` had every keyboard as 40 (ANSI), the HHKB Studio
 (`21-1278-0`) included. And because Karabiner was modifying it, the keys actually reached macOS

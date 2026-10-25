@@ -13,11 +13,13 @@ macOS.
 The rules are [macbook-jis-as-hhkb.json](macbook-jis-as-hhkb.json) (built-in keyboard only); the
 drawing is [layout.html](layout.html).
 
-| Key | Tap | Hold |
-|---|---|---|
-| Caps Lock | カタカナ (to Korean) | Fn layer |
-| fn (🌐) | 🌐 as usual | Fn layer, for the keys it defines; any other 🌐 chord as usual |
-| 英数, かな | as printed | |
+| Key | Canonical name | Tap | Hold |
+|---|---|---|---|
+| Caps Lock | `KeyCapsLock` | カタカナ (to Korean) | Fn layer (`KeyVirtualFunction`) |
+| fn (🌐) | `KeyMACGlobe` | 🌐 as usual | Fn layer, for the keys it defines; any other 🌐 chord as usual |
+| 英数, かな | `KeyJISMacEnglish`, `KeyJISMacKana` | as printed | |
+
+Other names: [Key names](../README.md#key-names).
 
 ## The Fn layer
 

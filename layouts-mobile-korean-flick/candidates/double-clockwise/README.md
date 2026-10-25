@@ -66,7 +66,7 @@ The flicks are the draft's; the taps and two labels are new here.
 
 ## Bottom row (new)
 
-- **확정**: JIS Korean's F6. Commits what's being composed, and drops an implied ㅇ while its
+- **확정**: JIS Korean's F6 (`KeyFunctionSix`). Commits what's being composed, and drops an implied ㅇ while its
   syllable has no final: ㅏ 확정 → ㅏ, 가어 확정 → 가ㅓ, 안 확정 → 안. It's in the slot where the kana
   keyboard has ゛゜小, the spare key: a 획·쌍 cycle key there would only repeat what the flicks
   already type.
@@ -121,6 +121,10 @@ eight right of 한A1 and 🌐 (from column 3, under 3–0).
   : *, / ?, \ _. The JIS keys' [ { ] } are on the number section and , < . > are , and . in row 4
   (< > on the number section). Then Korean · … — and ₩.
 - ¥ is U+00A5, the yen sign, as JIS prints it.
+- The physical JIS keys named above by legend, as
+  [canonical names](../../../conventions/keynames/REV1-20261025/KEYNAMES.md): Shift is `KeyUniversalShift`,
+  the digits `KeyOne`–`KeyZero`, and - `KeyHo`, ^ `KeyHe`, ¥ `KeyLongKatakana`, @ `KeyDakuten`,
+  [ `KeyHandakuten`, ; `KeyRe`, : `KeyKe`, ] `KeyMu`, , `KeyNe`, . `KeyRu`, / `KeyMe`, \ `KeyRo`.
 - ↺, ‹ and › are on the Korean layer only.
 
 ## Composition

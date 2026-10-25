@@ -15,6 +15,16 @@ enum KoreanType: Int, CaseIterable {
     }
 }
 
+/// The macOS key codes (Carbon kVK_*) the simulator's logic looks at by number.
+private enum KVK {
+    static let capsLock: UInt16 = 0x39       // kVK_CapsLock
+    static let space: UInt16 = 0x31          // kVK_Space
+    static let jisKana: UInt16 = 0x68        // kVK_JIS_Kana: USB LANG1, 한/영
+    static let jisEisu: UInt16 = 0x66        // kVK_JIS_Eisu: USB LANG2, 한자
+    static let rightOption: UInt16 = 0x3D    // kVK_RightOption: Right Alt
+    static let rightControl: UInt16 = 0x3E   // kVK_RightControl
+}
+
 final class Simulator {
     var koreanType = KoreanType.type1
     private(set) var hangulMode = false
@@ -57,10 +67,10 @@ final class Simulator {
     // MARK: Events from macOS
 
     func flagsChanged(keyCode: UInt16, flags: UInt64, capsLockOn: Bool) {
-        if keyCode == 0x39 {
+        if keyCode == KVK.capsLock {
             lastDown = keyCode
             capsLock = capsLockOn
-            line("↓↑", winKeys[0x39]!, message: "WM_KEYDOWN/UP", detail: "Caps Lock \(capsLock ? "on" : "off")")
+            line("↓↑", winKeys[KVK.capsLock]!, message: "WM_KEYDOWN/UP", detail: "Caps Lock \(capsLock ? "on" : "off")")
             return
         }
         guard let (mod, side, bit) = modifier(for: keyCode), let key = winKeys[keyCode] else {
@@ -102,8 +112,8 @@ final class Simulator {
             return
         }
         if !numLock, let nav = numLockOff[keyCode] {
-            key = WinKey(name: "\(key.name) → \(nav.0)", scan: key.scan, vk: nav.1, vkName: nav.2,
-                         note: "Num Lock is off")
+            key = WinKey(name: "\(key.name) → \(nav.0)", canonical: "\(key.canonical) → \(nav.1)", scan: key.scan,
+                         vk: nav.2, vkName: nav.3, note: "Num Lock is off")
         }
         let r = isRepeat ? " (repeat)" : ""
 
@@ -112,8 +122,8 @@ final class Simulator {
             pressLanguageKey(key, from: key, scan: key.scan)
             return
         }
-        if koreanType == .type3, keyCode == 0x31, shift || ctrl, !alt, !win {
-            pressLanguageKey(winKeys[shift ? 0x68 : 0x66]!, from: key, scan: key.scan)
+        if koreanType == .type3, keyCode == KVK.space, shift || ctrl, !alt, !win {
+            pressLanguageKey(winKeys[shift ? KVK.jisKana : KVK.jisEisu]!, from: key, scan: key.scan)
             return
         }
 
@@ -156,27 +166,28 @@ final class Simulator {
     }
 
     func media(_ code: Int, down: Bool) {
-        guard let (name, vk, vkName) = mediaKeys[code] else {
+        guard let (name, canonical, vk, vkName) = mediaKeys[code] else {
             log("\(down ? "↓" : "↑")  media key \(code): no Windows equivalent known")
             return
         }
         let vkText = vk == 0 ? vkName : String(format: "%@ (0x%02X)", vkName, vk)
-        log("\(down ? "↓" : "↑")  \(pad(name, 22))  HID consumer page   \(pad(vkText, 34))  \(down ? "WM_KEYDOWN" : "WM_KEYUP")")
+        log("\(down ? "↓" : "↑")  \(pad(name, 22))  \(pad(canonical, 24))  HID consumer page   \(pad(vkText, 34))  \(down ? "WM_KEYDOWN" : "WM_KEYUP")")
     }
 
     // MARK: Pieces
 
     private func type1Language(_ keyCode: UInt16) -> WinKey? {
         switch keyCode {
-        case 0x3D: return winKeys[0x68]   // Right Alt → 한/영
-        case 0x3E: return winKeys[0x66]   // Right Control → 한자
+        case KVK.rightOption: return winKeys[KVK.jisKana]    // Right Alt → 한/영
+        case KVK.rightControl: return winKeys[KVK.jisEisu]   // Right Control → 한자
         default: return nil
         }
     }
 
     private func pressLanguageKey(_ lang: WinKey, from key: WinKey, scan: String) {
+        // The canonical name stays the key pressed: Right Alt acting as 한/영 is still KeyRightAuxiliary.
         let shown = WinKey(name: key.name == lang.name ? lang.name : "\(key.name) → \(lang.name)",
-                           scan: scan, vk: lang.vk, vkName: lang.vkName)
+                           canonical: key.canonical, scan: scan, vk: lang.vk, vkName: lang.vkName)
         if lang.vk == 0x15 {
             let was = composer.current.text
             if composer.isComposing { emitComposition(from: was, committed: composer.commit(), reason: "한/영") }
@@ -252,7 +263,7 @@ final class Simulator {
     private func line(_ arrow: String, _ key: WinKey, message: String, detail: String, chord: Bool = false) {
         let vk = key.vk == 0 ? key.vkName : String(format: "%@ (0x%02X)", key.vkName, key.vk)
         let name = chord ? modifierPrefix + key.name : key.name
-        log("\(arrow)  \(pad(name, 22))  sc \(pad(key.scan, 9))  \(pad(vk, 34))  \(pad(message, 30))  \(detail)")
+        log("\(arrow)  \(pad(name, 22))  \(pad(key.canonical, 24))  sc \(pad(key.scan, 9))  \(pad(vk, 34))  \(pad(message, 30))  \(detail)")
     }
 }
 

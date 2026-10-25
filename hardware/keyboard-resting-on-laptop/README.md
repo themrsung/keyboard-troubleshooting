@@ -9,10 +9,11 @@ commits [`09a599f`](https://github.com/themrsung/fkeyime/commit/09a599f),
 
 ## Symptoms
 
-1. In the Claude app, Backspace sent the message as if Enter had been pressed, and a stray `3` was
-   typed in between. After a restart Backspace worked normally.
-2. In Notepad with the Microsoft Korean IME (the AutoHotkey path: F18, then F17 for 한자), picking a
-   Hanja with Down and Enter also typed the candidate's number.
+1. In the Claude app, Backspace (`KeyDeleteLeft`) sent the message as if Enter (`KeyISOEnter`) had
+   been pressed, and a stray `3` was typed in between. After a restart Backspace worked normally.
+2. In Notepad with the Microsoft Korean IME (the AutoHotkey path: F18 (`KeyFunctionEighteen`), then
+   F17 (`KeyFunctionSeventeen`) for 한자), picking a Hanja with Down (`KeyDownArrow`) and Enter also
+   typed the candidate's number.
 
 ## What was checked
 

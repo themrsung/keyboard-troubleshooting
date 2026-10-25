@@ -35,7 +35,7 @@ the lite engine with no prediction. **Learning and prediction are out of scope w
   backspace gives 화며니 back). The repeat is for flicks; multi-tap keys repeat to cycle.
 - **A compound vowel from one gesture combines with nothing**: 고 + ㅘ (one flick) → 고와, where 고 +
   ㅏ → 과.
-- **확정** (JIS Korean's F6) commits, and drops an implied ㅇ while its syllable has no final: ㅏ 확정
+- **확정** (JIS Korean's F6, `KeyFunctionSix`) commits, and drops an implied ㅇ while its syllable has no final: ㅏ 확정
   → ㅏ, 가어 확정 → 가ㅓ, 와 확정 → ㅘ, 안 확정 → 안. A ㅇ asked for with a repeat stays (말이 확정 →
   말이). A candidate with a spare key puts 확정 there.
 

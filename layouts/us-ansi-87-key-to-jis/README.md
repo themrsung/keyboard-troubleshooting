@@ -17,22 +17,24 @@ Windows mode makes layer 0 the default). The drawing is [layout.html](layout.htm
 
 ## Layer 0
 
-| Key | Keycode | Tap | Hold |
-|---|---|---|---|
-| Bottom-left | `LT(2,KC_KANA)` | カタカナ (0x88) | Fn |
-| Second | `KC_LALT` | ⌥ | |
-| Left of Space | `MT(MOD_LGUI,KC_HANJ)` | 英数 (LANG2) | ⌘ |
-| Right of Space | `KC_HAEN` | かな (LANG1) | |
-| Next two | `KC_RGUI`, `KC_RALT` | ⌘, ⌥ | |
-| Rightmost | `MO(2)` | | Fn |
-| Caps Lock | `KC_LCTL` | | Ctrl (HHKB-style; swapping it with bottom-left works too) |
+| Key | Canonical name | Keycode | Tap | Hold |
+|---|---|---|---|---|
+| Bottom-left | `KeyUSLeftControl` | `LT(2,KC_KANA)` | カタカナ (0x88) | Fn |
+| Second | `KeyLeftPrimary` | `KC_LALT` | ⌥ | |
+| Left of Space | `KeyLeftAuxiliary` | `MT(MOD_LGUI,KC_HANJ)` | 英数 (LANG2) | ⌘ |
+| Right of Space | `KeyRightAuxiliary` | `KC_HAEN` | かな (LANG1) | |
+| Next two | `KeyRightPrimary`, `KeyWINMenu` | `KC_RGUI`, `KC_RALT` | ⌘, ⌥ | |
+| Rightmost | `KeyRightControl` | `MO(2)` | | Fn |
+| Caps Lock | `KeyCapsLock` | `KC_LCTL` | | Ctrl (HHKB-style; swapping it with bottom-left works too) |
+
+Other names: [Key names](../README.md#key-names).
 
 ## Layer 2 (Fn)
 
-| Key | Keycode |
-|---|---|
-| F1 … F12 | `KC_F13` … `KC_F24` |
-| The 3 keys right of Space | `KC_JYEN` (¥), `KC_SLSH`, `KC_RO` (ろ) |
+| Key | Canonical name | Keycode |
+|---|---|---|
+| F1 … F12 | `KeyFunctionOne` … `KeyFunctionTwelve` | `KC_F13` … `KC_F24` |
+| The 3 keys right of Space | `KeyRightAuxiliary` · `KeyRightPrimary` · `KeyWINMenu` | `KC_JYEN` (¥), `KC_SLSH`, `KC_RO` (ろ) |
 
 ## On the Mac
 

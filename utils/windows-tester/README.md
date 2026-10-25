@@ -27,6 +27,31 @@ It needs no permissions, because it only reads keys sent to its own window.
   commits the syllable first. 한자 is logged, not converted. Since JIS Korean is a superset of
   dubeolsik, a layout that types correctly here is ready for JIS Korean for Windows too.
 
+## Key names
+
+Each log line gives the key as printed on a PC keyboard, then its canonical name from
+[KEYNAMES.md](../../conventions/keynames/REV1-20261025/KEYNAMES.md) (the key pressed: Right Alt
+acting as 한/영 is still `KeyRightAuxiliary`). The names this README and the log use, where they
+aren't obvious:
+
+| Here | Canonical name |
+|---|---|
+| 한/영 (USB LANG1, かな on a Mac) | `KeyKTSHangulToggle` |
+| 한자 (USB LANG2, 英数 on a Mac) | `KeyKTSHanja` |
+| Right Alt, Right Control | `KeyRightAuxiliary`, `KeyRightControl` |
+| Left Alt, Left / Right Windows | `KeyLeftAuxiliary`, `KeyLeftPrimary` / `KeyRightPrimary` |
+| Left Control | `KeyLeftControl` (macOS can't tell a PC's bottom-row `KeyUSLeftControl` from it) |
+| Print Screen, Scroll Lock, Pause (kVK F13–F15) | `KeyPrintScreen`, `KeyScrollLock`, `KeyPause` |
+| Insert (Help on a Mac), Delete, Backspace | `KeyInsert`, `KeyDeleteRight`, `KeyDeleteLeft` |
+| Num Lock (keypad Clear on a Mac) | `KeyWINNumlock` |
+| Keypad 5 with Num Lock off, "(nothing)" / `VK_CLEAR` | `KeyClear` |
+| Menu | `KeyWINMenu` |
+| Fn (Mac) | `KeyMACGlobe` |
+| ¥ (JIS), ろ (JIS), ISO § | `KeyLongKatakana`, `KeyRo`, `KeyISOBackslash` |
+| Enter, Space, `` ` ``, `\ (₩)` | `KeyISOEnter`, `KeySpacebar`, `KeyHankakuZenkaku`, `KeyMu` |
+| Next / Previous Track (fast forward / rewind folded in) | `KeyMediaNextTrack` / `KeyMediaPreviousTrack` |
+| a keyboard's Fn (`MO()`) | `KeyMomentaryLayerN` |
+
 ## Limits
 
 - **macOS hides some PC keys behind others:** Print Screen, Scroll Lock and Pause arrive as F13–F15,

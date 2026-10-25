@@ -20,31 +20,33 @@ order (7 × 16). Layers 2 and 3 are Hansung's defaults.
 
 Unchanged from a US board except:
 
-| Key | Sends |
-|---|---|
-| Bottom row | `MO(1)` · ⌥ · ⌘ · Space · かな (`KC_LNG1`) · ⌘ · ⌥ · `MO(1)` |
-| Caps Lock | Control (HHKB-style) |
-| Print Screen | ⌘⇧4 (`LSG(KC_4)`) |
-| Scroll Lock / Pause | Caps Lock / Play-Pause |
+| Key | Canonical name | Sends |
+|---|---|---|
+| Bottom row | `KeyUSLeftControl` · `KeyLeftPrimary` · `KeyLeftAuxiliary` · `KeySpacebar` · `KeyRightAuxiliary` · `KeyRightPrimary` · `KeyWINMenu` · `KeyRightControl` | `MO(1)` · ⌥ · ⌘ · Space · かな (`KC_LNG1`) · ⌘ · ⌥ · `MO(1)` |
+| Caps Lock | `KeyCapsLock` | Control (HHKB-style) |
+| Print Screen | `KeyPrintScreen` | ⌘⇧4 (`LSG(KC_4)`) |
+| Scroll Lock / Pause | `KeyScrollLock` / `KeyPause` | Caps Lock / Play-Pause |
+
+Other names: [Key names](../README.md#key-names).
 
 ## Layer 1 (Fn: hold either `MO(1)`)
 
-| Fn + | Sends |
-|---|---|
-| Left ⌥ / left ⌘ | **カタカナ** (`KC_INT2`) / **英数** (`KC_LNG2`) |
-| The 3 keys right of Space | **¥** (`KC_INT3`) · / · **ろ** (`KC_INT1`), as on the 87-key layout |
-| Z / X | ⌥ / ⌘, since the modifiers on the bottom row are taken by カタカナ and 英数 |
-| F1 … F12 | F13 … F24 (Fn+F6 = F18) |
-| 1 … 0, -, = | F1 … F12 |
-| Backspace / `\` | Delete / Insert |
-| Tab | Caps Lock |
-| I / O / P | ⌘⇧4 / Scroll Lock / Play-Pause |
-| [ ; ' / | ↑ ← → ↓ |
-| K L , . | Home, Page Up, End, Page Down |
-| H J N M | keypad * / + − |
-| Enter | keypad Enter |
-| A S D F | volume down, volume up, mute, eject |
-| Print Screen cluster | Print Screen, Scroll Lock, Pause |
+| Fn + | Canonical name | Sends |
+|---|---|---|
+| Left ⌥ / left ⌘ | `KeyLeftPrimary` / `KeyLeftAuxiliary` (the Win and Alt caps) | **カタカナ** (`KC_INT2`) / **英数** (`KC_LNG2`) |
+| The 3 keys right of Space | `KeyRightAuxiliary` · `KeyRightPrimary` · `KeyWINMenu` | **¥** (`KC_INT3`) · / · **ろ** (`KC_INT1`), as on the 87-key layout |
+| Z / X | `KeyZ` / `KeyX` | ⌥ / ⌘, since the modifiers on the bottom row are taken by カタカナ and 英数 |
+| F1 … F12 | `KeyFunctionOne` … `KeyFunctionTwelve` | F13 … F24 (Fn+F6 = F18) |
+| 1 … 0, -, = | `KeyOne` … `KeyZero`, `KeyUSMinus`, `KeyUSEquals` | F1 … F12 |
+| Backspace / `\` | `KeyDeleteLeft` / `KeyUSBackslash` | Delete / Insert |
+| Tab | `KeyTab` | Caps Lock |
+| I / O / P | `KeyI` / `KeyO` / `KeyP` | ⌘⇧4 / Scroll Lock / Play-Pause |
+| [ ; ' / | `KeyUSLeftBracket` `KeyUSSemicolon` `KeyUSApostrophe` `KeyUSSlash` | ↑ ← → ↓ |
+| K L , . | `KeyK` `KeyL` `KeyUSComma` `KeyUSPeriod` | Home, Page Up, End, Page Down |
+| H J N M | `KeyH` `KeyJ` `KeyN` `KeyM` | keypad * / + − |
+| Enter | `KeyUSEnter` | keypad Enter |
+| A S D F | `KeyA` `KeyS` `KeyD` `KeyF` | volume down, volume up, mute, eject |
+| Print Screen cluster | `KeyPrintScreen` `KeyScrollLock` `KeyPause` | Print Screen, Scroll Lock, Pause |
 
 The Fn layer from 1 down is the HHKB US Fn layer, with the Mac extras (⌘⇧4 on I, Play/Pause on P).
 

@@ -4,9 +4,9 @@
 
 ## Finding
 
-On macOS, pressing volume up or volume down while muted usually unmutes as a side effect. That
-isn't always true: with a USB DAC that has no volume control (QUAD USB) as the output, neither key
-unmutes it.
+On macOS, pressing volume up (`KeyVolumeUp`) or volume down (`KeyVolumeDown`) while muted usually
+unmutes as a side effect. That isn't always true: with a USB DAC that has no volume control
+(QUAD USB) as the output, neither key unmutes it.
 
 The unmute seems to happen only when the volume actually changes. That's inferred from this
 experiment; macOS's source code hasn't been analyzed.

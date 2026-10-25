@@ -28,7 +28,8 @@ publish = false
 jis-korean-engine = { path = "../../../../jis-korean/engine", default-features = false }
 ```
 
-`src/main.rs`:
+`src/main.rs` (the key names it passes are browser `KeyboardEvent.code` strings, the engine's
+input: `KeyQ`, `KeyK`, … are the canonical names too, and `F6` is `KeyFunctionSix`):
 
 ```rust
 use jis_korean::{Engine, Key, Mods};
@@ -77,5 +78,5 @@ KeyK F6                                  -> preedit before flush "", text after 
 ```
 
 Committing after every key gives `ㅂ아ㄷ아ㅅ아ㅈ아`, not `ㅂㅏㄷㅏㅅㅏㅈㅏ`. The one sequence here
-that gives a bare `ㅏ` is `ㅏ F6`, F6 being the key that drops the implied ㅇ on purpose (also in
-JIS Korean's golden test `f6_drops_implied_ieung_and_commits`).
+that gives a bare `ㅏ` is `ㅏ F6`, F6 (`KeyFunctionSix`) being the key that drops the implied ㅇ on
+purpose (also in JIS Korean's golden test `f6_drops_implied_ieung_and_commits`).

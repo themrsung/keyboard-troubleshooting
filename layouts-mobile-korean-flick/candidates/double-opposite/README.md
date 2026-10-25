@@ -58,7 +58,7 @@ New here, filling what the draft left unassigned:
 
 ## Bottom row (new)
 
-- **확정**: JIS Korean's F6. Commits what's being composed, and drops an implied ㅇ while its
+- **확정**: JIS Korean's F6 (`KeyFunctionSix`). Commits what's being composed, and drops an implied ㅇ while its
   syllable has no final: ㅏ 확정 → ㅏ, 가어 확정 → 가ㅓ, 안 확정 → 안. It's in the slot where the kana
   keyboard has ゛゜小, the spare key: a 획·쌍 cycle key there would only repeat what the flicks
   already type.

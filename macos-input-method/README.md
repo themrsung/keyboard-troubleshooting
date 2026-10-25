@@ -33,6 +33,33 @@ and 27.0.1. *Measured*, *inferred* and *hypothesis* are as the source recorded t
 Related, already in this repository: [hhkb/studio-jis-stored-as-ansi](../hhkb/studio-jis-stored-as-ansi/README.md)
 and [via/keycap-legend-language-and-jis](../via/keycap-legend-language-and-jis/README.md).
 
+## Key names used in this folder
+
+The pages here use the keycap legends and the source's own names for keys. Their canonical names,
+from [conventions/keynames](../conventions/keynames/REV1-20261025/KEYNAMES.md):
+
+| Name used here | Canonical name | Notes |
+| --- | --- | --- |
+| カタカナ, カタカナ/ひらがな | `KeyJISKLangKorean` | The Windows JIS key right of Space; HID usage 0x88, QMK `KC_INT2` |
+| 英数 | `KeyJISMacEnglish` | Mac JIS; macOS key code 102, HID LANG2 |
+| かな | `KeyJISMacKana` | Mac JIS; macOS key code 104, HID usage 0x90 (LANG1) |
+| 変換, 無変換 | `KeyJISHenkan`, `KeyJISMuhenkan` | |
+| ¥ | `KeyLongKatakana` | |
+| 한/영 | `KeyKTSHangulToggle` | Korean 2-set boards |
+| F18, the Korean Key | `KeyFunctionEighteen` | "Korean Key" is the role JIS Korean gives F18 |
+| F6 | `KeyFunctionSix` | |
+| F1–F19 | `KeyFunctionOne` … `KeyFunctionNineteen` | |
+| Caps Lock | `KeyCapsLock` | |
+| Shift, Option / ⌥, Ctrl, Cmd (no side) | `KeyUniversalShift`, `KeyUniversalAuxiliary`, `KeyUniversalControl`, `KeyUniversalPrimary` | |
+| Space | `KeySpacebar` | |
+| Enter, Esc, Backspace | `KeyISOEnter`, `KeyEscape`, `KeyDeleteLeft` | |
+| 1–9, 0 | `KeyOne` … `KeyNine`, `KeyZero` | |
+
+Shortcuts are written as legends joined by `+` (Ctrl+Space is `KeyUniversalControl` +
+`KeySpacebar`). Names inside code blocks, log lines, menu strings and the reproduction's input
+(`KeyQ`, `F6`, …, which are browser `KeyboardEvent.code` strings) are the source's and stay as
+they are.
+
 One more note from the history, without further detail there: JIS Korean's English mode on macOS
 started as a workaround, because switching from English to Korean through Hammerspoon "could
 switch back by itself" (commit message of

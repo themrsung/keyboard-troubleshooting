@@ -26,11 +26,11 @@ Viewer) typed it. See [repro/](repro/README.md), which checks this against the e
 
 ## Attempt 1 (`0d51744`): keep each field's engine on the current mode
 
-Cause found then: カタカナ / F18 switched the last activated controller, which in Chrome is often
-not the field being typed in. That field's engine stayed in JIS English while the Korean layout
-typed its keys as jamo. Fix: each controller resyncs to the current mode on its next key, the key
-tap targets the controller that last got a key, and selections made outside JIS Korean update the
-current mode. **Didn't end it.**
+Cause found then: カタカナ (`KeyJISKLangKorean`) / F18 (`KeyFunctionEighteen`) switched the last
+activated controller, which in Chrome is often not the field being typed in. That field's engine
+stayed in JIS English while the Korean layout typed its keys as jamo. Fix: each controller resyncs
+to the current mode on its next key, the key tap targets the controller that last got a key, and
+selections made outside JIS Korean update the current mode. **Didn't end it.**
 
 ## Attempt 2 (`d8d9577`): re-sync the layout too
 
@@ -57,10 +57,11 @@ page process on every key. **Didn't end it either.**
 ## Attempt 3 (`e236c57`): select through the app's session
 
 With the diagnostic log on, after カタカナ switched Chrome to Korean, Chrome's caret moved several
-characters while the input method logged no `key in …` line at all, not even for ¥ (which the
-engine always consumes in Korean). Every `key in` line was from an English mode. Switching to
-English (英数) didn't break delivery. So after the switch into Korean, Chrome had stopped sending
-keys to the input method and typed them through the layout itself.
+characters while the input method logged no `key in …` line at all, not even for ¥
+(`KeyLongKatakana`, which the engine always consumes in Korean). Every `key in` line was from an
+English mode. Switching to English (英数, `KeyJISMacEnglish`) didn't break delivery. So after the
+switch into Korean, Chrome had stopped sending keys to the input method and typed them through the
+layout itself.
 
 Cause: the switch keys selected the target with `TISSelectInputSource` from the input method's own
 process. The code already noted that doing this inside `handle(_:client:)` could cut the session

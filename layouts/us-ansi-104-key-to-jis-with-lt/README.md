@@ -24,30 +24,32 @@ from the Magnetox XF's, then changed as below.
 
 Unchanged from a US board except:
 
-| Key | Sends |
-|---|---|
-| Bottom row | **カタカナ** / Fn (`LT(1,KC_INT2)`) · ⌥ · **英数** / ⌘ (`LGUI_T(KC_LNG2)`) · Space · かな (`KC_LNG1`) · ⌘ · ⌥ · `MO(1)` |
-| Caps Lock | Control (HHKB-style) |
-| Print Screen | ⌘⇧4 (`LSG(KC_4)`) |
-| Scroll Lock / Pause | Caps Lock / Play-Pause (the C2 Pro's Cortana and light keys) |
+| Key | Canonical name | Sends |
+|---|---|---|
+| Bottom row | `KeyUSLeftControl` · `KeyLeftPrimary` · `KeyLeftAuxiliary` · `KeySpacebar` · `KeyRightAuxiliary` · `KeyRightPrimary` · `KeyMomentaryNextLayer` (the Fn cap) · `KeyRightControl` | **カタカナ** / Fn (`LT(1,KC_INT2)`) · ⌥ · **英数** / ⌘ (`LGUI_T(KC_LNG2)`) · Space · かな (`KC_LNG1`) · ⌘ · ⌥ · `MO(1)` |
+| Caps Lock | `KeyCapsLock` | Control (HHKB-style) |
+| Print Screen | `KeyPrintScreen` | ⌘⇧4 (`LSG(KC_4)`) |
+| Scroll Lock / Pause | `KeyWINCortana` / `KeyKeyboardHardwareControl` (the Cortana and light caps) | Caps Lock / Play-Pause (the C2 Pro's Cortana and light keys) |
+
+Other names: [Key names](../README.md#key-names).
 
 ## Layer 1 (Fn: hold either Fn)
 
-| Fn + | Sends |
-|---|---|
-| Left ⌥ / left ⌘ | ⌥ / ⌘ (transparent): the language keys are on the taps |
-| The 3 keys right of Space | **¥** (`KC_INT3`) · / · **ろ** (`KC_INT1`), as on the 87-key layout |
-| F1 … F12 | F13 … F24 (Fn+F6 = F18) |
-| 1 … 0, -, = | F1 … F12 |
-| Backspace / `\` | Delete / Insert |
-| Tab | Caps Lock |
-| I / O / P | ⌘⇧4 / Scroll Lock / Play-Pause |
-| [ ; ' / | ↑ ← → ↓ |
-| K L , . | Home, Page Up, End, Page Down |
-| H J N M | keypad * / + − |
-| Enter | keypad Enter |
-| A S D F | volume down, volume up, mute, eject |
-| Print Screen cluster | Print Screen, Scroll Lock, Pause |
+| Fn + | Canonical name | Sends |
+|---|---|---|
+| Left ⌥ / left ⌘ | `KeyLeftPrimary` / `KeyLeftAuxiliary` (the Win and Alt caps) | ⌥ / ⌘ (transparent): the language keys are on the taps |
+| The 3 keys right of Space | `KeyRightAuxiliary` · `KeyRightPrimary` · `KeyMomentaryNextLayer` (the Fn cap) | **¥** (`KC_INT3`) · / · **ろ** (`KC_INT1`), as on the 87-key layout |
+| F1 … F12 | `KeyFunctionOne` … `KeyFunctionTwelve` | F13 … F24 (Fn+F6 = F18) |
+| 1 … 0, -, = | `KeyOne` … `KeyZero`, `KeyUSMinus`, `KeyUSEquals` | F1 … F12 |
+| Backspace / `\` | `KeyDeleteLeft` / `KeyUSBackslash` | Delete / Insert |
+| Tab | `KeyTab` | Caps Lock |
+| I / O / P | `KeyI` / `KeyO` / `KeyP` | ⌘⇧4 / Scroll Lock / Play-Pause |
+| [ ; ' / | `KeyUSLeftBracket` `KeyUSSemicolon` `KeyUSApostrophe` `KeyUSSlash` | ↑ ← → ↓ |
+| K L , . | `KeyK` `KeyL` `KeyUSComma` `KeyUSPeriod` | Home, Page Up, End, Page Down |
+| H J N M | `KeyH` `KeyJ` `KeyN` `KeyM` | keypad * / + − |
+| Enter | `KeyUSEnter` | keypad Enter |
+| A S D F | `KeyA` `KeyS` `KeyD` `KeyF` | volume down, volume up, mute, eject |
+| Print Screen cluster | `KeyPrintScreen` `KeyScrollLock` `KeyPause` | Print Screen, Scroll Lock, Pause |
 
 The Fn layer from 1 down is the HHKB US Fn layer, with the Mac extras (⌘⇧4 on I, Play/Pause on P).
 

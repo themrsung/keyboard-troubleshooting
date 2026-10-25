@@ -3,6 +3,45 @@
 **Status:** confirmed on one keyboard; no workaround in firmware. Not reported to Hansung (their
 in-app assistant only answers in Korean).
 
+## Key names
+
+The QMK keycodes below are what was written to the keyboard, so they stay as they are. Their
+[canonical names](../../conventions/keynames/REV1-20261025/KEYNAMES.md) here, on a 104-key US board
+that macOS treats as JIS:
+
+| Here | Canonical name |
+|---|---|
+| right Shift key (matrix 4,13), `KC_RSFT` | `KeyRightShift` |
+| `KC_LSFT` | `KeyLeftShift` |
+| `KC_Z`, `KC_4`, Tab | `KeyZ`, `KeyFour`, `KeyTab` |
+| `KC_LNG2` (英数 in macOS Japanese input) | `KeyJISMacEnglish` |
+| `KC_LNG1` | `KeyJISMacKana` (かな) |
+| `KC_INT1` (ろ, `\`) | `KeyRo` |
+| `KC_INT2` / `KC_KANA` (カタカナ) | `KeyJISKLangKorean` |
+| `KC_INT3` (¥) | `KeyLongKatakana` |
+| `KC_INT4` 変換, `KC_INT5` 無変換 | `KeyJISHenkan`, `KeyJISMuhenkan` |
+| `KC_LNG3`–`KC_LNG5` | `KeyLangThree`–`KeyLangFive` |
+| `KC_GRV` | `KeyHankakuZenkaku` |
+| `MO(1)`, the board's Fn | `KeyMomentaryLayerOne` |
+
+Mod-tap (`*_T()`, `MT()`) and layer-tap (`LT()`) keycodes have no key name of their own. As
+`HoldTap(hold, tap)`:
+
+| QMK | Notation |
+|---|---|
+| `LGUI_T(KC_Z)` | `HoldTap(KeyLeftPrimary, KeyZ)` |
+| `LCTL_T(KC_Z)` | `HoldTap(KeyUSLeftControl, KeyZ)` |
+| `LSFT_T(KC_Z)` | `HoldTap(KeyLeftShift, KeyZ)` |
+| `LGUI_T(KC_LNG2)` | `HoldTap(KeyLeftPrimary, KeyJISMacEnglish)` |
+| `RGUI_T(KC_LNG2)` | `HoldTap(KeyRightPrimary, KeyJISMacEnglish)` |
+| `LGUI_T(KC_INT5)` | `HoldTap(KeyLeftPrimary, KeyJISMuhenkan)` |
+| `RSFT_T(kc)` | `HoldTap(KeyRightShift, kc)` |
+| `MT(0, KC_INT1)` | no modifier on hold, tap `KeyRo`; used as `HoldTap(KeyRightShift, KeyRo)` through the bug |
+| `LT(1,KC_KANA)` | `HoldTap(KeyMomentaryLayerOne, KeyJISKLangKorean)` |
+
+`LSG(KC_4)` is a combo, ⌘⇧4: `KeyLeftPrimary` + `KeyLeftShift` + `KeyFour`. Modifiers named in the
+HID modifier byte ("right Shift + right Ctrl + left Shift") are modifier states, not keys pressed.
+
 ## Setup
 
 - TFG Magnetox XF (USB 0x0416:0x8144), firmware **5.9.2**, VIA protocol 12, 4 layers, over USB.

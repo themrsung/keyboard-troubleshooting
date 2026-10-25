@@ -10,6 +10,28 @@ Two resets, and they do different things:
 | Keymap only | VIA's `DYNAMIC_KEYMAP_RESET` (0x06): [`viahid … reset`](../../via/raw-hid-keymap-editing/README.md) | Every layer back to the firmware's keymap | Yes: answered, and the layers read back as factory |
 | Everything | **Hold Fn + 0 for about 3 seconds** (`QK_CLEAR_EEPROM`) | The keyboard's saved settings, then it restarts; the lighting came back | Yes: the board restarted (below) |
 
+## Key names
+
+This note uses the short names on the left. Their canonical names
+([KEYNAMES REV1-20261025](../../conventions/keynames/REV1-20261025/KEYNAMES.md)):
+
+| Here | Canonical name |
+|---|---|
+| Fn, Fn1 (the top-right key, the factory `MO(1)`) | `KeyMomentaryLayerOne` |
+| Top row, left to right, by position | `KeyNumpadTopOne` · `KeyNumpadTopTwo` · `KeyNumpadTopThree` · `KeyNumpadTopFour` (Fn) |
+| 0, 1 … 9, . (keypad) | `KeyNumpadZero`, `KeyNumpadOne` … `KeyNumpadNine`, `KeyNumpadDecimal` |
+| / · * · − · + · Enter (keypad) | `KeyNumpadDivide` · `KeyNumpadMultiply` · `KeyNumpadMinus` · `KeyNumpadPlus` · `KeyNumpadEnter` |
+| Num Lock | `KeyWINNumlock` |
+| Esc · Calculator · Backspace · Tab | `KeyEscape` · `KeyCalculator` · `KeyDeleteLeft` · `KeyTab` |
+| `KbPrSlp` (SPM's label) | Probably `KeySystemSleep` (not checked) |
+| かな (LANG1) · 英数 (LANG2) · F18 · Play/Pause | `KeyJISMacKana` · `KeyJISMacEnglish` · `KeyFunctionEighteen` · `KeyMediaPlayPause` |
+| Lighting on/off, hue, saturation, brightness, effect speed, next effect; 6-key / full rollover; 2.4 GHz; Bluetooth 1–3; `QK_CLEAR_EEPROM` | `KeyKeyboardHardwareControl` (the lighting brightness keys aren't `KeyBrightnessUp` / `KeyBrightnessDown`) |
+| `KC_NO` (the top-right key on layers 2 and 3) | `KeyNoOp` |
+| Fn1 · Fn2 in [numpad-numbers](../../layouts/numpad-numbers/README.md) | `HoldTap(KeyMomentaryLayerOne, KeyMediaPlayPause)` · `HoldTap(KeyMomentaryLayerTwo, KeyTab)` |
+
+So Fn + 0 is `KeyMomentaryLayerOne` held with `KeyNumpadZero`, and layer 1 has the reset on
+`KeyNumpadZero`.
+
 ## What was wrong
 
 The keymap had been edited in VIA, and the top-right key, the board's only `MO(1)`, had been set
@@ -47,6 +69,7 @@ Fn1 + Tab + 0, held. After a reset the factory keymap is back, with the reset on
 ## The factory keymap
 
 Read back after the resets. Rows and columns are the matrix in SPM's VIA definition (6 × 5).
+Key names are as in [Key names](#key-names).
 
 | Row | Layer 0 | Layer 1 (Fn) |
 |---|---|---|

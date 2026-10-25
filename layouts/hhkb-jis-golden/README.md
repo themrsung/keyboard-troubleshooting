@@ -31,7 +31,7 @@ with two changes:
 
 | | Source | Golden |
 |---|---|---|
-| The key in the 半/全 position, on all four layers | F18 (code 109, 0x6D) | **カタカナ** (code 136, 0x88: the Windows JIS カタカナ/ひらがな key) |
+| The key in the 半/全 position (`KeyJISKLangKorean`), on all four layers | F18 (code 109, 0x6D) | **カタカナ** (code 136, 0x88: the Windows JIS カタカナ/ひらがな key) |
 | Gesture pads (left side, front left, front right, right side) | off, off, on, on | **all off** |
 
 Nothing else in the file differs from the source. Checked on 2026-10-24: the file loads in the
@@ -47,6 +47,12 @@ Stock JIS except the bottom row:
 Fn1 | カタカナ | Opt | ⌘ | 英数 | Space | かな | ⌘ | Opt | Fn1 | ← | ↓ | →
                     LB | Fn2 | RB        (pointing-stick buttons, below Space)
 ```
+
+In canonical names, left to right: `KeyHHKBLeftFunction`, `KeyJISKLangKorean`, `KeyLeftAuxiliary`,
+`KeyLeftPrimary`, `KeyJISMacEnglish`, `KeySpacebar`, `KeyJISMacKana`, `KeyRightPrimary`,
+`KeyRightAuxiliary`, `KeyHHKBRightFunction`, `KeyLeftArrow`, `KeyDownArrow`, `KeyRightArrow`; below
+Space, `KeyLeftMouseButton`, `KeyHHKBFunctionTwo`, `KeyRightMouseButton`. Other names:
+[Key names](../README.md#key-names).
 
 - **カタカナ** goes to Korean in [JIS Korean](https://github.com/team-mirae/jis-korean), **英数** to
   English, **かな** to Japanese. macOS discards カタカナ by itself; JIS Korean reads it at the HID
@@ -66,13 +72,13 @@ hhkb-ekj-trilingual they become ⌘⇧4 and Play/Pause; without them macOS sees 
 
 ## Fn2 (hold Fn2, below Space)
 
-| Fn2 + | Does |
-|---|---|
-| 1 / 2 / 3 / 4, G / B | Pointing-stick speed 1–4, faster / slower |
-| 6 / 7 / 8 / 9 | Gesture-pad speed: low, mid, high, max |
-| A / S / D / F | Turn on the left-side, front-left, front-right, right-side pad |
-| Z / X / C / V | Turn the same pads off |
-| Space | Middle click |
+| Fn2 + | Canonical name | Does |
+|---|---|---|
+| 1 / 2 / 3 / 4, G / B | `KeyOne` … `KeyFour`, `KeyG` / `KeyB` | Pointing-stick speed 1–4, faster / slower |
+| 6 / 7 / 8 / 9 | `KeySix` … `KeyNine` | Gesture-pad speed: low, mid, high, max |
+| A / S / D / F | `KeyA` / `KeyS` / `KeyD` / `KeyF` | Turn on the left-side, front-left, front-right, right-side pad |
+| Z / X / C / V | `KeyZ` / `KeyX` / `KeyC` / `KeyV` | Turn the same pads off |
+| Space | `KeySpacebar` | Middle click (`KeyMiddleMouseButton`) |
 
 The pads start off, so touching the case's edges does nothing until a pad is turned on.
 

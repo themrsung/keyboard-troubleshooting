@@ -39,7 +39,7 @@ All candidates, the references too, compose with JIS Korean's deterministic engi
 prediction or learning ([principle 3](PRINCIPLES.md#3-composition-jis-koreans-deterministic-engine)):
 a vowel with no initial gets an implied ㅇ (ㅏ → 아), a vowel after a final takes it (화면 + ㅣ →
 화며니, not 화면이), and repeating the vowel flick puts the final back (화면이). Where a candidate has
-a spare key, it's **확정**, JIS Korean's F6: commit, dropping an implied ㅇ (ㅏ 확정 → ㅏ).
+a spare key, it's **확정**, JIS Korean's F6 (`KeyFunctionSix`): commit, dropping an implied ㅇ (ㅏ 확정 → ㅏ).
 
 ## Candidates
 
