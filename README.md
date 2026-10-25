@@ -8,6 +8,16 @@ keyboards, on macOS: getting カタカナ, 英数, かな, ¥ and ろ onto keybo
 Each issue, suggestion or proposal has its own folder inside its category. Before contributing,
 read [CONTRIBUTING.md](CONTRIBUTING.md).
 
+Keys are named after the repository's conventions in [conventions/](conventions/README.md): each key
+has one canonical name, such as `KeyJISKLangKorean` for the カタカナ key, listed in
+[KEYNAMES.md](conventions/keynames/REV1-20261025/KEYNAMES.md).
+
+## conventions/ — conventions
+
+The conventions this repository follows, one versioned folder per convention. So far:
+[keynames](conventions/keynames/REV1-20261025/KEYNAMES.md), what each key is called (REV1-20261025),
+also as data for code in JavaScript, TypeScript and Java. [Index](conventions/README.md).
+
 ## hhkb/ — HHKB
 
 - [fn-layer-is-firmware-only](hhkb/fn-layer-is-firmware-only/README.md): the HHKB's Fn never reaches
