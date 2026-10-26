@@ -11,4 +11,4 @@ more than one layout, for example one per side of a Mac / Windows switch.
 | Folder | Keyboard | Platforms |
 |---|---|---|
 | [keychron-c2-pro-us-ansi-to-jis](keychron-c2-pro-us-ansi-to-jis/README.md) | Keychron C2 Pro (US ANSI, RGB), VIA | macOS and Windows, one per side of the switch |
-| [hhkb-studio-jis](hhkb-studio-jis/README.md) | HHKB Studio JIS, HHKB Studio Keymap Tool | macOS: the golden layout, with Back / Forward on Fn2 + 英数 / かな |
+| [hhkb-studio-jis](hhkb-studio-jis/README.md) | HHKB Studio JIS, HHKB Studio Keymap Tool | macOS: the golden layout, with Back / Forward on Fn2 + 英数 / かな; a one-handed option adds ⌘ shortcuts, app and tab switching on Fn2 |
