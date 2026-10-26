@@ -41,8 +41,9 @@ Stored as ANSI, the same codes are ⌘] and ⌘\\.
 
 ## One-handed (hhkb-studio-jis-one-handed.hks)
 
-The right hand stays on the pointing stick and its buttons; the left thumb holds Fn2 (below
-Space), and the keys around the stick (T Y U, G H J, B N M , .) do the rest:
+It all takes only the right hand. The thumb holds Fn2 (below Space), letting go of it briefly to
+press the left button next to it; the fingers work the pointing stick and the keys around it
+(T Y U I O P, G H J K L ;, B N M , .):
 
 | Fn2 + | Sends | Code in the file | Does on macOS |
 |---|---|---|---|
