@@ -23,7 +23,8 @@ The tool's **File → Save the Settings** saves either:
   profiles.
 - **Current Profile** (`"SaveType": "Single"`): one profile, under `Profile`. Opening one loads it
   into the profile picked in the drop-down above the keymap preview (the tool's Help, "Overwriting
-  the Keymap for the Keyboard with a Keymap in a Config File").
+  the Keymap for the Keyboard with a Keymap in a Config File"), and leaves the other three alone
+  (tried, see below).
 
 Both also carry the DIP switches, the pointing-stick buttons and the gesture pads, which apply to
 the whole keyboard, and the model (`TypeNumber`). DIP switches are physical, so the tool records
@@ -100,4 +101,8 @@ On 2026-10-26, with jq 1.7.1 on macOS 27.0.1:
 - A split file has its own profile in its slot and the factory file's in the other three.
 - `merge OUT.hks` alone gives the factory file, DIP switches off.
 
-The files the script writes haven't been opened in the Keymap Tool yet.
+Then written to the owner's HHKB Studio JIS with the Keymap Tool (1.1.2), each one checked on the
+keyboard: factory keymaps alone; a profile in Profile1, and one in Profile3 only, with factory
+keymaps elsewhere; the owner's backup split and merged back; and a split into All Profiles and
+into Current Profile files. All behaved as described. A Current Profile file changed only the
+profile it was opened into; the other three were left alone.
