@@ -45,6 +45,8 @@ Bluetooth.
    controller ("TPS DMC Family", `0x0451:0xace1`) and two VIA Labs USB2.0 hubs (`0x2109:0x2822`).
 3. Back on the dock, the keyboard connected (15:24:42) at `0x01130000`, on the dock's USB 2.0
    hub, 12 Mb/s.
+4. With the batteries back in, it reconnected on the dock (15:26:15) at `0x01143000`, on
+   another of the dock's USB 2.0 hubs, and works.
 
 Why the dock's USB 2.0 side dropped out isn't known.
 
