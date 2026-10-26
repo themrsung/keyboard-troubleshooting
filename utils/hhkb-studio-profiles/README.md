@@ -4,7 +4,8 @@ Split an HHKB Studio Keymap Tool settings file (`.hks`) into its four profiles, 
 into one file. Profiles you don't fill get **PFU's factory keymap** for that slot, not anyone's
 custom one.
 
-For HHKB Studio Keymap Tool **1.1.2** (setting file 1.1.0.0) and the files it saves; the script
+For HHKB Studio Keymap Tool **1.1.2** (setting file 1.1.0.0), from
+[PFU's download page](https://happyhackingkb.com/download/), and the files it saves; the script
 refuses other versions. Needs [jq](https://jqlang.org) (`brew install jq`).
 
 ```sh
