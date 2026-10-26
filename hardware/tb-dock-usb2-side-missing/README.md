@@ -26,9 +26,11 @@ Bluetooth.
 
 ## What was found *(measured with `system_profiler SPUSBHostDataType` and `ioreg -p IOUSB`)*
 
-- No device with PFU's vendor ID (`0x04FE`) on the bus, and no USB attach, failure or
-  accessory-block messages in `log show` for the previous 30 minutes. The Mac never saw a
-  connection attempt, so macOS's accessory approval wasn't the cause.
+- No device with PFU's vendor ID (`0x04FE`) on the bus. In the system log (`/usr/bin/log show`;
+  in zsh, a bare `log` is a shell builtin and shows nothing), the keyboard's first USB entry is
+  at 15:21:23, when it was plugged into the MacBook, with nothing about it or about accessory
+  approval from 14:45 until then. The Mac never saw it on the dock, so macOS's accessory approval
+  wasn't the cause.
 - Behind the dock, only its 10 Gb/s USB 3 side was listed: an Intel hub (`0x8087:0x0b40`), two
   VIA Labs USB3.1 hubs (`0x2109:0x0822`) and a Realtek 2.5G LAN adapter (`0x0bda:0x8156`). The
   dock's 480 Mb/s USB 2.0 side was missing entirely.
@@ -38,7 +40,7 @@ Bluetooth.
 ## What fixed it
 
 1. Plugged straight into the MacBook, the keyboard connected (15:21:23) on the MacBook's other
-   USB bus, not behind the dock: `HHKB-Studio`, PFU Limited, full speed. The cable had been
+   USB bus (`0x00100000`), not behind the dock: `HHKB-Studio`, PFU Limited, full speed. The cable had been
    swapped just before this, so this step alone doesn't separate cable from dock.
 2. The dock was unplugged from power for a few seconds and reconnected. Its USB 2.0 side came
    back: a Fresco Logic USB2.0 hub (`0x1d5c:0x5801`), a Texas Instruments power-delivery
