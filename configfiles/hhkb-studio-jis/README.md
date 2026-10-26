@@ -71,7 +71,9 @@ difference, so G kept ⌘Tab left and H became Control+Tab. Fn2+G and Fn2+B were
 stick's faster / slower; its speed is still set with Fn2 + 1–4.
 
 Also different from the other file: Fn1+T is set to T (code 23; it was 1), and **tap-to-click on
-the pointing stick is off** (`"PointingStickButton": false`).
+the pointing stick is off** (`"PointingStickButton": false`). That's a preference: the owner's
+stick has an aftermarket red cap, and with it a tap almost never registers as a click, so it's off
+for consistency; the stick's left and right buttons below Space click.
 
 ### Karabiner-Elements, for Fn2 + I and P
 
@@ -89,8 +91,16 @@ Karabiner-Elements turns them into those. Without it, macOS sees F13 and F15. Th
       "to": [{ "key_code": "4", "modifiers": ["left_command", "left_shift"] }] }] }
   ```
 
-- **Pause → Play / Pause** (`consumer_key_code` `play_or_pause`), a simple modification in
-  Karabiner's device settings for the Studio (`04FE:0015`), so it works on the Studio only.
+- **Pause → Play / Pause**, also with no device condition (added 2026-10-26; before that it was a
+  simple modification in Karabiner's device settings for the Studio, `04FE:0015`, which is still
+  there and does the same):
+
+  ```json
+  { "description": "Pause → Play/Pause, on every keyboard",
+    "manipulators": [{ "type": "basic",
+      "from": { "key_code": "pause", "modifiers": { "optional": ["any"] } },
+      "to": [{ "consumer_key_code": "play_or_pause" }] }] }
+  ```
 
 ## The codes
 
