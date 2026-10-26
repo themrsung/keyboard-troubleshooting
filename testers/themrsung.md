@@ -18,7 +18,8 @@
 | HHKB Hybrid Type-S | JIS | stock | USB-C, Bluetooth (up to 4 devices) | - |
 | HHKB Professional BT | HHKB US | stock | Bluetooth 3.0 | - |
 | MONGDOL 87 | US ANSI, 87-key TKL | stock | USB, 2.4 GHz, Bluetooth LE | - |
-| Deck Hassium | US ANSI, 108-key | stock | USB | Old, unreliable |
+| Deck Hassium (unit 1) | US ANSI, 108-key | stock | USB | **Dead key:** S (`KeyS`) never registers; every other key works (checked with [keyboard-health-check](../utils/keyboard-health-check/README.md)). Kept for testing with a broken keyboard. Reports as "Deck 108 Hassium", USB 0x0A34:0x0212 |
+| Deck Hassium (unit 2) | US ANSI, 108-key | stock | USB | All keys work. Reports as "CBL108P", USB 0x0F39:0x1085 |
 | SPM AL21W | Numpad | stock | USB, 2.4 GHz, Bluetooth | Numpad only. Same maker as the MONGDOL 87 |
 | Hansung TFG Magnetox XF | US ANSI, 104-key | stock | USB, wired | Mod-tap unreliable ([hansung/mod-tap-rshift-bug](../hansung/mod-tap-rshift-bug/README.md)) |
 | MacBook M4 keyboard | Mac US ANSI | n/a | n/a | macOS testing only |
