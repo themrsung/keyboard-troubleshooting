@@ -46,15 +46,15 @@ Space), and the keys around the stick (T Y U, G H J, B N M , .) do the rest:
 
 | Fn2 + | Sends | Code in the file | Does on macOS |
 |---|---|---|---|
-| T (`KeyT`) | Right ⌘ + T | 6167 (0x1817) | New tab |
-| Y (`KeyY`) | Right ⌘ + Q | 6164 (0x1814) | Quit |
-| U (`KeyU`) | Right ⌘ + W | 6170 (0x181A) | Close window or tab |
+| T (`KeyT`) | Right ⌘ + Q | 6164 (0x1814) | Quit |
+| Y (`KeyY`) | Right ⌘ + W | 6170 (0x181A) | Close window or tab |
+| U (`KeyU`) | Right ⌘ + N | 6161 (0x1811) | New window |
 | I (`KeyI`) | Print Screen (`KeyPrintScreen`) | 70 (0x46) | Screenshot of a selection (⌘⇧4), with Karabiner-Elements (below) |
 | O (`KeyO`) | Mute (`KeyMute`) | 168 | Mute |
 | P (`KeyP`) | Pause (`KeyPause`) | 72 (0x48) | Play / Pause, with Karabiner-Elements (below) |
 | G (`KeyG`) | ⌘Tab, left | 24462 (0x5F8E) | Switch app |
 | H (`KeyH`) | Right Control (`KeyRightControl`) + Tab (`KeyTab`) | 4395 (0x112B) | Next tab |
-| J (`KeyJ`) | Right ⌘ + N | 6161 (0x1811) | New window |
+| J (`KeyJ`) | Right ⌘ + T | 6167 (0x1817) | New tab |
 | K (`KeyK`) | Volume down (`KeyVolumeDown`) | 170 | Volume down |
 | L (`KeyL`) | Volume up (`KeyVolumeUp`) | 169 | Volume up |
 | ; (`KeyRe`) | Right Shift (`KeyRightShift`) | 229 | Shift, for the right pinky while Fn2 is held |
