@@ -19,7 +19,11 @@ The keymap is [hhkb-studio-golden.hks](hhkb-studio-golden.hks), an export from t
 Keymap Tool, in **Profile1**; the drawing is [layout.html](layout.html). Load the file in the tool
 and write it to the keyboard. **Importing replaces all four profiles**, so export your own first if
 you keep a keymap on any of them. Profiles 2–4 are copied unchanged from the source below (PFU's
-Mac default, and two Windows keymaps).
+Mac default, and two Windows keymaps). Profile2 isn't quite the factory file's: on the Fn1, Fn2
+and Fn3 layers, 174 keys that a factory-reset export
+([utils/hhkb-studio-profiles](../../utils/hhkb-studio-profiles/README.md)) lists with their
+Standard code are 1 here. 1 looks like "as on Standard", which would make the two the same, but
+that hasn't been tested.
 
 ## Source, and what changed
 

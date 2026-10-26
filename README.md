@@ -110,6 +110,9 @@ also as data for code in JavaScript, TypeScript and Java. [Index](conventions/RE
 
 - [windows-tester](utils/windows-tester/README.md): a Mac app that shows keys as Windows receives
   them and simulates the Microsoft IME Korean, for trying Windows layouts without Windows.
+- [hhkb-studio-profiles](utils/hhkb-studio-profiles/README.md): splits an HHKB Studio Keymap Tool
+  file into its four profiles, or merges profiles into one, filling the rest with PFU's factory
+  keymap.
 
 ## macos-input-method/ — macOS input methods (InputMethodKit)
 
