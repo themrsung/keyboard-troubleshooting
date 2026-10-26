@@ -133,8 +133,9 @@ with Bazel on Windows, and learning that changes test results. [Index](mozc/READ
 ## hardware/ — hardware met while debugging input methods
 
 A keyboard resting on a laptop's keys (hypothesis), a USB mouse behind a USB-C dock, a
-hall-effect keyboard that stopped working behind a USB hub, and macOS's volume keys unmuting only
-when the volume changes.
+hall-effect keyboard that stopped working behind a USB hub, macOS's volume keys unmuting only
+when the volume changes, and an HHKB Studio not seen behind a Thunderbolt dock that had lost its
+USB 2.0 side.
 [Index](hardware/README.md).
 
 ## testers/

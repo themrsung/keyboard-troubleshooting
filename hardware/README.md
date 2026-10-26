@@ -12,3 +12,6 @@ Problems that first looked like input-method or keyboard faults. The first two a
 - [volume-keys-unmute-only-when-volume-changes](volume-keys-unmute-only-when-volume-changes/README.md):
   macOS's volume keys didn't unmute a USB DAC with no volume control (QUAD USB); the unmute seems
   to come only with a volume change. **Finding.**
+- [tb-dock-usb2-side-missing](tb-dock-usb2-side-missing/README.md): an HHKB Studio not seen over
+  USB behind a Thunderbolt dock whose USB 2.0 side had dropped out; power-cycling the dock fixed
+  it. All four LEDs blue means USB, not Bluetooth.
