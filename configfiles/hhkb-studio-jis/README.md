@@ -41,6 +41,14 @@ Stored as ANSI, the same codes are ⌘] and ⌘\\.
 
 ## One-handed (hhkb-studio-jis-one-handed.hks)
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="one-handed-fn2-dark.png">
+  <img alt="The one-handed profile's Fn2 layer on an HHKB Studio JIS, each key labelled with what it does: Quit, Close, New window, Screenshot, Mute and Play/Pause on T to P; app switch, next tab, new tab, volume and Shift on G to ;; ⌘-click, copy, paste, undo and redo on B to .; Back and Forward beside Space" src="one-handed-fn2-light.png">
+</picture>
+
+The drawing is [one-handed-fn2.html](one-handed-fn2.html), from
+[layouts/render/build.py](../../layouts/render/build.py).
+
 It all takes only the right hand. The thumb holds Fn2 (below Space), letting go of it briefly to
 press the left button next to it; the fingers work the pointing stick and the keys around it
 (T Y U I O P, G H J K L ;, B N M , .):
