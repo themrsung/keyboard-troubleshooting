@@ -19,12 +19,15 @@ utils/hhkb-studio-profiles/hhkb-studio-profiles.sh check  FILE...
 
 The tool's **File → Save the Settings** saves either:
 
-- **All Profiles** (`"SaveType": "All"`): `Profile1` … `Profile4`. Opening one replaces all four
-  profiles.
-- **Current Profile** (`"SaveType": "Single"`): one profile, under `Profile`. Opening one loads it
-  into the profile picked in the drop-down above the keymap preview (the tool's Help, "Overwriting
-  the Keymap for the Keyboard with a Keymap in a Config File"), and leaves the other three alone
-  (tried, see below).
+- **All Profiles** (`"SaveType": "All"`): `Profile1` … `Profile4`.
+- **Current Profile** (`"SaveType": "Single"`): one profile, under `Profile`.
+
+**Opening either kind changes only the profile picked in the drop-down above the keymap preview**
+(found on 2026-10-26). A Current Profile file loads into that profile (the tool's Help,
+"Overwriting the Keymap for the Keyboard with a Keymap in a Config File"). An All Profiles file
+gives only its own profile in that slot: with Profile3 picked, the file's Profile3, and Profiles 1,
+2 and 4 stay as they were. So putting a whole All Profiles file on the keyboard takes one open
+(and write) per profile.
 
 Both also carry the DIP switches, the pointing-stick buttons and the gesture pads, which apply to
 the whole keyboard, and the model (`TypeNumber`). DIP switches are physical, so the tool records
@@ -39,8 +42,9 @@ hhkb-studio-profiles.sh split layouts/hhkb-jis-golden/hhkb-studio-golden.hks /tm
 ```
 
 Writes `IN-Profile1.hks` … `IN-Profile4.hks`, one per profile of an All Profiles file. Each is an
-**All Profiles** file with that profile in its own slot and PFU's factory keymap in the other three,
-so opening it gives you that one profile in place and a stock keyboard otherwise.
+**All Profiles** file with that profile in its own slot and PFU's factory keymap in the other three.
+Opened with that profile picked, it loads that profile; opened with another one picked, it loads
+the factory keymap there.
 
 With `--single`, each is a **Current Profile** file instead, to open into whichever profile you
 pick in the tool.
@@ -105,4 +109,5 @@ Then written to the owner's HHKB Studio JIS with the Keymap Tool (1.1.2), each o
 keyboard: factory keymaps alone; a profile in Profile1, and one in Profile3 only, with factory
 keymaps elsewhere; the owner's backup split and merged back; and a split into All Profiles and
 into Current Profile files. All behaved as described. A Current Profile file changed only the
-profile it was opened into; the other three were left alone.
+profile it was opened into, and so did an All Profiles file, taking its profile for that slot;
+the other three were left alone.
