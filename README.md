@@ -102,7 +102,9 @@ also as data for code in JavaScript, TypeScript and Java. [Index](conventions/RE
 
 - [keychron-c2-pro-us-ansi-to-jis](configfiles/keychron-c2-pro-us-ansi-to-jis/README.md): a
   Keychron C2 Pro's VIA keymap, the macOS layout on the Mac side of its switch and the Windows
-  golden layout on the Windows side. [Index](configfiles/README.md).
+  golden layout on the Windows side.
+- [hhkb-studio-jis](configfiles/hhkb-studio-jis/README.md): the golden layout's HHKB Studio
+  profile, with Back and Forward (⌘[ / ⌘]) on Fn2 + 英数 / かな. [Index](configfiles/README.md).
 
 ## utils/ — tools
 
