@@ -43,8 +43,9 @@ on both keys; an earlier export, with ⌘ set differently on かな, had 0x08 th
 1. **Store the Studio as JIS** on the Mac (see above).
 2. Load [hhkb-studio-jis.hks](hhkb-studio-jis.hks) in the HHKB Studio Keymap Tool and write it to
    the keyboard. Unlike the golden layout's file it carries one profile, which the tool loads into
-   the profile picked in the drop-down above the keymap preview (the tool's Help); not tried yet,
-   so **export your own keymap first**. To get it as an All Profiles file, use
+   the profile picked in the drop-down above the keymap preview, leaving the other three alone
+   (tried on 2026-10-26). **Export your own keymap first** anyway. To get it as an All Profiles
+   file, use
    [hhkb-studio-profiles](../../utils/hhkb-studio-profiles/README.md) `merge`.
 3. **DIP switches** are recorded in the file, but they're physical: on the owner's board only
    switch 6 is on (power saving off). Set them by hand.
