@@ -16,9 +16,11 @@ The owner's board, for reference, with an aftermarket keycap set: **Alt** is ⌥
 ![The owner's HHKB Studio JIS with aftermarket keycaps: red Esc and Enter, blue Control, Alt and Code, and the red pointing stick between G, H and B](photo.jpg)
 
 The keymap is [hhkb-studio-golden.hks](hhkb-studio-golden.hks), an export from the HHKB Studio
-Keymap Tool, in **Profile1**; the drawing is [layout.html](layout.html). Load the file in the tool
-and write it to the keyboard. **Importing replaces all four profiles**, so export your own first if
-you keep a keymap on any of them. Profiles 2–4 are copied unchanged from the source below (PFU's
+Keymap Tool, in **Profile1**; the drawing is [layout.html](layout.html). Pick **Profile1** in the
+tool's drop-down, open the file and write it to the keyboard. The tool takes only the picked
+profile from the file and leaves the other three as they were (found on 2026-10-26; the source
+below says importing replaces all profiles, which isn't so). Export your own first anyway.
+Profiles 2–4 are copied unchanged from the source below (PFU's
 Mac default, and two Windows keymaps). Profile2 isn't quite the factory file's: on the Fn1, Fn2
 and Fn3 layers, 174 keys that a factory-reset export
 ([utils/hhkb-studio-profiles](../../utils/hhkb-studio-profiles/README.md)) lists with their
