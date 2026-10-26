@@ -35,7 +35,7 @@ on both keys; an earlier export, with ⌘ set differently on かな, had 0x08 th
 | Claude (desktop) | works |
 | Discord | works |
 | Signal | doesn't |
-| YouTube Music (PWA) | doesn't; other PWAs likely don't either |
+| YouTube Music (PWA) | works; other PWAs likely do too |
 | VS Code | doesn't; ⌘[ / ⌘] there are Outdent / Indent Line |
 
 ## How to use
