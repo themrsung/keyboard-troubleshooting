@@ -8,5 +8,8 @@
   DIP switches: [JIS](key-legends/hhkb-jis.md) (Hybrid Type S) and [US](key-legends/hhkb-us.md)
   (Professional BT).
 
+Over USB: [hardware/tb-dock-usb2-side-missing](../hardware/tb-dock-usb2-side-missing/README.md),
+a Studio not seen behind a Thunderbolt dock, and what its four blue LEDs mean.
+
 Layouts: [hhkb-pro-bt-us-to-jis](../layouts/hhkb-pro-bt-us-to-jis/README.md), an HHKB US with
 JIS's keys through Karabiner.
