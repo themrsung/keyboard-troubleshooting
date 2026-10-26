@@ -114,6 +114,9 @@ also as data for code in JavaScript, TypeScript and Java. [Index](conventions/RE
 - [hhkb-studio-profiles](utils/hhkb-studio-profiles/README.md): splits an HHKB Studio Keymap Tool
   file into its four profiles, or merges profiles into one, filling the rest with PFU's factory
   keymap.
+- [keyboard-health-check](utils/keyboard-health-check/README.md): a Mac app that logs every key
+  down and up on full-size US, ISO and JIS boards drawn on screen, to find dead, chattering or stuck
+  switches.
 
 ## macos-input-method/ — macOS input methods (InputMethodKit)
 
