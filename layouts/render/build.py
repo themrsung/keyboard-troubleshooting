@@ -362,8 +362,36 @@ def layouts():
         ],
     }
 
+    keys = hhkb_studio_jis()
+    out["hhkb-studio-jis-one-handed"] = {
+        "title": "HHKB Studio JIS, one-handed: Fn2",
+        "lede": "The Fn2 layer of configfiles/hhkb-studio-jis's one-handed profile, for macOS, with what each key does. Right hand only: the thumb holds Fn2, letting go briefly for the left click; the fingers work the pointing stick and the keys around it.",
+        "plain": True,
+        "cap_legend": "the JIS key cap",
+        "dir": "configfiles",
+        "path": "hhkb-studio-jis/one-handed-fn2",
+        "keys": keys,
+        "layers": [
+            ("Fn2 (hold Fn2, below Space)", fn_layer(keys, {
+                **{f"Digit{i}": fn(str(i), "stick speed") for i in range(1, 5)},
+                **{f"Digit{d}": fn(s, "pad speed") for d, s in zip("6789", ["Low", "Mid", "Hi", "Max"])},
+                **{f"Key{c}": fn(p, "pad on") for c, p in zip("ASDF", ["Left", "Front L", "Front R", "Right"])},
+                **{f"Key{c}": fn(p, "pad off") for c, p in zip("ZXCV", ["Left", "Front L", "Front R", "Right"])},
+                "KeyT": fn("Quit", "⌘Q", True), "KeyY": fn("Close", "⌘W", True), "KeyU": fn("New", "⌘N win", True),
+                "KeyI": fn("Shot", "⌘⇧4", True), "KeyO": fn("Mute", "", True), "KeyP": fn("▶︎❚❚", "Pause", True),
+                "KeyG": fn("Apps", "⌘Tab", True), "KeyH": fn("Tab →", "⌃Tab next", True), "KeyJ": fn("Tab +", "⌘T new", True),
+                "KeyK": fn("Vol−", "", True), "KeyL": fn("Vol+", "", True), "Semicolon": fn("Shift", "right", True),
+                "KeyB": fn("Link", "⌘-click", True), "KeyN": fn("Copy", "⌘C", True), "KeyM": fn("Paste", "⌘V", True),
+                "Comma": fn("Undo", "⌘Z", True), "Period": fn("Redo", "⌘⇧Z", True),
+                "Lang2": fn("Back", "⌘[", True), "Lang1": fn("Fwd", "⌘] forward", True), "Space": fn("Middle click"),
+                "KeyJISKLangKorean": lang("カタカナ"), "AltLeft": mod("⌥"), "MetaLeft": mod("⌘"), "MetaRight": mod("⌘"),
+                "KeyLeftMouseButton": mod("Left click"), "KeyHHKBFunctionTwo": lang("Fn2"), "KeyRightMouseButton": mod("Right click"),
+            })),
+        ],
+    }
+
     keys = numpad_al21w()
-    numpad = {k["id"]: fn(k["us"]) for k in keys if k["id"].startswith("Numpad")}
+    numpad ={k["id"]: fn(k["us"]) for k in keys if k["id"].startswith("Numpad")}
     out["numpad-numbers"] = {
         "title": "Numpad for numbers",
         "lede": "An SPM AL21W as a number input device: the numpad section, with Backspace in place of Num Lock and Esc, =, Tab and Fn1 (play/pause on a tap) on the top row; arrows, modifiers, volume and connection modes on Fn1; the lighting toggle and hardware reset on Fn2.",
