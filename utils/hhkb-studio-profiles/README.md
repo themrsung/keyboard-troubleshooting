@@ -6,7 +6,7 @@ custom one.
 
 For HHKB Studio Keymap Tool **1.1.2** (setting file 1.1.0.0), from
 [PFU's download page](https://happyhackingkb.com/download/), and the files it saves; the script
-refuses other versions. Needs [jq](https://jqlang.org) (`brew install jq`).
+refuses other versions. Tested on the HHKB Studio JIS only; **untested on the HHKB Studio US**. Needs [jq](https://jqlang.org) (`brew install jq`).
 
 ```sh
 utils/hhkb-studio-profiles/hhkb-studio-profiles.sh split  IN.hks [OUTDIR]
