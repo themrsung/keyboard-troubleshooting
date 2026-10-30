@@ -26,4 +26,5 @@
 | MacBook Neo keyboard | Mac JIS | n/a | n/a | macOS testing only |
 | Samsung Galaxy Book keyboard | Korean US ANSI, with numpad | n/a | n/a | x86 testing only |
 | Keychron C2 Pro | US ANSI, 104-key | stock | USB-C, wired | - |
+| RealForce Compact | JIS, tenkeyless | stock | USB, wired | Topre. All keys checked with [keyboard-health-check](../utils/keyboard-health-check/README.md); remapped with Karabiner-Elements ([configfiles/realforce-compact-jis](../configfiles/realforce-compact-jis/README.md)). USB 0x0853:0x0200 |
 | Razer Tartarus Pro | Gaming keypad, left hand | stock | USB, wired | USB 0x1532:0x0244 |

@@ -105,7 +105,10 @@ also as data for code in JavaScript, TypeScript and Java. [Index](conventions/RE
   golden layout on the Windows side.
 - [hhkb-studio-jis](configfiles/hhkb-studio-jis/README.md): the golden layout's HHKB Studio
   profile, with Back and Forward (⌘[ / ⌘]) on Fn2 + 英数 / かな, and a one-handed option with
-  ⌘ shortcuts, app and tab switching on Fn2. [Index](configfiles/README.md).
+  ⌘ shortcuts, app and tab switching on Fn2.
+- [realforce-compact-jis](configfiles/realforce-compact-jis/README.md): a Karabiner-Elements rule
+  for a RealForce Compact (JIS), with Control left of A and one key per language along the bottom
+  row. [Index](configfiles/README.md).
 
 ## utils/ — tools
 
