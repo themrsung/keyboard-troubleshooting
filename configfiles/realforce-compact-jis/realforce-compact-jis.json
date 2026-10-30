@@ -1,0 +1,285 @@
+{
+    "title": "RealForce Compact (JIS) for JIS Korean",
+    "rules": [
+        {
+            "description": "RealForce Compact (JIS) for JIS Korean: Control left of A; bottom row カタカナ, ⌥, ⌘, 英数, Space, かな, ⌘, ⌥, Caps Lock, Control; ろ is \\ (_ shifted)",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "description": "Caps Lock (left of A): Left Control",
+                    "from": {
+                        "key_code": "caps_lock",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "left_control"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "device_if",
+                            "identifiers": [
+                                {
+                                    "vendor_id": 2131,
+                                    "product_id": 512,
+                                    "is_keyboard": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "description": "Left Control: カタカナ (to Korean)",
+                    "from": {
+                        "key_code": "left_control",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "japanese_pc_katakana"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "device_if",
+                            "identifiers": [
+                                {
+                                    "vendor_id": 2131,
+                                    "product_id": 512,
+                                    "is_keyboard": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "description": "Win: Left ⌥",
+                    "from": {
+                        "key_code": "left_command",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "left_option"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "device_if",
+                            "identifiers": [
+                                {
+                                    "vendor_id": 2131,
+                                    "product_id": 512,
+                                    "is_keyboard": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "description": "Alt: Left ⌘",
+                    "from": {
+                        "key_code": "left_option",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "left_command"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "device_if",
+                            "identifiers": [
+                                {
+                                    "vendor_id": 2131,
+                                    "product_id": 512,
+                                    "is_keyboard": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "description": "無変換: 英数 (to English)",
+                    "from": {
+                        "key_code": "japanese_pc_nfer",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "japanese_eisuu"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "device_if",
+                            "identifiers": [
+                                {
+                                    "vendor_id": 2131,
+                                    "product_id": 512,
+                                    "is_keyboard": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "description": "変換: かな (to Japanese)",
+                    "from": {
+                        "key_code": "japanese_pc_xfer",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "japanese_kana"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "device_if",
+                            "identifiers": [
+                                {
+                                    "vendor_id": 2131,
+                                    "product_id": 512,
+                                    "is_keyboard": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "description": "カタカナ: Right ⌘",
+                    "from": {
+                        "key_code": "japanese_pc_katakana",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "right_command"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "device_if",
+                            "identifiers": [
+                                {
+                                    "vendor_id": 2131,
+                                    "product_id": 512,
+                                    "is_keyboard": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "description": "Menu: Caps Lock",
+                    "from": {
+                        "key_code": "application",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "caps_lock"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "device_if",
+                            "identifiers": [
+                                {
+                                    "vendor_id": 2131,
+                                    "product_id": 512,
+                                    "is_keyboard": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "description": "ろ: \\ unshifted, _ when shifted (non-Japanese input sources only)",
+                    "from": {
+                        "key_code": "international1",
+                        "modifiers": {
+                            "optional": [
+                                "caps_lock"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "international3",
+                            "modifiers": [
+                                "left_option"
+                            ]
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "device_if",
+                            "identifiers": [
+                                {
+                                    "vendor_id": 2131,
+                                    "product_id": 512,
+                                    "is_keyboard": true
+                                }
+                            ]
+                        },
+                        {
+                            "type": "input_source_unless",
+                            "input_sources": [
+                                {
+                                    "language": "^ja$"
+                                },
+                                {
+                                    "input_source_id": "^me\\.sjun\\.inputmethod\\.JISKorean(\\..+)?$"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
