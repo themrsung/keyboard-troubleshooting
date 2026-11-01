@@ -125,8 +125,9 @@ also as data for code in JavaScript, TypeScript and Java. [Index](conventions/RE
 
 From [JIS Korean](https://github.com/team-mirae/jis-korean)'s macOS shell: an input method that
 stops launching after a reinstall, fields committing bare jamo in Chrome, the カタカナ key macOS
-discards, 英数 going to ABC, switch keys in iTerm and after login, signing and permissions, TIS
-calls on macOS 27, Keyboard Viewer and the menu-bar badge, and diagnostic gotchas.
+discards, 英数 going to ABC, making 英数 and かな run your own code without Karabiner, switch keys
+in iTerm and after login, signing and permissions, TIS calls on macOS 27, Keyboard Viewer and the
+menu-bar badge, and diagnostic gotchas.
 [Index](macos-input-method/README.md).
 
 ## windows-tsf/ — Windows TSF text input processors

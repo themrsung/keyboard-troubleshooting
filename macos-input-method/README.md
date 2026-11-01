@@ -15,6 +15,9 @@ and 27.0.1. *Measured*, *inferred* and *hypothesis* are as the source recorded t
   カタカナ key (or turns it into かな); reading it at the HID level, and every problem that had.
 - [eisu-selects-abc](eisu-selects-abc/README.md): with Apple's ABC enabled, 英数 goes to ABC
   instead of the input method's own English mode.
+- [eisu-kana-keys-run-your-own-code](eisu-kana-keys-run-your-own-code/README.md): make 英数 and
+  かな run your own code, with no Karabiner and no permissions, through primary Roman and Japanese
+  input sources. Working example: team-mirae/jis-moonshot.
 - [korean-key-in-iterm](korean-key-in-iterm/README.md): iTerm keeps F1–F19, so F18 never reaches
   the input method; Caps Lock as the switch key was tried three ways and dropped.
 - [switch-keys-dead-after-login](switch-keys-dead-after-login/README.md): system-wide keys caught
