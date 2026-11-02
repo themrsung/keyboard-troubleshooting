@@ -151,6 +151,14 @@ when the volume changes, and an HHKB Studio not seen behind a Thunderbolt dock t
 USB 2.0 side.
 [Index](hardware/README.md).
 
+## digests/ — what changed across the keyboard repositories
+
+- [2026-11-02-last-36-hours](digests/2026-11-02-last-36-hours/README.md): every commit in the
+  keyboard repositories from 2026-10-31 22:08 to 2026-11-02 10:08 (UTC+9), with findings and fixes:
+  an unsigned macOS input method that types nothing, sandboxed Windows apps that can't read TIP
+  settings, classic controls showing one character of a composition, US ANSI symbols in JIS
+  password fields, and more. Hardware that the commits don't record is marked "not recorded".
+
 ## testers/
 
 People who can test on their own hardware, with what they have:
