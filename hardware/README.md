@@ -15,3 +15,6 @@ Problems that first looked like input-method or keyboard faults. The first two a
 - [tb-dock-usb2-side-missing](tb-dock-usb2-side-missing/README.md): an HHKB Studio not seen over
   USB behind a Thunderbolt dock whose USB 2.0 side had dropped out; power-cycling the dock fixed
   it. All four LEDs blue means USB, not Bluetooth.
+- [setup-assistant-behind-karabiner](setup-assistant-behind-karabiner/README.md): Keyboard Setup
+  Assistant couldn't identify a keyboard that Karabiner-Elements was modifying; turn it off in
+  Karabiner's Devices (no restart needed), then run the assistant. **Fixed.**

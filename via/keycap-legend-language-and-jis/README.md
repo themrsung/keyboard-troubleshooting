@@ -23,4 +23,10 @@ board as JIS is Keyboard Setup Assistant: Z for the key right of the left Shift,
 board's `MO(2)`, `KeyMomentaryLayerTwo`) + the ろ key for the key left of the right Shift (see the
 background in the [README](../../README.md)).
 
+Later finding: Keyboard Setup Assistant can't identify a keyboard while Karabiner-Elements is
+modifying it, and Karabiner lets go of a keyboard as soon as it's turned off in its Devices
+settings ([hardware/setup-assistant-behind-karabiner](../../hardware/setup-assistant-behind-karabiner/README.md)).
+The Karabiner device changes in step 2 may explain this better than the legend language. Not
+re-tested.
+
 If you can reproduce or rule out the legend language's effect, please add it here.

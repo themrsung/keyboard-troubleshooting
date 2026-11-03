@@ -148,7 +148,8 @@ with Bazel on Windows, and learning that changes test results. [Index](mozc/READ
 A keyboard resting on a laptop's keys (hypothesis), a USB mouse behind a USB-C dock, a
 hall-effect keyboard that stopped working behind a USB hub, macOS's volume keys unmuting only
 when the volume changes, and an HHKB Studio not seen behind a Thunderbolt dock that had lost its
-USB 2.0 side.
+USB 2.0 side; and Keyboard Setup Assistant unable to identify a keyboard that Karabiner-Elements
+is modifying.
 [Index](hardware/README.md).
 
 ## digests/ — what changed across the keyboard repositories
@@ -185,3 +186,6 @@ sudo defaults write /Library/Preferences/com.apple.keyboardtype keyboardtype -di
 Keyboard Setup Assistant asks for the key right of the left Shift and the key left of the right
 Shift. Pressing Z and then ろ makes it pick JIS, which is how a remapped ANSI board with ろ on a
 layer gets stored as JIS. Built-in keyboards have no entry and take their type from the hardware.
+If the keyboard is turned on in Karabiner-Elements' Devices settings, the assistant can't
+identify it: turn it off there first (no restart needed), run the assistant, then turn it back on
+([hardware/setup-assistant-behind-karabiner](hardware/setup-assistant-behind-karabiner/README.md)).
