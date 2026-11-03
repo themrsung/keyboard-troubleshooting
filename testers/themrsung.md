@@ -27,4 +27,5 @@
 | Samsung Galaxy Book keyboard | Korean US ANSI, with numpad | n/a | n/a | x86 testing only |
 | Keychron C2 Pro | US ANSI, 104-key | stock | USB-C, wired | - |
 | RealForce Compact | JIS, tenkeyless | stock | USB, wired | Topre. All keys checked with [keyboard-health-check](../utils/keyboard-health-check/README.md); remapped with Karabiner-Elements ([configfiles/realforce-compact-jis](../configfiles/realforce-compact-jis/README.md)). USB 0x0853:0x0200 |
+| REALFORCE X1P JP TKL | JIS, tenkeyless | stock, A1.13 | USB | Topre. Model X1PC11. Reports as "REALFORCE X1P JP TKL", USB 0x0853:0x0322. Remap: [configfiles/realforce-x1p-jp-tkl](../configfiles/realforce-x1p-jp-tkl/README.md). Stored as JIS (42) in macOS's `com.apple.keyboardtype` |
 | Razer Tartarus Pro | Gaming keypad, left hand | stock | USB, wired | USB 0x1532:0x0244 |
