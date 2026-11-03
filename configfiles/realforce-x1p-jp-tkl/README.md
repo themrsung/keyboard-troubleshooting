@@ -17,7 +17,7 @@ their canonical names from [KEYNAMES.md](../../conventions/keynames/REV1-2026102
 
 ## Layer 1, Normal
 
-<img alt="Layer 1, Normal, in the REALFORCE configuration tool: a JIS tenkeyless board with Fn at both ends of the bottom row, Caps Lock in the Scroll Lock position and SC1 in the Print Screen position" src="layer1-normal.png">
+<img alt="Layer 1, Normal, in the REALFORCE configuration tool: a JIS tenkeyless board with Fn at both ends of the bottom row, Caps Lock in the Scroll Lock position, SC1 in the Print Screen position and Play/Pause in the Pause position" src="layer1-normal.png">
 
 Every key in the main block types its own legend: Esc, F1 to F12, the number row, the letters, the
 JIS symbol keys (- ^ ¥ @ [ ; : ] , . / ろ), Tab, Enter, Backspace, both Shifts, Space, the
@@ -31,7 +31,7 @@ navigation block and the arrows. Left of A is Control. The keys worth noting:
 | Left of A | `KeyLeftControl` | L-Ctrl |
 | Print Screen | `KeyPrintScreen` | SC1 |
 | Scroll Lock | `KeyScrollLock` | Caps Lock |
-| Pause | `KeyPause` | Pause |
+| Pause | `KeyPause` | Play/Pause (sends `KeyMediaPlayPause`) |
 
 The bottom row, left to right, with what each key sends:
 
