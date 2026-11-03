@@ -13,7 +13,8 @@ tables below transcribe them key by key.
 Only layer 1 was captured; layers 2 to 4 aren't recorded here. The tool's labels are quoted as it
 shows them (it cuts some short, e.g. "Up Arr…", written out in full below). Key positions use
 their canonical names from [KEYNAMES.md](../../conventions/keynames/REV1-20261025/KEYNAMES.md);
-"SC1", "APC+" and the "Illumi" functions are the board's own and have no canonical name.
+"SC1" (a ⌘⇧4 shortcut, below), "APC+" and the "Illumi" functions are the board's own and have no
+canonical name.
 
 ## Layer 1, Normal
 
@@ -30,7 +31,7 @@ the key; "Sends" is the key or function that label names.
 | ¥, right of ^ | `KeyLongKatakana` | Yen \| JP | ¥ (`KeyLongKatakana`) |
 | ろ, left of right Shift | `KeyRo` | \ _ | ろ (`KeyRo`) |
 | Left of A | `KeyLeftControl` | L-Ctrl | Left Control (`KeyLeftControl`) |
-| Print Screen | `KeyPrintScreen` | SC1 | SC1, the board's own function (not checked; see [Not checked](#not-checked)) |
+| Print Screen | `KeyPrintScreen` | SC1 | ⌘⇧4 as one shortcut: Shift, ⌘ and 4 (`KeyUniversalShift` + `KeyUniversalPrimary` + `KeyFour`), checked on macOS |
 | Scroll Lock | `KeyScrollLock` | Caps Lock | Caps Lock (`KeyCapsLock`) |
 | Pause | `KeyPause` | Play/Pause | Play/Pause (`KeyMediaPlayPause`) |
 
@@ -41,9 +42,9 @@ The bottom row, left to right:
 | 1 | Fn | Fn, the board's own: held, it switches to the Fn+ layer below; it sends nothing itself |
 | 2 | L-Alt / L-Opt | Left Alt, which is Left ⌥ on macOS (`KeyLeftAuxiliary`) |
 | 3 | L-Win / L-Cmd | Left Win, which is Left ⌘ on macOS (`KeyLeftPrimary`) |
-| 4 | IMEoff / eng(Mac) | IME off on Windows, 英数 on macOS (`KeyJISMacEnglish`), going by the label |
+| 4 | IMEoff / eng(Mac) | 英数 (`KeyJISMacEnglish`), checked on macOS |
 | 5 | Space | Space (`KeySpacebar`) |
-| 6 | IMEon / kana(Mac) | IME on on Windows, かな on macOS (`KeyJISMacKana`), going by the label |
+| 6 | IMEon / kana(Mac) | かな (`KeyJISMacKana`), checked on macOS |
 | 7 | R-Win / R-Cmd | Right Win, which is Right ⌘ on macOS (`KeyRightPrimary`) |
 | 8 | R-Alt / R-Opt | Right Alt, which is Right ⌥ on macOS (`KeyRightAuxiliary`) |
 | 9 | R-Ctrl | Right Control (`KeyRightControl`) |
@@ -79,7 +80,7 @@ With either Fn held. Keys the tool leaves blank do nothing with Fn: Esc, F1 to F
 | ¥ | `KeyLongKatakana` | Insert (`KeyInsert`) |
 | Backspace | `KeyDeleteLeft` | Delete (`KeyDeleteRight`) |
 | Tab | `KeyTab` | Caps Lock (`KeyCapsLock`) |
-| I | `KeyI` | SC1 |
+| I | `KeyI` | SC1 (⌘⇧4) |
 | O | `KeyO` | Scroll Lock (`KeyScrollLock`) |
 | P | `KeyP` | Play/Pause (`KeyMediaPlayPause`) |
 | @ | `KeyDakuten` | Up Arrow (`KeyUpArrow`) |
@@ -121,17 +122,26 @@ Right and Down, with Home / Page Up and End / Page Down beside them.
 | Down | `KeyDownArrow` | Volume Down (`KeyVolumeDown`) |
 | Right | `KeyRightArrow` | Volume Up (`KeyVolumeUp`) |
 
+## Checked
+
+The owner pressed these keys through on macOS 27 (Apple Silicon) on 2026-11-04, and
+Karabiner-Elements showed:
+
+- **SC1** arrives as Shift + ⌘ + 4, i.e. the board sends macOS's "screenshot of a selection"
+  shortcut (⌘⇧4) by itself.
+- **IMEoff / eng(Mac)** is 英数 (`KeyJISMacEnglish`), and **IMEon / kana(Mac)** is かな
+  (`KeyJISMacKana`).
+
 ## Not checked
 
-This README is transcribed from the tool's screenshots. No key has been pressed through yet, so
-what each key really sends is still to be checked. To check, open
-[keyboard-health-check](../../utils/keyboard-health-check/README.md), press each key on the board,
-and compare the HID usage the log shows with the tables above. These need it the most:
+The rest of this README is transcribed from the tool's screenshots. To check a key, open
+[keyboard-health-check](../../utils/keyboard-health-check/README.md), press it, and compare the HID
+usage in the log with the tables above. Still to check:
 
-- **SC1** (Print Screen position, and Fn + I): the board's own function; what it sends is unknown.
-- **IMEoff / eng(Mac)** and **IMEon / kana(Mac)**: whether they send 英数 and かな (LANG2 and LANG1)
-  on both systems, or 無変換 and 変換 on Windows.
-- **APC+** (Fn + Up): an actuation point setting on the board, so it should send nothing.
+- **APC+** (Fn + Up): an actuation point setting on the board; what it does, and whether it sends
+  anything to the computer, hasn't been checked.
+- **The IME keys on Windows:** only checked on macOS.
+- The other keys, which are expected to send what their labels say.
 
 ## On macOS
 
