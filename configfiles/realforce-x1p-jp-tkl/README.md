@@ -19,37 +19,39 @@ their canonical names from [KEYNAMES.md](../../conventions/keynames/REV1-2026102
 
 <img alt="Layer 1, Normal, in the REALFORCE configuration tool: a JIS tenkeyless board with Fn at both ends of the bottom row, Caps Lock in the Scroll Lock position, SC1 in the Print Screen position and Play/Pause in the Pause position" src="layer1-normal.png">
 
-Every key in the main block types its own legend: Esc, F1 to F12, the number row, the letters, the
-JIS symbol keys (- ^ ¥ @ [ ; : ] , . / ろ), Tab, Enter, Backspace, both Shifts, Space, the
-navigation block and the arrows. Left of A is Control. The keys worth noting:
+These keys keep their own legend: Esc and F1 to F12; 1 to 0 and the letters; the JIS symbol keys
+- ^ @ [ ; : ] , . /; Tab, Enter, Backspace, both Shifts and Space; and Insert, Delete, Home, End,
+Page Up, Page Down and the arrows. The rest are below. "Tool's label" is what the tool shows on
+the key; "Sends" is the key or function that label names.
 
-| Position | Canonical name | Tool's label |
-|---|---|---|
-| Left of 1 | `KeyHankakuZenkaku` | E/J |
-| ¥, right of ^ | `KeyLongKatakana` | Yen \| JP |
-| ろ, left of right Shift | `KeyRo` | \ _ |
-| Left of A | `KeyLeftControl` | L-Ctrl |
-| Print Screen | `KeyPrintScreen` | SC1 |
-| Scroll Lock | `KeyScrollLock` | Caps Lock |
-| Pause | `KeyPause` | Play/Pause (sends `KeyMediaPlayPause`) |
+| Position | Canonical name | Tool's label | Sends |
+|---|---|---|---|
+| Left of 1 | `KeyHankakuZenkaku` | E/J | 半角/全角 (`KeyHankakuZenkaku`) |
+| ¥, right of ^ | `KeyLongKatakana` | Yen \| JP | ¥ (`KeyLongKatakana`) |
+| ろ, left of right Shift | `KeyRo` | \ _ | ろ (`KeyRo`) |
+| Left of A | `KeyLeftControl` | L-Ctrl | Left Control (`KeyLeftControl`) |
+| Print Screen | `KeyPrintScreen` | SC1 | SC1, the board's own function (not checked; see [Not checked](#not-checked)) |
+| Scroll Lock | `KeyScrollLock` | Caps Lock | Caps Lock (`KeyCapsLock`) |
+| Pause | `KeyPause` | Play/Pause | Play/Pause (`KeyMediaPlayPause`) |
 
-The bottom row, left to right, with what each key sends:
+The bottom row, left to right:
 
 | # | Tool's label | Sends |
 |---|---|---|
-| 1 | Fn | Fn (the board's own; holds the Fn+ layer below) |
-| 2 | L-Alt / L-Opt | Left ⌥ (`KeyLeftAuxiliary`) |
-| 3 | L-Win / L-Cmd | Left ⌘ (`KeyLeftPrimary`) |
-| 4 | IMEoff / eng(Mac) | 無変換 (`KeyJISMuhenkan`) on Windows, 英数 (`KeyJISMacEnglish`) on macOS |
+| 1 | Fn | Fn, the board's own: held, it switches to the Fn+ layer below; it sends nothing itself |
+| 2 | L-Alt / L-Opt | Left Alt, which is Left ⌥ on macOS (`KeyLeftAuxiliary`) |
+| 3 | L-Win / L-Cmd | Left Win, which is Left ⌘ on macOS (`KeyLeftPrimary`) |
+| 4 | IMEoff / eng(Mac) | IME off on Windows, 英数 on macOS (`KeyJISMacEnglish`), going by the label |
 | 5 | Space | Space (`KeySpacebar`) |
-| 6 | IMEon / kana(Mac) | 変換 (`KeyJISHenkan`) on Windows, かな (`KeyJISMacKana`) on macOS |
-| 7 | R-Win / R-Cmd | Right ⌘ (`KeyRightPrimary`) |
-| 8 | R-Alt / R-Opt | Right ⌥ (`KeyRightAuxiliary`) |
+| 6 | IMEon / kana(Mac) | IME on on Windows, かな on macOS (`KeyJISMacKana`), going by the label |
+| 7 | R-Win / R-Cmd | Right Win, which is Right ⌘ on macOS (`KeyRightPrimary`) |
+| 8 | R-Alt / R-Opt | Right Alt, which is Right ⌥ on macOS (`KeyRightAuxiliary`) |
 | 9 | R-Ctrl | Right Control (`KeyRightControl`) |
 | 10 | Fn | Fn, as #1 |
 
-So on a Mac the bottom row reads Fn, ⌥, ⌘, 英数, Space, かな, ⌘, ⌥, Control, Fn, and there's no
-Caps Lock in the main block: it's in the Scroll Lock position, and on Fn + Tab.
+Each label names one key for both systems: Alt and ⌥ are the same key to a computer, and so are Win
+and ⌘. So on a Mac the bottom row should read Fn, ⌥, ⌘, 英数, Space, かな, ⌘, ⌥, Control, Fn. Caps
+Lock is not in the main block: it's in the Scroll Lock position, and on Fn + Tab.
 
 ## Layer 1, Fn+
 
@@ -62,7 +64,18 @@ With either Fn held. Keys the tool leaves blank do nothing with Fn: Esc, F1 to F
 
 | Key | Canonical name | With Fn |
 |---|---|---|
-| 1 to 0, -, ^ | `KeyOne` … `KeyZero`, `KeyHo`, `KeyHe` | F1 to F12 (`KeyFunctionOne` … `KeyFunctionTwelve`) |
+| 1 | `KeyOne` | F1 (`KeyFunctionOne`) |
+| 2 | `KeyTwo` | F2 (`KeyFunctionTwo`) |
+| 3 | `KeyThree` | F3 (`KeyFunctionThree`) |
+| 4 | `KeyFour` | F4 (`KeyFunctionFour`) |
+| 5 | `KeyFive` | F5 (`KeyFunctionFive`) |
+| 6 | `KeySix` | F6 (`KeyFunctionSix`) |
+| 7 | `KeySeven` | F7 (`KeyFunctionSeven`) |
+| 8 | `KeyEight` | F8 (`KeyFunctionEight`) |
+| 9 | `KeyNine` | F9 (`KeyFunctionNine`) |
+| 0 | `KeyZero` | F10 (`KeyFunctionTen`) |
+| - | `KeyHo` | F11 (`KeyFunctionEleven`) |
+| ^ | `KeyHe` | F12 (`KeyFunctionTwelve`) |
 | ¥ | `KeyLongKatakana` | Insert (`KeyInsert`) |
 | Backspace | `KeyDeleteLeft` | Delete (`KeyDeleteRight`) |
 | Tab | `KeyTab` | Caps Lock (`KeyCapsLock`) |
@@ -107,6 +120,18 @@ Right and Down, with Home / Page Up and End / Page Down beside them.
 | Left | `KeyLeftArrow` | Mute (`KeyMute`) |
 | Down | `KeyDownArrow` | Volume Down (`KeyVolumeDown`) |
 | Right | `KeyRightArrow` | Volume Up (`KeyVolumeUp`) |
+
+## Not checked
+
+This README is transcribed from the tool's screenshots. No key has been pressed through yet, so
+what each key really sends is still to be checked. To check, open
+[keyboard-health-check](../../utils/keyboard-health-check/README.md), press each key on the board,
+and compare the HID usage the log shows with the tables above. These need it the most:
+
+- **SC1** (Print Screen position, and Fn + I): the board's own function; what it sends is unknown.
+- **IMEoff / eng(Mac)** and **IMEon / kana(Mac)**: whether they send 英数 and かな (LANG2 and LANG1)
+  on both systems, or 無変換 and 変換 on Windows.
+- **APC+** (Fn + Up): an actuation point setting on the board, so it should send nothing.
 
 ## On macOS
 
