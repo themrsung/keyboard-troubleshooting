@@ -159,6 +159,9 @@ USB 2.0 side.
   settings, classic controls showing one character of a composition, US ANSI symbols in JIS
   password fields, and more. Hardware that the commits don't record is marked "not recorded".
 
+How a digest is collected, checked and laid out, for the AI agents that write them:
+[Index and standard](digests/README.md).
+
 ## testers/
 
 People who can test on their own hardware, with what they have:
