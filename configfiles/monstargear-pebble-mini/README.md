@@ -5,7 +5,8 @@ A VIA keymap for a **MONSTARGEAR pebble mini** (몬스타기어 조약돌 미니
 the layout [mini-numberless](../../layouts/mini-numberless/README.md), as it is on the board.
 
 The file is [gats-wecat4.layout.json](gats-wecat4.layout.json): all four layers in VIA's
-saved-layout format, keys in matrix order (4 × 12), read from the board on 2026-11-04. The 16
+saved-layout format, keys in matrix order (4 × 12), read from the board on 2026-11-04. It's not the factory keymap: the board had already been
+customised when it was read, and the factory keymap hasn't been recorded. The 16
 macro slots are empty on the board, and in the file too.
 [gats-wecat4.definition.json](gats-wecat4.definition.json) is a VIA definition for the board: its
 matrix and key positions.
@@ -29,7 +30,7 @@ matrix and key positions.
 - **On the Mac,** store the keyboard as **JIS**, so ろ (`KC_INT1`) types. 英数 (`KC_LNG2`) and
   かな (`KC_LNG1`) work either way
   ([japanese-keycodes-on-macos](../../qmk/japanese-keycodes-on-macos/README.md)).
-- **What this drops from the factory keymap:** layer 3 held the board's RGB lighting keys,
+- **What the wipe of layer 3 dropped:** as found before the wipe, layer 3 held the board's RGB lighting keys,
   vendor keys (0x7E00–0x7E58, probably connection and battery) and 0x7C03; they're listed in the
   layout's README. Nothing in layers 0–2 reached layer 3.
 

@@ -11,6 +11,8 @@ The keymap of a MONSTARGEAR pebble mini (몬스타기어 조약돌 미니), as i
 Reference board: **GUTS WECAT4** (the name it reports; manufacturer "Hangsheng"), stock firmware,
 over USB (`0x342D:0xE47E`), VIA protocol 12, 4 layers, a 4 × 12 matrix. Read and set over VIA's
 protocol with [viahid](../../via/raw-hid-keymap-editing/README.md) on 2026-11-04;
+**The keymap found on the board wasn't the factory keymap:** it had already been customised, and
+the factory keymap hasn't been recorded. What the factory keymap is known to have is noted below.
 [wecat4-keymap.txt](wecat4-keymap.txt) is every layer, and writes it back (VIA's own format is in
 [configfiles/monstargear-pebble-mini](../../configfiles/monstargear-pebble-mini/README.md)):
 
@@ -43,10 +45,10 @@ Every other key sends what's printed on it. There's no ; or ' in the base layer:
 | V B N M , . | `[` `]` `\` `;` `'` (US codes 0x2F–0x34) and ろ (`KC_INT1`) |
 | Left Space · right Space | 英数 (`KC_LNG2`) · かな (`KC_LNG1`) |
 
-The rest pass through (`KC_TRNS`). The spaces were 変換 (`KC_INT4`) and カタカナ (`KC_INT2`) from the
-factory: macOS drops 変換 and turns カタカナ into かな
-([japanese-keycodes-on-macos](../../qmk/japanese-keycodes-on-macos/README.md)), so they're now the
-Mac's own 英数 and かな.
+The rest pass through (`KC_TRNS`). From the factory, the spaces are plain Space on this layer.
+Before 2026-11-04 they had been set to 変換 (`KC_INT4`) and カタカナ (`KC_INT2`), which macOS drops or
+turns into かな ([japanese-keycodes-on-macos](../../qmk/japanese-keycodes-on-macos/README.md)); they're
+now the Mac's own 英数 and かな.
 
 ## Layer 2 (Fn2: bottom right)
 
@@ -57,7 +59,7 @@ passthrough here too.
 ## Layer 3
 
 All passthrough (`KC_TRNS`), wiped 2026-11-04. Nothing in layers 0–2 switches to it. Before the
-wipe it held a number row, arrows, RGB lighting keys (0x7820–0x782A), vendor keys (0x7E00–0x7E58)
+wipe it held, as found (not necessarily the factory keymap), a number row, arrows, RGB lighting keys (0x7820–0x782A), vendor keys (0x7E00–0x7E58)
 and 0x7C03:
 
 ```
