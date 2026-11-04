@@ -11,14 +11,15 @@ The keymap of a MONSTARGEAR pebble mini (몬스타기어 조약돌 미니), as i
 Reference board: **GUTS WECAT4** (the name it reports; manufacturer "Hangsheng"), stock firmware,
 over USB (`0x342D:0xE47E`), VIA protocol 12, 4 layers, a 4 × 12 matrix. Read and set over VIA's
 protocol with [viahid](../../via/raw-hid-keymap-editing/README.md) on 2026-11-04;
-[wecat4-keymap.txt](wecat4-keymap.txt) is every layer, and writes it back:
+[wecat4-keymap.txt](wecat4-keymap.txt) is every layer, and writes it back (VIA's own format is in
+[configfiles/monstargear-pebble-mini](../../configfiles/monstargear-pebble-mini/README.md)):
 
 ```sh
 grep -v '^#' layouts/mini-numberless/wecat4-keymap.txt | xargs ./viahid --vid 0x342D --pid 0xE47E set
 ```
 
 The bottom row's matrix positions are from the board's VIA definition
-([typing-robot's boards/gats-wecat4](../../utils/typing-robot/boards/gats-wecat4/)): `3,0` `3,1` `3,2`
+([gats-wecat4.definition.json](../../configfiles/monstargear-pebble-mini/gats-wecat4.definition.json)): `3,0` `3,1` `3,2`
 `3,4` `3,5` `3,7` `3,9` `3,10` `3,11`, left to right.
 
 ## Layer 0
