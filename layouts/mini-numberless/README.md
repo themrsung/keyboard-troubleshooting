@@ -5,12 +5,12 @@ The keymap of a MONSTARGEAR pebble mini (몬스타기어 조약돌 미니), as i
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="layout-dark.png">
-  <img alt="A 13u four-row board: Control left of A, / left of Z, and Fn1, Option, Command, Space, Fn1, Space, Command, Option, Fn2 along the bottom; the Fn1 layer with the number row, volume, vim arrows and the missing symbols; the Fn2 layer with F1 to F12; and layer 3, all passthrough" src="layout-light.png">
+  <img alt="A 13u four-row board: Control left of A, / left of Z, and Fn1, Option, Command, Space, Fn1, Space, Command, Option, Fn2 along the bottom; the Fn1 layer with the number row, volume, vim arrows, the missing symbols, and 英数 and かな on the spaces; the Fn2 layer, the same with F1 to F12 on the top row; and layer 3, all passthrough" src="layout-light.png">
 </picture>
 
 Reference board: **GUTS WECAT4** (the name it reports; manufacturer "Hangsheng"), stock firmware,
-over USB (`0x342D:0xE47E`), VIA protocol 12, 4 layers, a 4 × 12 matrix. Read over VIA's protocol
-with [viahid](../../via/raw-hid-keymap-editing/README.md) on 2026-11-04;
+over USB (`0x342D:0xE47E`), VIA protocol 12, 4 layers, a 4 × 12 matrix. Read and set over VIA's
+protocol with [viahid](../../via/raw-hid-keymap-editing/README.md) on 2026-11-04;
 [wecat4-keymap.txt](wecat4-keymap.txt) is every layer, and writes it back:
 
 ```sh
@@ -40,13 +40,18 @@ Every other key sends what's printed on it. There's no ; or ' in the base layer:
 | H J K L | ← ↓ ↑ → |
 | / | `` ` `` (`KC_GRV`) |
 | V B N M , . | `[` `]` `\` `;` `'` (US codes 0x2F–0x34) and ろ (`KC_INT1`) |
-| Left Space · right Space | 変換 (`KC_INT4`) · カタカナ (`KC_INT2`) |
+| Left Space · right Space | 英数 (`KC_LNG2`) · かな (`KC_LNG1`) |
 
-The rest pass through (`KC_TRNS`).
+The rest pass through (`KC_TRNS`). The spaces were 変換 (`KC_INT4`) and カタカナ (`KC_INT2`) from the
+factory: macOS drops 変換 and turns カタカナ into かな
+([japanese-keycodes-on-macos](../../qmk/japanese-keycodes-on-macos/README.md)), so they're now the
+Mac's own 英数 and かな.
 
 ## Layer 2 (Fn2: bottom right)
 
-Tab, Q … P and Backspace are F1 … F12. The rest pass through.
+Tab, Q … P and Backspace are F1 … F12. Below the top row, Fn2 is the same as Fn1: volume, arrows,
+symbols, 英数 and かな, so they work with either Fn held. Keys that are passthrough on Fn1 are
+passthrough here too.
 
 ## Layer 3
 
