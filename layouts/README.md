@@ -11,6 +11,7 @@ Japanese Kana input. New layouts should follow the [principles](PRINCIPLES.md).
 | [us-ansi-104-key-to-jis](us-ansi-104-key-to-jis/README.md) | Full-size US (Hansung TFG Magnetox XF) | Firmware only, plain keys and `MO()`: the board's mod-tap is broken |
 | [us-ansi-104-key-to-jis-with-lt](us-ansi-104-key-to-jis-with-lt/README.md) | Full-size US (Keychron C2 Pro, Mac side) | The same in firmware, plus カタカナ / 英数 on a tap of Fn / ⌘ |
 | [us-ansi-87-key-to-jis](us-ansi-87-key-to-jis/README.md) | Tenkeyless US (MONGDOL 87) | Firmware, tap vs hold, two layers |
+| [mini-numberless](mini-numberless/README.md) | MONSTARGEAR pebble mini (GUTS WECAT4), 13u, no number row | Firmware (VIA protocol): the keymap as it is on the board, read 2026-11-04 |
 | [hhkb-pro-bt-us-to-jis](hhkb-pro-bt-us-to-jis/README.md) | HHKB Professional BT (US) | Karabiner-Elements |
 | [macbook-us-to-jis](macbook-us-to-jis/README.md) | MacBook built-in (US) | Karabiner-Elements, keyboard type stays US |
 | [macbook-jis-to-hhkb](macbook-jis-to-hhkb/README.md) | MacBook built-in (JIS), with the HHKB Fn layer | Karabiner-Elements: カタカナ / Fn on Caps Lock, Fn on 🌐 too |
