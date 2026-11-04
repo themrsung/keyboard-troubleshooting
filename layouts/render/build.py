@@ -239,6 +239,19 @@ def macbook_jis():
     return keys
 
 
+def mini_numberless():
+    """A 13u, four-row board without a number row (the MONSTARGEAR pebble mini, GUTS WECAT4): / left of
+    Z, no ; or ', and a split Space with an Fn cap between the halves. The halves have no canonical
+    names of their own: the left one is Space, the right one SpaceRight. The cap between them is drawn
+    as KeyHHKBFunctionTwo, but on this board it's MO(1), the same as the bottom-left key."""
+    return place([
+        [("Tab", "Tab", 1.5)] + [(f"Key{c}", c) for c in "QWERTYUIOP"] + [("Backspace", "Backspace", 1.5)],
+        [("CapsLock", "Caps Lock", 1.75)] + [(f"Key{c}", c) for c in "ASDFGHJKL"] + [("Enter", "Enter", 2.25)],
+        [("ShiftLeft", "Shift", 1.25), ("Slash", "/")] + [(f"Key{c}", c) for c in "ZXCVBNM"] + [("Comma", ","), ("Period", "."), ("ShiftRight", "Shift", 1.75)],
+        [("ControlLeft", "Ctrl", 1.25), ("MetaLeft", "Win"), ("AltLeft", "Alt", 1.25), ("Space", "", 2.25), ("KeyHHKBFunctionTwo", "Fn"),
+         ("SpaceRight", "", 2.75), ("AltRight", "Alt", 1.25), ("ContextMenu", "Menu"), ("ControlRight", "Ctrl", 1.25)],
+    ])
+
 # --- What a key does on a layer. ---
 # send(code): types the JIS key `code` (legends from MODE_A / KANA), marked moved if not its own.
 # lang(tap, hold): a language key (tap), with what holding does.
@@ -477,6 +490,35 @@ def layouts():
                 "AltRight": send("IntlYen"), "MetaRight": send("Slash"), "ContextMenu": send("IntlRo"),
                 "ControlLeft": lang("Fn"), "ControlRight": lang("Fn"),
             })),
+        ],
+    }
+
+    keys = mini_numberless()
+    fn1 = lang("Fn1")
+    out["mini-numberless"] = {
+        "title": "Mini without a number row",
+        "lede": "A MONSTARGEAR pebble mini (몬스타기어 조약돌 미니), the GUTS WECAT4 (0x342D:0xE47E): four rows, 13 keys wide, no number row, caps as printed. The keymap as read from the board over VIA on 2026-11-04. Control is left of A; the bottom row is Fn1, ⌥, ⌘, Space, Fn1, Space, ⌘, ⌥, Fn2. Fn1 has the number row, volume, vim arrows and the missing symbols; Fn2 has F1–F12; layer 3 is all passthrough.",
+        "keys": keys,
+        "layers": [
+            ("Layer 0", base_layer(keys, {
+                "CapsLock": mod("Control", True),
+                "ControlLeft": fn1, "MetaLeft": mod("⌥", True), "AltLeft": mod("⌘", True), "Space": mod(""),
+                "KeyHHKBFunctionTwo": fn1, "SpaceRight": mod(""),
+                "AltRight": mod("⌘", True), "ContextMenu": mod("⌥", True), "ControlRight": lang("Fn2"),
+            })),
+            ("Layer 1 (hold Fn1: bottom left, or between the spaces)", fn_layer(keys, {
+                "Tab": fn("Esc"), **{f"Key{c}": send(f"Digit{d}") for c, d in zip("QWERTYUIOP", "1234567890")}, "Backspace": fn("Del"),
+                "KeyA": fn("Vol−"), "KeyS": fn("Vol+"), "KeyD": fn("Mute"), "KeyF": fn("⏏"),
+                "KeyH": fn("←"), "KeyJ": fn("↓"), "KeyK": fn("↑"), "KeyL": fn("→"),
+                "Slash": send("Backquote"), "KeyV": send("BracketLeft"), "KeyB": send("BracketRight"), "KeyN": send("Backslash"),
+                "KeyM": send("Semicolon"), "Comma": send("Quote"), "Period": send("IntlRo"),
+                "Space": lang("変換"), "SpaceRight": lang("カタカナ"), "ControlLeft": fn1, "KeyHHKBFunctionTwo": fn1,
+            })),
+            ("Layer 2 (hold Fn2: bottom right)", fn_layer(keys, {
+                "Tab": fkey(1), **{f"Key{c}": fkey(i + 2) for i, c in enumerate("QWERTYUIOP")}, "Backspace": fkey(12),
+                "ControlRight": lang("Fn2"),
+            })),
+            ("Layer 3 (all passthrough)", open_layer(keys, {})),
         ],
     }
 
