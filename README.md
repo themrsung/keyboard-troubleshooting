@@ -120,6 +120,9 @@ also as data for code in JavaScript, TypeScript and Java. [Index](conventions/RE
 - [keyboard-health-check](utils/keyboard-health-check/README.md): a Mac app that logs every key
   down and up on full-size US, ISO and JIS boards drawn on screen, to find dead, chattering or stuck
   switches.
+- [key-groups](utils/key-groups/README.md): a Mac app that makes several keys act as one: a
+  bar on two switches stays down until the last is released (OR), or AND, XOR, exactly one, or N
+  of M. Try it in its window with any keys; system-wide needs Accessibility.
 
 ## macos-input-method/ — macOS input methods (InputMethodKit)
 
