@@ -123,6 +123,9 @@ also as data for code in JavaScript, TypeScript and Java. [Index](conventions/RE
 - [key-groups](utils/key-groups/README.md): a Mac app that makes several keys act as one: a
   bar on two switches stays down until the last is released (OR), or AND, XOR, exactly one, or N
   of M. Try it in its window with any keys; system-wide needs Accessibility.
+- [typing-robot](utils/typing-robot/README.md): asks which finger you type each letter with and how
+  big your hands are, builds a robot that types the same way on a VIA board (the GUTS WECAT4 by
+  default), and searches for easier letter layouts under constraints such as no row changes.
 
 ## macos-input-method/ — macOS input methods (InputMethodKit)
 

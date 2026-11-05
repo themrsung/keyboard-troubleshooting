@@ -1,0 +1,4 @@
+#!/bin/sh
+# Runs the typing robot from anywhere: typing-robot <command> (see README.md).
+here=$(cd "$(dirname "$0")" && pwd)
+PYTHONPATH="$here${PYTHONPATH:+:$PYTHONPATH}" exec python3 -B -m typing_robot "$@"
