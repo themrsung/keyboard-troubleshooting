@@ -15,7 +15,8 @@
 | Model | Layout | Firmware | Connections | Notes |
 |---|---|---|---|---|
 | HHKB Studio | JIS | stock | USB-C (USB 2.0), Bluetooth 5.0 LE | Pointing stick and gesture pads. macOS once stored it as ANSI ([hhkb/studio-jis-stored-as-ansi](../hhkb/studio-jis-stored-as-ansi/README.md)) |
-| HHKB Hybrid Type-S | JIS | stock | USB-C, Bluetooth (up to 4 devices) | - |
+| HHKB Hybrid Type-S (unit 1) | JIS | stock | USB-C, Bluetooth (up to 4 devices) | - |
+| HHKB Hybrid Type-S (unit 2) | JIS | stock | USB-C, Bluetooth (up to 4 devices) | Received 2026-11-05. All keys healthy; works on battery power; paired over Bluetooth LE and working, as "HHKB-Hybrid_1", 0x04FE:0x0022 |
 | HHKB Professional BT | HHKB US | stock | Bluetooth 3.0 | - |
 | MONGDOL 87 | US ANSI, 87-key TKL | stock | USB, 2.4 GHz, Bluetooth LE | - |
 | Deck Hassium (unit 1) | US ANSI, 108-key | stock | USB | **Dead key:** S (`KeyS`) never registers; every other key works (checked with [keyboard-health-check](../utils/keyboard-health-check/README.md)). Kept for testing with a broken keyboard. Reports as "Deck 108 Hassium", USB 0x0A34:0x0212 |
