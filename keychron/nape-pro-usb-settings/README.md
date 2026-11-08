@@ -20,8 +20,7 @@ The Nape Pro sits with the mouse buttons (M1, M2) pointing north, away from the 
 | M2 | left click |
 | M1 | right click |
 | ButtonOne, ButtonTwo | scroll with the ball while held |
-| ButtonFour | back (mouse 4) |
-| ButtonThree | forward (mouse 5) |
+| ButtonThree, ButtonFour | nothing (`KC_NO`): they're easy to press by accident, and back / forward can lose work |
 | CircleButton | 2.4 GHz pairing (see "2.4 GHz receiver") |
 | Dial | clockwise → (right arrow), counter-clockwise ← (left arrow) |
 | Ball | finger up → pointer up, finger right → pointer right |
@@ -43,9 +42,10 @@ for L in {0..8}; do ./trackball.sh ./naperaw layer-angle $L 180; done
 Over the receiver instead of the cable, put `NAPE_PID=0xd026` in front of each command (see
 "2.4 GHz receiver").
 
-- [layout-themrsung.txt](layout-themrsung.txt): the keymap. Every layer is `00d5 00d4 522a 522a
+- [layout-themrsung.txt](layout-themrsung.txt): the keymap. Every layer is `0000 0000 522a 522a
   00d2 00d1 7e04`, and the dial is `0050` / `004f` (`KC_LEFT` / `KC_RGHT`). This is shipped
-  layer 1 with `CircleButton` changed from `MO(11)` to `7e04` (Keychron's "2.4G Pair").
+  layer 1 with `CircleButton` changed from `MO(11)` to `7e04` (Keychron's "2.4G Pair"), and
+  ButtonThree and ButtonFour changed from forward / back to `KC_NO`.
 - [trackball-themrsung.txt](trackball-themrsung.txt): `trackball.sh show` afterwards. Orientation
   (180°) and the DPI step in use (0) differ from the factory settings.
 - Confirmed by the tester: buttons, pointer direction and scroll direction. The dial was changed
@@ -58,6 +58,13 @@ Over the receiver instead of the cable, put `NAPE_PID=0xd026` in front of each c
 Why 180°: at 0° both the pointer and the scroll were wrong on both axes. Rotating the ball by
 180° fixed both at once, because the firmware rotates the ball's motion before deciding between
 pointer and scroll. No macOS setting (Natural scrolling) or Karabiner rule was needed.
+
+## Tester remarks
+
+- Don't expect a premium feel, but the usability is pretty good.
+- The ball needs two fingers to control properly. With one finger it's too slippery.
+- Set it up with an AI agent over USB, using the tools in this folder, rather than with Keychron's
+  web app (Launcher).
 
 ## Tools
 
@@ -161,8 +168,8 @@ each column is. The names in the "Name" column are the tester's; they aren't in 
 
 | Label | Name | Col | Where (ball at 0°) | Number test | Shipped, layer 0 | Shipped, layer 1 (active) | Tester's layout |
 |---|---|---|---|---|---|---|---|
-| 03 | `ButtonThree` | 0 | top left | 1 | `MO(10)` scroll | `MS_BTN5` forward | `MS_BTN5` forward |
-| 04 | `ButtonFour` | 1 | top right | 2 | `KC_NO` | `MS_BTN4` back | `MS_BTN4` back |
+| 03 | `ButtonThree` | 0 | top left | 1 | `MO(10)` scroll | `MS_BTN5` forward | `KC_NO` |
+| 04 | `ButtonFour` | 1 | top right | 2 | `KC_NO` | `MS_BTN4` back | `KC_NO` |
 | 01 | `ButtonOne` | 2 | middle left | 3 | `MS_BTN4` back | `MO(10)` scroll | `MO(10)` scroll |
 | 02 | `ButtonTwo` | 3 | middle right | 4 | `KC_NO` | `MO(10)` scroll | `MO(10)` scroll |
 | M1 | `MouseOne` | 4 | bottom left | 5 | `MS_BTN1` left click | `MS_BTN2` right click | `MS_BTN2` right click |
