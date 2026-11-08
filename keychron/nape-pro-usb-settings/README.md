@@ -22,30 +22,38 @@ The Nape Pro sits with the mouse buttons (M1, M2) pointing north, away from the 
 | ButtonOne, ButtonTwo | scroll with the ball while held |
 | ButtonFour | back (mouse 4) |
 | ButtonThree | forward (mouse 5) |
-| CircleButton | play / pause |
+| CircleButton | 2.4 GHz pairing (see "2.4 GHz receiver") |
 | Dial | clockwise → (right arrow), counter-clockwise ← (left arrow) |
 | Ball | finger up → pointer up, finger right → pointer right |
 | Ball while scrolling | finger up → scroll down, finger right → scroll left |
+| Sensitivity | as low as the device goes: step 0, 400 DPI |
+| Connection | 2.4 GHz, through a Keychron Link-KM receiver |
 
-Done with two files and one setting, all on every layer (0–8), so it works whichever layer is
-active:
+Done with a keymap file and three trackball settings. The keymap and orientation are set on every
+layer (0–8), so they work whichever layer is active:
 
 ```sh
 swiftc -O -o naperaw naperaw.swift
 ./apply.sh ./naperaw layout-themrsung.txt                  # buttons and dial
 ./trackball.sh ./naperaw angle 180                         # ball orientation
 for L in {0..8}; do ./trackball.sh ./naperaw layer-angle $L 180; done
+./trackball.sh ./naperaw dpi 0                             # use step 0 (400 DPI)
 ```
 
+Over the receiver instead of the cable, put `NAPE_PID=0xd026` in front of each command (see
+"2.4 GHz receiver").
+
 - [layout-themrsung.txt](layout-themrsung.txt): the keymap. Every layer is `00d5 00d4 522a 522a
-  00d2 00d1 00ae`, and the dial is `0050` / `004f` (`KC_LEFT` / `KC_RGHT`). This is shipped
-  layer 1 with `CircleButton` changed from `MO(11)` to `KC_MPLY`.
-- [trackball-themrsung.txt](trackball-themrsung.txt): `trackball.sh show` afterwards. Only the
-  orientation differs from the factory settings.
+  00d2 00d1 7e04`, and the dial is `0050` / `004f` (`KC_LEFT` / `KC_RGHT`). This is shipped
+  layer 1 with `CircleButton` changed from `MO(11)` to `7e04` (Keychron's "2.4G Pair").
+- [trackball-themrsung.txt](trackball-themrsung.txt): `trackball.sh show` afterwards. Orientation
+  (180°) and the DPI step in use (0) differ from the factory settings.
 - Confirmed by the tester: buttons, pointer direction and scroll direction. The dial was changed
   to arrow keys afterwards; its direction hasn't been confirmed yet.
 - Wanted but not possible on the device: ↓ / ↑ on the dial while ButtonOne or ButtonTwo is held.
   See "The dial can't change while scrolling".
+- DPI: the factory step 0 (400) still felt too fast, but nothing on the device goes lower. See
+  "DPI values can't be changed".
 
 Why 180°: at 0° both the pointer and the scroll were wrong on both axes. Rotating the ball by
 180° fixed both at once, because the firmware rotates the ball's motion before deciding between
@@ -60,6 +68,7 @@ swiftc -O -o naperaw naperaw.swift
 ./trackball.sh ./naperaw show                 # read-only: DPI, orientation, gestures, sleep, battery
 ./trackball.sh ./naperaw dpi 1                # also dpi-value, angle, layer-angle, gesture, force
 ./naperaw via 01                              # one raw report; prints what was sent and the reply
+NAPE_PID=0xd026 ./trackball.sh ./naperaw show # any of the above through the 2.4 GHz receiver
 ```
 
 - `snapshot.sh` and `trackball.sh show` only read. Take a snapshot before writing anything.
@@ -74,6 +83,51 @@ Other files:
 - [snapshot-v1.3.0.txt](snapshot-v1.3.0.txt): the keymap as shipped. `apply.sh` it to go back.
 - [test-number-keys.txt](test-number-keys.txt): `1`–`7` on the buttons and `8`/`9` on the dial,
   used to find out which control is which.
+
+## 2.4 GHz receiver (Keychron Link-KM)
+
+The receiver is a Keychron Link-KM: VID 0x3434, PID 0xD026. It has the same interface set as the
+Nape Pro: keyboard and mouse (page 0x01), VIA raw HID (0xFF60 / 0x61) and 0x8C.
+
+### Pairing
+
+The Nape Pro didn't connect to the receiver on its own; the receiver may have shipped paired with
+nothing, or with another device. What worked:
+
+1. Put Keychron's "2.4G Pair" keycode (`7e04`, `CUSTOM(4)` in Launcher's definition) on a button.
+   This needs the cable, or an existing receiver link. Here it's `CircleButton`, on every layer.
+2. Unplug the Nape Pro's USB-C cable.
+3. Press that button. The Nape Pro's LED flashes: it's in pairing mode.
+4. **Unplug the receiver and plug it back in** while the LED is still flashing. Pressing the button
+   alone wasn't enough: the receiver has to be freshly plugged in too, probably because it only
+   accepts pairing for a short time after it starts.
+5. Move the ball. It connected within a few seconds.
+
+Not checked: whether a connection-mode switch on the Nape Pro matters, and whether the shipped
+`MO(11)` on `CircleButton` is Keychron's own pairing or connection button.
+
+### Settings through the receiver
+
+Once paired, the receiver passes VIA and `a7` commands through to the Nape Pro. Every read and write
+in this folder works with the receiver's PID:
+
+```sh
+NAPE_PID=0xd026 ./snapshot.sh ./naperaw
+NAPE_PID=0xd026 ./apply.sh ./naperaw layout-themrsung.txt
+NAPE_PID=0xd026 ./trackball.sh ./naperaw show
+```
+
+- Through the receiver, the replies are the same as over the cable: protocol 12, 9 layers,
+  `v1.3.0-ZK`, the keymap, orientation and DPI. `snapshot.sh`'s `# usb` section is empty, because it
+  looks the cable device up by name. `NAPE_USB_NAME="Keychron Link-KM"` shows the receiver's
+  instead.
+- **A command can get no reply over the radio.** One `apply.sh` run stopped at
+  `dial write layer 4 failed:` with an empty reply. Running it again succeeded. Its writes set
+  values rather than toggle them, so a retry is safe.
+- The receiver doesn't answer `bc`, the query Launcher uses to ask a receiver which devices are
+  connected. It sends back a report starting `ff`, before and after pairing alike.
+- Don't send anything on the receiver's 0x8C interface either: it's the same firmware-update
+  channel as on the Nape Pro.
 
 ## USB interfaces
 
@@ -113,7 +167,7 @@ each column is. The names in the "Name" column are the tester's; they aren't in 
 | 02 | `ButtonTwo` | 3 | middle right | 4 | `KC_NO` | `MO(10)` scroll | `MO(10)` scroll |
 | M1 | `MouseOne` | 4 | bottom left | 5 | `MS_BTN1` left click | `MS_BTN2` right click | `MS_BTN2` right click |
 | M2 | `MouseTwo` | 5 | bottom right | 6 | `MS_BTN2` right click | `MS_BTN1` left click | `MS_BTN1` left click |
-| (none) | `CircleButton` | 6 | small round button next to 04 | 7 | `MO(11)` unknown | `MO(11)` unknown | `KC_MPLY` play / pause |
+| (none) | `CircleButton` | 6 | small round button next to 04 | 7 | `MO(11)` unknown | `MO(11)` unknown | `7e04` 2.4 GHz pairing |
 | – | `WheelCounterClockwise` | enc 0 ccw | dial | 8 | `KC_UP` | `KC_LEFT` | `KC_LEFT` |
 | – | `WheelClockwise` | enc 0 cw | dial | 9 | `KC_DOWN` | `KC_RGHT` | `KC_RGHT` |
 
@@ -180,6 +234,23 @@ back. The buttons still kept their old keys. Writing the same keycodes again one
 replug. Dial writes with `0x15` took effect at once. Whether a replug would also have loaded the
 `0x13` writes wasn't tested.
 
+### DPI values can't be changed
+
+Switching DPI steps works, but changing a step's value doesn't, on firmware v1.3.0:
+
+- `a7 23 00 <value LE>` (`SET_DPI_VALUE`) answered OK, and `a7 24 00` read back 200, 100 and then 1.
+  The ball still felt like 400 every time: after reselecting step 0, after switching to step 1 and
+  back, and after a restart (cable out, switch off, cable in).
+- Switching to step 4 (`a7 22 04`) made the ball much faster, so the step number is applied at
+  once.
+- `a7 37 64 00` (custom DPI = 100) answered OK, but `a7 36` still read 400. Launcher's keycode table
+  has a "custom DPI" key (`CUSTOM(47)`), but the Nape Pro's definition stops at `CUSTOM(46)`.
+
+So each step has a built-in speed (400, 800, 1600, 3200, 4000), and the values only change what's
+stored and shown. Step 0 was put back to 400 to match. For slower than 400, use macOS's Tracking
+speed (System Settings → Mouse), which applies to every mouse. Not checked: whether Keychron
+Launcher can change it, for example with a command this firmware handles differently.
+
 ### Status report
 
 After a setting changes, the device sends a report of its own on interface 1: `a3 <layer> <angle /
@@ -205,7 +276,7 @@ Keycodes in protocol-12 numbering:
 | `00d1` / `00d2` | `MS_BTN1` / `MS_BTN2` | `KeyLeftMouseButton` / `KeyRightMouseButton` |
 | `00d4` / `00d5` | `MS_BTN4` / `MS_BTN5` | `KeyMouseButtonFour` / `KeyMouseButtonFive` |
 | `00d9` / `00da` | `MS_WHLU` / `MS_WHLD` | `KeyMouseWheelUp` / `KeyMouseWheelDown` |
-| `00ae` | `KC_MPLY` | `KeyMediaPlayPause` |
+| `00ae` | `KC_MPLY` (shipped on layer 2) | `KeyMediaPlayPause` |
 | `0052` / `0051` | `KC_UP` / `KC_DOWN` | `KeyUpArrow` / `KeyDownArrow` |
 | `0050` / `004f` | `KC_LEFT` / `KC_RGHT` | `KeyLeftArrow` / `KeyRightArrow` |
 | `001e` … `0026` | `KC_1` … `KC_9` (number test) | `KeyOne` … `KeyNine` |
@@ -240,17 +311,17 @@ The reply echoes `a7 <cmd>`. For a set, `[2] = 00` means OK. Multi-byte values a
 
 | Cmd | Name in Launcher | Request args | Reply | Factory | Write verified |
 |---|---|---|---|---|---|
-| `21` / `22` | `NAPE_GET_DPI` / `SET_DPI` | set: step | `[2]` step | step 2 | yes: 2 → 1 → 2 |
+| `21` / `22` | `NAPE_GET_DPI` / `SET_DPI` | set: step | `[2]` step | step 2 | yes: takes effect at once (step 4 felt much faster) |
 | `3c` / `3d` | DPI gear (step count) get / set | set: count | `[2]` count | 5 | no |
-| `24` / `23` | `NAPE_GET_DPI_VALUE` / `SET_DPI_VALUE` | step (+ value LE) | `[2..3]` DPI | 400, 800, 1600, 3200, 4000 | no |
-| `36` / `37` | custom DPI get / set | set: value LE | `[2..3]` | 400 | no |
+| `24` / `23` | `NAPE_GET_DPI_VALUE` / `SET_DPI_VALUE` | step (+ value LE) | `[2..3]` DPI | 400, 800, 1600, 3200, 4000 | stored, but no effect (see "DPI values can't be changed") |
+| `36` / `37` | custom DPI get / set | set: value LE | `[2..3]` | 400 | no: answers OK, still reads 400 |
 | `20` / `34` | `NAPE_GET_ORI` / `SET_ORI` | set: angle / 45 | `[2]` × 45° | 0° | yes: 180° |
 | `38` / `39` | `NAPE_GET_LAYER_ORI` / `SET_LAYER_ORI` | layer (+ angle / 45) | `[2]` × 45° | 0° on layers 0–8 | yes: 180° on 0–8 |
 | `2a` / `29` | `NAPE_GET_GESTURE` / `SET_GESTURE` | set: up, down, left, right keycodes LE | `[2..9]` | all `0000` | no |
 | `33` / `32` | force gesture / scroll get / set | set: gesture, scroll (0/1) | `[2]`, `[3]` | 0 / 0 | no |
 | `0b` / `0c` | sleep get / set | | `[3..4]` backlight, `[5..6]` sleep | 300 / 600 (units not checked) | no |
 | `0d` / `0e` | poll rate get / set | | see below | not decoded | no |
-| `31` | `NAPE_GET_BAT_REPORT` | | `[2]` % | 100, `[3]` 01 or 02 | read only |
+| `31` | `NAPE_GET_BAT_REPORT` | | `[2]` %, `[3]` probably charging state | 100; `[3]` 01 or 02 on the cable, 00 on the receiver | read only |
 | `26` / `25`, `2f` | `NAPE_GET_TAPHOLDS` / `SET_TAPHOLDS`, `DEL_TAPHOLDS` | layer, row, col | | none set | no |
 | `28` / `27`, `2e` | `NAPE_GET_COMBOS` / `SET_COMBOS`, `DEL_COMBOS` | index | | none set | no |
 | `2d` | `NAPE_SET_LAYER` | layer | | | not sent |

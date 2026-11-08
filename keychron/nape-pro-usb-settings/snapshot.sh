@@ -6,7 +6,7 @@ naperaw=${1:-./naperaw}
 q() { $naperaw via "$@" | sed -n 's/^via < //p'; }
 
 echo "# usb"
-ioreg -r -c IOUSBHostDevice -n "Keychron Nape Pro" -l -w0 |
+ioreg -r -c IOUSBHostDevice -n "${NAPE_USB_NAME:-Keychron Nape Pro}" -l -w0 |
   grep -E '^\s*\|?\s*"(idVendor|idProduct|bcdDevice)"' | sed 's/^[ |]*//' | sort -u
 
 echo "# via: protocol 0x01, firmware value 0x02/04, layout options 0x02/03, layers 0x11, macros 0x0c, macro bytes 0x0d"

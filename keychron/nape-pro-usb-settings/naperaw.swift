@@ -23,7 +23,9 @@ func option(_ name: String, _ fallback: Int) -> Int {
     args.removeSubrange(i...(i + 1))
     return text.hasPrefix("0x") ? Int(text.dropFirst(2), radix: 16)! : Int(text)!
 }
-let vid = option("--vid", 0x3434), pid = option("--pid", 0x0440)
+// NAPE_PID=0xd026 reaches the Nape Pro through a paired Keychron Link-KM receiver instead of the cable.
+let envPid = ProcessInfo.processInfo.environment["NAPE_PID"].flatMap { Int($0.replacingOccurrences(of: "0x", with: ""), radix: 16) }
+let vid = option("--vid", 0x3434), pid = option("--pid", envPid ?? 0x0440)
 let timeout = Double(option("--timeout-ms", 1500)) / 1000
 guard let command = args.first, ["via", "kc", "listen"].contains(command) else {
     print("usage: naperaw [--vid 0x3434 --pid 0x0440] [--timeout-ms 1500] via HEX...|kc HEX...|listen SECONDS")
