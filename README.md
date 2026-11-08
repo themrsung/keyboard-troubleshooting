@@ -61,6 +61,11 @@ also as data for code in JavaScript, TypeScript and Java. [Index](conventions/RE
 - [al21w-factory-reset](spm-works/al21w-factory-reset/README.md): resetting the AL21W numpad's
   keymap over VIA, and the hardware reset: hold Fn + 0 for about 3 seconds.
 
+## keychron/ — Keychron
+
+- [nape-pro-usb-settings](keychron/nape-pro-usb-settings/README.md): the Nape Pro trackball's
+  buttons, DPI, ball orientation and gestures, read and written over USB without Keychron Launcher.
+
 ## layouts/ — layout proposals
 
 - [us-ansi-104-key-to-jis](layouts/us-ansi-104-key-to-jis/README.md): a full-size US board (TFG
