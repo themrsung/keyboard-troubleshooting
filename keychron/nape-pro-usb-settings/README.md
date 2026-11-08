@@ -23,6 +23,7 @@ The Nape Pro sits with the mouse buttons (M1, M2) pointing north, away from the 
 | ButtonFour | back (mouse 4) |
 | ButtonThree | forward (mouse 5) |
 | CircleButton | play / pause |
+| Dial | clockwise → (right arrow), counter-clockwise ← (left arrow) |
 | Ball | finger up → pointer up, finger right → pointer right |
 | Ball while scrolling | finger up → scroll down, finger right → scroll left |
 
@@ -37,12 +38,14 @@ for L in {0..8}; do ./trackball.sh ./naperaw layer-angle $L 180; done
 ```
 
 - [layout-themrsung.txt](layout-themrsung.txt): the keymap. Every layer is `00d5 00d4 522a 522a
-  00d2 00d1 00ae`, and the dial is `00d9` / `00da` (`MS_WHLU` / `MS_WHLD`). This is shipped
+  00d2 00d1 00ae`, and the dial is `0050` / `004f` (`KC_LEFT` / `KC_RGHT`). This is shipped
   layer 1 with `CircleButton` changed from `MO(11)` to `KC_MPLY`.
 - [trackball-themrsung.txt](trackball-themrsung.txt): `trackball.sh show` afterwards. Only the
   orientation differs from the factory settings.
-- Confirmed by the tester: buttons, pointer direction and scroll direction. The dial's direction
-  wasn't reported.
+- Confirmed by the tester: buttons, pointer direction and scroll direction. The dial was changed
+  to arrow keys afterwards; its direction hasn't been confirmed yet.
+- Wanted but not possible on the device: ↓ / ↑ on the dial while ButtonOne or ButtonTwo is held.
+  See "The dial can't change while scrolling".
 
 Why 180°: at 0° both the pointer and the scroll were wrong on both axes. Rotating the ball by
 180° fixed both at once, because the firmware rotates the ball's motion before deciding between
@@ -111,8 +114,8 @@ each column is. The names in the "Name" column are the tester's; they aren't in 
 | M1 | `MouseOne` | 4 | bottom left | 5 | `MS_BTN1` left click | `MS_BTN2` right click | `MS_BTN2` right click |
 | M2 | `MouseTwo` | 5 | bottom right | 6 | `MS_BTN2` right click | `MS_BTN1` left click | `MS_BTN1` left click |
 | (none) | `CircleButton` | 6 | small round button next to 04 | 7 | `MO(11)` unknown | `MO(11)` unknown | `KC_MPLY` play / pause |
-| – | `WheelCounterClockwise` | enc 0 ccw | dial | 8 | `KC_UP` | `KC_LEFT` | `MS_WHLU` |
-| – | `WheelClockwise` | enc 0 cw | dial | 9 | `KC_DOWN` | `KC_RGHT` | `MS_WHLD` |
+| – | `WheelCounterClockwise` | enc 0 ccw | dial | 8 | `KC_UP` | `KC_LEFT` | `KC_LEFT` |
+| – | `WheelClockwise` | enc 0 cw | dial | 9 | `KC_DOWN` | `KC_RGHT` | `KC_RGHT` |
 
 - "Where" is from Launcher's definition, which draws the ball at 0°. On the tester's desk the
   mouse buttons point away from the body.
@@ -139,6 +142,19 @@ only the one key changes.
 
 There's no per-layer "ball scrolls" setting in Launcher's protocol. The only other scroll control
 is the global "force scroll" flag (`a7 32`), which wasn't tested.
+
+### The dial can't change while scrolling
+
+The dial falls through like every key. While `MO(10)` is held it sends whatever the stored layers
+give it, so it can't be ← / → normally and ↓ / ↑ only while scrolling. Layer 10 has no stored
+dial: `14 0a 00 0x` reads `0000`, the same for layers 9 and 11. Don't write it either. This
+firmware doesn't bounds-check every per-layer command (see "Don't send"). Ways around it:
+
+- Use a second, real layer: a button with `MO(2)`, and the dial set to ↑ / ↓ in layer 2. While
+  that button is held, the ball moves the pointer instead of scrolling.
+- On the Mac, with Karabiner-Elements: the scroll button and the dial send unused keys, and a rule
+  does the scrolling (`mouse_motion_to_scroll`) and picks the dial's arrows. Only on Macs with
+  Karabiner.
 
 Not checked:
 - Which layer keys fall through to when layers differ. All layers were identical in the test.
