@@ -1,0 +1,22 @@
+# themrsung's layout, every layer:
+# col: 0 ButtonThree=MS_BTN5 next, 1 ButtonFour=MS_BTN4 previous, 2 ButtonOne=MO(10) scroll, 3 ButtonTwo=MO(10) scroll,
+#      4 M1=MS_BTN2 right click, 5 M2=MS_BTN1 left click, 6 CircleButton=KC_MPLY play/pause
+# dial: ccw MS_WHLU (0x00d9), cw MS_WHLD (0x00da)
+layer 0: 00d5 00d4 522a 522a 00d2 00d1 00ae 
+layer 1: 00d5 00d4 522a 522a 00d2 00d1 00ae 
+layer 2: 00d5 00d4 522a 522a 00d2 00d1 00ae 
+layer 3: 00d5 00d4 522a 522a 00d2 00d1 00ae 
+layer 4: 00d5 00d4 522a 522a 00d2 00d1 00ae 
+layer 5: 00d5 00d4 522a 522a 00d2 00d1 00ae 
+layer 6: 00d5 00d4 522a 522a 00d2 00d1 00ae 
+layer 7: 00d5 00d4 522a 522a 00d2 00d1 00ae 
+layer 8: 00d5 00d4 522a 522a 00d2 00d1 00ae 
+layer 0: 00d9 00da
+layer 1: 00d9 00da
+layer 2: 00d9 00da
+layer 3: 00d9 00da
+layer 4: 00d9 00da
+layer 5: 00d9 00da
+layer 6: 00d9 00da
+layer 7: 00d9 00da
+layer 8: 00d9 00da

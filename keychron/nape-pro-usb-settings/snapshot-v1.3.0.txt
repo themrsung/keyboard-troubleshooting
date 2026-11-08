@@ -1,0 +1,36 @@
+# usb
+"bcdDevice" = 304
+"idProduct" = 1088
+"idVendor" = 13364
+# via: protocol 0x01, firmware value 0x02/04, layout options 0x02/03, layers 0x11, macros 0x0c, macro bytes 0x0d
+01 => 01 00 0c 00 00 00 00 00
+02 04 => 02 04 00 00 00 00 00 00
+02 03 => 02 03 00 00 00 00 00 00
+11 => 11 09 00 00 00 00 00 00
+0c => 0c 10 00 00 00 00 00 00
+0d => 0d 09 5a 00 00 00 00 00
+# keychron 0xa0..0xa3 (protocol, firmware string, features, default layer)
+a0 => a0 01 00 01 00 00 00 00
+a2 => a2 21 00 00 00 00 00 00
+a3 => a3 01 00 00 00 00 00 00
+a1 => v1.3.0-ZK Aug 20 2026 08:35:53
+# keymap: 9 layers x 7 keycodes (DYNAMIC_KEYMAP_GET_BUFFER 0x12)
+layer 0: 522a 0000 00d4 0000 00d1 00d2 522b 
+layer 1: 00d5 00d4 522a 522a 00d2 00d1 522b 
+layer 2: 00ae 00ae 00d4 7e2c 00d1 00d2 522b 
+layer 3: 522a 7e2b 00d4 7e2c 00d1 00d2 522b 
+layer 4: 522a 7e2b 00d4 7e2c 00d1 00d2 522b 
+layer 5: 522a 7e2b 00d4 7e2c 00d1 00d2 522b 
+layer 6: 522a 7e2b 00d4 7e2c 00d1 00d2 522b 
+layer 7: 522a 7e2b 00d4 7e2c 00d1 00d2 522b 
+layer 8: 522a 7e2b 00d4 7e2c 00d1 00d2 522b 
+# encoder 0 (DYNAMIC_KEYMAP_GET_ENCODER 0x14): ccw cw
+layer 0: 0052 0051
+layer 1: 0050 004f
+layer 2: 0052 0051
+layer 3: 0052 0051
+layer 4: 0052 0051
+layer 5: 0052 0051
+layer 6: 0052 0051
+layer 7: 0052 0051
+layer 8: 0052 0051
