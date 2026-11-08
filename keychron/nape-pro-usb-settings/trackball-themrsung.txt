@@ -1,6 +1,7 @@
 # themrsung's trackball settings, read with ./trackball.sh ./naperaw show on 2026-11-08 (firmware v1.3.0)
 # Set with: ./trackball.sh ./naperaw angle 180; for L in {0..8}; do ./trackball.sh ./naperaw layer-angle $L 180; done
-dpi step:        2 of 5
+#           ./trackball.sh ./naperaw dpi 0   (step 0 = 400 DPI; step values can't be changed, see README)
+dpi step:        0 of 5
 dpi steps:       400 800 1600 3200 4000
 custom dpi:      400
 orientation:     180°
