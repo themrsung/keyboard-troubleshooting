@@ -19,10 +19,9 @@ The Nape Pro sits with the mouse buttons (M1, M2) pointing north, away from the 
 |---|---|
 | M2 | left click |
 | M1 | right click |
-| ButtonOne, ButtonTwo | scroll with the ball while held |
-| ButtonThree, ButtonFour | nothing (`KC_NO`): they're easy to press by accident, and back / forward can lose work |
+| ButtonOne, ButtonTwo, ButtonThree, ButtonFour | scroll with the ball while held |
 | CircleButton | 2.4 GHz pairing (see "2.4 GHz receiver") |
-| Dial | clockwise → (right arrow), counter-clockwise ← (left arrow) |
+| Dial | clockwise scrolls down, counter-clockwise scrolls up, with macOS Natural scrolling on |
 | Ball | finger up → pointer up, finger right → pointer right |
 | Ball while scrolling | finger up → scroll down, finger right → scroll left |
 | Sensitivity | as low as the device goes: step 0, 400 DPI |
@@ -42,16 +41,20 @@ for L in {0..8}; do ./trackball.sh ./naperaw layer-angle $L 180; done
 Over the receiver instead of the cable, put `NAPE_PID=0xd026` in front of each command (see
 "2.4 GHz receiver").
 
-- [layout-themrsung.txt](layout-themrsung.txt): the keymap. Every layer is `0000 0000 522a 522a
-  00d2 00d1 7e04`, and the dial is `0050` / `004f` (`KC_LEFT` / `KC_RGHT`). This is shipped
-  layer 1 with `CircleButton` changed from `MO(11)` to `7e04` (Keychron's "2.4G Pair"), and
-  ButtonThree and ButtonFour changed from forward / back to `KC_NO`.
+- [layout-themrsung.txt](layout-themrsung.txt): the keymap. Every layer is `522a 522a 522a 522a
+  00d2 00d1 7e04`, and the dial is `00da` / `00d9` (`MS_WHLD` / `MS_WHLU`). This is shipped
+  layer 1 with `CircleButton` changed from `MO(11)` to `7e04` (Keychron's "2.4G Pair"),
+  ButtonThree and ButtonFour changed from forward / back to `MO(10)` (scroll; they were `KC_NO`
+  for a while, because back / forward pressed by accident can lose work), and the dial changed from
+  ← / → to the mouse wheel. The wheel is reversed in the keymap (clockwise sends wheel up)
+  because macOS Natural scrolling reverses it again.
 - [trackball-themrsung.txt](trackball-themrsung.txt): `trackball.sh show` afterwards. Orientation
   (180°) and the DPI step in use (0) differ from the factory settings.
 - Confirmed by the tester: buttons, pointer direction and scroll direction. The dial was changed
-  to arrow keys afterwards; its direction hasn't been confirmed yet.
-- Wanted but not possible on the device: ↓ / ↑ on the dial while ButtonOne or ButtonTwo is held.
-  See "The dial can't change while scrolling".
+  to the mouse wheel afterwards. Sent unreversed, clockwise scrolled up on macOS with Natural
+  scrolling on, so the keymap swaps the two.
+- Wanted earlier, when the dial was ← / →, but not possible on the device: ↓ / ↑ on the dial only
+  while ButtonOne or ButtonTwo is held. See "The dial can't change while scrolling".
 - DPI: the factory step 0 (400) still felt too fast, but nothing on the device goes lower. See
   "DPI values can't be changed".
 
@@ -168,15 +171,15 @@ each column is. The names in the "Name" column are the tester's; they aren't in 
 
 | Label | Name | Col | Where (ball at 0°) | Number test | Shipped, layer 0 | Shipped, layer 1 (active) | Tester's layout |
 |---|---|---|---|---|---|---|---|
-| 03 | `ButtonThree` | 0 | top left | 1 | `MO(10)` scroll | `MS_BTN5` forward | `KC_NO` |
-| 04 | `ButtonFour` | 1 | top right | 2 | `KC_NO` | `MS_BTN4` back | `KC_NO` |
+| 03 | `ButtonThree` | 0 | top left | 1 | `MO(10)` scroll | `MS_BTN5` forward | `MO(10)` scroll |
+| 04 | `ButtonFour` | 1 | top right | 2 | `KC_NO` | `MS_BTN4` back | `MO(10)` scroll |
 | 01 | `ButtonOne` | 2 | middle left | 3 | `MS_BTN4` back | `MO(10)` scroll | `MO(10)` scroll |
 | 02 | `ButtonTwo` | 3 | middle right | 4 | `KC_NO` | `MO(10)` scroll | `MO(10)` scroll |
 | M1 | `MouseOne` | 4 | bottom left | 5 | `MS_BTN1` left click | `MS_BTN2` right click | `MS_BTN2` right click |
 | M2 | `MouseTwo` | 5 | bottom right | 6 | `MS_BTN2` right click | `MS_BTN1` left click | `MS_BTN1` left click |
 | (none) | `CircleButton` | 6 | small round button next to 04 | 7 | `MO(11)` unknown | `MO(11)` unknown | `7e04` 2.4 GHz pairing |
-| – | `WheelCounterClockwise` | enc 0 ccw | dial | 8 | `KC_UP` | `KC_LEFT` | `KC_LEFT` |
-| – | `WheelClockwise` | enc 0 cw | dial | 9 | `KC_DOWN` | `KC_RGHT` | `KC_RGHT` |
+| – | `WheelCounterClockwise` | enc 0 ccw | dial | 8 | `KC_UP` | `KC_LEFT` | `MS_WHLD` (reversed by macOS: scrolls up) |
+| – | `WheelClockwise` | enc 0 cw | dial | 9 | `KC_DOWN` | `KC_RGHT` | `MS_WHLU` (reversed by macOS: scrolls down) |
 
 - "Where" is from Launcher's definition, which draws the ball at 0°. On the tester's desk the
   mouse buttons point away from the body.
